@@ -2,22 +2,103 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Teaching</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" media="print" onload="this.media='all'"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap"/>
     </noscript>
     <link href="css/font-awesome/css/all.min.css?ver=1.2.0" rel="stylesheet">
-    <link href="css/bootstrap.min.css?ver=1.2.0" rel="stylesheet">
     <link href="css/aos.css?ver=1.2.0" rel="stylesheet">
     <link href="css/main.css?ver=1.2.0" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-  <h1 class="site-title mb-0">To be continued...</h1>
+<div class="container py-3">
+  <div class="title h1 text-center">ML with Python</div>
+  <!-- Card Start -->
+  <div class="card">
+    <div class="row ">
+
+      <div class="col-md-7 px-3">
+        <div class="card-block px-6">
+          <p> </p>
+          <h4 class="card-title"><span>&nbsp;&nbsp;</span>Python intro, int objects in memory</h4>
+          <p class="card-text">
+            <ul>
+                <li>History of popular programming languages</li>
+                <li>Main goals of the course</li>
+                <li>Compilation and interpretation</li>
+                <li>Size of int in Python and some examples</li>
+            </ul>
+            <span>&nbsp;&nbsp;</span>
+            <a href="https://avalur.github.io/ml_with_python/intro_to_python.html" class="mt-auto btn btn-primary">Slides</a>
+        </div>
+      </div>
+      <!-- Carousel start -->
+      <div class="col-md-5">
+        <div id="Carousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#Carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#Carousel" data-slide-to="1"></li>
+            <li data-target="#Carousel" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block" src="ml_with_python/images/monty_python.jpg" alt="" style="width:100%;">
+            </div>
+            <div class="carousel-item">
+              <br /> <br /> <br />
+              <img class="d-block" src="ml_with_python/images/python_interpretation.png" alt="" style="width:100%;">
+            </div>
+            <div class="carousel-item"><center>
+              <img class="d-block" src="ml_with_python/images/python_after_cpp.jpg" alt="" style="width:60%;">
+              </center>
+            </div>
+
+              <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#Carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#Carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- End of carousel -->
+    </div>
+  </div>
+  <!-- End of card -->
+</div>
+
+<!--<div class="container">-->
+<!--    <div class="card float-right">-->
+<!--      <div class="row">-->
+<!--        <div class="col-sm-5">-->
+<!--          <img class="d-block w-100" src="https://picsum.photos/150?image=641" alt="">-->
+<!--        </div>-->
+<!--        <div class="col-sm-7">-->
+<!--          <div class="card-block">-->
+<!--            &lt;!&ndash;           <h4 class="card-title">Small card</h4> &ndash;&gt;-->
+<!--            <p>Copy paste the HTML and CSS.</p>-->
+<!--            <p>Change around the content for awsomenes</p>-->
+<!--            <br>-->
+<!--            <a href="#" class="btn btn-primary btn-sm float-right">Read More</a>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--</div>-->
 </body>
 </html>
