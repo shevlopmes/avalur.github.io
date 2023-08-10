@@ -6,7 +6,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<title>Python types and collections</title>
+		<title>Slices and collections</title>
 
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
@@ -335,6 +335,44 @@
                             </div>
                         </div>
                     </section>
+                </section>
+                <section>
+                    <section data-background-color="#fdf6e3">
+                        <h3>Never try this at home!</h3>
+                        <py-repl>
+                            def hi(x):
+                                print("Hello,", x)
+                                return None
+
+                            def add_two(x):
+                                return x + 2
+
+                            add_two.__code__ = hi.__code__
+
+                            add_two(20)
+                        </py-repl>
+                    </section>
+                    <section data-background-color="#fdf6e3">
+                        <py-repl>
+                            import dis
+                            dis.dis(hi)
+                        </py-repl>
+                    </section>
+                    <section>
+    					<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+                                LOAD_GLOBAL    namei — Loads the global named co_names[namei] onto the stack <br />
+                                LOAD_CONST    consti — Pushes "co_consts[consti]" onto the stack <br />
+                                LOAD_FAST    var_num — Pushes a reference to the local co_varnames[var_num] onto the stack
+                            </div>
+                        </div>
+                    </section>
+    					<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+                                CALL_FUNCTION    argc — Calls a function. The low byte of argc indicates the number of positional parameters, the high byte the number of keyword parameters. On the stack, the opcode finds the keyword parameters first. For each keyword argument, the value is on top of the key. Below the keyword parameters, the positional parameters are on the stack, with the right-most parameter on top. Below the parameters, the function object to call is on the stack.<br />
+                                POP_TOP — Removes the top-of-stack (TOS) item.
+                            </div>
+                        </div>
                 </section>
             </div>
         </div>
