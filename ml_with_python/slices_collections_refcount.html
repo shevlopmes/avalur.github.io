@@ -49,6 +49,9 @@
                             a[10]
                         </py-repl>
                     </section>
+                    <section data-background-color="#ffffff">
+                        <img src="./images/slicing.png" alt="slicing">
+                    </section>
                     <section data-background-color="#fdf6e3">
                         <h3>Slices</h3>
                         <py-repl>
@@ -169,6 +172,9 @@
                             <py-repl>
                                 " ".join([c for s in ("Nested", "List", "Comprehension") for c in s])
                             </py-repl>
+                    </section>
+                    <section data-background-color="#ffffff">
+                        <img src="./images/collections.png" alt="collections">
                     </section>
                     <section data-background-color="#fdf6e3">
                         <h3>Collections → defaultdict</h3>
@@ -297,6 +303,9 @@
                     </section>
                 </section>
                 <section>
+                    <section data-background-color="#ffffff">
+                        <img src="./images/gc_python_meme.jpg" alt="gc_python_meme">
+                    </section>
                     <section data-background-color="#fdf6e3">
                         <py-repl>
                             import sys
@@ -330,7 +339,7 @@
                               <li>Reference count algorithm — deletion is triggered as soon as the count hits 0,
                                   but it brings many problems (circular references, thread locking, memory and CPU overhead)</li>
                               <li>Additional garbage collector — gc module. Three generations of an object,
-                                  each with its own heuristics when launched.</li>
+                                  each with its own heuristics when launched</li>
                             </ol>
                             </div>
                         </div>
@@ -338,7 +347,7 @@
                 </section>
                 <section>
                     <section data-background-color="#fdf6e3">
-                        <h3>Never try this at home!</h3>
+                        <h3>Never repeat this at home!</h3>
                         <py-repl>
                             def hi(x):
                                 print("Hello,", x)

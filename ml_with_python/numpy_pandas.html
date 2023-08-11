@@ -272,7 +272,7 @@
                 </section>
                 <section>
                     <section data-background-color="#fdf6e3">
-                        <h3>Vectorization and Broadcasting</h3>
+                        <h3>Broadcasting and Vectorization</h3>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                             <p>Operations in NumPy can be performed directly on vectors
@@ -337,12 +337,12 @@
                         <py-repl>
                             np.array([[0, 0, 0], [10, 10, 10], [20, 20, 20], [30, 30, 30]]) + np.arange(3)
                         </py-repl>
-                        <p><img src="https://i.imgur.com/VsP2dqT.gif" alt="Imgur"></p>
+                        <p><img src="./images/broadcasting.gif" alt="broadcasting"></p>
                     </section>
                     <section data-background-color="#fdf6e3">
                         <p>Now if we want to do the same trick but with columns, we can't just add a vector consisting
                             of 4 elements because in this case the dimensions will not be coordinated.</p>
-                        <p><img src="https://i.imgur.com/9LvGoeL.gif" alt="Imgur"></p>
+                        <p><img src="./images/wrong_shapes.gif" alt="wrong_shapes"></p>
                     </section>
                     <section data-background-color="#fdf6e3">
                         <p>First, the vector needs to be transformed to the form:</p>
@@ -566,6 +566,9 @@
                             s = pd.Series([1, 2, 3], index=["Red", "Green", "Blue"])
                             s.to_frame("Values")
                         </py-repl>
+                    </section>
+                    <section data-background-color="#ffffff">
+                        <img src="./images/merging_concat_basic.png" alt="merging_concat_basic" width="740">
                     </section>
                     <section data-background-color="#fdf6e3">
                         <h3>Join and merge</h3>
