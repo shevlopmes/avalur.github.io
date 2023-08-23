@@ -569,11 +569,115 @@
                         </p>
                         <p>Model $P(y|x,w) \equiv $ Model $g(x,w)$ and $\mathcal{L}(M)$</p>
                     </section>
+                    <section>
+                        <h3>Probabilistic interpretation of regularization</h3>
+
+                        <p>
+                            \(P(y|x, w)\) — probabilistic data model<br>
+                            \(P(w; \gamma)\) — prior distribution of model parameters, \(\gamma\) — vector of hyperparameters;<br>
+                        </p>
+                        <p style="text-align: left">Joint likelihood of data and model</p>
+                            \[P(X^\ell, w) = P(X^\ell | w)P(w;\gamma)\]
+
+                        <p style="text-align: left">Maximum a Posteriori Probability (MAP) principle:</p>
+                        \[ L(w) = \log P(X^\ell, w) = \sum\limits_{i=1}^\ell \log P(y_i|w, x_i) +
+                        \underbrace{\color{orange}{\log P(w; \gamma)}}_{\text{regularizer}} \to \max\limits_w \]
+                    </section>
+                    <section data-background-color="#fdf6e3">
+                        <h3>How else can the logarithm help?</h3>
+                        <py-repl>
+                            import matplotlib.pyplot as plt
+                            from matplotlib import cm, ticker
+                            from matplotlib.ticker import LinearLocator
+                            from mpl_toolkits.mplot3d import axes3d, Axes3D
+
+                            import numpy as np
+
+                            fig = plt.figure()
+                            ax = Axes3D(fig)
+
+                            # Make data
+                            x = np.arange(-2, 2, 0.25)
+                            y = np.arange(-2, 2, 0.25)
+                            X, Y = np.meshgrid(x, y)
+                            R = np.sqrt(X**2 + Y**2)
+                            Z = R**1.2 / 5
+
+                            # Plot the surface
+                            surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm,
+                                                   linewidth=0, antialiased=False)
+
+                            # Customize the z axis.
+                            ax.set_zlim(-3.01, 1.01)
+                            ax.zaxis.set_major_locator(LinearLocator(10))
+                            # A StrMethodFormatter is used automatically
+                            ax.zaxis.set_major_formatter(ticker.StrMethodFormatter("{x:.02f}"))
+
+                            # Add a color bar which maps values to colors.
+                            fig.colorbar(surf, shrink=0.5, aspect=5)
+
+                            fig
+                        </py-repl>
+                    </section>
+                    <section>
+                        <img src="images/loss_example.png" alt="" style="width:49%; float:left;">
+                        <img src="images/logloss_example.png" alt="" style="width:50%; float:left;">
+                    </section>
+                    <section>
+                        <h3>Examples: Gaussian and Laplace priors</h3>
+                        <p style="text-align: left">
+                            Let the weights \(w_j\) be independent, \(Ew_j = 0\), \(Dw_j = С\)</p>
+
+                        <p style="text-align: left">
+                            Gaussian distribution and quadratic (\(L_2\)) regularizer:</p>
+
+                        $$P(w; С) = \frac{1}{(2\pi C)^{n/2}} \exp \left(-\frac{{\|w\|^2_2}}{2C}\right)$$
+
+                        $${\|w\|^2_2 = \sum\limits_{j=1}^n w_j^2}$$
+
+                        $$-\log P(w; С) = \frac{1}{2C}\|w\|^2_2 + const$$
+                    </section>
+                    <section>
+                        <p style="text-align: left">
+                            Laplace distribution and absolute (\(L_1\)) regularizer:</p>
+
+                        $$P(w; С) = \frac{1}{(2C)^{n}} \exp \left(-\frac{{\|w\|_1}}{C}\right)$$
+
+                        $${\|w\|_1 = \sum\limits_{j=1}^n |w_j|}$$
+
+                        $$-\log P(w; С) = \frac{1}{C}\|w\|_1 + const$$
+                        <p>\(C\) — hyperparameter, \(\tau = \frac{1}{C}\) — regularization coefficient</p>
+                    </section>
+                    <section>
+                        <h3>Binary Logistic Regression</h3>
+
+                        <ul>
+                            <li>
+                                Linear classification model for two classes \(Y = \{-1, 1\}\):<br>
+                                \(a(x) = \mathrm{sign} \left< w, x\right>\),
+                                \(x, w ∈ \mathbb{R}^n\), margin \(M = \left< w, x\right>y\)
+                            </li>
+                            <li>
+                                Logarithmic loss function:
+                                $$\mathcal{L}(M) = \log(1 + e^{-M})$$
+                            </li>
+                            <li>
+                                Conditional probability model:
+                                $$ P(y|x, w) = \sigma(M) = \frac{1}{1 + e^{-M}},$$
+
+                                where \(\sigma(M)\) is the sigmoid function, important property: \(\sigma(M) + \sigma(-M) = 1\)
+                            </li>
+                            <li>
+                                Regularized logistic regression learning problem
+                                (minimization of approximated empirical risk):
+                                $$Q(w) = \sum\limits_{i=1}^\ell \log(1 + \exp(-\left< w, x_i\right>y_i)) + \frac{\tau}{2}\|w\|^2_2 \to \min\limits_w $$
+                            </li>
+                        </ul>
+                    </section>
                 </section>
                 <section>
                     <section>
                         <h3>Summary</h3>
-
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                             <ul>
