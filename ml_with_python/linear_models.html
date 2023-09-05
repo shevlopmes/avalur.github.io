@@ -674,6 +674,21 @@
                             </li>
                         </ul>
                     </section>
+                    <section>
+                        <h3>Multiclass Logistic Regression</h3>
+
+                        <p style="text-align: left">Linear classifier with an arbitrary number of classes \(|Ү|\):</p>
+                        <span style="color: orange;">\(a(x) = \arg\max\limits_{y \in Y} < w_y, x>\), \(x, w_y \in \mathbb{R}^n\)</span>
+
+                        <p style="text-align: left">The probability that the object \(x\) belongs to the class \(y\):</p>
+                            \(P(y|x,w) = \frac{\exp< w_y, x>}{\sum\limits_{z \in Y} \exp< w_z, x>} = \underset{y \in Y}{softmax} < w_y, x>\)
+
+                        <p style="text-align: left">The \(\mathrm{softmax}: \mathbb{R}^Y \to \mathbb{R}^Y\) function converts any vector into
+                            a normalized vector of a discrete distribution.</p>
+
+                        <p style="text-align: left">Maximization of likelihood (log-loss) with regularization:</p>
+                        \( L(w) = \sum\limits_{i=1}^\ell \log P(y_i|w, x_i) - \frac{\tau}{2} \sum\limits_{y \in Y} \|w_y\|^2 \to \max\limits_w \)
+                    </section>
                 </section>
                 <section>
                     <section>
