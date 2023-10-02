@@ -43,7 +43,8 @@
 					</div>
 				</section>
 				<section>
-					<section><img src="images/monty_python.jpg" alt="monty_python" />
+					<section>
+  						<img src="images/monty_python.jpg" alt="monty_python" width="100%"/>
 					</section>
 					<section>
 						<iframe width="1400" height="650" src="https://www.youtube.com/embed/Og847HVwRSI">
@@ -56,15 +57,17 @@
 							<ul>
 							  <li>Take the first step, after which you can continue self-study</li>
 							  <li>Learn the main features of Python, its differences from other programming languages</li>
-							  <li>Deeply understand basic concepts of ML and neural nets</li>
+							  <li>Deeply understand basic concepts of machine learning and neural nets</li>
 							  <li>Implement ML models using Python and PyTorch</li>
 							  <li>Get acquainted with some typical interview tasks in IT companies and their solutions</li>
 							</ul>
+
+							<p><a href="https://avalur.github.io/ml_with_python/org_info.html">Org information</a></p>
 						</div>
 					</div>
 					</section>
 					<section>
-						<h3>Python Language</h3>
+						<h3>Python Language IS</h3>
 					<div class="fragment" style="margin-bottom:20px;">
 						<div class="typesetting">
 						<ul>
@@ -73,7 +76,7 @@
 							<li>(almost) portable</li>
 							<li>high-level</li>
 							<li>interpreted, not compiled</li>
-							<li>REPL = Read Eval Print Loop</li>
+							<li>suited for REPL = Read Eval Print Loop</li>
 						</ul>
 						</div>
 					</div>
@@ -88,7 +91,7 @@
 						# So they highlight nested blocks of code
 						for i in range(5):
 							if not (i % 3 == 0):
-								print(i ** 5)
+								print(i**5)
 					</py-repl>
 					</section>
 					<section><img src="images/python_interpretation.png" alt="python_interpretation" />
@@ -96,7 +99,7 @@
 						<div class="typesetting">
 						<h3>Another Example</h3>
 						<p>Writing in Python is like writing pseudocode. Suppose you know, that</p>
-							\[ e^x=\sum_{k=0}^\infty \frac{1}{k!}x^k	\]
+							\[ e^x=\sum_{k=0}^\infty \frac{1}{k!}x^k = 1 + x + \frac{x^2}{2!} + \dots \]
 						</div>
 					</div>
 					</section>
@@ -105,7 +108,7 @@
 						def e(x):
 							sum_, k, term = 1, 0, 1
 							while True:
-								# yield is like return, but creates generator object
+								# yield is like "return", but creates generator object
 								yield sum_
 								k += 1
 								term *= x / k
@@ -119,21 +122,23 @@
 						[next(gen_e_x) for _ in range(5)]
 					</py-repl>
 					</section>
+					<section data-background-color="#ffffff">
+						<img src="images/value_of_e.png" alt="value_of_e" />
+					</section>
 				</section>
 				<section>
 					<section>
-					<div class="fragment" style="margin-bottom:20px;">
-						<div class="typesetting">
-						  <h3>Everything in Python is an object
-						  </h3>
-							<h4>Every object has</h4>
-							<ul>
-								<li> <span style="color:#17ff2e">id</span > — where it's located (~memory address)</li>
-								<li> <span style="color: #17ff2e">type</span> — a set of values and operations on these values</li>
-								<li> <span style="color: #17ff2e">value</span> — the value</li>
-							</ul>
+						<h3>Everything in Python is an object</h3>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<h4>Every object has</h4>
+								<ul>
+									<li> <span style="color:#17ff2e">id</span > — where it's located (~memory address)</li>
+									<li> <span style="color: #17ff2e">type</span> — a set of values and operations on these values</li>
+									<li> <span style="color: #17ff2e">value</span> — the value</li>
+								</ul>
+							</div>
 						</div>
-					</div>
 					</section>
 					<section data-background-color="#fdf6e3">
 						<py-repl>
@@ -141,14 +146,10 @@
 							print(type(1), ', ', type('1'))
 						</py-repl>
 						<py-repl>
-							# a = 257
-							# b = 257
+							# works only for system Python interpreter, not for a port of CPython to WebAssembly :)
+							# a = 257; b = 257
 							# id(a) == id(257), id(a) == id(b), type(a) == type(1)
-							# works only for system Python interpreter,
-							# not for a port of CPython to WebAssembly :)
-
-							a = 7
-							b = 7
+							a = 7; b = 7
 							id(a) == id(7), id(a) == id(b), type(a) == type(1)
 						</py-repl>
 						<py-repl>
@@ -157,24 +158,24 @@
 					</section>
 					<section>
 						<h3> <a href="https://www.quora.com/How-many-bytes-does-an-integer-data-occupy-in-the-Python-language">Size of INT in the Python language</a></h3>
-					<div class="fragment" style="margin-bottom:20px;">
-						<div class="typesetting">
-							<p>What do you think, how much memory does INT take?</p>
-							<ul>
-								<li>In general, one bit is 0 or 1</li>
-								<li>1 byte = 8 bits, and this already represents integers from 0 to 255</li>
-							</ul>
+						<p class="r-frame">What do you think, how much memory does INT take?</p>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<ul>
+									<li>In general, 1 bit represents only two values (it's 0 or 1)</li>
+									<li>1 byte = 8 bits, and this already represents integers from 0 to 255, for example</li>
+								</ul>
+							</div>
 						</div>
-					</div>
-  					<div class="fragment" style="margin-bottom:20px;">
-						<div class="typesetting">
-							<p>Can it be depending on the platform?</p>
-							<ul>
-								<li>4 bytes (32 bits) or</li>
-								<li>8 bytes (64 bits)</li>
-							</ul>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<p>Can it be depending on the platform:</p>
+								<ul>
+									<li>4 bytes (32 bits) or</li>
+									<li>8 bytes (64 bits)?</li>
+								</ul>
+							</div>
 						</div>
-					</div>
 					</section>
 					<section data-background-color="#fdf6e3">
 						<py-repl>
@@ -190,7 +191,7 @@
 						)
 						</py-repl>
 					</section>
-					<section>
+					<section data-background-color="#fdf6e3">
 						<h3>Why so much and <a href="https://stackoverflow.com/questions/10365624/sys-getsizeofint-returns-an-unreasonably-large-value"> not the same?</a></h3>
      					<div class="fragment" style="margin-bottom:20px;">
 							<py-repl>isinstance(1, object)</py-repl>
@@ -213,14 +214,22 @@
 						</div>
 					</section>
 					<section>
-						<h3>Task example: Sum of two</h3>
+						<h3 style="text-align: left">Task example: Sum of two</h3>
     					<div class="fragment" style="margin-bottom:20px;">
     						<div class="typesetting">
-							Given a list of integers and a specified integer, return the indices of two numbers from the list, the sum of which equals the specified number (target).
+							<p style="text-align: left">Given a list of integers and a specified integer,
+								return the indices of two numbers from the list,
+								the sum of which equals the specified number (target).</p>
 
-							It is assumed that there is exactly one solution and the same element cannot be used twice.
+							<p style="text-align: left">It is assumed that there is exactly one solution and
+								the same element cannot be used twice.</p>
 							</div>
 						</div>
+					</section>
+					<section data-background-color="#fdf6e3">
+						<py-repl>
+							# YOUR CODE
+						</py-repl>
 					</section>
 					<section data-background-color="#fdf6e3">
 						<py-repl>
