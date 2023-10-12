@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<title>Version control systems</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/black.css">
+
+        <!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+		<style>
+			.column {
+			  float: left;
+			  width: 48%;
+			  padding: 2px;
+			}
+			/* Clear floats after image containers */
+			.row::after {
+			  content: "";
+			  clear: both;
+			  display: table;
+			}
+		</style>
+</head>
+	<body onload="totalWrapper();">
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<div>
+						<img src="ml_with_python/images/nup_logo_dark.jpeg" alt="nup_logo" />
+					</div>
+					<h2>CS Basics with Python</h2>
+					<h3>Version control systems</h3>
+					<br />
+					Alex Avdiushenko <br />
+					October 25, 2023
+				</section>
+				<section>
+					<section>
+						<div>
+							<img src="images/svc_meme.png" alt="svc_meme" height=720 />
+						</div>
+					</section>
+					<section>
+						<div class="row">
+						  <div class="column">
+							<img src="https://git-scm.com/book/en/v2/images/centralized.png" alt="centralized" />
+						  </div>
+						  <div class="column">
+							<img src="https://git-scm.com/figures/18333fig0103-tn.png" alt="distributed" />
+						  </div>
+						</div>
+						<p><span style="color: orange">Git</span> is a distributed version control system,
+							designed with a focus on speed and efficiency of interaction.</p>
+					</section>
+					<section>
+						<h2><span style="color: orange">Distributed</span> means:</h2>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+							<ul>
+								<li>each developer has a complete, local repository</li>
+								<li>technically the central repo is not different from the local repos</li>
+								<li>easy offline usage</li>
+								<li>easy to branch a project</li>
+								<li>easy offline Examples: Github, Gitlab, Mercurial</li>
+							</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div>
+							<img src="images/git_logo.png" alt="git_logo"/>
+						</div>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+							<ul>
+								<li>Created 2005 for Linux Kernel Development</li>
+								<li>Used for Linux, Android, Eclipse, ...</li>
+								<li>Used everywhere: Google, JetBrains, SAP, Qualcomm, Nvidia, Garmin, X, etc.</li>
+							</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h2>Basic Workflow</h2>
+						<ol>
+							<li>Clone the repository:
+								<p>
+									<code style="background-color: gray">$> git clone git@github.com:jetbrains-academy/computer-science-basics-with-python.git</code>
+								</p>
+							</li>
+							<li>Make changes using PyCharm/vim/emacs/...</li>
+							<li>Save changes:  <code style="background-color: gray">$> git add (file)</code></li>
+							<li>Review changes:  <code style="background-color: gray">$> git status / git diff</code></li>
+							<li>Commit changes:  <code style="background-color: gray">$> git commit</code></li>
+						</ol>
+					</section>
+				</section>
+				<section>
+					<h2>Let's switch to the best Git presentation</h2>
+					<a href="https://docs.google.com/presentation/d/1IQCRPHEIX-qKo7QFxsD3V62yhyGA9_5YsYXFOiBpgkk/mobilepresent?slide=id.g4d6b1121f4_0_65">Click!</a>
+
+				   <p><a href="https://git-scm.com/book/en/v2">Pro Git book with all other details.</a></p>
+				</section>
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/math/math.js"></script>
+		<script src="../scripts/utils.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				// The "normal" size of the presentation, aspect ratio will
+				// be preserved when the presentation is scaled to fit different
+				// resolutions. Can be specified using percentage units.
+				width: '100%',
+				height: '100%',
+				// Factor of the display size that should remain empty around the content
+				margin: 0.08,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 2.0,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+
+			Reveal.addEventListener('fragmentshown', function (event) {
+				if (lettersAnimate) {
+					[...event.fragment.getElementsByClassName('typesetting')].forEach(element => {
+						playAnimation(element);
+					});
+				}
+			});
+
+		</script>
+    </body>
+</html>
