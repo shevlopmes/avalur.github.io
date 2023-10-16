@@ -33,7 +33,7 @@
 							<div class="typesetting">
 								<h3>Lecture 6. Matrix Differentiation</h3>
 								<br />
-								Alexander Avdiushenko <br />
+								Alex Avdiushenko<br />
 								October 17, 2023
 							</div>
 					</div>
@@ -76,14 +76,18 @@
                                   Df(x)[h] = \sum\limits_i \frac{\partial f}{\partial x_i} \cdot h_i = \left< \nabla f(x), h \right>
                                 \]
                               $\nabla f$ — gradient of function $f$
-                              <p>The shape of gradient must be the same, as shape of argument $h$!</p>
+                              <br />
+                              <div class="r-frame">
+                              The shape of gradient must be the same, as shape of argument $h$!</div>
                             </div>
                         </div>
+                    </section>
+                    <section>
     					<div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                                 <p style="text-align: left">3. For $f(x): \text{Matrix}_{m\times n} \to \mathbb{R}$</p>
                                 \[
-                                  Df(x)[h] = \sum\limits_{i,j} \frac{\partial f}{\partial x_{ij}} \cdot h_{ij}
+                                  Df(x)[H] = \sum\limits_{i,j} \frac{\partial f}{\partial x_{ij}} \cdot h_{ij}
                                   = \mathrm{tr}(\nabla f^T H) = \left< \nabla f(x), H \right>
                                 \]
                             </div>
@@ -98,8 +102,8 @@
                                 <p style="text-align: left">4. For $f(x): \mathbb{R}^m \to \mathbb{R}^m$,
                                 defined as $f(x) = (g(x_1), \dots, g(x_m))$</p>
                                 \[
-                                  f(x+h)-f(x) = (\dots, g(x_i+h) - g(x_i) ,\dots) \approx \\
-                                  (\dots, g'(x_i) \cdot h_i ,\dots) = g'(x) \odot h
+                                  f(x+h)-f(x) = (\dots, g(x_i+h_i) - g(x_i) ,\dots) \approx \\
+                                  (\dots, g'(x_i) \cdot h_i ,\dots) = f'(x) \odot h
                                 \]
                             </div>
                         </div>
@@ -140,7 +144,7 @@
                 </section>
                 <section>
                     <section>
-                        <h3>Tasks</h3>
+                        <h3>Tasks to differentiate</h3>
     					<div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                               <p style="text-align: left">1. $f(x) = \left< a, x \right>$</p>
@@ -243,9 +247,9 @@
                     <section>
                         <h3>Hessian — a square matrix of second-order partial derivatives of a scalar-valued function</h3>
                                 \[
-                                  f(x+h) - f(x) = Df(x)[h] + \frac12 D^2f(x)[h, h] + o(\|h\|^2) \\
-                                  D^2f(x)[h, h] = h^T \nabla^2 f(x) h
+                                  f(x+h) - f(x) = Df(x)[h] + \frac12 D^2f(x)[h, h] + o(\|h\|^2)
                                 \]
+                                \[ D^2f(x)[h, h] = h^T \nabla^2 f(x) h \]
                       $\nabla^2 f(x)$ is Hessian
                     </section>
                     <section>

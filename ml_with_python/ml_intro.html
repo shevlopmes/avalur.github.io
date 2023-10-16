@@ -34,7 +34,7 @@
 							<div class="typesetting">
 								<h3>Lecture 5. Machine Learning Intro</h3>
 								<br />
-								Alexander Avdiushenko <br />
+								Alex Avdiushenko <br />
 								October 17, 2023
 							</div>
 					</div>
@@ -49,9 +49,9 @@
                     <section>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p>The methods are built using the tools of mathematical statistics,
+                                <p>ML is built using the tools of mathematical statistics,
                                 numerical methods, mathematical analysis, optimization methods, probability theory,
-                                graph theory, various techniques for working with data in digital form.</p>
+                                graph theory, and various techniques for working with data in digital form.</p>
                                 <br />
                             </div>
                         </div>
@@ -59,12 +59,15 @@
                             <div class="typesetting">
                             <p>What is it?</p>
                             \[\begin{cases}
-                                \frac{\partial \rho}{\partial t} + \frac{\partial(\rho u_{i})}{\partial x_{i}} = 0 \\
+                                \frac{\partial \rho}{\partial t} + \frac{\partial(\rho u_{i})}{\partial x_{i}} = 0 \\ \\
                                 \frac{\partial (\rho u_{i})}{\partial t} + \frac{\partial[\rho u_{i}u_{j}]}{\partial x_{j}} = -\frac{\partial p}{\partial x_{i}} + \frac{\partial \tau_{ij}}{\partial x_{j}} + \rho f_{i}
                               \end{cases}
                             \]
                             </div>
                         </div>
+                    </section>
+                    <section>
+                        <iframe width="1400" height="650" src="https://www.youtube.com/embed/5028bTvDwO8"></iframe>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                                 <p>In machine learning, there is no pre-set model with equations...</p>
@@ -72,18 +75,18 @@
                         </div>
                     </section>
                     <section>
+                        <h3 style="text-align: left">Types of Machine Learning</h3>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                            <h3>Types of Machine Learning:</h3>
                                 <ul>
                                   <li><strong>Supervised Learning</strong>: The algorithm is provided with
                                       labeled training data, and the goal is to learn a general rule
-                                      that maps inputs to outputs.</li>
+                                      that maps inputs to outputs</li>
                                   <li><strong>Unsupervised Learning</strong>: The algorithm is provided with
                                       unlabeled data and must find the underlying structure in the data,
-                                      like clustering or dimensionality reduction.</li>
+                                      like clustering or dimensionality reduction</li>
                                   <li><strong>Reinforcement Learning</strong>: The algorithm learns by interacting
-                                      with an environment and receiving feedback in the form of rewards or penalties.</li>
+                                      with an environment and receiving feedback in the form of rewards or penalties</li>
                                 </ul>
                             </div>
                         </div>
@@ -97,24 +100,24 @@
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                            <p>$X$ — set of objects <br>
+                            <p style="text-align: left">$X$ — set of objects <br>
                             $Y$ — set of answers</p>
 
                             <p>$y: X \to Y$ — unknown dependence (target function)</p>
 
-                            <p>The task is to find, based on the training sample $\{x_1,\dots,x_\ell\} \subset X$
+                            <p>The task is to find, based on the training sample $\{x_1,\dots,x_\ell\} = X_\ell \subset X$
                                 with known answers $y_i=y(x_i)$, <br>
-                                an algorithm $a: X \to Y$, <br>
-                                a decision function that approximates $y$ over the entire set $X$.</p>
+                                an algorithm ${\color{orange}a}: X \to Y$, <br>
+                                which is a decision function that approximates $y$ over the entire set $X$.</p>
                             </div>
                         </div>
                     </section>
                     <section>
-                        <p>The entire machine learning course is about this:</p>
+                        <p style="text-align: left">The whole ML course is about this:</p>
                         <ul>
                           <li>how objects $x_i$ are defined and what answers $y_i$ can be</li>
-                          <li>in what sense $a$ approximates $y$</li>
-                          <li>how to construct the function $a$</li>
+                          <li>in what sense ${\color{orange}a}$ approximates $y$</li>
+                          <li>how to construct the function ${\color{orange}a}$</li>
                         </ul>
                     </section>
                     <section>
@@ -122,7 +125,7 @@
 
                         <p>The vector $(f_1(x), \dots, f_n(x))$ — feature description of the object $x$</p>
 
-                        <p>Types of features:</p>
+                        <p style="text-align: left">Types of features:</p>
                         <ul>
                           <li>$D_j = \{0, 1\}$ — binary</li>
                           <li>$\#|D_j| < \infty $ — categorical</li>
@@ -131,7 +134,7 @@
                         </ul>
                     </section>
                     <section>
-                        <p>Feature data matrix (object-features)</p>
+                        <p>Data matrix (objects and features as rows and columns)</p>
 
                         <p><br />
                             $F = ||f_j(x_i)||_{\ell\times n} = \left[ {\begin{array}{ccc}
@@ -181,7 +184,7 @@
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                            <h4 style="text-align: left">For example</h4>
+                            <h4 style="text-align: left">Example</h4>
 
                             <p>Linear model with vector of parameters
                                 $\theta = (\theta_1, \dots, \theta_n), \Theta = \mathbb{R}^n$:</p>
@@ -197,9 +200,7 @@
                     <section data-background-color="#fdf6e3">
                         <h3>Example: Regression Task, Synthetic Data</h3>
 
-                        <p>$X = Y = \mathbb{R}$,</p>
-
-                        <p>$\ell = 50$,</p>
+                        <p>$X = Y = \mathbb{R}$, $\ell = 50$ objects</p>
 
                         <p>$n = 3$ features: $\{1, x, x^2\}$ or $\{1, x, \sin x\}$</p>
                         <py-repl>
@@ -264,8 +265,8 @@
                 <section>
                     <section>
                         <h3>Training Stage</h3>
-                        <p>The method $\mu$ constructs an algorithm $a = \mu(X, Y)$ from the sample
-                            $(X, Y) = (x_i, y_i)_{i=1}^\ell$</p>
+                        <p>The method $\mu$ constructs an algorithm $a = \mu(X_\ell, Y_\ell)$ from the sample
+                            $(X_\ell, Y_\ell) = (x_i, y_i)_{i=1}^\ell$</p>
 
                         <p>$\boxed{
                         \left[ {\begin{array}{ccc}
@@ -296,6 +297,7 @@
                             <h4 style="text-align: left">Loss Functions for Classification Tasks:</h4>
                             <ul>
                               <li>$\mathcal{L}(a, x) = [a(x)\neq y(x)]$ — indicator of error</li>
+                              <li>Cross entropy</li>
                             </ul>
                         </div>
 
@@ -334,7 +336,7 @@
                               <li>Will we find the "law of nature" or will we overfit, i.e.,
                                   adjust the function $g(x_i, \theta)$ to the given points?</li>
                               <li>Will $a = \mu(X^\ell)$ approximate the function $y$ over the entire $X$?</li>
-                              <li>Will $Q(a, X^k)$ be small on new data — the test set
+                              <li>Will $Q(a, X^k)$ be small enough on new data — the test set
                                   $X^k = (x_i^\prime, y_i^\prime)_{i=1}^k$, $y_i^\prime = y(x_i)$?</li>
                             </ul>
                             </div>
@@ -427,22 +429,27 @@
                         </py-repl>
                     </section>
                     <section data-background-color="#fdf6e3">
+<!--language=Python-->
                         <py-repl>
                             import matplotlib.pyplot as plt_
-                            fig, ax = plt_.subplots()
-                            ax.set_xlabel('n'), ax.set_ylabel('log Q')
-                            ax.set_xlim(0, len(ns) + 2)
+                            fig_, ax_ = plt_.subplots()
+                            ax_.set_xlabel('n'), ax_.set_ylabel('log Q')
+                            ax_.set_xlim(0, len(ns) + 2)
 
-                            ax.plot(np.log(train_score), 'bo-', label='train score')
-                            ax.plot(np.log(test_score), 'go--', label='test score')
+                            ax_.plot(np.log(train_score), 'bo-', label='train score')
+                            ax_.plot(np.log(test_score), 'go--', label='test score')
                             plt_.legend(loc='best')
-                            fig
+                            # plt_.savefig('overfitting.png')
+                            print('OK!')
                         </py-repl>
                     </section>
-                    <section>
-                        <div class="r-frame">
-                        <b>Question 3:</b> Why we have such plots? How will the divergence point $n$ change
-                            depending on the size of the training sample $\ell$ and why?
+                    <section data-background-color="#ffffff">
+                        <img src="images/overfitting.png" width="50%">
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="r-frame">
+                            <b>Question 3:</b> Why we have such plots? How will the divergence point $n$ change
+                                depending on the size of the training sample $\ell$ and why?
+                            </div>
                         </div>
                     </section>
                     <section>
@@ -457,22 +464,9 @@
                                     <ul>
                                       <li>Excessive complexity of the parameter space $\Theta$,
                                           extra degrees of freedom in the model $g(x, \theta)$ are "spent"
-                                          on overly precise fit to the training sample.</li>
+                                          on overly precise fit to the training sample</li>
                                       <li>Overfitting always occurs when there is optimization of parameters
-                                          over a finite (inherently incomplete) sample.</li>
-                                    </ul>
-                                  </li>
-                                  <li>How to detect overfitting?
-                                    <ul>
-                                      <li>Empirically, by splitting the sample into train and test.</li>
-                                    </ul>
-                                  </li>
-                                  <li>It's impossible to completely get rid of it. How to minimize?
-                                    <ul>
-                                      <li>Minimize the error on validation (Hold Out, Leave One Out, Cross Validation),
-                                          but with care!</li>
-                                      <li>Place restrictions on $\theta$ (i.e. regularization).</li>
-                                      <li>Minimize one of the theoretical estimates below.</li>
+                                          over a finite (inherently incomplete) sample</li>
                                     </ul>
                                   </li>
                                 </ul>
@@ -480,30 +474,56 @@
                         </div>
                     </section>
                     <section>
+                        <div class="typesetting">
+                        <ul>
+                              <li>How to detect overfitting?
+                                <ul>
+                                  <li>Empirically, by splitting the sample into train and test</li>
+                                </ul>
+                              </li>
+                              <li>It's impossible to completely get rid of it. How to minimize?
+                                <ul>
+                                  <li>Minimize the error on validation (Hold Out, Leave One Out, Cross Validation),
+                                      but with care!</li>
+                                  <li>Put restrictions on $\theta$ (i.e. regularization)</li>
+                                </ul>
+                              </li>
+                        </ul>
+                        </div>
+                    </section>
+                    <section>
                         <h3>Empirical Estimates of Generalization Ability</h3>
+                                <ul>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <ul>
                                   <li>Empirical risk on the test data (Hold Out):
                                     <ul>
                                       <li>$HO(\mu, X^\ell, X^k) = Q(\mu(X^\ell), X^k) \to \min$</li>
                                     </ul>
                                   </li>
+                            </div>
+                        </div>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
                                   <li>Leave One Out control, $L = \ell + 1$:
                                     <ul>
                                       <li>$LOO(\mu, X^\ell) = \frac1L \sum\limits_{i=1}^L \mathcal{L}(\mu(X^\ell\backslash \{x_i\}), x_i) \to \min$</li>
                                     </ul>
                                   </li>
+                            </div>
+                        </div>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
                                   <li>Cross Validation, $L = \ell + k, X^L = X^\ell_n \cup X^k_n$:
                                     <ul>
                                       <li>$CV(\mu, X^L) = \frac1{|N|} \sum\limits_{n \in N} {Q}(\mu(X^\ell_n), X^k_n) \to \min$</li>
                                     </ul>
                                   </li>
-                                </ul>
                             </div>
                         </div>
+                                </ul>
                     </section>
-                    <section>
+                    <section data-background-color="#ffffff">
                         <img src="images/cross-validation.png" alt="cross-val">
                     </section>
                 </section>
@@ -531,7 +551,7 @@
                         </div>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p style="text-align: left">2006: Google Translate launch</p>
+                                <p style="text-align: left">2006: Google Translate launched</p>
                                 <ul>
                                   <li>initially <b>statistical</b> machine translation</li>
                                   <li>mobile app appeared in 2010</li>
@@ -544,14 +564,14 @@
                             <div class="typesetting">
                                 <p style="text-align: left">2011: 40 years of DARPA CALO (Cognitive Assistant that Learns and Organizes) development</p>
                                 <ul>
-                                  <li>Appearance of Apple's Siri voice assistant</li>
-                                  <li>IBM Watson won the television game "Jeopardy!"</li>
+                                  <li>Apple's Siri voice assistant launched</li>
+                                  <li>IBM Watson won the TV game "Jeopardy!"</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p style="text-align: left">2011-2015: ImageNet: error rate reduced from 25% to 3.5% versus 5% in humans</p>
+                                <p style="text-align: left">2011-2015: ImageNet — error rate reduced from 25% to 3.5% versus 5% in humans</p>
                             </div>
                         </div>
                         <div class="fragment" style="margin-bottom:20px;">
@@ -580,12 +600,12 @@
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                                 <p style="text-align: left">2021: DALL-E appears — an AI system developed by OpenAI that can generate images
-                                    from textual descriptions, which has potential applications in creative industries.</p>
+                                    from textual descriptions, which has potential applications in creative industries</p>
                             </div>
                         </div>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p style="text-align: left">2022: Chat Generative Pre-trained Transformer developed by OpenAI —
+                                <p style="text-align: left">2022: ChatGPT (Generative Pre-trained Transformer) developed by OpenAI —
                                 fastest-growing consumer software application in history</p>
                             </div>
                         </div>
