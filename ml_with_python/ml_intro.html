@@ -254,9 +254,10 @@
                             ax.plot(x, Y, '.', label='train points')
 
                             x_plot = np.linspace(0, 30, num=1000)
-                            X_plot = np.vstack([np.ones_like(x_plot), x_plot, np.sin(x_plot)]).T
-                            ax.plot(x_plot, reg_1.predict(X_plot), label='{1, x, x^2}', linestyle='dashed')
-                            ax.plot(x_plot, reg_2.predict(X_plot), label='{1, x, sin(x)}')
+                            X_1 = np.vstack([np.ones_like(x_plot), x_plot, x_plot**2]).T
+                            X_2 = np.vstack([np.ones_like(x_plot), x_plot, np.sin(x_plot)]).T
+                            ax.plot(x_plot, reg_1.predict(X_1), label='{1, x, x^2}', linestyle='dashed')
+                            ax.plot(x_plot, reg_2.predict(X_2), label='{1, x, sin(x)}')
                             plt.legend(loc='best')
                             fig
                         </py-repl>
@@ -418,9 +419,9 @@
                             ns = range(2, 40)
                             for n in ns:
                                 X_l = X(x_l, n)
-                                Y_l = 1 / (1 + 25*X_l**2)
+                                Y_l = 1 / (1 + 25*x_l**2)
                                 X_k = X(x_k, n)
-                                Y_k = 1 / (1 + 25*X_k**2)
+                                Y_k = 1 / (1 + 25*x_k**2)
                                 lin_reg.fit(X_l, Y_l)
                                 train_score.append(np.mean((lin_reg.predict(X_l) - Y_l)**2))
                                 test_score.append(np.mean((lin_reg.predict(X_k) - Y_k)**2))
