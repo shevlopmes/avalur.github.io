@@ -200,8 +200,134 @@
 				<section>
 					<section>
 						<h2>What is color?</h2>
-
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+								<p>Color is a psychological property of our vision that arises when observing objects and light,
+									not the physical properties of objects and light <br>
+									(S. Palmer, Vision Science: Photons to Phenomenology).</p>
+							</div>
+						</div>
 					</section>
+					<section data-background-color="#ffffff">
+						<h2>But what about this spectrum and all that?</h2>
+						<img src="images/what_about_meme.png" alt="what_about_meme">
+					</section>
+					<section data-background-color="#ffffff">
+						<img src="images/spectrum.png" alt="spectrum">
+					</section>
+					<section>
+						<h2>Visible Light</h2>
+						<ul>
+							<li>Electromagnetic radiation in the range [380nm,780nm]</li>
+							<li>Visible light falls within the main "optical window" of the Earth's atmosphere (~46% energy)</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Light physics</h2>
+						<img src="images/light_physics.png" alt="light_physics" width="60%">
+					</section>
+					<section data-background-color="#ffffff">
+						<h2>Reflected light</h2>
+						<img src="images/reflected_light.png" alt="reflected_light" width="80%">
+					</section>
+					<section data-background-color="#ffffff">
+						<h2>Examples of Reflection Spectra</h2>
+						<img src="images/spectra_examples.png" alt="spectra_examples" width="80%">
+					</section>
+					<section>
+						<h2 style="color: orange">Rods and Cones</h2>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+								<ul>
+									<li>Rods and cones are spectrum filters.
+							The spectrum is multiplied by the response curve,
+							integration is performed across all wavelengths —
+							each of three types of cone gives 1 number:
+								S, M, L. </li>
+									<li>How can we describe the entire spectrum with
+							just 3 numbers?</li>
+									<li>
+								The fact is we cannot!
+							A significant amount of information is lost.
+							Two different spectra can be indistinguishable.
+									</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section data-background-color="#ffffff">
+						<img src="images/rods_and_cones_sensitivity.png" width="60%">
+					</section>
+					<section data-background-color="#ffffff">
+						<h3>Metamers — different spectra of the same color</h3>
+						<img src="images/metamers.png" width="70%">
+					</section>
+				</section>
+				<section>
+					<section data-background-color="#ffffff">
+						<h2>RGB model</h2>
+						<a href="http://sv-journal.org/2015-4/03/en/index.php?lang=en">
+							<img src="images/CIE_RGB_curves.png" width="60%">
+						</a>
+					</section>
+					<section>
+						<h2>CIE XYZ</h2>
+						<ul>
+							<li>One of the first mathematically defined color spaces
+								that could represent all colors visible to the average human</li>
+							<li>Is based on the idea that every color perceived by the human eye
+								can be represented as a combination of three primary colors (X, Y, Z)</li>
+							<li><b>Color Gamut and Color Spaces:</b>
+								All colors that can be represented by a specific set of primaries forms a color gamut.
+								The CIE XYZ color space serves as a reference space to compare
+								other color spaces or gamuts.</li>
+						</ul>
+					</section>
+					<section data-background-color="#ffffff">
+						<img src="images/gamuts.png" width="80%">
+					</section>
+					<section>
+						<h2>Digital Image Formats</h2>
+						<p style="text-align: left">Current typical display adapters use up to <b>24-bits of information for each pixel</b>:
+						8-bit per component multiplied by three components (RGB) with values of 0–255.</p>
+
+						<p style="text-align: left">With this system, $16\ 777\ 216 ( = 256^3 = 2^{24}$) discrete combinations
+							of R, G, and B values are allowed, providing millions of different
+							(though not necessarily distinguishable) hue, saturation and lightness shades.</p>
+					</section>
+					<section>
+						<h2 style="text-align: left"><a href="https://en.wikipedia.org/wiki/GIF">GIF</a></h2>
+						<p style="text-align: left">Graphics Interchange Format — bitmap image format.
+						GIF images are compressed using the <a href="https://en.wikipedia.org/wiki/Lempel–Ziv–Welch">Lempel–Ziv–Welch</a> (LZW)
+							lossless data compression technique to reduce the file size without degrading the visual quality.</p>
+						<h2 style="text-align: left"><a href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a></h2>
+						<p style="text-align: left">Portable Network Graphics — was developed as an improved, <b>non-patented</b>
+							replacement for GIF. Unofficially, the initials PNG stood for the recursive acronym "PNG's not GIF", also lossless.</p>
+					</section>
+					<section>
+						<h2 style="text-align: left"><a href="https://en.wikipedia.org/wiki/JPEG">JPEG</a></h2>
+						<ul style="text-align: left">
+							<li>Joint Photographic Experts Group — is a commonly used method of
+							lossy compression for digital images, particularly produced by digital photography.</li>
+							<li>The degree of compression can be adjusted, allowing a selectable tradeoff
+								between storage size and image quality.</li>
+							<li>JPEG typically achieves 10:1 compression with little perceptible loss in image quality.
+							It uses discrete cosine transform and quantization.</li>
+						</ul>
+					</section>
+					<section>
+						<h2 style="text-align: left"><a href="https://en.wikipedia.org/wiki/WebP">WebP</a></h2>
+						<ul style="text-align: left">
+							<li>WebP is a raster graphics file format developed by Google
+							intended as a replacement for JPEG, PNG, and GIF file formats =)</li>
+							<li>It supports both lossy and lossless compression, as well as animation and alpha transparency.</li>
+							<li>Google announced the WebP format in September 2010, and released
+								the first stable version of its supporting library in April 2018.</ul>
+					</section>
+				</section>
+				<section>
+					<h2 style="text-align: left"><a href="https://colab.research.google.com/github/avalur/avalur.github.io/blob/master/cs_basics/python_img_practice.ipynb" class="mt-auto btn btn-primary">
+						Python image practice</a></h2>
 				</section>
 			</div>
 		</div>
