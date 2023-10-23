@@ -83,15 +83,15 @@
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p style="text-align: left">Training sample: </p>
-                                    $X^\ell = (x_i, y_i)^\ell_{i=1}$, $x_i \in \mathbb{R}^n$, $\ \color{orange}{y_i \in \{-1, +1\}}$
+                                <p style="text-align: left">Training sample:
+                                    $X^\ell = (x_i, y_i)^\ell_{i=1}$, $x_i \in \mathbb{R}^n$, $\ \color{orange}{y_i \in \{-1, +1\}}$</p>
                             </div>
                         </div>
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                             <p style="text-align: left">Classification Model — Linear (weights $w \in \mathbb{R}^n$):</p>
-                            $a(x, w) = sign \left< w, x\right> = sign(\sum\limits_{j=1}^n w_jf_j(x))$
+                            $a(x, w) = {\color{orange}\textrm{sign}} \left< w, x\right> = {\color{orange}\textrm{sign}}(\sum\limits_{j=1}^n w_jf_j(x))$
                             </div>
                         </div>
 
@@ -112,8 +112,7 @@
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p style="text-align: left">Testing on the test set:</p>
-                                <p>$X^k = (\tilde{x}_i, \tilde{y}_i)_{i=1}^k$</p>
+                                <p style="text-align: left">Testing on the test set: $X^k = (\tilde{x}_i, \tilde{y}_i)_{i=1}^k$</p>
 
                                 $\overline{Q}(w) = \frac1k\sum\limits_{i=1}^k \color{orange}{[\left<\tilde{x}_i, w\right> \tilde{y}_i < 0]}$
                             </div>
@@ -126,7 +125,7 @@
                             <div class="typesetting">
                                 <p style="text-align: left">Separating classifier:</p>
 
-                                <p>$a(x, w) = sign\ g(x, w)$</p>
+                                <p>$a(x, w) = \mathrm{sign}\ g(x, w)$</p>
 
                                 <p>$g(x, w)$ — separating (discriminant) function, $g(x, w) = 0$ — equation of the separating surface</p>
 
@@ -139,13 +138,14 @@
                     <section>
                         <h3>Continuous Approximations of the Threshold Loss Function $\mathcal{L}(M)$</h3>
 
+                        <p style="text-align: left">$[M<0]$ — threshold loss function
+                            (<span style="color: orange">is not continuous!</span>)</p>
                         <p style="text-align: left">$V(M) = (1 − M)_+$ — piecewise linear (SVM)</p>
                         <p style="text-align: left">$H(M) = (−M)_+$ — piecewise linear (Hebb's rule)</p>
                         <p style="text-align: left">$L(M)=\log_2(1 + \exp(-M))$ — logarithmic (LR)</p>
                         <p style="text-align: left">$Q(M)=(1 − M)^2$ — quadratic</p>
                         <p style="text-align: left">$S(M)=2(1+\exp(M))^{-1}$ — sigmoidal</p>
-                        <p style="text-align: left">$E(M)= \exp(-M)$ – exponential (AdaBoost)</p>
-                        <p style="text-align: left">$[M<0]$ — threshold loss function</p>
+                        <p style="text-align: left">$E(M)= \exp(-M)$ – exponential (remember for AdaBoost)</p>
                     </section>
                     <section data-background-color="#fdf6e3">
                         <py-repl>
@@ -178,7 +178,7 @@
                             plt.savefig('loss_functions.png')
                         </py-repl>
                     </section>
-                    <section>
+                    <section  data-background-color="#ffffff">
                         <img src="images/loss_functions.png" alt="loss_functions" width="100%">
                     </section>
                     <section>
@@ -190,7 +190,7 @@
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                                 <ul>
-                                    <li> $f(z)$ — activation function (for example, sign)</li>
+                                    <li> $f(z)$ — activation function (for example, $\mathrm{sign}$)</li>
                                     <li> $w_j$ — weight coefficients of synaptic connections</li>
                                     <li> $w_0 = b$ — activation threshold or bias</li>
                                     <li> $w, x \in \mathbb{R}^{n+1}$ — if you introduce a constant feature $x_0 \equiv -1$</li>
@@ -237,11 +237,11 @@
                             <div class="typesetting">
                                 <div align="center">
                                   <img src="images/gradient-trajectory.png" alt="gradient" width="1000"/>
-                                    <p>Two possible trajectories of gradient descent.</p>
+                                    <p>Two possible trajectories of gradient descent:</p>
                                     <p>In version (a), the target function has "good behavior", which allows the point
-                                    to smoothly move to the optimum by the gradient.</p>
+                                    to smoothly move to the optimum by the gradient</p>
                                     <p>In version (b), the gradient begins to oscillate as it falls into a narrow valley,
-                                    thus converging more slowly.</p>
+                                    thus converging more slowly</p>
                                 </div>
                             </div>
                         </div>
@@ -325,7 +325,7 @@
                                         $\overline{Q} = \frac1\ell \sum\limits_{i=1}^\ell \mathcal{L}_i(w)$</li>
                                     <li><strong>Repeat</strong></li>
                                     <ul>
-                                        <li>Select object $x_i$ from $X^\ell$ at random</li>
+                                        <li>Select object $x_i$ from $X^\ell$ randomly</li>
                                         <li>Compute the loss: $\varepsilon_i = \mathcal{L}_i(w)$</li>
                                         <li><span style='color:orange'>Compute the gradient: $G_i = \nabla \mathcal{L}_i(w)$</span></li>
                                         <li>Make a gradient step: $w := w - h {\color{orange} \frac1\ell \sum_{i=1}^\ell G_i}$</li>
@@ -534,8 +534,8 @@
 
                                 <p>$A \equiv w$, $B \equiv Y, X\ \Rightarrow$</p>
 
-                                <p>$P(w|Y, X) = \frac{P(Y, X|w)P(w)}{P(Y, X)} = \frac{P(Y | X, w)P(X|w)P(w)}{P(Y | X)P(X)} \\
-                                \boxed{P(w|Y,\ X) = \frac{P(Y|w, X)P(w)}{P(Y | X)}}$</p>
+                                <p>$P(w|Y, X) = \frac{P(Y, X|w)P(w)}{P(Y, X)} = \frac{P(Y | X, w)P(X|w)P(w)}{P(Y | X)P(X)}$</p>
+                                <p>$\boxed{P(w|Y,\ X) = \frac{P(Y|w, X)P(w)}{P(Y | X)}}$</p>
 
                                 <p style="text-align: left">Here:</p>
 
@@ -681,7 +681,7 @@
                         <span style="color: orange;">\(a(x) = \arg\max\limits_{y \in Y} < w_y, x>\), \(x, w_y \in \mathbb{R}^n\)</span>
 
                         <p style="text-align: left">The probability that the object \(x\) belongs to the class \(y\):</p>
-                            \(P(y|x,w) = \frac{\exp< w_y, x>}{\sum\limits_{z \in Y} \exp< w_z, x>} = \underset{y \in Y}{softmax} < w_y, x>\)
+                            \(P(y|x,w) = \frac{\exp< w_y, x>}{\sum\limits_{z \in Y} \exp< w_z, x>} = \underset{y \in Y}{\mathrm{softmax}} < w_y, x>\)
 
                         <p style="text-align: left">The \(\mathrm{softmax}: \mathbb{R}^Y \to \mathbb{R}^Y\) function converts any vector into
                             a normalized vector of a discrete distribution.</p>
