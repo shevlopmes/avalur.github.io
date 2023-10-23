@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<title>Comparison of Different Programming Languages</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/black.css">
+
+        <!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+		<!-- and it's easy to individually load additional languages -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script>
+
+		<script>
+			import hljs from "highlight.js";
+
+			hljs.highlightAll();
+		</script>
+		<style>
+			.column {
+			  float: left;
+			  width: 48%;
+			  padding: 2px;
+			}
+			/* Clear floats after image containers */
+			.row::after {
+			  content: "";
+			  clear: both;
+			  display: table;
+			}
+		</style>
+</head>
+	<body onload="totalWrapper();">
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<div>
+						<img src="images/nup_logo_dark.jpeg" alt="nup_logo" />
+					</div>
+					<h2>CS Basics with Python</h2>
+					<h3>Comparison of Different Programming Languages</h3>
+					<br />
+					Alex Avdiushenko <br />
+					December 20, 2023
+				</section>
+				<section>
+					<section>
+						<h2>Why should we choose?</h2>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<p style="text-align: left">Programming languages has</p>
+								<ul>
+									<li>different inherent characteristics</li>
+									<li>domains of applications</li>
+									<li>simplicity, efficiency, readability, availability of libraries,
+										short & long term utility, etc.</li>
+								</ul>
+
+								<p class="r-frame">It is not about superiority!</p>
+							</div>
+						</div>
+					</section>
+					<section data-background-color="#fdf6e3">
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<div class="row">
+								  <div class="column">
+									  <p>Python</p>
+<!--language=python-->
+									  <pre>
+										  <code class="language-python">
+def fibonacci(n):
+	curr, prev = 1, 0
+	for i in range(n):
+		curr, prev = curr+prev, curr
+	return curr
+</code>
+									  </pre>
+								  </div>
+								  <div class="column">
+									  <p>C++</p>
+<!--language=c++-->
+									  <pre>
+										  <code class="language-cpp">
+int fibonacci(int n){
+	int curr = 1, prev = 0;
+	for(int i = 0; i < n; i++){
+		int temp = curr;
+		curr = curr + prev;
+		prev = temp;
+	}
+	return curr;
+}</code>
+									  </pre>
+								  </div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section data-background-color="#fdf6e3">
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<div class="row">
+								  <div class="column">
+									  <p>Haskell</p>
+									  <pre>
+										  <code class="language-haskell">
+fibonacci :: Integer -> Integer
+fibonacci n = fibs !! (fromIntegral n)
+  where
+	fibs = 1 : 1 : zipWith (+) fibs (tail fibs)
+</code>
+									  </pre>
+								  </div>
+								  <div class="column">
+									  <p>Kotlin</p>
+									  <pre>
+										  <code class="language-kotlin">
+fun fibonacci(n: Int): Int {
+	var curr = 1
+	var prev = 0
+	for (i in 0 until n) {
+		val temp = curr
+		curr += prev
+		prev = temp
+	}
+	return curr
+}</code>
+									  </pre>
+								  </div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section data-background-color="#fdf6e3">
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<div class="row">
+								  <div class="column">
+									  <p>Lisp</p>
+									  <pre>
+										  <code class="language-lisp">
+(defun fibonacci (n)
+  (labels ((fib-iter (a b count)
+			 (if (= count 0)
+				 b
+				 (fib-iter (+ a b) a (- count 1)))))
+	(fib-iter 1 0 n)))
+</code>
+									  </pre>
+								  </div>
+								  <div class="column">
+									  <p>Rust</p>
+									  <pre>
+										  <code class="language-rust">
+fn fibonacci(n: u32) -> u32 {
+	let mut curr = 1;
+	let mut prev = 0;
+	for _ in 0..n {
+		let temp = curr;
+		curr = curr + prev;
+		prev = temp;
+	}
+	curr
+}</code>
+									  </pre>
+								  </div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section data-background-color="#fdf6e3">
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<div class="row">
+								  <div class="column">
+									  <p>Prolog</p>
+									  <pre>
+										  <code class="language-prolog">
+fibonacci(0, 0) :- !.
+fibonacci(1, 1) :- !.
+fibonacci(N, Value) :-
+	N1 is N - 1,
+	N2 is N - 2,
+	fibonacci(N1, Value1),
+	fibonacci(N2, Value2),
+	Value is Value1 + Value2.
+</code>
+									  </pre>
+								  </div>
+								  <div class="column">
+									  <p>ARM assembler</p>
+									  <pre>
+										  <code class="language-armasm">
+.global _start
+_start:
+	mov r1, #0    @ previous value
+	mov r2, #1    @ current value
+	ldr r0, =10   @ the nth Fibonacci number to compute (change to the value you want)
+
+.fib:
+	subs r0, r0, #1
+	bmi .end
+	add r3, r1, r2
+	mov r1, r2
+	mov r2, r3
+	b .fib
+
+.end:
+	mov r7, #1
+	swi #0
+</code>
+									  </pre>
+								  </div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h2>What tasks are used for?</h2>
+						<p style="text-align: left">General-purpose VS. Domain-specific:</p>
+								<div class="row">
+								  <div class="column" style="text-align: center">
+									  <img src="images/java.logo.webp" width="100">
+									  <img src="images/kotlin_logo.jpg"  width="100">
+								  </div>
+								  <div class="column" style="text-align: left">
+									  Mobile and enterprise applications
+								  </div>
+								</div>
+								<div class="row">
+								  <div class="column" style="text-align: center">
+									  <img src="images/python_logo.png" width="200">
+								  </div>
+								  <div class="column" style="text-align: left">
+									  Web development, data analysis, AI, and scripting
+								  </div>
+								</div>
+								<div class="row">
+								  <div class="column" style="text-align: center">
+									  <img src="images/js_logo.jpeg" width="200">
+								  </div>
+								  <div class="column" style="text-align: left">
+									  <br>
+									  Web development (front-end)
+								  </div>
+								</div>
+					</section>
+					<section>
+						<div class="row">
+						  <div class="column" style="text-align: center">
+							  <img src="images/c-logo.png"  width="200">
+						  </div>
+						  <div class="column" style="text-align: left">
+							  <br>
+							  Systems programming, embedded systems
+						  </div>
+						</div>
+						<div class="row">
+						  <div class="column" style="text-align: center">
+							  <img src="images/golang_logo.png" width="200">
+						  </div>
+						  <div class="column" style="text-align: left">
+							  <br>
+							  Cloud services, networking tools
+						  </div>
+						</div>
+						<div class="row">
+						  <div class="column" style="text-align: center">
+							  <img src="images/rust_logo.webp" width="200">
+						  </div>
+						  <div class="column" style="text-align: left">
+							  <br>
+							  Systems programming with a focus on memory safety
+						  </div>
+						</div>
+						<div class="row">
+						  <div class="column" style="text-align: center">
+							  <img src="images/latex_logo.png" width="200">
+						  </div>
+						  <div class="column" style="text-align: left">
+							  <br>
+							  Techical and scientific docs creation.
+						  </div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Compilation and Interpretation</h2>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<h3 style="text-align: left">Compilation</h3>
+								<ul>
+									<li>Source code $\to$ Machine code</li>
+									<li>Involves several steps like lexing, parsing, semantic analysis,
+									optimization, code generation, and linking</li>
+									<li>Compiled languages include C++, Go, Rust, and Kotlin</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<p style="text-align: left"><span style="color: orange">C++</span> and <span style="color: orange">Rust</span> use <b>ahead-of-time</b> compilation. Here is how it works:</p>
+									<ul>
+										<li>*.cpp $\to$ *.obj</li>
+										<li>*.obj are machine code, but it may also include placeholders for other files</li>
+										<li>These placeholders are filled in by the “linker”, producing an executable</li>
+									</ul>
+							</div>
+						</div>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<p style="text-align: left"><span style="color: orange">Go</span> also compiles directly to machine code</p>
+										<ul>
+											<li>but it compiles very quickly</li>
+											<li>and produces a single binary without external dependencies</li>
+											<li>which makes deploying Go applications very convenient</li>
+										</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<p style="text-align: left">Kotlin is a bit of an exception here because it is both compiled and interpreted</p>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<ul>
+									<li>Kotlin can be compiled to Java bytecode to run on the JVM, and it can also be transcompiled into JavaScript</li>
+									<li>The primary advantage of compiled languages is their performance</li>
+									<li>There's a downside that programs have to be recompiled every time the source code changes</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h3 style="text-align: left">Interpretation</h3>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<ul>
+									<li>Interpreted languages (like Python and JavaScript) don't need a compilation step</li>
+									<li>Interpreter reads and executes the source code line by line</li>
+									<li>JavaScript was originally an interpreted language (hence the 'script' in the name) aimed for web browsers</li>
+									<li>Modern JavaScript is often compiled Just-In-Time (JIT), which gives an efficient compromise between interpreter and compiler</li>
+									<li>With the time the gap between interpreted and compiled languages is closing</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h3 style="text-align: left">Virtual Machines</h3>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<ul>
+									<li>VM can be thought of as a 'computer within a computer' that provides
+								the functionality of a physical computer and allows running multiple operating systems
+								or environments isolated from each other</li>
+									<li>A great example is the Java Virtual Machine (JVM).
+								When you compile Java code using the Java Compiler (javac),
+								it doesn't create machine code — it creates bytecode.
+								JVM is a part of the Java Runtime Environment (JRE), which interprets this bytecode
+								and runs the Java program</li>
+									<li>This provides Java with its infamous "Write Once, Run Anywhere" capability
+										and makes Java highly portable</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<img src="images/conc_vs_par.png" alt="conc_vs_par" width="60%">
+					</section>
+					<section>
+						<h3 style="text-align: left">Concurrency vs. Parallelism</h3>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<ul>
+									<li>Concurrency refers to the ability of
+										a program to handle multiple tasks at the same time, but not necessarily simultaneously</li>
+									<li>Parallelism, on the other hand, refers to the execution of multiple tasks or processes simultaneously
+										— splitting a program into smaller sub-tasks that can be processed in parallel</li>
+									<li>So, a concurrent system could be multitasking on a single core by dealing with multiple tasks,
+										rapidly switching between them, while a parallel system would use multiple cores to execute multiple tasks
+										at the same time</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h3>Language Approaches</h3>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<ul>
+									<li><span style="color: orange">Java</span> uses Threads and has rich built-in support for multithreading programming</li>
+									<li>In <span style="color: orange">C</span>, parallelism can be achieved through multiple processes using fork system call,
+										and multiple threads using library like POSIX threads (pthreads)</li>
+									<li>Historically <span style="color: orange">JavaScript</span> was single-threaded, but with HTML5 Web Workers API,
+										JavaScript code can run in a background thread separate from the main execution thread</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="typesetting">
+							<ul>
+								<li><span style="color: orange">Python</span> has built-in support for thread-based parallelism via its threading library,
+									and process-based parallelism via its multiprocessing library.
+									However, due to the Global Interpreter Lock (GIL),
+									the threading library doesn't allow true parallelism in <span style="color: orange">Python</span></li>
+								<li><span style="color: orange">Go</span> has built-in support for parallelism via goroutines
+									(lightweight threads managed by the <span style="color: orange">Go</span> runtime) and
+									channels for communication between those goroutines</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<div class="typesetting">
+							<ul>
+								<li><span style="color: orange">Kotlin</span> allows to launch coroutines that are very light-weighted threads</li>
+								<li><span style="color: orange">Rust</span> supports concurrency through a combination of OS threads
+									and lighter weight "green" threads or tasks.
+									In <span style="color: orange">Rust</span>, sharing data between threads is carefully controlled,
+									which can help prevent concurrency issues such as race conditions</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<h3 style="text-align: left">Language Highlights & Unique Features</h3>
+							<div class="row">
+							  <div class="column" style="text-align: center">
+								  <img src="images/java.logo.webp"  width="200">
+							  </div>
+							  <div class="column" style="text-align: left">
+								  <br>
+								  Object-oriented, JVM, extensive libraries
+							  </div>
+							</div>
+							<div class="row">
+							  <div class="column" style="text-align: center">
+								  <img src="images/c-logo.png" width="200">
+							  </div>
+							  <div class="column" style="text-align: left">
+								  <br>
+								  Pointers, manual memory management, procedural
+							  </div>
+							</div>
+							<div class="row">
+							  <div class="column" style="text-align: center">
+								  <img src="images/js_logo.jpeg" width="200">
+							  </div>
+							  <div class="column" style="text-align: left">
+								  <br>
+								  Event-driven, non-blocking I/O
+							  </div>
+							</div>
+					</section>
+					<section>
+						<div class="row">
+						  <div class="column" style="text-align: center">
+							  <img src="images/python_logo.png" width="200">
+						  </div>
+						  <div class="column" style="text-align: left">
+							  Readability, extensive libraries, GIL restricts true parallelism
+						  </div>
+						</div>
+						<div class="row">
+						  <div class="column" style="text-align: center">
+							  <img src="images/golang_logo.png" width="200">
+						  </div>
+						  <div class="column" style="text-align: left">
+							  Simple syntax, static typing, built-in concurrency
+						  </div>
+						</div>
+						<div class="row">
+						  <div class="column" style="text-align: center">
+							  <img src="images/kotlin_logo.jpg" width="200">
+						  </div>
+						  <div class="column" style="text-align: left">
+							  <br>
+							  Null safety, interoperability with Java
+						  </div>
+						</div>
+						<div class="row">
+						  <div class="column" style="text-align: center">
+							  <img src="images/rust_logo.webp" width="200">
+						  </div>
+						  <div class="column" style="text-align: left">
+							  <br>
+							  Memory safety guarantees, pattern matching
+						  </div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2 style="text-align: left">Recap</h2>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<ul>
+									<li>We started with discussing the importance of
+										comparing different programming languages and the key factors</li>
+									<li>We delved into the mechanics of Compilation and Interpretation,
+										examining how languages like C and Python differ in their execution</li>
+									<li>A key differentiation between Concurrency and Parallelism was discussed</li>
+									<li>Importance of Context: It's worth re-emphasizing that
+ 										there is no universal "best" programming language</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="typesetting">
+							<ul>
+								<li>For instance, you might want to use <span style="color: orange">Python</span> for quick prototyping and data analysis,
+									<span style="color: orange">Java</span> for building enterprise-scale applications,
+									<span style="color: orange">JavaScript</span> for web development, <span style="color: orange">Rust</span> for system programming,
+									or <span style="color: orange">Go</span> for high-performance concurrent systems</li>
+							</ul>
+						</div>
+						<br>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+							<h2>Dream big, work hard.</h2>
+							</div>
+						</div>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/math/math.js"></script>
+		<script src="../scripts/utils.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				// The "normal" size of the presentation, aspect ratio will
+				// be preserved when the presentation is scaled to fit different
+				// resolutions. Can be specified using percentage units.
+				width: '100%',
+				height: '100%',
+				// Factor of the display size that should remain empty around the content
+				margin: 0.08,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 2.0,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+
+			Reveal.addEventListener('fragmentshown', function (event) {
+				if (lettersAnimate) {
+					[...event.fragment.getElementsByClassName('typesetting')].forEach(element => {
+						playAnimation(element);
+					});
+				}
+			});
+
+		</script>
+    </body>
+</html>
