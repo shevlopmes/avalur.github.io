@@ -21,6 +21,19 @@
 			terminal = false
             packages = ["numpy", "matplotlib", "scikit-learn"]
 		</py-config>
+		<style>
+			.column {
+			  float: left;
+			  width: 48%;
+			  padding: 2px;
+			}
+			/* Clear floats after image containers */
+			.row::after {
+			  content: "";
+			  clear: both;
+			  display: table;
+			}
+		</style>
     </head>
 	<body onload="totalWrapper();">
 		<div class="reveal">
@@ -34,20 +47,20 @@
 							<div class="typesetting">
 								<h3>Lecture 9. Logical Rules and Decision Trees</h3>
 								<br />
-								Alexander Avdiushenko <br />
+								Alex Avdiushenko <br />
 								October 31, 2023
 							</div>
 					</div>
                 </section>
                 <section>
                     <section>
-                        <h3>Logical regularity</h3>
+                        <h3>Logical rule</h3>
 
                         <p>$X^\ell = (x_i, y_i)_{i=1}^\ell \subset X \times Y$ — training sample, $y_i = y(x_i)$</p>
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p style="text-align: left">A <em>logical regularity</em> (rule) is a porangeicate $R: X \in \{0, 1\}$, satisfying two requirements:</p>
+                                <p style="text-align: left">A <em>logical rule</em> (regularity) is a predicate $R: X \in \{0, 1\}$, satisfying two requirements:</p>
 
                                 <ol>
                                   <li>Interpretability:</li>
@@ -55,28 +68,31 @@
                                       <li>$R$ is written in natural language</li>
                                       <li>$R$ depends on a small number of features (usually 1-7)</li>
                                     </ul>
-                                  <li>Informativeness with respect to one of the classes $c \in Y$:</li>
-                                    <ul>
-                                      <li>$p_c (R) = ＃\{x_i : R(x_i)=1 \text{ and } y_i =c\} \to \max$</li>
-                                      <li>$n_c (R) = ＃\{x_i : R(x_i)=1 \text{ and } y_i \neq c\} \to \min$</li>
-                                    </ul>
                                 </ol>
-
-                                <p style="text-align: left">If $R(x) = 1$, then we say "$R$ covers $x$".</p>
-
-                                <div align="center">
-                                    <img src="images/logic_rule.jpg" alt="logic_rule" width='50%' />
-                                </div>
                             </div>
                         </div>
                     </section>
                     <section>
+                        <ol start="2">
+                          <li>Informativeness with respect to one of the classes $c \in Y$:</li>
+                            <ul>
+                              <li>$p_c (R) = ＃\{x_i : R(x_i)=1 \text{ and } y_i =c\} \to \max$</li>
+                              <li>$n_c (R) = ＃\{x_i : R(x_i)=1 \text{ and } y_i \neq c\} \to \min$</li>
+                            </ul>
+                        </ol>
+                        <p style="text-align: left">If $R(x) = 1$, then we say "$R$ covers $x$"</p>
+
+                        <div align="center">
+                            <img src="images/logic_rule.jpg" alt="logic_rule" width='50%' />
+                        </div>
+                    </section>
+                    <section>
+                        <h4 style="text-align: left">Example (from the medical field)</h4>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <h4 style="text-align: left">Example (from the medical field)</h4>
                                 <p><strong>If</strong> "age > 60" <strong>and</strong>
                                     "patient has previously had a heart attack",
-                                    then do not perform surgery, the risk of negative outcome is 60%.</p>
+                                    then do not perform surgery, the risk of negative outcome is 60%</p>
                             <br />
                             <br />
                             <br />
@@ -87,12 +103,12 @@
                                 <h4 style="text-align: left">Example (from the field of corangeit scoring)</h4>
                                 <p><strong>If</strong> "home phone is listed on the form" <strong>and</strong>
                                     "salary > $2000" <strong>and</strong> "loan amount < $5000"
-                                    then the loan can be issued, default risk is 5%.</p>
+                                    then the loan can be issued, default risk is 5%</p>
                             </div>
                         </div>
                     </section>
                     <section>
-                        <h3>Main steps of rule induction</h3>
+                        <h3>Main steps of rules induction</h3>
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
@@ -118,19 +134,20 @@
         
                                   <li><em>Conjunction</em> of threshold conditions:</li>
                                   $$R(x) = \bigwedge\limits_{j \in {\color{orange}J}} [{\color{orange}a_j} \leq f_j(x) \leq {\color{orange}b_j}]$$
-        
-                                  <li><em>Syndrome</em> — at least $d$ conditions out of $|J|$ must hold (for $d = |J|$ this is conjunction, for $d = 1$ — disjunction):</li>
-                                  $$R(x) = \left[\sum\limits_{j \in {\color{orange}J}} [{\color{orange}a_j} \leq f_j(x) \leq
-                                    {\color{orange}b_j}] \geq {\color{orange}d}\right]$$
                                 </ol>
-                                <p style="text-align: left">Parameters ${\color{orange}J, a_j, b_j, d,}$
-                                    are tuned using the training set via optimization of the <em>information criterion</em>.</p>
                             </div>
                         </div>
                     </section>
                     <section>
-                        <h3>Rule family selection</h3>
-                        
+                        <ol start="3">
+                          <li><em>Syndrome</em> — at least $d$ conditions out of $|J|$ must hold (for $d = |J|$ this is conjunction, for $d = 1$ — disjunction):</li>
+                        </ol>
+                          $$R(x) = \left[\sum\limits_{j \in {\color{orange}J}} [{\color{orange}a_j} \leq f_j(x) \leq
+                            {\color{orange}b_j}] \geq {\color{orange}d}\right]$$
+                        <p style="text-align: left">Parameters ${\color{orange}J, a_j, b_j, d,}$
+                            are tuned using the training set via optimization of the <strong>information criterion</strong>.</p>
+                    </section>
+                    <section>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                             <ol start="4">
@@ -144,24 +161,26 @@
                               <li>AVE — algorithms for calculating estimates [Yu. I. Zhuravlev, 1971]:</li>
                               $$\rho(x, {\color{orange}x_0}) = \max\limits_{j \in {\color{orange}J}}
                                 {\color{orange}w_j} |f_j(x) - f_j({\color{orange}x_0})|$$
-                            
-                              <li>SCM — set covering machine [M. Marchand, 2001]:</li>
-                              $$\rho(x, {\color{orange}x_0}) = \sum\limits_{j \in {\color{orange}J}} {\color{orange}w_j}
-                                |f_j(x) - f_j({\color{orange}x_0})|^{\color{orange}\gamma}$$
                             </ol>
-                            
-                            <p style="text-align: left">Parameters ${\color{orange}J, w_j, w_0, x_0, \gamma,}$
-                                are tuned using the training set via optimization of the <em>information criterion</em>.</p>
                             </div>
                         </div>
                     </section>
                     <section>
-                        <h3>Rule generation</h3>
+                        <ol start="7">
+                            <li>SCM — set covering machine [M. Marchand, 2001]:</li>
+                        </ol>
+                        $$\rho(x, {\color{orange}x_0}) = \sum\limits_{j \in {\color{orange}J}} {\color{orange}w_j}
+                          |f_j(x) - f_j({\color{orange}x_0})|^{\color{orange}\gamma}$$
+                        <p style="text-align: left">Parameters ${\color{orange}J, w_j, w_0, x_0, \gamma,}$
+                                are tuned using the training set via optimization of the <strong>information criterion</strong>.</p>
+                    </section>
+                    <section>
+                        <h3>Rules generation</h3>
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                             <p style="text-align: left"><strong>Input</strong>: Training sample $X^\ell$</p>
-                            <p style="text-align: left"><strong>Output</strong>: Set of regularities $Z$</p>
+                            <p style="text-align: left"><strong>Output</strong>: Set of rules $Z$</p>
 
                             <ol>
                               <li>Initial set of rules $Z$</li>
@@ -205,12 +224,18 @@
                                       ${\color{orange} a_j, b_j}$</li>
                                   <li>removing feature ${\color{orange}f_j}$ from ${\color{orange}J}$</li>
                                 </ul>
-
-                                <p style="text-align: left">When removing a feature (pruning),
-                                    informativeness is usually evaluated on a control sample (hold-out)</p>
-
-                                <p style="text-align: left">The same methods are suitable for optimizing
-                                    the set $J$ as for feature selection</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+                                <ul>
+                                    <li style="text-align: left">When removing a feature (pruning),
+                                    informativeness is usually evaluated on a control sample (hold-out)</li>
+                                    <li style="text-align: left">The same methods are suitable for optimizing
+                                    the set $J$ as for feature selection</li>
+                                </ul>
                             </div>
                         </div>
                     </section>
@@ -219,15 +244,16 @@
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                            <p><strong>Pareto front</strong> — a set of non-improvable regularities
-                                (a point is non-improvable if there are no points to the left and below it)</p>
-
-                            <div align="center">
-                              <img src="images/pareto-front.png" alt="pareto" width="50%" />
-                            </div>
-
-                            <p><strong>Problem</strong>: it would be desirable
-                                to have a single scalar criterion</p>
+                                <div class="row">
+                                    <div class="column"><p><strong>Pareto front</strong> — a set of non-improvable regularities.
+                                        A point is non-improvable if there are no points to the left and below it.</p>
+                                        <p><strong>Problem</strong>: it would be desirable
+                                        to have a single scalar criterion.</p>
+                                    </div>
+                                    <div class="column"><div align="center">
+                                        <img src="images/pareto-front.png" alt="pareto" width="80%" /></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -239,18 +265,39 @@
                                 <ul>
                                   <li>Entropy information gain criterion:</li>
                                   <p>$ IGain(p, n) = h\left(\frac{P}{\ell} \right) - \frac{p+n}{\ell} h\left(\frac{p}{p+n} \right) - \frac{\ell-p-n}{\ell} h\left(\frac{P-p}{\ell-p-n} \right) \to \max $</p>
-                                  <p>$ h(q) = -q log_2 q - (1-q) log_2 (1 - q)\ — \text{ entropy of “two-class distribution”}$</p>
+                                  <p>$ h(q) = -q \log_2 q - (1-q) \log_2 (1 - q)$ — entropy of “two-class distribution”</p>
+                                </ul>
+                            </div>
+                        </div>
 
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+                                <ul>
                                   <li>Gini Impurity:</li>
                                   <p>$IGini(p, n) = IGain(p, n)$ when $h(q) = 4q(1 - q)$</p>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <ul>
+                          <li>Fisher's Exact Test:</li>
+                          <p>$IStat(p, n) = -\frac{1}{\ell} \log_2 \frac{C_P^pC_N^n}{C_{P+N}^{p+n}} \to \max$
+                              — this is simply the probability of realizing such a pair of $p, n$</p>
+                        </ul>
 
-                                  <li>Fisher's Exact Test:</li>
-                                  <p>$IStat(p, n) = -\frac{1}{\ell} log_2 \frac{C_P^pC_N^n}{C_{P+N}^{p+n}} \to \max$
-                                      — this is simply the probability of realizing such a pair of $p, n$</p>
-
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+                                <ul>
                                   <li>Boosting criterion [Cohen, Singer, 1999]</a>:</li>
                                   $$\sqrt{p} - \sqrt{n} \to \max$$
+                                </ul>
+                            </div>
+                        </div>
 
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+                                <ul>
                                   <li>Normalized boosting criterion:</li>
                                   $$\sqrt{\frac{p}{P}} - \sqrt{\frac{n}{N}} \to \max$$
                                 </ul>
@@ -279,6 +326,9 @@
                             fig
                         </py-repl>
                     </section>
+                    <section data-background-color="#ffffff">
+                        <img src="images/entropy_and_gini.png" alt="entropy_and_gini" width="80%">
+                    </section>
                     <section>
                         <h3>Combined use of regularities</h3>
 
@@ -304,44 +354,54 @@
                     <section>
                         <h3>Decision Tree</h3>
                           <p>
-                            A decision tree is a classification algorithm a(x), defined by a tree (a connected acyclic graph).
+                            A decision tree is a classification algorithm $a(x)$, defined by a tree (a connected acyclic graph).
                           </p>
 
                           <ul>
-                            <li>V = V<sub>internal</sub> ∪ V<sub>leaf</sub>, v<sub>0</sub> ∈ V — root of the tree</li>
-                            <li>v ∈ V<sub>internal</sub>: functions f<sub>v</sub>: X → D<sub>v</sub> and S<sub>v</sub>: D<sub>v</sub> → V, |D<sub>v</sub>| < ∞</li>
-                            <li>v ∈ V<sub>leaf</sub>: label of the class y<sub>v</sub> ∈ Y</li>
+                            <li>$V = V_{\text{internal}} \cup V_{\text{leaf}}, v_0 \in V$ — root of the tree</li>
+                            <li>$v \in V_{\text{internal}}:$ functions $f_v: X \to D_v$ and $S_v: D_v \to V, |D_v| < \infty$</li>
+                            <li>$v \in V_{\text{leaf}}:$ label of the class $y_v \in Y$</li>
                           </ul>
 
-                          <p style="text-align: left">
-                            <b>Special case:</b> D<sub>v</sub> = {0, 1} — binary decision tree
-                          </p>
+                        <div class="row">
+                            <div class="column">
+                                  <p style="text-align: left">
+                                    <b>Special case:</b> $D_v = {0, 1}$ — binary decision tree
+                                  </p>
 
-                          <p style="text-align: left">
-                            <b>Example:</b> f<sub>v</sub>(x) = [f<sub>j</sub>(x) ≥ θ<sub>j</sub>]
-                          </p>
-
-                          <div align="center">
-                            <img src="images/decision-tree.jpg" alt="decision-tree" width="30%" />
-                          </div>
+                                  <p style="text-align: left">
+                                    <b>Example:</b> $f_v(x) = [f_j(x) \ge \theta_j]$
+                                  </p>
+                            </div>
+                            <div class="column">
+                                <img src="images/decision-tree.jpg" alt="decision-tree" width="50%" />
+                            </div>
+                        </div>
                     </section>
                     <section>
                         <h3><a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">
-                            Fisher's Iris</a> – A simple well-known dataset for classification</h3>
+                            Fisher's Iris</a></h3>
+                        A simple well-known dataset for classification
 
-                        <p style="text-align: left">Classes:
-                            <ul>
-                                <li>Iris setosa</li>
-                                <li>Iris virginica</li>
-                                <li>Iris versicolor</li>
-                              </ul>
-                        </p>
-                        <p style="text-align: left">Features:</p>
-                        <img style="vertical-align:middle; display:inline;" src="images/iris_measurements.webp" alt="iris_measurements" width="400">
-                              <ul>
-                                <li>Length/Width of the sepal</li>
-                                <li>Length/Width of the petal</li>
-                              </ul>
+                        <div class="row">
+                            <div class="column">
+                                <img style="vertical-align:middle; display:inline;" src="images/iris_measurements.webp" alt="iris_measurements" width="70%">
+                            </div>
+                            <div class="column">
+                                <p style="text-align: left">Classes:
+                                  <ul>
+                                    <li>Iris setosa</li>
+                                    <li>Iris virginica</li>
+                                    <li>Iris versicolor</li>
+                                  </ul>
+                                </p>
+                                <p style="text-align: left">Features:</p>
+                                  <ul>
+                                    <li>Length/Width of the sepal</li>
+                                    <li>Length/Width of the petal</li>
+                                  </ul>
+                            </div>
+                        </div>
                     </section>
                     <section data-background-color="#fdf6e3">
                         <py-repl>
@@ -356,6 +416,8 @@
 
                             print(X[:3], "\n", y[:3])
                         </py-repl>
+                    </section>
+                    <section data-background-color="#fdf6e3">
                         <py-repl>
                         import matplotlib.pyplot as plt
 
@@ -364,7 +426,6 @@
                             loc = [0, 1, 2]
                             cb.set_ticks(loc)
                             cb.set_ticklabels(labels)
-
                         print("Ok!")
                         </py-repl>
                     </section>
@@ -372,9 +433,7 @@
                         <py-repl>
                             fig = plt.figure(figsize=(18.0, 10.0))
                             plt.scatter(X[:, 0], X[:, 1], c=y, s=100, cmap='autumn', edgecolors="black")
-                            plt.xlabel(features[0])
-                            plt.ylabel(features[1])
-                            show_legend()
+                            plt.xlabel(features[0]), plt.ylabel(features[1]), show_legend()
                             fig
                         </py-repl>
                     </section>
@@ -385,6 +444,8 @@
                             clf = LogisticRegression(random_state=0, C=1.0).fit(X, y)
                             clf.predict(X)
                         </py-repl>
+                    </section>
+                    <section data-background-color="#fdf6e3">
                         <py-repl>
                             clf.predict_proba(X[:2, :])
                         </py-repl>
@@ -406,31 +467,30 @@
                     </section>
                     <section data-background-color="#fdf6e3">
                         We will use a helper function that returns a grid
-                        for further beautiful visualization:
+                        for further nice visualizations:
                         <py-repl>
                             def get_grid(data):
-                                x_min, x_max = data[:, 0].min() - 1, data[:, 0].max() + 1
-                                y_min, y_max = data[:, 1].min() - 1, data[:, 1].max() + 1
+                                x_min, x_max = data[:, 0].min()-1, data[:, 0].max()+1
+                                y_min, y_max = data[:, 1].min()-1, data[:, 1].max()+1
                                 return np.meshgrid(np.arange(x_min, x_max, 0.01),
                                                    np.arange(y_min, y_max, 0.01))
-
                             print("Ok!")
                         </py-repl>
                     </section>
                     <section data-background-color="#fdf6e3">
-                        Let's write a function to train on data,
+                        <p>Let's write a function to train on data,
                         predict the answer for each lattice point, and visualize the result.
-                        Because The data is much better divided by petals;
-                        we visualize only them (we take the average parameters of the sepals).
+                        Because the data is much better divided by petals;
+                        we visualize only them (we take the average parameters of the sepals)</p>
+                    </section>
+                    <section data-background-color="#fdf6e3">
                         <py-repl>
                             def plot_model(X, y, clf, prob=False, legend=True):
                                 clf.fit(X, y)
                                 xx2, xx3 = get_grid(X[:, [2,3]])
                                 shape = xx2.ravel().shape
-                                grid_xs = np.c_[np.full(shape, X[:,0].mean()),
-                                                np.full(shape, X[:,1].mean()),
-                                                xx2.ravel(),
-                                                xx3.ravel()]
+                                grid_xs = np.c_[np.full(shape, X[:,0].mean()), np.full(shape, X[:,1].mean()),
+                                                xx2.ravel(), xx3.ravel()]
                                 predicted = clf.predict(grid_xs).reshape(xx2.shape)
                                 if prob:
                                     probs = clf.predict_proba(grid_xs)
@@ -439,10 +499,8 @@
                                 else:
                                     mesh = plt.pcolormesh(xx2, xx3, predicted, cmap='autumn')
                                 plt.scatter(X[:, 2], X[:, 3], c=y, s=150, cmap='autumn', alpha=0.7, edgecolors="black")
-                                plt.ylim([xx3.min(),xx3.max()])
-                                plt.xlim([xx2.min(),xx2.max()])
-                                plt.xlabel(features[2])
-                                plt.ylabel(features[3])
+                                plt.ylim([xx3.min(),xx3.max()]), plt.xlim([xx2.min(),xx2.max()])
+                                plt.xlabel(features[2]), plt.ylabel(features[3])
                                 if legend:
                                     if not prob:
                                         show_legend()
@@ -459,14 +517,18 @@
                             fig
                         </py-repl>
                     </section>
+                    <section data-background-color="#ffffff">
+                        <img src="images/LR_results.png" alt="LR_results" width="80%">
+                    </section>
                     <section data-background-color="#fdf6e3">
                         <py-repl>
                             fig = plt.figure(figsize=(18.0, 10.0))
                             clf = plot_model(X, y, LogisticRegression(), prob=True)
                             fig
                         </py-repl>
-                        <p><a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/">
-                            Nice visual example of DecisionTreeClassifier</a></p>
+                    </section>
+                    <section data-background-color="#ffffff">
+                        <img src="images/LR_proba_results.png" alt="LR_proba_results" width="80%">
                     </section>
                 </section>
                 <section>
@@ -479,6 +541,8 @@
                             clf = plot_model(X, y, DecisionTreeClassifier())
                             fig
                         </py-repl>
+                        <p><a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/">
+                            Nice visual example of DecisionTreeClassifier</a></p>
                     </section>
                     <section data-background-color="#fdf6e3">
                         <py-repl>
@@ -515,26 +579,28 @@
                     <section>
                       <h3>Training a Decision Tree: ID3 Algorithm</h3>
 
-                      <p>
-                        $v_0$ := TreeGrowing($X_\ell$)
+                      <p style="text-align: left">$v_0$ := TreeGrowing($X_\ell$)</p>
 
-                        <ol>
-                            <li><b>FUNCTION</b> TreeGrowing($U \subseteq X_\ell$) $\mapsto$ root of a tree $v$</li>
-                            <li><b>if</b> StopCriteria($U$) <b>then <br/>
-                            <b>return</b> a new leaf $v$, taking $y_v$ := Major($U$)</b>
-                            </li>
-                            <li>find the most profitable feature for branching the tree:
-                           $f_v$ = $\arg\max\limits_{f \in F}$ Gain($f, U$)</li>
-                            <li><b>if</b> Gain ($f_v$, $U$) < $G_0$ <b>then</b><br />
-                            <b>return</b> a new leaf $v$, taking $y_v$ := Major($U$)</li>
-                            <li>create a new internal node $v$ with the function $f_v$</li>
-                            <li><b>for all</b> $k \in D_v$
-                                $U_k = \{x \in U: f_v(x) = k\}, S_v(k)$ := TreeGrowing($U_k$)</li>
-                            <li><b>return</b> $v$</li>
-                        </ol>
-                        <br />
-                        Majority rule: Major($U$) := $\arg\max P(y|U)$
-                      </p>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+                            <ol>
+                                <li><b>FUNCTION</b> TreeGrowing($U \subseteq X_\ell$) $\mapsto$ root of a tree $v$</li>
+                                <li><b>if</b> StopCriteria($U$) <b>then</b> <br/>
+                                <b>return</b> a new leaf $v$, taking $y_v$ := Major*($U$)
+                                </li>
+                                <li>find the most profitable feature for branching the tree:
+                               $f_v$ = $\arg\max\limits_{f \in F}$ Gain($f, U$)</li>
+                                <li><b>if</b> Gain ($f_v$, $U$) < $G_0$ <b>then</b><br />
+                                <b>return</b> a new leaf $v$, taking $y_v$ := Major($U$)</li>
+                                <li>create a new internal node $v$ with the function $f_v$</li>
+                                <li><b>for all</b> $k \in D_v$
+                                    $U_k = \{x \in U: f_v(x) = k\}, S_v(k)$ := TreeGrowing($U_k$)</li>
+                                <li><b>return</b> $v$</li>
+                            </ol>
+                            <br />
+                            <p style="text-align: left">Majority rule: Major($U$) := $\arg\max P(y|U)$</p>
+                            </div>
+                        </div>
                     </section>
                     <section>
                         <h3>Measure of Uncertainty of Distribution</h3>
@@ -557,7 +623,8 @@
                     </section>
                     <section>
                         \[
-                        Ф(U) = E\mathcal{L}(p_y) = \sum\limits_{y \in Y} p_y \mathcal{L}(p_y) = \frac{1}{|U|} \sum\limits_{x_i \in U} \mathcal{L}(P(y_i| U)) \to \min ,
+                        \Phi(U) = \mathbb{E}\mathcal{L}(p_y) = \sum\limits_{y \in Y} p_y \mathcal{L}(p_y) =
+                          \frac{1}{|U|} \sum\limits_{x_i \in U} \mathcal{L}(P(y_i| U)) \to \min ,
                         \]
                         <p style="text-align: left">where \(\mathcal{L}(p)\) decreases
                             and \(\mathcal{L}(1) = 0\), for example: \(-\log p, 1-p, 1-p^2\)</p>
@@ -577,16 +644,14 @@
                         = \frac{1}{|U|} \sum\limits_{k \in D_v} \sum\limits_{x_i \in U_k} \mathcal{L}(P(y_i| U_{k})) = \sum\limits_{k \in D_v} \frac{|U_k|}{|U|} \Phi(U_k)
                         \]
                       </p>
-
+                    </section>
+                    <section>
                       <p style="text-align: left">
                         The gain from branching the node \(v\):
                       </p>
-
-                      <p>
                         \[
                         \text{Gain} (f, U) = \Phi(U) - \Phi(U_1, \dots , U_{|D_v|}) = \Phi(U) - \sum\limits_{k \in D_v} \frac{|U_k|}{|U|} \Phi(U_k) \to \max\limits_{f \in F}
                         \]
-                      </p>
                     </section>
                     <section>
                       <h3>Gini and Entropy Criteria</h3>
@@ -625,13 +690,16 @@
                               </ul>
                             </div>
                         </div>
-
+                    </section>
+                    <section>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                                 <h4 style="text-align: left">During Classification</h4>
                                 <ul>
-                                <li>If \(f_v(x)\) is undefined \(\Rightarrow\) take the distribution proportionally from the child \(s = S_v(f_v(x))\): \(P(y|x, v) = P(y|x, s)\)</li>
-                                <li>If \(f_v(x)\) is undefined \(\Rightarrow\) proportional distribution: \(P(y|x, v) = \sum\limits_{k \in D_v} q_{vk} P(y | x, S_v(k)))\)</li>
+                                <li>If \(f_v(x)\) is undefined \(\Rightarrow\) take the distribution proportionally from the child</li>
+                                    \[s = S_v(f_v(x)): P(y|x, v) = P(y|x, s)\]
+                                <li>If \(f_v(x)\) is undefined \(\Rightarrow\) proportional distribution:
+                                    \[P(y|x, v) = \sum\limits_{k \in D_v} q_{vk} P(y | x, S_v(k)))\]</li>
                                 <li>Final decision — the most probable class: \(a(x) = \arg\max\limits_{y \in Y} P(y|x, v_0)\)</li>
                               </ul>
                             </div>
@@ -665,29 +733,31 @@
                         </div>
                     </section>
                     <section>
-                        <p class="r-frame">Greedy Strategy Overcomplicates Tree Structure</p>
+                        <p class="r-frame">Greedy strategy overcomplicates tree structure, so we need..</p>
 
-                        <h3>Tree Pruning</h3>
-                        <p>\(X^q\) — Independent validation set, \(q \approx 0.5\ell\)</p>
-
-                      <ol>
-                          <li><b>for all</b> \(v \in V_{\text{internal}}\)</li>
-                          <li>\(X_v^q :=\) subset of instances \(X^q\) that reach \(v\)</li>
-                          <li><b>if</b> \(X_v^q = \emptyset\) <b>then</b><br>
-                          <b>return</b> a new leaf \(v\), with \(y_v := \text{Major}(U)\)</li>
-                          <li>Count the number of misclassifications for \(X_v^q\) classified in different ways:</li>
-                          <ul>
-                              <li>\(\ \ \text{Err}(v)\) — by the subtree rooted at \(v\)</li>
-                              <li>\(\ \ \text{Err}_k(v)\) — by the subtree \(S_v(k)\), for \(k \in D_v\)</li>
-                              <li>\(\ \ \text{Err}_c(v)\) — by class \(c \in Y\)</li>
-                          </ul>
-                          <li>Depending on which is minimal:</li>
-                          <ul>
-                              <li>Keep the subtree \(v\)</li>
-                              <li>Replace the subtree \(v\) with the child \(S_v(k)\)</li>
-                              <li>Replace the subtree \(v\) with a leaf, with \(y_v := \arg\min\limits_{c \in Y} \text{Err}_c(v)\)</li>
-                          </ul>
-                      </ol>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+                              <h3>Tree Pruning</h3>
+                              <p style="text-align: left">\(X^q\) — Independent validation set, \(q \approx 0.5\ell\)</p>
+                              <ol>
+                                  <li><b>for all</b> \(v \in V_{\text{internal}}\)</li>
+                                  <li>\(X_v^q :=\) subset of instances \(X^q\) that reach \(v\)</li>
+                                  <li><b>if</b> \(X_v^q = \emptyset\) <b>then return</b> a new leaf \(v\), with \(y_v := \text{Major}(U)\)</li>
+                                  <li>Count the number of misclassifications for \(X_v^q\) classified in different ways:</li>
+                                  <ul>
+                                      <li>\(\ \ \text{Err}(v)\) — by the subtree rooted at \(v\)</li>
+                                      <li>\(\ \ \text{Err}_k(v)\) — by the subtree \(S_v(k)\), for \(k \in D_v\)</li>
+                                      <li>\(\ \ \text{Err}_c(v)\) — by class \(c \in Y\)</li>
+                                  </ul>
+                                  <li>Depending on which is minimal:</li>
+                                  <ul>
+                                      <li>Keep the subtree \(v\)</li>
+                                      <li>Replace the subtree \(v\) with the child \(S_v(k)\)</li>
+                                      <li>Replace the subtree \(v\) with a leaf, with \(y_v := \arg\min\limits_{c \in Y} \text{Err}_c(v)\)</li>
+                                  </ul>
+                              </ol>
+                            </div>
+                        </div>
                     </section>
                     <section>
                         <h3>CART: Classification And Regression Trees</h3>
@@ -706,7 +776,7 @@
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p>The value \( y_v \) in the terminal vertex \( v \) is the LSE solution:</p>
+                                <p style="text-align: left">The value \( y_v \) in the terminal vertex \( v \) is the LSE solution:</p>
                                 \[ y_v = \frac{1}{|U|} \sum\limits_{x_i \in U} y_i \]
 
                                 <p style="text-align: left">Regression tree \( a(x) \) is a piecewise
@@ -721,11 +791,10 @@
                             the higher the influence of noise in the data and the higher
                             the risk of overfitting.</p>
 
-                        <a href="https://scikit-learn.org/stable/auto_examples/tree/plot_tree_regression.html">https://scikit-learn.org/stable/auto_examples/tree/plot_tree_regression.html</a>
-
                         <div align="center">
                           <img src="images/plot_tree_regression_001.png" alt="tree_regression" width="800" />
                         </div>
+                        <a href="https://scikit-learn.org/stable/auto_examples/tree/plot_tree_regression.html">https://scikit-learn.org/stable/auto_examples/tree/plot_tree_regression.html</a>
                     </section>
                     <section>
                         <h3>CART: Minimal Cost-Complexity Pruning Criterion</h3>
@@ -809,7 +878,7 @@
                                     <ul>
                                         <li>reduction</li>
                                         <li>regularization</li>
-                                        <li>compositions (forests) of trees — soon!</li>
+                                        <li>ensembles (forests) of trees — coming soon!</li>
                                     </ul>
                                 </li>
                             </ul>
