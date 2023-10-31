@@ -336,10 +336,10 @@
                             <div class="typesetting">
                                 <ul style="text-align: left">
                                   <li>Weighted Voting (linear classifier with weights $w_{yt}$):</li>
-                                    $$a(x) = \arg\max_{y \in Y} \sum_{t=1}^{T_y} w_{yt} R_{yt}(x)$$
+                                    $$a(x) = \arg\max_{y \in Y} \sum_{t=1}^{T} w_{yt} R_{yt}(x)$$
 
                                   <li>Simple Voting (majority committee):</li>
-                                  $$a(x) = \arg\max_{y \in Y} \frac{1}{T_y}\sum_{t=1}^{n_y} R_{yt}(x)$$
+                                  $$a(x) = \arg\max_{y \in Y} \frac{1}{T_y}\sum_{t=1}^{T_y} R_{yt}(x)$$
 
                                   <li>Decision List (seniority committee), \(c_t \in Y \):</li>
                                   <div align="center">
