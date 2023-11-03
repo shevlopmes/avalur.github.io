@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <meta name="description" content="Developing Critical Thinking">
+        <meta name="author" content="Alex Avdiushenko" />
+        <meta name="keywords" content="JetBrains, ChatGPT, reveal.js">
+
+		<title>Developing Critical Thinking in the Era of ChatGPT</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/league.css">
+		<link rel="stylesheet" href="./css/style.css">
+
+        <!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+
+<!--		<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />-->
+<!--		<script defer src="https://pyscript.net/latest/pyscript.js"></script>-->
+<!--		<py-config>-->
+<!--			terminal = false-->
+<!--            packages = ["numpy", "pandas", "matplotlib", "scikit-learn"]-->
+<!--		</py-config>-->
+    </head>
+	<body onload="totalWrapper();">
+		<div class="reveal">
+			<div class="slides">
+                <section id="title">
+                    <h1>Developing Critical Thinking</h1>
+                    <p><em>in the Era of ChatGPT</em></p>
+
+                    <br/><i>by</i><br/>
+                    <p>Alex Avdiushenko</p>
+                        <a href="mailto:aleksandr.avdiushenko@jetbrains.com">aleksandr.avdiushenko@jetbrains.com</a>
+
+					  <aside class="notes">
+						Hello everyone! My name is Aleksandr Avdiushenko, I am very happy to have a talk on
+		   				  the conference and today we will discuss the evolution of education and
+						  its interconnection with technology.
+					  </aside>
+                </section>
+                <section>
+					<h2>To make long story short</h2>
+					<div class="row fragment fade-in">
+						<div class="column typesetting">
+							<br><br><br><br>
+							Oral Tradition <br> (circa 100,000 BCE - 3,200 BCE)
+						</div>
+						<div class="column">
+							<img class="round" src="images/oral_tradition.webp" width="100%" >
+						</div>
+					</div>
+    				  <aside class="notes">
+						  Let's start with the brief history of human education and knowledge sharing development.
+						  <br><br>
+						  1. Oral Tradition is about 3 thousand Before Christ's Birth:
+						  In the earliest days of human civilization, knowledge was transferred
+						  orally from generation to generation.
+						  Storytelling, folklore, and hands-on experiences were the primary methods for education.
+						  <br>
+						  So, oral speech is reliable!
+					  </aside>
+				</section>
+				<section data-transition="fade">
+					<div class="column">
+						<img class="round" src="images/mesopotamian_marketplace.webp" width="100%" >
+					</div>
+					<div class="column">
+						<br><br><br><br><br><br>
+						Birth of Writing and Numeracy <br> (circa 3,200 BCE)
+					</div>
+					  <aside class="notes">
+						  2. Birth of Writing and Numeracy (circa 3,200 BCE):
+						  <br><br>
+						  Around 5,200 years ago, in ancient Mesopotamia, the first known writing system, cuneiform, was developed.
+						  This was closely tied with the invention of numbers and basic arithmetic,
+						  which allowed for record-keeping and administration of transactions, mostly in marketplaces.
+						  <br>
+						  Naturally, then, first of all, there were needed convenient notations and
+						  the ability to accumulate knowledge. Fun things to know about this piece of history is
+						  that first forms of writing were about numbers and accounting and credits
+						  long precede the invention of money.
+						  <br>
+						  Well, clay tablets are reliable!
+					  </aside>
+				</section>
+				<section data-background-color="antiquewhite">
+					<img src="images/babylonian_numerals.png">
+					<aside class="notes">
+						It is interesting and well-known, that cuneiform numerical notation was base sixty,
+						unlike our base 10 numbers, but they had a true place value system like we do, not like
+						Roman numerals for example.
+					</aside>
+				</section>
+				<section data-transition="fade">
+					<div class="column">
+						<br><br><br><br><br>
+						Scrolls and Libraries <br> (circa 1200 BCE — 15th Century CE)
+					</div>
+					<div class="column">
+						<img class="round" src="images/scrolls_and_papyrus.webp" width="100%" >
+					</div>
+					  <aside class="notes">
+						  3. Scrolls and Libraries (circa 1200 BCE — 15th Century CE):
+						  <br>
+						  The accumulation of knowledge led to the establishment of libraries,
+						  such as the famous Library of Alexandria.
+						  Scrolls made of papyrus or parchment were the primary means of storing and sharing information.
+						  <br>
+						  Well, papyrus is reliable!
+					  </aside>
+				</section>
+				<section data-transition="fade">
+					<div class="r-stack">
+						<div class="row" style="position: absolute; left: 50px;">
+							<div class="column">
+								<img src="images/Alexandria_Library_Inscription.jpg" width="100%" >
+							</div>
+							<div class="column">
+								<br><br>
+								The Great Library of Alexandria in Egypt
+							</div>
+						</div>
+						<p class="fragment" style="position: absolute; left: 240px; top: 345px">
+							<i class="rectangle" style="height: 50px;width: 320px;border: solid darkorange; border-width: 7px 7px 7px 7px;display: inline-block;"></i>
+							<i class="arrow left"></i>ALEXANDRINA BYBLIOTHECE</p>
+					</div>
+					  <aside class="notes">
+						  The Great Library of Alexandria in Egypt,
+						  was one of the largest and most significant libraries of the ancient world.
+						  <br>
+						  The library was part of a larger research institution called the Mouseion,
+						  which was dedicated to the Muses, the nine goddesses of the arts.
+					  </aside>
+				</section>
+				<section data-transition="fade">
+					<div class="column">
+						<img class="round" src="images/printing_press.png" width="100%" >
+					</div>
+					<div class="column">
+						<br><br><br><br><br><br>
+						The Printing Press<br>(1440 CE)
+					</div>
+					  <aside class="notes">
+						  4. The Printing Press (1440 CE):<br>
+						  The invention of the printing press by Gutenberg revolutionized education.
+						  Books became more accessible and affordable, leading to an increase in literacy rates
+						  and the dissemination of knowledge.
+						  <br>
+						  So, books are truly reliable!
+					  </aside>
+				</section>
+				<section data-transition="fade">
+					<div class="column">
+						<br><br><br><br><br>
+						Electricity and Telecommunication<br>(19th century)
+					</div>
+					<div class="column">
+						<img class="round" src="images/telegraph.png" width="100%" >
+					</div>
+					  <aside class="notes">
+						  5. Electricity and Telecommunication (19th Century CE):<br>
+						  With the advent of electricity, technologies like the telegraph and telephone emerged,
+						  allowing for real-time communication over long distances.
+						  This made the sharing of information quicker and more efficient.
+						  <br>
+						  The internet boom of the time was telegraph. It came into commercial use by 1840, submarine
+						  cables were laid by 1850. This allowed rapid communication between continents for
+						  the first time ever.
+					  </aside>
+				</section>
+				<section data-transition="fade">
+					<h2>Postal delivery time from London in 1850</h2>
+                        <div class="fragment">
+                            <div class="typesetting">
+							<div class="row">
+								<div class="column">
+									<b>days</b>
+								</div>
+								<div class="column" style="text-align: left">
+									<b>to reach</b>
+								</div>
+							</div>
+							<div class="row">
+								<div class="column">
+									12
+								</div>
+								<div class="column" style="text-align: left">
+									New Yourk
+								</div>
+							</div>
+							<div class="row">
+								<div class="column">
+									13
+								</div>
+								<div class="column" style="text-align: left">
+									Alexandria, Egypt
+								</div>
+							</div>
+							<div class="row">
+								<div class="column">
+									19
+								</div>
+								<div class="column" style="text-align: left">
+									Istanbul, Turkey
+								</div>
+							</div>
+							<div class="row">
+								<div class="column">
+									33
+								</div>
+								<div class="column" style="text-align: left">
+									Mumbai, India
+								</div>
+							</div>
+							<div class="row">
+								<div class="column">
+									45
+								</div>
+								<div class="column" style="text-align: left">
+									Singapore
+								</div>
+							</div>
+							<div class="row">
+								<div class="column">
+									57
+								</div>
+								<div class="column" style="text-align: left">
+									Shanghai, China
+								</div>
+							</div>
+							<div class="row">
+								<div class="column">
+									73
+								</div>
+								<div class="column" style="text-align: left">
+									Sydney, Australia
+								</div>
+							</div>
+							</div>
+						</div>
+					  <aside class="notes">
+						  To give you some sense of what that meant: it used to take two and a half months
+						  for a piece of mail to get from London to Sydney.
+						  It was it the context of a different kind of information technology —
+						  the information of telegraphy.
+						  <br>
+						  So, the telegraph is reliable!
+					  </aside>
+				</section>
+				<section data-transition="fade">
+					<div class="column">
+						<img class="round" src="images/internet_and_google.png" width="100%" >
+					</div>
+					<div class="column">
+						<br><br><br><br><br><br>
+						Digital Age and the Internet<br>(late 20th century)
+					</div>
+					  <aside class="notes">
+						  6. Digital Age and the Internet (late 20th Century CE):<br>
+						  Now we are close to modern time: the latter half of the 20th century saw
+						  the rise of computers and the Internet.
+						  Information became digitized, leading to the creation of search engines like Google,
+						  Yandex, Baidu and etc. This made accessing knowledge virtually instantaneous.
+						  <br>
+						  You know, the Internet is reliable!
+					  </aside>
+				</section>
+				<section>
+					<div class="column">
+						<br><br><br><br><br>
+						Artificial Intelligence and ChatGPT<br>(21st century)
+					</div>
+					<div class="column">
+						<img class="round" src="images/modern_time.png" width="100%" >
+					</div>
+					<aside class="notes">
+						7. Artificial Intelligence and ChatGPT (21st Century CE):<br>
+						In the current era, AI technologies like ChatGPT have emerged,
+						providing personalized and interactive learning experiences.
+						<br>
+						These technologies engage users in conversations, answer queries, and aid in learning,
+						taking the interaction with information to a new level.
+						<br>
+						But is ChatGPT reliable? We will discuss it later.
+					</aside>
+				</section>
+				<section>
+					<h2>Information is extremely accessible!</h2>
+					<iframe width="1120" height="630" src="https://www.youtube.com/embed/lVxnRAiuGas?si=BDhMjPf1rC5ET0y0"
+							title="YouTube video player"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							allowfullscreen></iframe>
+					<aside class="notes">
+						The fact is that nowadays any information is extremely accessile!
+						Even without AI assistant one has massive amount of information.<br>
+						For example, on Youtube you can find nice explanation of everything and to solve
+						almost any problem from either repairing not working washing machine
+						or how to perform the right professional technic of squat exercise.
+					</aside>
+				</section>
+				<section data-background-iframe="https://www.youtube.com/embed/ZSt9tm3RoUU?si=Qhbro6tRoNXRuItB"
+				data-background-interactive>
+					<aside class="notes">
+						Often you can not only watch the video, but interact with the information,
+						to change some characteristics and to learn by exploration.
+						With modern tools you can even create similar materials yourself.
+						<br>
+						For instance, using Universe Sandbox application, you can literally push Mars with Venus and
+						look at the result, which will repeat modern scientific ideas about the world
+						and show all the physics of the process in a few minutes on your screen.
+						Moreover, I am sure there is or definitely soon will be similar application
+						for any scientific area.
+					</aside>
+				</section>
+				<section data-background-image="images/robot_generates.png">
+					<aside class="notes">
+						But the next huge thing is, that modern AI assistants not only search the facts and information,
+						they generate it successfully. We might say it generates new original content.
+						<br>
+						So we get enormous amount of information and the challenge is, that we don't know if it is true or not.
+						Here we got fundamental problem: is it possible to verify the system, that probably is smarter, then we are =)
+						Maybe at least align it with our goals and work together effectively.
+					</aside>
+				</section>
+				<section>
+					<h2>The Influence of ChatGPT in Education</h2>
+					<div class="fragment">
+						<div class="typesetting">
+							Chegg Inc — an NYSE-listed company focused on improving learning and learning outcomes for students
+						</div>
+					</div>
+					<img class="fragment fade-up" src="images/chegg_falls.png" width="70%">
+					<aside class="notes">
+						Chegg, an NYSE-listed company focused on improving learning and learning outcomes for students,
+						was hit hard by the launch of ChatGPT.
+						<br>
+						In May 2023, the company said “In the first part of the year,
+						we saw no noticeable impact from ChatGPT on our new account growth and
+						we were meeting expectations on new sign-ups.”
+						<br>
+						Students that paid Chegg to practice exams and get homework feedback turned to ChatGPT instead.
+						As a result, their share price plummeted >40%.
+						In Chegg’s August 2023 earnings call,
+						the company said “We’ve pivoted the company to harness AI to better serve learners.”
+						Now they’re building internal LLMs in partnership with Scale AI.
+					</aside>
+				</section>
+				<section>
+					<h2>Student's view on AI assistance</h2>
+						<div class="card">
+								<img src="images/nadezhda.jpeg" alt="nadezhda">
+							<div class="text">
+								<div class="fragment"><div class="typesetting">
+								<em>One of the exams had the format “there is a realistic case study,
+									you need to describe the actions necessary to solve it.”
+									We had only two samples from the teacher: 2 situations and 2 expected answers to them.
+									So we added the theory from the slides of all the lectures into the GPT,
+									followed it with exam samples and asked it to generate similar tasks and answers to them based on the received theory.
+									<span style="color: darkorange">Super fast preparation</span> for this kind of exams))</em>
+								</div></div>
+							</div>
+						</div>
+
+						<div class="card">
+								<img src="images/yaroslav.jpeg" alt="yaroslav">
+							<div class="text">
+								<div class="fragment"><div class="typesetting">
+								<em>The process of completing practical homework with <span style="color: darkorange">writing code has now changed</span>:
+									ChatGPT writes basic, often broken, code, which I take as the basis for further execution of the task.</em>
+								<br>
+								In the further process of execution Yaroslav use it as a bug fixer —
+								it is not always easy to understand what the error is.
+								So you can throw the code into it and <span style="color: darkorange">ask to find and fix the error</span>.
+								<br><br>
+								</div></div>
+							</div>
+						</div>
+
+					<aside class="notes">
+						And of course, students master new technologies just as well as you and I.
+						<br>
+						Consider two typical examples. Nadezhda with her friends had one exam in the format of solving practical cases.
+						They had to prepare using only two task samples from the teacher.
+						So they added the theory from the slides of all the lectures into the GPT,
+						followed it with exam samples and asked it to generate similar tasks and answers to them based on the received theory.
+						It was super fast preparation for this kind of exams!</em>
+
+						Look to the another example from Yaroslav. He was given some task,
+						to write some kind of convolutional neural network for something.
+						Initially, when looking at such a task, it is not always clear how to approach it and where to start.
+						In the past, this was solved by Google — just Google existing solutions, see how related tasks are done.
+						<br>
+						Usually 10-30 percent of this code remains by the time of the final version;
+						sometimes it writes completely inadequate code, which, however, helps to understand what to Google next.
+						In the further process of execution Yaroslav use it as a bug fixer —
+						it is not always possible to understand what the error is.
+						You can throw the code into it and ask it to find and fix the error.
+						Often the solutions it proposes are not workable, but lead to the author’s solution to the problem.
+					</aside>
+				</section>
+				<section>
+					<h2>Pros and cons of ChatGPT</h2>
+
+					<h3 class="fragment fade-down" style="text-align: left">Useful cases:</h3>
+					<ul>
+						<div class="fragment">
+							<li class="typesetting">helps answer questions for tools with poor or unreadable documentation
+							(for example, it can tell you how to start using <code>gdb</code>)</li>
+						</div>
+						<div class="fragment">
+							<li class="typesetting">gives good and quick examples for some JSONs,
+							XMLs with the necessary characteristics, or some fixtures to fill the database</li>
+						</div>
+						<div class="fragment">
+							<li class="typesetting">helps to overcome <span style="color: darkorange">the fear of a “blank slate”</span></li>
+						</div>
+					</ul>
+					<br><br>
+					<h3 class="fragment fade-down" style="text-align: left">What it doesn't handle well:</h3>
+					<ul>
+						<div class="fragment">
+						<li class="typesetting">any task where you need to understand deeply the generel context
+							of the whole project</li>
+						</div>
+						<div class="fragment">
+						<li class="typesetting">not typical problems in not so popular languages:
+							if you ask to solve a dynamic
+							<span style="color: darkorange">programming problem in Haskell,</span>
+							it gives funny answers</li>
+						</div>
+						<div class="fragment">
+						<li class="typesetting">for different math fact about half of the GPT-generated
+							<span style="color: darkorange">proofs are incorrect</span></li>
+						</div>
+					</ul>
+				</section>
+				<section>
+					<h2>AI-powered workflow for teaching</h2>
+					<ul>
+						<div class="fragment">
+						<li class="typesetting">Direct the AI assistant step by step (as with human, yes)</li>
+						</div>
+						<div class="fragment">
+						<li  class="typesetting">Do a lot of checks: computations
+							(via <a href="https://www.wolfram.com/mathematica/">Wolfram</a> for math or via
+							compiler and tests for code)</li>
+						</div>
+						<div class="fragment">
+						<li  class="typesetting">Draw beautiful high-quality illustrations, in pencil or in vector formats</li>
+						</div>
+						<div class="fragment">
+						<li  class="typesetting">Send all routine tasks in a broad sense to the ChatGPT</li>
+						</div>
+					</ul>
+				</section>
+            </div>
+        </div>
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/math/math.js"></script>
+		<script src="../scripts/utils.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				// The "normal" size of the presentation, aspect ratio will
+				// be preserved when the presentation is scaled to fit different
+				// resolutions. Can be specified using percentage units.
+				width: '100%',
+				height: '100%',
+				// Factor of the display size that should remain empty around the content
+				margin: 0.08,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 2.0,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+
+			Reveal.addEventListener('fragmentshown', function (event) {
+				if (lettersAnimate) {
+					[...event.fragment.getElementsByClassName('typesetting')].forEach(element => {
+						playAnimation(element);
+					});
+				}
+			});
+        </script>
+    </body>
+</html>
