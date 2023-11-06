@@ -34,7 +34,7 @@
 							<div class="typesetting">
 								<h3>Lecture 11. Ensembles, random forest and gradient boosting</h3>
 								<br />
-								Alexander Avdiushenko <br />
+								Alex Avdiushenko <br />
 								November 7, 2023
 							</div>
 					</div>
@@ -66,9 +66,9 @@
                         </div>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p class="r-frame">Why introduce \(R\)?</p>
+                                <p class="r-frame">Why introduce correcting operation \(R\)?</p>
                                 <p>In classification tasks, the set of mappings \(\{F: R^T \to R\}\)
-                                    is significantly wider than \(\{F: Y^T \to Y\}\).</p>
+                                    is significantly wider than \(\{F: Y^T \to Y\}\)</p>
                             </div>
                         </div>
                     </section>
@@ -78,22 +78,26 @@
                             <div class="typesetting">
                                 <ul>
                                     <li>
-                                        <strong>Example 1</strong>: binary classification, \(Y = \{-1, +1\}\):<br/>
-                                        \(a(x) = \text{sign}(b(x))\)<br/>
-                                        where \(R = \mathbb{R}, b: X \to \mathbb{R}, C(b) = \text{sign}(b)\)
+                                        <strong>Example 1</strong>: binary classification, \(Y = \{-1, +1\}\):
+                                        \[a(x) = \text{sign}(b(x))\]
+                                        so \(R = \mathbb{R}, b: X \to \mathbb{R}, C(b) = \text{sign}(b)\)
                                     </li>
                                     <li>
-                                        <strong>Example 2</strong>: multiclass classification with \(M\) classes \(Y = \{1,\dots, M\}\):<br/>
-                                        \(a(x) = \arg\max_{y \in Y} b_y(x)\)<br/>
-                                        where \(R = \mathbb{R}^M, b: X \to \mathbb{R}^M, C(b_1, \dots, b_M) \equiv \arg \max_{y \in Y} b_y\)
-                                    </li>
-                                    <li>
-                                        <strong>Example 3</strong>: regression, \(Y = R = \mathbb{R}\)<br/>
-                                        \(C(b) \equiv b\) — there is no need for a decision rule
+                                        <strong>Example 2</strong>: multiclass classification with \(M\) classes \(Y = \{1,\dots, M\}\):
+                                        \[a(x) = \arg\max_{y \in Y} b_y(x)\]
+                                        so \(R = \mathbb{R}^M, b: X \to \mathbb{R}^M, C(b_1, \dots, b_M) \equiv \arg \max_{y \in Y} b_y\)
                                     </li>
                                 </ul>
                             </div>
                         </div>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>
+                                <strong>Example 3</strong>: regression, \(Y = R = \mathbb{R}\)<br/>
+                                \(C(b) \equiv b\) — there is no need for a decision rule
+                            </li>
+                        </ul>
                     </section>
                     <section>
                         <h3>Examples of Ensembles (Correcting Operations)</h3>
@@ -135,21 +139,17 @@
                             </div>
                         </div>
                     </section>
-                    <section>
-                        <div align="center">
-                            <img src="images/bagging_visualization.jpg" alt="bagging_visualization" width=1000/>
+                    <section data-background-color="#ffffff">
+                        <div>
+                            <img src="images/bagging_visualization.jpg" alt="bagging_visualization" width=80% />
                         </div>
                     </section>
                 </section>
                 <section>
-                    <section>
-                        <h3>Boosting</h3>
-                            <a href="https://arogozhnikov.github.io/2016/06/24/gradient_boosting_explained.html">
-                                https://arogozhnikov.github.io</a>
-
-                            <div align="center">
-                                <img src="images/gbt_visualization.jpg" alt="gbt_visualization" width=800/>
-                            </div>
+                    <section data-background-color="#ffffff">
+                        <h3><a href="https://arogozhnikov.github.io/2016/06/24/gradient_boosting_explained.html">
+                            Boosting explained</a></h3>
+                        <img src="images/gbt_visualization.jpg" alt="gbt_visualization" width=70% />
                     </section>
                     <section>
                         <h3>Boosting for binary classification tasks</h3>
@@ -202,7 +202,7 @@
                         <h3>Classical Variant of AdaBoost</h3>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p>Assume there are no rejections, \(b_t: X \to \{\pm 1 \}\). Then \(P = 1 − N\).</p>
+                                <p>Assume there are no rejections, \(b_t: X \to \{\pm 1 \}\). Then \(P = 1 − N\)</p>
 
                                 <h4 style="text-align: left">Theorem (Freund, Schapire, 1995)</h4>
                                 <p>Suppose that for any normalized weight vector \(U^\ell\) there exists an algorithm
@@ -211,8 +211,8 @@
                                 </p>
                                 <p style="text-align: left">Then the minimum of the functional
                                     \(\tilde Q_T\) is reached when</p>
-                                \[b_T = \arg\min_{b \in B} N (b, \tilde W^\ell)\]
-                                \[\alpha_T = \frac12 \ln\frac{1-N(b_T, \tilde W^\ell)}{N(b_T, \tilde W^\ell)}\]
+                                \[b_T = \arg\min_{b \in B} N (b, \tilde W^\ell), \quad
+                                \alpha_T = \frac12 \ln\frac{1-N(b_T, \tilde W^\ell)}{N(b_T, \tilde W^\ell)}\]
                             </div>
                         </div>
                     </section>
@@ -253,7 +253,7 @@
                                                 <br />
                                                 \(B = \{b(x) = [f_j(x) \lessgtr\theta] | j = 1, \dots, n, \theta \in \mathbb{R}\}\)
                                             </li>
-                                            <li>For SVM, boosting is usually not effective </li>
+                                            <li>For strong classifiers (as SVM for instance), boosting is usually not effective</li>
                                         </ul>
                                     </li>
                                     <li><strong>Noise rejection</strong>: dispose of objects with the largest \(w_i\)</li>
@@ -472,6 +472,9 @@
                     </section>
                 </section>
                 <section>
+                    <section data-background-color="#ffffff">
+                        <img src="images/rf_meme.jpeg" width="60%">
+                    </section>
                     <section>
                         <h3>Random Forest</h3>
 
@@ -483,7 +486,7 @@
                                  <li>The feature in each tree node is chosen from a random subset of $k$ out of $n$ features</li>
                                 </ul>
                                 <hr>
-                                <p>The number of trees $T$ can be selected based on the out-of-bag criterion:
+                                <p>The number of trees $T$ can be selected based on the out-of-bag criterion —
                                     the number of errors on objects $x_i$, if we don't consider the votes of trees
                                     for which $x_i$ was training:</p>
                                 $$\text{out-of-bag}(a) = \sum\limits_{i=1}^\ell \left[\text{sign}(\sum\limits_{t=1}^T [x_i \notin U_t] b_t(x_i))
@@ -494,7 +497,7 @@
                         </div>
                     </section>
                     <section>
-                        <h3>Justification of Boosting</h3>
+                        <h3 style="text-align: left">Justification of Boosting</h3>
 
                         <p style="text-align: left">Strengthening the concept of the error rate
                             of the algorithm $a(x) = \text{sign}(b(x))$</p>
@@ -503,19 +506,19 @@
                         <p style="text-align: left">The usual error rate
                             $\nu_0 (a, X^\ell) \leq \nu_\theta (a, X^\ell)$ when $\theta > 0$</p>
 
-                        <h4>Theorem (Freund, Schapire, Bartlett, 1998)</h4>
+                    </section>
+                    <section>
+                        <h3 style="text-align: left">Theorem (Freund, Schapire, Bartlett, 1998)</h3>
 
                         <p>If $|B| < \infty$, then $\forall \theta > 0, \forall \eta \in (0,1)$
                             with a probability $1-\eta$</p>
                         $$P[y a(x) < 0] \leq \nu_\theta (a, X^\ell) + C\sqrt{\frac{\ln |B| \ln \ell}{\ell\theta^2} + \frac{1}{\ell}\ln \frac{1}{\eta}}$$
-                    </section>
-                    <section>
-                        <h4 style="text-align: left">Main conclusion</h4>
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                            <p style="text-align: left">The estimate depends on $|B|$, but not on $T$.
-                            Voting does not increase the complexity of the effectively used set of algorithms.</p>
+                                <h4 style="text-align: left">Main conclusion</h4>
+                                <p style="text-align: left">The estimate depends on $|B|$, but not on $T$.
+                                Voting does not increase the complexity of the effectively used set of algorithms.</p>
                             </div>
                         </div>
                     </section>
@@ -529,15 +532,13 @@
                             smaller than a fixed $\theta$ after 5, 100, 1000 iterations (UCI classification task: vehicle)</p>
                     </section>
                     <section>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <ul>
-                                    <li>With growing $T$, the margin distribution shifts to the right, that is, boosting "spreads" the classes in the space of growing-dimension vectors $(b_1(x), \dots, b_T(x))$</li>
-                                    <li>Therefore, the second term can be reduced in the estimate by increasing $\theta$ and not changing $\nu_\theta (a, X^l)$</li>
-                                    <li>The second term can be reduced if |B| is reduced, that is, if a simple family of basic algorithms is taken</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <ul>
+                            <li>With growing $T$, the margin distribution shifts to the right, that is, boosting "spreads" the classes in the space of growing-dimension vectors $(b_1(x), \dots, b_T(x))$</li>
+                            <li>Therefore, the second term can be reduced in the estimate by increasing $\theta$ and not changing $\nu_\theta (a, X^l)$</li>
+                            <li>The second term can be reduced if |B| is reduced, that is, if a simple family of basic algorithms is taken</li>
+                        </ul>
+                        <br><br>
+                        <h4>Thank you for your attention!</h4>
                     </section>
                 </section>
             </div>
