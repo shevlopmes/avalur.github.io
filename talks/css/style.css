@@ -65,17 +65,17 @@ animation-fill-mode: both;
 opacity: 0;
 }
 
-.card:nth-child(3) {
-animation-delay: 2s; /* First card appear after 0.5s */
-}
+/*.card:nth-child(3) {*/
+/*animation-delay: 2s; !* First card appear after 0.5s *!*/
+/*}*/
 
-.card:nth-child(4) {
-animation-delay: 2s; /* Second card appear after 1s */
-}
+/*.card:nth-child(4) {*/
+/*animation-delay: 2s; !* Second card appear after 1s *!*/
+/*}*/
 
-.card:nth-child(5) {
-animation-delay: 2s; /* Third card appear after 1.5s */
-}
+/*.card:nth-child(5) {*/
+/*animation-delay: 2s; !* Third card appear after 1.5s *!*/
+/*}*/
 
 @keyframes fadeIn {
 0% { opacity: 0; }
