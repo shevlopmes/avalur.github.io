@@ -21,6 +21,11 @@
 			terminal = false
             packages = ["numpy", "matplotlib", "scikit-learn"]
 		</py-config>
+        <style>
+            img.round {
+                border-radius: 5%;
+            }
+        </style>
     </head>
 	<body onload="totalWrapper();">
 		<div class="reveal">
@@ -34,7 +39,7 @@
 							<div class="typesetting">
 								<h3>Lecture 13. Intro to neural networks and backpropagation</h3>
 								<br />
-								Alexander Avdiushenko <br />
+								Alex Avdiushenko <br />
 								November 14, 2023
 							</div>
 					</div>
@@ -45,35 +50,35 @@
                           <tr>
                             <td><div align="center">
                                 Images
-                                <img src="images/image_net.jpg" />
-                                25% to 3.5% errors versus 5% in humans
+                                <img class="round" src="images/image_net.jpg" />
+                                25% $\to$ 3.5% errors versus 5% in humans
                                 </div>
                             </td>
                             <td><div align="center">
                                 Text
-                                <img src="images/ml_def_from_chatGPT.png"/>
+                                <img class="round" src="images/ml_def_from_chatGPT.png"/>
                                 </div>
                             </td>
                             <td><div align="center">
                                 Voice
-                                <img src="images/voice.jpg"/>
+                                <img class="round" src="images/voice.jpg"/>
                                 </div>
                             </td>
                           </tr>
                           <tr>
                             <td><div align="center">
                                 Go, 2016
-                                <img src="images/alpha_go.jpg"/>
+                                <img class="round" src="images/alpha_go.jpg"/>
                                 </div>
                             </td>
                             <td><div align="center">
                                 StarCraft, 2019
-                                <img src="images/starcraft.png"/>
+                                <img class="round" src="images/starcraft.png"/>
                                 </div>
                             </td>
                             <td><div align="center">
                                 Protein structure, 2020
-                                <img src="images/AlphaFold.png"/>
+                                <img class="round" src="images/AlphaFold.png"/>
                                 </div>
                             </td>
                           </tr>
@@ -99,7 +104,7 @@
                                 <p>$f(z)$ — activation function, for example, $\text{sign}(z),\ \frac{1}{1+e^{-z}},\ (z)_+$</p>
 
                                 <div align="center">
-                                    <img src="images/artificial_neuron.jpg" alt="lin_as_nn" width=600 />
+                                    <img class="round" src="images/artificial_neuron.jpg" alt="lin_as_nn" width=600 />
                                 </div>
                             </div>
                         </div>
@@ -115,24 +120,28 @@
                         </p>
 
                         <div align="center">
-                            <img src="images/and_or.jpg" alt="and_or" width=800 />
+                            <img class="round" src="images/and_or.jpg" alt="and_or" width=800 />
                         </div>
                     </section>
                     <section>
                         <h3>Logical XOR Function (Exclusive OR)</h3>
 
                         <p style="text-align: left">Function $$x^1 \bigoplus x^2 = [x^1 \neq x^2]$$
-                            <b>is not implementable</b> by a single neuron. Two ways to implement:</p>
+                            <b>is not implementable</b> by a single neuron. There are two ways to implement:</p>
 
-                        <ul>
-                          <li>Adding nonlinear feature:
-                             $$x^1 \bigoplus x^2 = [x^1 + x^2 - {\color{orange}2x^1 x^2} - \frac12 > 0]$$
-                          </li>
-                            <li><b>Network</b> (<span style="color: orange">two-layer superposition</span>) of
-                                AND, OR, NOT functions:
-                             $$x^1 \bigoplus x^2 = [(x^1 \vee x^2) - (x^1 \wedge x^2) - \frac12 > 0]$$
-                          </li>
-                        </ul>
+                        <div class="fragment">
+                            <div class="typesetting">
+                                <ul>
+                                  <li>Adding nonlinear feature:
+                                     $$x^1 \bigoplus x^2 = [x^1 + x^2 - {\color{orange}2x^1 x^2} - \frac12 > 0]$$
+                                  </li>
+                                    <li><b>Network</b> (<span style="color: orange">two-layer superposition</span>) of
+                                        AND, OR, NOT functions:
+                                     $$x^1 \bigoplus x^2 = [(x^1 \vee x^2) - (x^1 \wedge x^2) - \frac12 > 0]$$
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
                     </section>
                     <section data-background-color="#ffffff">
                         <div align="center">
@@ -154,9 +163,11 @@
                                   <li>For some special classes of deep neural networks,
                                       it has been proven that they have exponentially higher expressive power
                                       than shallow networks.
-                                      <a href="https://arxiv.org/pdf/1711.00811.pdf">V. Khrulkov, A. Novikov, I. Oseledets.
-                                          Expressive power of recurrent neural networks, Feb 2018, ICLR 2018</a></li>
                                 </ul>
+
+                                <hr>
+                                <a href="https://arxiv.org/pdf/1711.00811.pdf">V. Khrulkov, A. Novikov, I. Oseledets.
+                                Expressive power of recurrent neural networks, Feb , ICLR 2018</a></li>
                             </div>
                         </div>
                     </section>
@@ -179,15 +190,17 @@
                             uniformly approximates $f(x)$ with any desired accuracy $\varepsilon$:
                             $|a(x) - f(x)| < \varepsilon$, for all $x \in [0, 1]^n$
                             </p>
-
-                            <p>G. Cybenko. Approximation by Superpositions of a Sigmoidal Function. Mathematics of Control, Signals, and Systems (MCSS) 2 (4): 303--314 (Dec 1, 1989)</p>
+                            <hr>
+                            <p>G. Cybenko. Approximation by Superpositions of a Sigmoidal Function.
+                                Mathematics of Control, Signals, and Systems (MCSS) 2 (4): 303-314 (Dec 1, 1989)</p>
                             </div>
                         </div>
                     </section>
                 </section>
                 <section>
                     <section>
-                        <p><a href="">Simple Neural Network Demo in PyTorch</a></p>
+                        <p><a href="https://colab.research.google.com/github/avalur/avalur.github.io/blob/master/ml_with_python/nn_backprop_practice.ipynb">
+                            Simple Neural Network Demo in PyTorch (until Micrograd)</a></p>
                     </section>
                     <section>
                         <h3>Linear Classifier</h3>
@@ -228,7 +241,7 @@
                             Most often by gradient descent.</p>
 
                         <div align="center">
-                            <img src="images/momentum.jpg" width=1000/>
+                            <img class="round" src="images/momentum.jpg" width=1000/>
                         </div>
 
                         <a href="https://distill.pub/2017/momentum/">Distill.pub momentum</a>
@@ -304,7 +317,7 @@
                         <h3>Neural network</h3>
 
                         <div align="center">
-                            <img src="images/nn_scheme.jpg" width=700/>
+                            <img src="images/nn_scheme.jpg" width=1000/>
                         </div>
                     </section>
                     <section>
