@@ -1,6 +1,6 @@
 .column {
   float: left;
-  width: 48%;
+  width: 49%;
   padding: 2px;
 }
 /* Clear floats after image containers */
@@ -53,12 +53,12 @@ font-family: Arial, sans-serif;
 }
 
 .card {
-background: #3a3a3a;
+background: antiquewhite;
 border-radius: 5px;
 display: inline-block;
 margin: 20px;
 position: relative;
-width: 900px;
+width: 800px;
 text-align: center;
 animation: fadeIn 2s ease;
 animation-fill-mode: both;
@@ -89,4 +89,5 @@ max-width: 200px;
 
 .card .text {
 padding: 20px;
+color: gray;
 }
