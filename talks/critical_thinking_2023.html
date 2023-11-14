@@ -17,6 +17,8 @@
 		<link rel="stylesheet" href="../dist/theme/league.css">
 		<link rel="stylesheet" href="./css/style.css">
 
+	    <link href="../css/font-awesome/css/all.min.css?ver=1.2.0" rel="stylesheet">
+
         <!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
 
@@ -405,39 +407,39 @@
 				<section>
 					<h2>Student's cases of using AI assistance</h2>
 						<div class="fragment">
-						<div class="column">
-							<div class="card">
-								<img src="images/nadezhda.jpeg" alt="nadezhda">
-							<div class="text">
-								<div class="typesetting">
-								<em>One of the exams had the format “there is a realistic case study,
-									you need to describe the actions necessary to solve it.”
-									We had only two samples from the teacher: 2 situations and 2 expected answers to them.
-									So we added the theory from the slides of all the lectures into the GPT,
-									followed it with exam samples and asked it to generate similar tasks and answers to them based on the received theory.
-									<span style="color: darkorange">Super fast preparation</span> for this kind of exam))</em>
+							<div class="column">
+								<div class="card">
+									<img src="images/nadezhda.jpeg" alt="nadezhda">
+								<div class="text">
+									<div class="typesetting">
+									<em>One of the exams had the format “there is a realistic case study,
+										you need to describe the actions necessary to solve it.”
+										We had only two samples from the teacher: 2 situations and 2 expected answers to them.
+										So we added the theory from the slides of all the lectures into the GPT,
+										followed it with exam samples and asked it to generate similar tasks and answers to them based on the received theory.
+										<span style="color: darkorange">Super fast preparation</span> for this kind of exam))</em>
+									</div>
+								</div>
 								</div>
 							</div>
-							</div>
-						</div>
 						</div>
 						<div class="fragment">
-						<div class="column">
-							<div class="card">
-								<img src="images/yaroslav.jpeg" alt="yaroslav">
-							<div class="text">
-								<div class="typesetting">
-								<em>The process of completing practical homework with <span style="color: darkorange">writing code has now changed:</span>
-									ChatGPT writes basic, often broken, code, which I take as the basis for further execution of the task.
-								<br>
-								In the further process of execution, Yaroslav uses it as a bug fixer —
-								it is not always easy to understand what the error is.
-								So you can throw the code into it and <span style="color: darkorange">ask to find and fix the error.</span>
-								<br><br><br></em>
+							<div class="column">
+								<div class="card">
+									<img src="images/yaroslav.jpeg" alt="yaroslav">
+								<div class="text">
+									<div class="typesetting">
+									<em>The process of completing practical homework with <span style="color: darkorange">writing code has now changed:</span>
+										ChatGPT writes basic, often broken, code, which I take as the basis for further execution of the task.
+									<br>
+									In the further process of execution, Yaroslav uses it as a bug fixer —
+									it is not always easy to understand what the error is.
+									So you can throw the code into it and <span style="color: darkorange">ask to find and fix the error.</span>
+									<br><br><br></em>
+									</div>
+								</div>
 								</div>
 							</div>
-							</div>
-						</div>
 						</div>
 
 					<aside class="notes">
@@ -605,8 +607,8 @@
 								<li class="typesetting">
 								  <span style="color: darkorange">PyCharm</span> with
 								  <span style="color: darkorange">TeXiFy IDEA plugin</span>
-								  — LaTeX, Python and JavaScript in one place with great autocompletion
-									and inverse search</li>
+								  — LaTeX, Python and JavaScript in one place with great autocompletion,
+									inverse search from PDF, git etc.</li>
 							</div>
 							<div class="fragment">
 								<li class="typesetting">
@@ -842,6 +844,43 @@
 						This shift is paving the way for a more efficient allocation of time and resources in educational environments.
 					</aside>
 				</section>
+				<section>
+					<h2>Instead of a conclusion</h2>
+					<ol>
+						<div class="fragment">
+							<li class="typesetting">
+								Reliable information sources have evolved,
+								but <span style="color: darkorange">the need for critical thinking and verification</span>
+								remains constant or even more important
+							</li>
+						</div>
+						<div class="fragment">
+							<li class="typesetting">
+								Incredible speeds give us <span style="color: darkorange">incredible opportunities</span>
+							</li>
+						</div>
+						<div class="fragment">
+							<li class="typesetting">
+								As a company, we should have
+								<span style="color: darkorange">"JetBrains Copilot"</span> everywhere
+							</li>
+						</div>
+						<div class="fragment">
+							<li class="typesetting">
+								Let's pioneer in integrating AI in education tools also, shaping a smarter, more
+								<span style="color: darkorange">efficient learning environment</span>
+							</li>
+						</div>
+					</ol>
+					<br><br>
+					<div class="fragment">
+						<h3>Text me anything!</h3>
+						<a class="nav-link" href="https://t.me/ovalur" title="Telegram"><i class="fab fa-telegram"></i><span class="menu-title sr-only">Telegram</span></a>
+						<a class="nav-link" href="https://github.com/avalur" title="Github"><i class="fab fa-github"></i><span class="menu-title sr-only">Github</span></a>
+						<a class="nav-link" href="https://www.instagram.com/ovalur" title="Instagram"><i class="fab fa-instagram"></i><span class="menu-title sr-only">Instagram</span></a>
+					</div>
+
+				</section>
             </div>
         </div>
 		<script src="../dist/reveal.js"></script>
@@ -865,8 +904,13 @@
 				margin: 0.08,
 
 				slideNumber: true,
-				// showSlideNumber: 'speaker',
+				showSlideNumber: 'speaker',
 				hashOneBasedIndex: true,
+
+  			    // Activate the scroll view
+  				// view: 'scroll',
+  				// Force the scrollbar to remain visible
+  				// scrollProgress: true,
 
 				// Bounds for smallest/largest possible scale to apply to content
 				minScale: 0.2,
