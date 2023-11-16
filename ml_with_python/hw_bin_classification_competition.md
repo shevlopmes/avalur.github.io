@@ -5,8 +5,8 @@ for a study group, without overall rating points on the platform.
 Join via the link: https://www.kaggle.com/t/57faade8f9d04f46929ac92c140444da
 
 Points for this task are distributed as follows:
-   * 20 points for any first submission
-   * 60 points for overcoming DTC_benchmark. Testing takes place in two stages. 
+  * 20 points for any first submission
+  * 60 points for overcoming DTC_benchmark. Testing takes place in two stages. 
 Half of the answers are checked immediately (open part) and the results are displayed on the public leaderboard. 
 The second half (closed part) will be checked after the end of the competition. 
 Of all the points, you will receive 40 for the result in the open part and 20 for the result in the closed part. 
