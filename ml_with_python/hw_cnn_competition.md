@@ -23,4 +23,4 @@ Points for this task are distributed as follows:
   Baseline notebook: 
   https://colab.research.google.com/github/avalur/avalur.github.io/blob/master/ml_with_python/hw_cnn_competition_baseline.ipynb
 
-  Good luck and enjoy your decision!
+  Good luck and enjoy your work!
