@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 	<head>
 		<meta charset="utf-8">
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -73,7 +73,7 @@
                             <div class="typesetting">
                                 <p>\[ p(y|x)p(x) = p(x, y) = p(x|y)p(y) \Rightarrow \]</p>
                                 <p>\[ \Rightarrow p(y|x) = \frac{p(x|y)p(y)}{p(x)} \]</p>
-                                <p>\[  p(x) = \int p(x|y)p(y)dy = \int p(x, y)dy = E_y p(x|y)\]</p>
+                                <p>\[ p(x) = \int p(x, y)dy = \int p(x|y)p(y)dy = E_y p(x|y)\]</p>
                             </div>
                         </div>
                     </section>
@@ -86,7 +86,7 @@
 
                                 <p style="text-align: left"><strong>Product Rule:</strong></p>
                                 \[ p(x_1, x_2, x_3, \dots , x_{n−1}, x_n) = p(x_1|x_2, x_3, \dots, x_{n−1}, x_n) \cdot \\
-                                    \cdot p(x_2|x_3, \dots, x_{n−1}, x_n) \dots p(x_{n−1}) \]
+                                    \cdot p(x_2|x_3, \dots, x_{n−1}, x_n) \cdot \ldots \cdot p(x_{n}) \]
                             </div>
                         </div>
                     </section>
@@ -107,7 +107,7 @@
                                 \]
 
                                 \[
-                                \mathrm{Posterior} = \frac{\mathrm{Likelihood}\ \cdot \mathrm{Prior}}{\mathrm{Evidence}}
+                                \mathrm{Posterior} = \frac{\mathrm{Likelihood}\cdot \mathrm{Prior}}{\mathrm{Evidence}}
                                 \]
                             </div>
                         </div>
@@ -155,24 +155,17 @@
                     </section>
                     <section>
                         <h3>Graphical Models</h3>
+                            $$p(x_1, x_2, x_3, x_4, x_5) = \\ p(x_1 | x_3) p(x_2 | x_4)p(x_3 | x_4, x_5)p(x_4)p(x_5)$$
+                            <img style="border-radius: 5%" src="images/graph.jpg" alt="graph" width="300" />
+                    </section>
+                    <section>
                         <div class="row">
                             <div class="column">
-                                $$p(x_1, x_2, x_3, x_4, x_5) = \\ p(x_1 | x_3) p(x_2 | x_4)p(x_3 | x_4, x_5)p(x_4)p(x_5)$$
+                                <br><br>
+                                For example, what influences a friend's mood?
                             </div>
                             <div class="column">
-                                <img src="images/graph.jpg" alt="graph" width="300" />
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <div class="row">
-                                    <div class="column">
-                                        For example, what influences a friend's mood?
-                                    </div>
-                                    <div class="column">
-                                        <img src="images/glad_student.jpg" alt="glad_student" width="300" />
-                                    </div>
-                                </div>
+                                <img style="border-radius: 5%" src="images/glad_student.jpg" alt="glad_student" width="500" />
                             </div>
                         </div>
                     </section>
@@ -191,7 +184,7 @@
                         </div>
                     </section>
                     <section>
-                        <h4 style="text-align: left">Properties of MaxLM:</h4>
+                        <h4 style="text-align: left">Properties of MaxL:</h4>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                                 <ul>
@@ -219,40 +212,69 @@
                         <h3 style="text-align: left">Comparison of Approaches</h3>
                         <table style="width:95%">
                           <tr>
-                            <th></th>
+                            <th>$\quad\quad\quad\quad$</th>
                             <th>Frequentist Approach (Fischer)</th>
                             <th>Bayesian Approach</th>
                           </tr>
-                          <tr>
-                            <th>Relationship to Randomness</th>
-                            <td>Cannot predict</td>
-                            <td>Can predict given enough information</td>
-                          </tr>
-                          <tr>
-                            <th>Values</th>
-                            <td>Random and deterministic</td>
-                            <td>All random</td>
-                          </tr>
-                          <tr>
-                            <th>Inference Method</th>
-                            <td>Maximum likelihood</td>
-                            <td>Bayes' Theorem</td>
-                          </tr>
-                          <tr>
-                            <th>Parameter Estimates</th>
-                            <td>Point estimates</td>
-                            <td>Posterior distribution</td>
-                          </tr>
-                          <tr>
-                            <th>Use Cases</th>
-                            <td>$n \gg d$</td>
-                            <td>Always</td>
-                          </tr>
                         </table>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+                            <table style="width:95%">
+                            <tr>
+                                <th>Relationship to Randomness</th>
+                                <td>Cannot predict</td>
+                                <td>Can predict given enough information</td>
+                            </tr>
+                            </table>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+                            <table style="width:95%">
+                                  <tr>
+                                    <th>Values            $\quad\quad\quad$</th>
+                                    <td>Random and deterministic</td>
+                                    <td>All random</td>
+                                  </tr>
+                             </table>
+                            </div>
+                        </div>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+                            <table style="width:95%">
+                                  <tr>
+                                    <th>Inference Method</th>
+                                    <td>Maximum likelihood</td>
+                                    <td>Bayes' Theorem</td>
+                                  </tr>
+                            </table>
+                            </div>
+                        </div>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+                            <table style="width:95%">
+                                  <tr>
+                                    <th>Parameter Estimates</th>
+                                    <td>Point estimates</td>
+                                    <td>Posterior distribution</td>
+                                  </tr>
+                            </table>
+                            </div>
+                        </div>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+                            <table style="width:95%">
+                              <tr>
+                                <th>Use Cases</th>
+                                <td>$n \gg d$</td>
+                                <td>Always</td>
+                              </tr>
+                            </table>
+                            </div>
+                        </div>
                     </section>
                     <section>
                         <h3>Relationship Between Frequentist and Bayesian Approaches</h3>
                         $$\lim\limits_{n \to \infty} p(\theta|x_1, \dots, x_n) = \delta(\theta - \theta_{\text{ML}})$$
+                        $\delta$ — Dirac delta function
                     </section>
                     <section>
                         <h3>Advantages of the Bayesian Approach</h3>
@@ -282,18 +304,20 @@
                                 <ul>
                                   <li>Analytical calculation</li>
                                   <li>Markov chain Monte Carlo (MCMC)</li>
-                                  <li>Variational inference (not covered in this course)</li>
+                                  <li><span style="color: gray">Variational inference (not covered in the first part of the course)</span></li>
                                 </ul>
                             </div>
                         </div>
                     </section>
+                </section>
+                <section>
                     <section>
                         <h3>Analytical Approach (conjugate distributions)</h3>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                                 <p>Let $p(x|\theta) = A(\theta)$ and $p(\theta) = B(\alpha)$</p>
 
-                                <p>The prior distribution of parameters $p(\theta)$ is called
+                                <p class="r-frame">The prior distribution of parameters $p(\theta)$ is called
                                     conjugate to $p(x|\theta)$ (conjugate priors),
                                     if the posterior distribution belongs to the same family as the prior
                                     $p(\theta|x) = B(\alpha^\prime)$</p>
@@ -320,7 +344,7 @@
                                         $p(\mu) = N(\mu|m,s^2)$
                                     </div>
                                     <div class="column">
-                                        <img src="images/gauss_graph.jpg" alt="gauss_graph" width=400 />
+                                        <img style="border-radius: 5%" src="images/gauss_graph.jpg" alt="gauss_graph" width=400 />
                                     </div>
                                 </div>
                             </div>
@@ -354,15 +378,17 @@
                 </section>
                 <section>
                     <section>
-                        <h2 style="text-align: left">Markov chain Monte Carlo</h2>
+                        <h2>Markov chain Monte Carlo</h2>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                                 <h3 style="text-align: left">Motivation</h3>
-                                <p>We'd like to be able to calculate mathematical expectations and
-                                other quantities according to the posterior distribution, known up to a constant.
-                                For example, we'd like to know the response of an ensemble consisting of an infinite number of algorithms :)
-                                We can sum up (integrate) the expected responses of the classifier
-                                according to the probability of the model parameters.</p>
+                                <ul>
+                                    <li>We'd like to be able to calculate mathematical expectations and
+                                        other quantities according to the posterior distribution, known up to a constant</li>
+                                    <li>For example, we'd like to know the response of an ensemble consisting of an infinite number of algorithms :)</li>
+                                    <li>We can sum up (integrate) the expected responses of the classifier,
+                                        according to the probability of the model parameters</li>
+                                </ul>
                             </div>
                         </div>
                     </section>
@@ -380,9 +406,9 @@
                                 <ul>
                                     <li>Invented by Stanislaw Ulam in 1949 when he was playing solitaire while ill and
                                         wondered what is the probability of being able to play out all the cards?
-                                        He didn't solve it combinatorically, but simply by the share of successful games.</li>
+                                        He didn't solve it combinatorically, but simply by the share of successful games</li>
                                     <li>The method was named after the Monte Carlo casino in Monaco for the sake of secrecy
-                                        since it was used in the Manhattan Project for the development of nuclear weapons in the USA.</li>
+                                        since it was used in the Manhattan Project for the development of nuclear weapons in the USA</li>
                                 </ul>
                             </div>
                         </div>
@@ -398,24 +424,32 @@
                                 x_i, y_i \sim U(0, 1)$$
                             </div>
                             <div class="column">
-                                <img src="images/monte_carlo.jpg" alt="monte_carlo" width=400 />
+                                <img style="border-radius: 5%" src="images/monte_carlo.jpg" alt="monte_carlo" width=400 />
                             </div>
                         </div>
                     </section>
                     <section>
                         <h2 style="text-align: left">Markov Chains</h2>
-
-                        <p>The sequence $x_1, x_2, \dots, x_{n-1}, x_n$ is a <i>Markov chain</i>, if</p>
+                        <div class="row">
+                            <div class="column">
+                                <br>
+                                <ul>
+                                    <li>Markov chains are used for modeling many probability distributions</li>
+                                    <li>That is, it's possible to construct a process where the sequence $x$
+                                        will appear to have been generated from a probability distribution</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <img style="border-radius: 5%" src="images/MarkovAA.jpg" alt="MarkovAA" width=600 />
+                                <p>Andrey Andreyevich Markov (senior), 1906</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <p>The sequence $x_1, x_2, \dots, x_{n-1}, x_n$ is
+                            a <i>Markov chain</i>, if</p>
 
                         <p>$$p(x_1, x_2, \dots, x_{n-1}, x_n) = p(x_n|x_{n-1}) \dots p(x_2|x_1)p(x_1)$$</p>
-
-                        <ul>
-                            <li>Markov chains are used for modeling many probability distributions</li>
-                            <li>That is, it's possible to construct a process where the sequence $x$
-                                will appear to have been generated from a probability distribution</li>
-                        </ul>
-                        <hr/>
-                        <p style="text-align: left">Andrey Andreyevich Markov (senior), 1906</p>
                     </section>
                     <section>
                         <h2>MCMC in Calculating Mathematical Expectations</h2>
@@ -434,20 +468,28 @@
                         </div>
                     </section>
                     <section>
-                        <h3 style="text-align: left">Gibbs Sampling</h3>
+                        <h3 style="text-align: left">Gibbs Sampling (1984)</h3>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p>An instance of the Metropolis-Hastings algorithm,
-                                    <a href="https://en.wikipedia.org/wiki/Gibbs_sampling">named after</a>
-                                    the distinguished scientist Josiah Gibbs.</p>
-                                <p>Suppose we derived the posterior distribution only up to a normalization constant:</p>
-                                $$p(x_1, x_2, x_3) = \frac{\hat p(x_1, x_2, x_3)}{C}$$
-
+                                <div class="row">
+                                    <div class="column">
+                                        <br>
+                                        <p>An instance of the Metropolis-Hastings algorithm,
+                                            <a href="https://en.wikipedia.org/wiki/Gibbs_sampling">named after</a>
+                                            the distinguished scientist Josiah Gibbs.</p>
+                                        <p>Suppose we derived the posterior distribution only up to a normalization constant:</p>
+                                        $$p(x_1, x_2, x_3) = \frac{\hat p(x_1, x_2, x_3)}{C}$$
+                                    </div>
+                                    <div class="column">
+                                        <img style="border-radius: 5%" src="images/Gibbs.jpeg" alt="Gibbs" width=400 />
+                                        <p>Josiah Willard Gibbs</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section>
                     <section>
-                        <p>We start with $(x_1^0, x_2^0, x_3^0)$ and within a loop, we perform the following procedure:</p>
+                        <p>We start with $(x_1^0, x_2^0, x_3^0)$, and within a loop, we perform the following procedure:</p>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                             <ul>
@@ -461,89 +503,51 @@
                             </div>
                         </div>
                     </section>
+                    <section>
+                        <h3>Sampling from a One-Dimensional Distribution</h3>
+
+                        <p style="text-align: left">Rejection Sampling</p>
+
+                        <div class="row">
+                            <div class="column">
+                                <p style="text-align: left">\(i = 0\), repeat many times:</p>
+                                <ul>
+                                    <li>sample \(y \sim q(y)\)</li>
+                                    <li>sample \(\xi \sim U[0;Cq(y)]\)</li>
+                                    <li><b>if</b> \(\xi < \hat p(y)\):
+                                        <ul>
+                                            <li>\(x_i = y\)</li>
+                                            <li>\(i = i+1\)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <img style="border-radius: 5%" src="images/sampling_1D.jpg" alt="sampling_1D" width="400" />
+                            </div>
+                        </div>
+
+                        <p style="text-align: left">The difficulty lies in choosing the parameter \(C\), it's often too large.</p>
+                    </section>
                 </section>
                 <section>
                     <section>
-                        <h3>Significant Events in Machine Learning</h3>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">1997: IBM Deep Blue defeats world chess champion Garry Kasparov</p>
+                        <h3>Summary</h3>
+
+                        <ul>
+                            <li>The frequentist approach is a limiting case of the Bayesian approach.</li>
+                            <li>The Bayesian approach has many nice properties:
                                 <ul>
-                                  <li>480 chess CPUs</li>
-                                  <li>search using alpha-beta pruning modification</li>
-                                  <li>two debut books</li>
+                                    <li>Regularization</li>
+                                    <li>Composability</li>
+                                    <li>Processing data "on the fly"</li>
+                                    <li>Ability to calculate various statistics</li>
+                                    <li>Ability to estimate confidence</li>
                                 </ul>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2004: self-driving cars competition — DARPA Grand Challenge</p>
-                                <ul>
-                                  <li>prize fund of $1 million</li>
-                                  <li>in the first race, the winner covered only 11.8 out of 230 km</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2006: Google Translate launched</p>
-                                <ul>
-                                  <li>initially <b>statistical</b> machine translation</li>
-                                  <li>mobile app appeared in 2010</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2011: 40 years of DARPA CALO (Cognitive Assistant that Learns and Organizes) development</p>
-                                <ul>
-                                  <li>Apple's Siri voice assistant launched</li>
-                                  <li>IBM Watson won the TV game "Jeopardy!"</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2011-2015: ImageNet — error rate reduced from 25% to 3.5% versus 5% in humans</p>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2015: Creation of the open company OpenAI by Elon Musk and Sam Altman, pledged to invest $1 billion</p>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2016: Google DeepMind beat the world champion of the game Go</p>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2018: At the Christie's auction, a painting, formally drawn by AI, sold for $432,500</p>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2020: AlphaFold 2 predicts the structure of proteins
-                                    with over 90% accuracy for about two-thirds of the proteins in the dataset</p>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2021: DALL-E appears — an AI system developed by OpenAI that can generate images
-                                    from textual descriptions, which has potential applications in creative industries</p>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2022: ChatGPT (Generative Pre-trained Transformer) developed by OpenAI —
-                                fastest-growing consumer software application in history</p>
-                            </div>
-                        </div>
+                            </li>
+                            <li>However, it is often computationally expensive.</li>
+                            <li>It is possible to use some advantages of the Bayesian approach without calculating the normalizing constant.</li>
+                        </ul>
                     </section>
                 </section>
             </div>
