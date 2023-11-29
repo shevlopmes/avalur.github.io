@@ -9,7 +9,7 @@ Points for this task are distributed as follows:
   * 10 points for overcoming sol2 (20 in total)
   * 10 points for overcoming sol3 (30 in total)
   * 10 points for overcoming sol6 (40 in total)
-  * 30 points for clear code in a notebook
+  * 30 points for clear code and report in a notebook
   * 30 points can be obtained for the completeness of the experiments. 
   You are expected to try several convolutional network architectures with different parameters, 
   maybe make an ensemble. The competition will last 3 weeks until December 19, 
