@@ -6,7 +6,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<title>Clustering</title>
+		<title>Semi- and un-supervised learning, clustering</title>
 
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
@@ -45,7 +45,7 @@
                     <h2>Machine learning hard</h2>
 					<div class="fragment" style="margin-bottom:20px;">
 							<div class="typesetting">
-								<h3>Lecture 1. Clustering</h3>
+								<h3>Semi- and un-supervised learning, clustering</h3>
 								<br />
 								Alex Avdiushenko <br />
 								February 7, 2024
@@ -734,8 +734,7 @@
                                     <span style="color:orange">under the condition that \( U \cup V \) does not contain objects with different labels</span></li>
                                     <li>Merge them into one cluster:<br>
                                     \( W = U \cup V \), \( С_t = С_{t-1} \cup \{W\}/\{U,V\} \)</li>
-                                    <li><b>for all</b> \( S \in C_t \)</li>
-                                    <li>Calculate \( R_{WS} \) using the Lance-Williams formula:<br>
+                                    <li><b>for all</b> \( S \in C_t \) calculate \( R_{WS} \) using the Lance-Williams formula:<br>
                                     \( R_{WS} = \alpha_U R_{US} + \alpha_V R_{VS} + \beta R_{UV} + \gamma |R_{US} - R_{VS}| \)</li>
                                 </ol>
                             </div>
