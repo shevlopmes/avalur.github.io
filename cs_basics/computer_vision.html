@@ -30,7 +30,7 @@
 </head>
 	<body onload="totalWrapper();">
 		<div class="reveal">
-			<div class="slides">
+			<aside class="slides">
 				<section>
 					<div>
 						<img src="images/nup_logo_dark.jpeg" alt="nup_logo" />
@@ -39,7 +39,7 @@
 					<h3>Computer vision intro</h3>
 					<br />
 					Alex Avdiushenko <br />
-					November 29, 2023
+					December 13, 2023
 				</section>
 				<section>
 					<section>
@@ -50,29 +50,33 @@
 					</section>
 					<section>
 						<h2>What is vision?</h2>
-						<ul>
-							<li>Eyes are the human organ that provides 80 percent of information about
-								the surrounding world to a person. (Though, it depends on how you calculate it)</li>
-							<li>Vision is the extraction of information from the visual signal hitting the retina</li>
-						</ul>
-						<div>
-							<img src="images/Illustration_of_a_detailed_human_eye_anatomy.png" alt="vision" width="40%"/>
+						<div class="column">
+							<ul>
+								<li>Eyes are the human organ that provides 80% of information about
+									the surrounding world to a person</li>
+								<li>Vision is the extraction of information from the visual signal hitting the retina</li>
+							</ul>
+						</div>
+						<div class="column">
+							<img style="border-radius: 5%"
+								 src="images/Illustration_of_a_detailed_human_eye_anatomy.png" alt="vision" width="80%"/>
 						</div>
 					</section>
 					<section>
 						<h2>Computer vision</h2>
 						<ul>
-							<li>The same concept, only instead of the brain it's a computer,
-								and instead of an eye it's a camera</li>
+							The same concept, only instead of the brain it's a computer,
+							and instead of an eye it's a camera
 						</ul>
 						<div>
-							<img src="images/cv_illustration.png" alt="cv_illustration" width="40%"/>
+							<img style="border-radius: 5%"
+								 src="images/cv_illustration.png" alt="cv_illustration" width="40%"/>
 						</div>
 					</section>
 					<section>
-						<h2>General Challenge in Computer Vision</h2>
+						<h2 style="text-align: left">General Challenge in Computer Vision</h2>
                         <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
+                            <div class="typesetting r-frame">
 							<p>To learn how to respond to the same questions that a person can answer by looking at a photo or video.
 								This is a kind of Turing test for a computer vision system.</p>
 							</div>
@@ -84,7 +88,7 @@
                             <div class="typesetting">
 								<div class="row">
 								  <div class="column">
-									<img src="images/cv_today.png" alt="cv_today" />
+									<img style="border-radius: 5%" src="images/cv_today.png" alt="cv_today" />
 								  </div>
 								  <div class="column">
 									<ul>
@@ -98,16 +102,16 @@
 						</div>
 					</section>
 					<section>
-						<h2>Existing Obstacles: Object</h2>
-						<img src="images/obstacles.png" alt="obstacles" width="80%"/>
+						<h3>Existing Obstacles: Object</h3>
+						<img style="border-radius: 5%" src="images/obstacles.png" alt="obstacles" width="80%"/>
 					</section>
 					<section>
-						<h2>How We See an Object</h2>
-						<img src="images/lamps.png" alt="lamps" width="80%"/>
+						<h3>How We See an Object</h3>
+						<img style="border-radius: 5%" src="images/lamps.png" alt="lamps" width="80%"/>
 					</section>
 					<section>
-						<h2>Semantic gap: from low-level features to the objects</h2>
-						<img src="images/low_to_high.png" alt="low_to_high" width="70%"/>
+						<h3>Semantic gap: from low-level features to the objects</h3>
+						<img style="border-radius: 5%" src="images/low_to_high.png" alt="low_to_high" width="50%"/>
 					</section>
 				</section>
 				<section>
@@ -130,21 +134,26 @@
 					</section>
 					<section>
 						<img src="images/optical-b1.gif" alt="optical" width="50%"/>
+						<aside class="notes">
+							There is a spinning girl on the slide — which leg is her raised, right or left?
+						</aside>
 					</section>
 					<section>
 						<img src="images/optical-b-explained.gif" alt="optical-b-explained" width="100%"/>
 					</section>
 					<section>
-						<h2>Brightness Adaptation and Contrast Sensitivity</h2>
-						<p>The visual system can adapt to a brightness range of
-							around $10^{10}$. The subjective brightness
-							is a logarithmic function of the physical brightness.</p>
+						<h2 style="text-align: left">Brightness Adaptation and Contrast Sensitivity</h2>
+						<ul>
+							<li>The visual system can adapt to a brightness range of
+							around $10^{10}$</li>
+							<li>The subjective brightness is a logarithmic function of the physical brightness</li>
+						</ul>
 					</section>
 					<section>
 						<h2 style="text-align: left">Photopic and Scotopic vision</h2>
 							<div class="fragment" style="margin-bottom:20px;">
 								<div class="typesetting">
-								Are two different types of vision that humans possess,
+								They are two different types of vision that humans possess,
 								and they function under different light conditions.
 								<ul>
 									<li>Photopic Vision: This type of vision dominates in well-lit conditions,
@@ -190,11 +199,12 @@
 					</section>
 					<section>
 						<h2>Viola-Jones face detector, 2001</h2>
-						<img src="images/lena.png" alt="lena" width="50%" />
+						<img style="border-radius: 5%" src="images/lena.png" alt="lena" width="50%" />
 					</section>
 					<section>
 						<h2>Deep learning, 2010+</h2>
-						<img src="images/dogsplayingpoker_3370414k.jpg" alt="dogsplayingpoker" width="70%" />
+						<img style="border-radius: 5%"
+							 src="images/dogsplayingpoker_3370414k.jpg" alt="dogsplayingpoker" width="70%" />
 					</section>
 				</section>
 				<section>
@@ -203,8 +213,9 @@
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
 								<p>Color is a psychological property of our vision that arises when observing objects and light,
-									not the physical properties of objects and light <br>
-									(S. Palmer, Vision Science: Photons to Phenomenology).</p>
+									not the physical properties of objects and light.<br></p>
+								<hr>
+								<p style="text-align: left">S. Palmer, Vision Science: Photons to Phenomenology.</p>
 							</div>
 						</div>
 					</section>
@@ -224,7 +235,7 @@
 					</section>
 					<section>
 						<h2>Light physics</h2>
-						<img src="images/light_physics.png" alt="light_physics" width="60%">
+						<img style="border-radius: 5%" src="images/light_physics.png" alt="light_physics" width="60%">
 					</section>
 					<section data-background-color="#ffffff">
 						<h2>Reflected light</h2>
@@ -272,57 +283,78 @@
 					</section>
 					<section>
 						<h2>CIE XYZ</h2>
-						<ul>
-							<li>One of the first mathematically defined color spaces
-								that could represent all colors visible to the average human</li>
-							<li>Is based on the idea that every color perceived by the human eye
-								can be represented as a combination of three primary colors (X, Y, Z)</li>
-							<li><b>Color Gamut and Color Spaces:</b>
-								All colors that can be represented by a specific set of primaries forms a color gamut.
-								The CIE XYZ color space serves as a reference space to compare
-								other color spaces or gamuts.</li>
-						</ul>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+								<ul>
+									<li>One of the first mathematically defined color spaces
+										that could represent all colors visible to the average human</li>
+									<li>Is based on the idea that every color perceived by the human eye
+										can be represented as a combination of three primary colors (X, Y, Z)</li>
+									<li><b>Color Gamut and Color Spaces:</b>
+										All colors that can be represented by a specific set of primaries forms a color gamut.
+										The CIE XYZ color space serves as a reference space to compare
+										other color spaces or gamuts</li>
+								</ul>
+							</div>
+						</div>
 					</section>
 					<section data-background-color="#ffffff">
 						<img src="images/gamuts.png" width="80%">
 					</section>
 					<section>
 						<h2>Digital Image Formats</h2>
-						<p style="text-align: left">Current typical display adapters use up to <b>24-bits of information for each pixel</b>:
-						8-bit per component multiplied by three components (RGB) with values of 0–255.</p>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+								<p style="text-align: left">Current typical display adapters use up to <b>24-bits of information for each pixel</b>:
+								8-bit per component multiplied by three components (RGB) with values of 0–255.</p>
 
-						<p style="text-align: left">With this system, $16\ 777\ 216 ( = 256^3 = 2^{24}$) discrete combinations
-							of R, G, and B values are allowed, providing millions of different
-							(though not necessarily distinguishable) hue, saturation and lightness shades.</p>
+								<p style="text-align: left">With this system, $16\ 777\ 216 ( = 256^3 = 2^{24}$) discrete combinations
+									of R, G, and B values are allowed, providing millions of different
+									(though not necessarily distinguishable) hue, saturation and lightness shades.</p>
+							</div>
+						</div>
 					</section>
 					<section>
 						<h2 style="text-align: left"><a href="https://en.wikipedia.org/wiki/GIF">GIF</a></h2>
-						<p style="text-align: left">Graphics Interchange Format — bitmap image format.
-						GIF images are compressed using the <a href="https://en.wikipedia.org/wiki/Lempel–Ziv–Welch">Lempel–Ziv–Welch</a> (LZW)
-							lossless data compression technique to reduce the file size without degrading the visual quality.</p>
-						<h2 style="text-align: left"><a href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a></h2>
-						<p style="text-align: left">Portable Network Graphics — was developed as an improved, <b>non-patented</b>
-							replacement for GIF. Unofficially, the initials PNG stood for the recursive acronym "PNG's not GIF", also lossless.</p>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+								<p style="text-align: left">Graphics Interchange Format — bitmap image format.
+								GIF images are compressed using the <a href="https://en.wikipedia.org/wiki/Lempel–Ziv–Welch">Lempel–Ziv–Welch</a> (LZW)
+									lossless data compression technique to reduce the file size without degrading the visual quality.</p>
+								<h2 style="text-align: left"><a href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a></h2>
+								<p style="text-align: left">Portable Network Graphics — was developed as an improved, <b>non-patented</b>
+									replacement for GIF. Unofficially, the initials PNG stood for the recursive acronym "PNG's not GIF", also lossless.</p>
+							</div>
+						</div>
 					</section>
 					<section>
 						<h2 style="text-align: left"><a href="https://en.wikipedia.org/wiki/JPEG">JPEG</a></h2>
-						<ul style="text-align: left">
-							<li>Joint Photographic Experts Group — is a commonly used method of
-							lossy compression for digital images, particularly produced by digital photography.</li>
-							<li>The degree of compression can be adjusted, allowing a selectable tradeoff
-								between storage size and image quality.</li>
-							<li>JPEG typically achieves 10:1 compression with little perceptible loss in image quality.
-							It uses discrete cosine transform and quantization.</li>
-						</ul>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+								<ul style="text-align: left">
+									<li>Joint Photographic Experts Group is a commonly used method of
+									lossy compression for digital images, particularly produced by digital photography</li>
+									<li>The degree of compression can be adjusted, allowing a selectable tradeoff
+										between storage size and image quality</li>
+									<li>JPEG typically achieves 10:1 compression with little perceptible loss in image quality.
+									It uses discrete cosine transform and quantization</li>
+								</ul>
+							</div>
+						</div>
 					</section>
 					<section>
 						<h2 style="text-align: left"><a href="https://en.wikipedia.org/wiki/WebP">WebP</a></h2>
-						<ul style="text-align: left">
-							<li>WebP is a raster graphics file format developed by Google
-							intended as a replacement for JPEG, PNG, and GIF file formats =)</li>
-							<li>It supports both lossy and lossless compression, as well as animation and alpha transparency.</li>
-							<li>Google announced the WebP format in September 2010, and released
-								the first stable version of its supporting library in April 2018.</ul>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+								<ul style="text-align: left">
+									<li>WebP is a raster graphics file format developed by Google
+									intended as a replacement for JPEG, PNG, and GIF file formats =)</li>
+									<li>It supports both lossy and lossless compression, as well as animation and alpha transparency</li>
+									<li>Google announced the WebP format in September 2010, and released
+										the first stable version of its supporting library in April 2018</li>
+								</ul>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section>
@@ -330,7 +362,7 @@
 						Python image practice</a></h2>
 				</section>
 				<section>
-					<h2>Dream big, work hard.</h2>
+					<h2>Dream big, work hard</h2>
 				</section>
 			</div>
 		</div>
