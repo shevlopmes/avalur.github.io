@@ -56,21 +56,25 @@
 					<h3>Comparison of Different Programming Languages</h3>
 					<br />
 					Alex Avdiushenko <br />
-					December 20, 2023
+					January 19, 2024
 				</section>
 				<section>
 					<section>
 						<h2>Why should we choose?</h2>
 						<div class="fragment" style="margin-bottom:20px;">
 							<div class="typesetting">
-								<p style="text-align: left">Programming languages has</p>
+								<p style="text-align: left">Programming languages have</p>
 								<ul>
 									<li>different inherent characteristics</li>
-									<li>domains of applications</li>
+									<li>specific domains of applications</li>
 									<li>simplicity, efficiency, readability, availability of libraries,
-										short & long term utility, etc.</li>
+										short- and long-term utility, etc.</li>
 								</ul>
-
+							</div>
+						</div>
+						<br><br>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
 								<p class="r-frame">It is not about superiority!</p>
 							</div>
 						</div>
@@ -295,7 +299,7 @@ _start:
 						  </div>
 						  <div class="column" style="text-align: left">
 							  <br>
-							  Techical and scientific docs creation.
+							  Techical and scientific docs creation
 						  </div>
 						</div>
 					</section>
@@ -303,10 +307,14 @@ _start:
 				<section>
 					<section>
 					    <h2>Static vs. Dynamic Typing</h2>
-							<p>In this section, we'll explore the differences between statically typed and
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<p>In this section, we'll explore the differences between statically typed and
 								dynamically typed languages and understand what implications these typing disciplines
 								have on our code.
-							</p>
+								</p>
+							</div>
+						</div>
 						<br>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
@@ -335,10 +343,10 @@ _start:
                     </section>
                     <section>
                         <div>
-                            <p>Dynamic (duck) typing —
+                            <p>Dynamic (duck) typing:
                                 "If it looks like a duck, swims like a duck and quacks like a duck,
                                 then it probably is a duck."</p>
-                            <img src="images/duck.webp" alt="duck" width="40%"/>
+                            <img style="border-radius: 5%" src="images/duck.webp" alt="duck" width="40%"/>
                         </div>
                     </section>
                     <section data-background-color="#fdf6e3">
@@ -380,24 +388,28 @@ _start:
 					<!-- Examples from Languages -->
 					<section id="examples-from-languages">
 						<h2>Examples from Various Languages</h2>
-							<div class="typesetting">
 								<ul>
 								<div class="fragment" style="margin-bottom:20px;">
-									<li><span style="color: orange">Java:</span> A statically typed language. Once a variable is declared, you can't change its type</li>
-									<li><span style="color: orange">Python:</span> A dynamically typed language. You can assign any kind of value to a variable</li>
+									<div class="typesetting">
+										<li><span style="color: orange">Java:</span> A statically typed language. Once a variable is declared, you can't change its type</li>
+										<li><span style="color: orange">Python:</span> A dynamically typed language. You can assign any kind of value to a variable</li>
+									</div>
 								</div>
 								<div class="fragment" style="margin-bottom:20px;">
-									<li><span style="color: orange">C:</span> A statically typed language, where you need to declare a variable's type before its use</li>
-									<li><span style="color: orange">JavaScript:</span> A dynamically typed and weakly typed language. You can change a variable's type,
-										and you can also perform operations on incompatible types</li>
+									<div class="typesetting">
+										<li><span style="color: orange">C:</span> A statically typed language, where you need to declare a variable's type before its use</li>
+										<li><span style="color: orange">JavaScript:</span> A dynamically typed and weakly typed language. You can change a variable's type,
+											and you can also perform operations on incompatible types</li>
+									</div>
 								</div>
 								<div class="fragment" style="margin-bottom:20px;">
-									<li><span style="color: orange">Go:</span> A statically typed language that emphasizes simplicity and reliability</li>
-									<li><span style="color: orange">Rust:</span> A statically typed language that guarantees memory safety
-										and prevents null pointer dereferencing</li>
+									<div class="typesetting">
+										<li><span style="color: orange">Go:</span> A statically typed language that emphasizes simplicity and reliability</li>
+										<li><span style="color: orange">Rust:</span> A statically typed language that guarantees memory safety
+											and prevents null pointer dereferencing</li>
+									</div>
 								</div>
 								</ul>
-							</div>
 					</section>
 				</section>
 				<section>
@@ -480,14 +492,11 @@ _start:
 								it doesn't create machine code — it creates bytecode.
 								JVM is a part of the Java Runtime Environment (JRE), which interprets this bytecode
 								and runs the Java program</li>
-									<li>This provides Java with its infamous "Write Once, Run Anywhere" capability
+									<li>This provides Java with its [in]famous "Write Once, Run Anywhere" capability
 										and makes Java highly portable</li>
 								</ul>
 							</div>
 						</div>
-					</section>
-					<section>
-						<img src="images/conc_vs_par.png" alt="conc_vs_par" width="60%">
 					</section>
 					<section>
 						<h3 style="text-align: left">Concurrency vs. Parallelism</h3>
@@ -505,14 +514,19 @@ _start:
 							</div>
 						</div>
 					</section>
+					<section data-background-color="white">
+						<img style="border-radius: 5%" src="images/conc_vs_par.png" alt="conc_vs_par" width="60%">
+					</section>
 					<section>
-						<h3>Language Approaches</h3>
+						<h3>Language Approaches to Concurrency</h3>
 						<div class="fragment" style="margin-bottom:20px;">
 							<div class="typesetting">
 								<ul>
 									<li><span style="color: orange">Java</span> uses Threads and has rich built-in support for multithreading programming</li>
+									<br>
 									<li>In <span style="color: orange">C</span>, parallelism can be achieved through multiple processes using fork system call,
 										and multiple threads using library like POSIX threads (pthreads)</li>
+									<br>
 									<li>Historically <span style="color: orange">JavaScript</span> was single-threaded, but with HTML5 Web Workers API,
 										<span style="color: orange">JavaScript</span> code can run in a background thread separate from the main execution thread</li>
 								</ul>
@@ -526,6 +540,7 @@ _start:
 									and process-based parallelism via its multiprocessing library.
 									However, due to the Global Interpreter Lock (GIL),
 									the threading library doesn't allow true parallelism in <span style="color: orange">Python</span></li>
+								<br>
 								<li><span style="color: orange">Go</span> has built-in support for parallelism via goroutines
 									(lightweight threads managed by the <span style="color: orange">Go</span> runtime) and
 									channels for communication between those goroutines</li>
@@ -536,6 +551,7 @@ _start:
 						<div class="typesetting">
 							<ul>
 								<li><span style="color: orange">Kotlin</span> allows to launch coroutines that are very light-weighted threads</li>
+								<br>
 								<li><span style="color: orange">Rust</span> supports concurrency through a combination of OS threads
 									and lighter weight "green" threads or tasks.
 									In <span style="color: orange">Rust</span>, sharing data between threads is carefully controlled,
@@ -619,7 +635,8 @@ _start:
 									<li>We started with discussing the importance of
 										comparing different programming languages and the key factors</li>
 									<li>We delved into the mechanics of Compilation and Interpretation,
-										examining how languages like C and Python differ in their execution</li>
+										examining how languages like <span style="color: orange">C</span> and
+										<span style="color: orange">Python</span> differ in their execution</li>
 									<li>A key differentiation between Concurrency and Parallelism was discussed</li>
 									<li>Importance of Context: It's worth re-emphasizing that
  										there is no universal "best" programming language</li>
@@ -629,25 +646,24 @@ _start:
 					</section>
 					<section>
 						<div class="typesetting">
-							<ul>
-								<li>For instance, you might want to use <span style="color: orange">Python</span> for quick prototyping and data analysis,
-									<span style="color: orange">Java</span> for building enterprise-scale applications,
-									<span style="color: orange">JavaScript</span> for web development, <span style="color: orange">Rust</span> for system programming,
-									or <span style="color: orange">Go</span> for high-performance concurrent systems</li>
-							</ul>
+							<p style="text-align: left">For instance, you might want to use <span style="color: orange">Python</span> for quick prototyping and data analysis,
+								<span style="color: orange">Java</span> for building enterprise-scale applications,
+								<span style="color: orange">JavaScript</span> for web development, <span style="color: orange">Rust</span> for system programming,
+								or <span style="color: orange">Go</span> for high-performance concurrent systems</p>
 						</div>
-						<br>
+						<br><br>
 						<div class="fragment" style="margin-bottom:20px;">
 							<div class="typesetting">
-							<h2>What else to see?</h2>
+							<h2>What else to watch?</h2>
 							<p><a href="https://youtu.be/XZ3w_jec1v8?si=sEyP97XDNXzUZ8hn">An incredible presentation</a>
 								on the "economics" of programming languages
 								from the creator of the Elm programming language</p>
 							</div>
 						</div>
+						<br>
 						<div class="fragment" style="margin-bottom:20px;">
 							<div class="typesetting">
-							<h2>Dream big, work hard.</h2>
+							<h2>Dream big, work hard =)</h2>
 							</div>
 						</div>
 					</section>
