@@ -6,9 +6,9 @@ Join via the link: https://www.kaggle.com/t/e42e7d6fcf944836b7db7510ef6344c2
 
 Points for this task are distributed as follows:
   * 10 points for overcoming base_solution
-  * 10 points for overcoming sol2 (20 in total)
-  * 10 points for overcoming sol3 (30 in total)
-  * 10 points for overcoming sol6 (40 in total)
+  * 10 points for overcoming 0.76+, sol2 (20 in total)
+  * 10 points for overcoming 0.81+, sol3 (30 in total)
+  * 10 points for overcoming 0.87+, sol6 (40 in total)
   * 30 points for clear code and report in a notebook
   * 30 points can be obtained for the completeness of the experiments. 
   You are expected to try several convolutional network architectures with different parameters, 
