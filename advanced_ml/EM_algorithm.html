@@ -42,10 +42,10 @@
 					<div>
 						<img src="./images/nup_logo_dark.jpeg" alt="nup_logo" />
 					</div>
-                    <h2>Machine learning hard</h2>
+                    <h2>Advanced machine learning</h2>
 					<div class="fragment" style="margin-bottom:20px;">
 							<div class="typesetting">
-								<h3>Expectetion-Minimization algorithm</h3>
+								<h3>Expectation-Minimization algorithm</h3>
 								<br />
 								Alex Avdiushenko<br />
 								February 14, 2024
@@ -142,7 +142,7 @@
                     </section>
                     <section data-background-color="#ffffff">
                         <div>
-                            <img src="images/you-wont-be-disappointed-if-you-have-no-expectation.jpg" alt="exp_mem" width="800" />
+                            <img src="images/you-wont-be-disappointed-if-you-have-no-expectation.jpg" alt="exp_mem" width="1000" />
                         </div>
                     </section>
                     <section>
@@ -154,17 +154,17 @@
 
                                 <p>Gaussian:</p>
                                 <div>
-                                    <img src="images/gauss_1.jpg" alt="Gaussian distribution" width="400" />
+                                    <img src="images/gauss_1.jpg" alt="Gaussian distribution" width="600" />
                                 </div>
 
                                 <p>Multiple Gaussians:</p>
                                 <div>
-                                    <img src="images/gauss_3.jpg" alt="Multiple Gaussian distributions" width="400" />
+                                    <img src="images/gauss_3.jpg" alt="Multiple Gaussian distributions" width="600" />
                                 </div>
 
                                 <p>Unknown Distribution:</p>
                                 <div>
-                                    <img src="images/gauss_unknown.jpg" alt="Unknown distribution" width="400" />
+                                    <img src="images/gauss_unknown.jpg" alt="Unknown distribution" width="600" />
                                 </div>
 
                                 <p>We can introduce the Gaussian number and reduce the problem to
@@ -206,7 +206,7 @@
                                 $$ \log p(X| \theta) =
                                    \sum\limits_{i=1}^n \log p(x_i|\theta) \geq \sum\limits_{i=1}^n \mathscr{L}(q_i, \theta) \underset{q, \theta}{\to} \max
                                 $$
-                                <p>It's easy to maximize for $\theta$ if we know $q$ and vice versa.</p>
+                                <p style="text-align: left">It's easy to maximize for $\theta$ if we know $q$ and vice versa.</p>
                             </div>
                         </div>
                     </section>
@@ -240,12 +240,12 @@
                     <section>
                         <div class="fragment">
                             <div class="typesetting">
-                                <p>The joint probability of $x_i$ and $z_i$ given $\theta$ can be represented as:</p>
+                                <p style="text-align: left">The joint probability of $x_i$ and $z_i$ given $\theta$ can be represented as:</p>
 
                                 $$ p(x_i, z_i|\theta) = p(x_i|z_i,\theta)p(z_i|\theta)
                                     = N(x_i|\mu_{z_i}, \sigma_{z_i}^2) \pi_{z_i} $$
 
-                                <p>Parameters: $\{\mu_j, \sigma_j, \pi_j\}$, here $\pi_j$ is a priori probability of the
+                                <p style="text-align: left">Parameters: $\{\mu_j, \sigma_j, \pi_j\}$, here $\pi_j$ is a priori probability of the
                                     $j$-th Gaussian (hidden variable $z_i$)</p>
                             </div>
                         </div>
@@ -392,7 +392,8 @@
                         \sum\limits_{i=1}^n E_{z_i} \log p(x_i| z_i, \theta) = \\
                          = \sum\limits_{i=1}^n E_{z_i} \left[-\frac{D}{2}\log2\pi-D\log\sigma-\frac{1}{2\sigma^2}\left((x_i - \mu)-Wz_i\right)^T\left((x_i - \mu)-Wz_i\right) \right] = \\
                          = const(\sigma) - \frac{1}{2\sigma^2} \sum\limits_{i=1}^n E_{z_i} \left[(x_i - \mu)^T(x_i - \mu) - 2(x_i - \mu)^T Wz_i + z_i^TW^T Wz_i \right] = \\
-                         = const(\sigma) - \frac{1}{2\sigma^2} \sum\limits_{i=1}^n \left[(x_i - \mu)^T(x_i - \mu) - 2(x_i - \mu)^T W E_{z_i}z_i + tr(W^T WE_{z_i}z_iz_i^T) \right]
+                         = const(\sigma) - \\
+                        - \frac{1}{2\sigma^2} \sum\limits_{i=1}^n \left[(x_i - \mu)^T(x_i - \mu) - 2(x_i - \mu)^T W E_{z_i}z_i + tr(W^T WE_{z_i}z_iz_i^T) \right]
                         $$
                     </section>
                     <section>
@@ -402,7 +403,7 @@
                             W^* = \left( \sum\limits_{i=1}^n (x_i - \mu) E_{z_i} z_i^T \right) \left( \sum\limits_{i=1}^n E_{z_i} z_i z_i^T \right)^{-1}
                         $$
 
-                        <p>We can calculate the expectations since we know the distribution $q$ from the previous E-step.</p>
+                        <p style="text-align: left">We can calculate the expectations since we know the distribution $q$ from the previous E-step.</p>
                     </section>
                     <section>
                         <h3 style="text-align: left">Comparison of Runtime Estimates</h3>
@@ -447,7 +448,7 @@
                                 <ul>
                                   <li>A common metric between probabilistic distributions is the Kullback-Leibler distance (KL-divergence)</li>
                                   <li>The EM algorithm allows iterative solutions to complex problems by dividing them into two steps</li>
-                                  <li>Probabilistic Principal Component Analysis using the EM algorithm</li>
+                                  <li>Probabilistic Principal Component Analysis used the EM algorithm</li>
                                 </ul>
                             </div>
                         </div>
