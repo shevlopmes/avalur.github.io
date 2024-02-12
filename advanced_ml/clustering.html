@@ -15,12 +15,6 @@
         <!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
 
-		<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-		<script defer src="https://pyscript.net/latest/pyscript.js"></script>
-		<py-config>
-			terminal = false
-#            packages = ["numpy", "pandas", "matplotlib", "scikit-learn"]
-		</py-config>
 		<style>
 			.column {
 			  float: left;
@@ -48,7 +42,7 @@
 								<h3>Semi- and un-supervised learning, clustering</h3>
 								<br />
 								Alex Avdiushenko <br />
-								February 7, 2024
+								February 13, 2024
 							</div>
 					</div>
                 </section>
@@ -60,8 +54,8 @@
                             <div class="typesetting">
                                 <p style="text-align: left"><strong>Given</strong></p>
                                 <ul>
-                                    <li>\(X\) — object space</li>
-                                    <li>\(X^\ell = \{x_1, \dots, x_\ell \}\) — training sample</li>
+                                    <li>\(X\) — object's space</li>
+                                    <li>\(X^\ell = \{x_1, \dots, x_\ell \}\) — training samples</li>
                                     <li>\(\rho: X \times X \to [0, \infty)\) — distance function between objects</li>
                                 </ul>
                             </div>
@@ -69,10 +63,10 @@
 
                         <div class="fragment">
                             <div class="typesetting">
-                                <p style="text-align: left"><strong>Find</strong></p>
+                                <p style="text-align: left"><strong>The task is to find</strong></p>
                                 <ul>
-                                    <li>\(Y\) — set of clusters</li>
                                     <li>\(a: X \to Y\) — clustering algorithm</li>
+                                    <li>where \(Y\) is set of clusters</li>
                                 </ul>
 
                                 <p style="text-align: left">such that</p>
@@ -91,7 +85,7 @@
                                 <p style="text-align: left">The solution to the clustering task is fundamentally ambiguous:</p>
 
                                 <ul>
-                                    <li>there is no exact formulation of the clustering task</li>
+                                    <li>there is no correct math formulation of the clustering task</li>
                                     <li>there are many criteria for the quality of clustering</li>
                                     <li>there are many heuristic methods of clustering</li>
                                     <li>the number of clusters \(|Y|\), as a rule, is not known in advance</li>
@@ -100,6 +94,7 @@
                                 </ul>
                             </div>
                         </div>
+                        <br><br>
                         <div class="fragment">
                             <div class="typesetting">
                                 <div class="r-frame">
@@ -120,7 +115,7 @@
                                 <ul>
                                   <li><strong>Simplify further data processing</strong>
                                     <ul>
-                                      <li>divide the set \(X^\ell\) into groups of similar objects to work with each group separately (tasks of classification, regression)</li>
+                                      <li>divide the set \(X^\ell\) into groups of similar objects to work with each group separately (tasks of classification or regression)</li>
                                     </ul>
                                   </li>
                                   <li><strong>Reduce the volume of stored data</strong>
@@ -128,9 +123,9 @@
                                       <li>keep one representative from each cluster (data compression tasks)</li>
                                     </ul>
                                   </li>
-                                  <li><strong>Identify atypical objects</strong>
+                                  <li><strong>Identify atypical objects (outliers)</strong>
                                     <ul>
-                                      <li>those that do not fit into any of the clusters (one-class classification tasks)</li>
+                                      <li>those that do not fit into any of the clusters</li>
                                     </ul>
                                   </li>
                                   <li><strong>Construct a hierarchy of the set of objects</strong>
@@ -243,7 +238,7 @@
                         $X^k =
                          \begin{array}{c}
                          \{x_1, \dots, x_k \} \\
-                         \color{red}{\{y_1, \dots, y_k \}} \\
+                         \color{orange}{\{y_1, \dots, y_k \}} \\
                          \end{array}$ — labeled data
                         <br>
                         $U = \{x_{k+1}, \dots, x_\ell \}$ — unlabeled data
@@ -252,10 +247,10 @@
                         <ul>
                             <li>Semi-supervised learning (SSL): construct a classification algorithm $a: X \to Y$</li>
                             <li>Transductive learning:
-                            knowing ${\color{red}\text{all}}\ \{x_{k+1}, \dots, x_\ell \}$, obtain labels $\{a_{k+1}, \dots, a_\ell\}$</li>
+                            knowing ${\color{orange}\text{all}}\ \{x_{k+1}, \dots, x_\ell \}$, obtain labels $\{a_{k+1}, \dots, a_\ell\}$</li>
                         </ul>
                     </section>
-                    <section data-background-color="#ffffff">
+                    <section data-background-color="antiquewhite">
                         <h3>SSL Does Not Reduce to Classification</h3>
 
                         <p><strong>Example 1: </strong>Class densities restored.</p>
@@ -271,7 +266,7 @@
                           </tr>
                         </table>
                     </section>
-                    <section data-background-color="#ffffff">
+                    <section data-background-color="antiquewhite">
                         <h3>SSL Does Not Reduce to Classification</h3>
 
                         <p><strong>Example 2: </strong>Classification methods
@@ -286,7 +281,7 @@
                             <b>Question 2:</b> Does SSL reduce to clustering?
                         </div>
                     </section>
-                    <section data-background-color="#ffffff">
+                    <section data-background-color="antiquewhite">
                         <h3>However, SSL Also Does Not Reduce to Clustering</h3>
 
                         <p><strong>Example 3: </strong>Clustering methods do not consider the priority of labeling over cluster structure</p>
@@ -297,92 +292,115 @@
                     </section>
                     <section>
                         <h3 style="text-align: left">Clustering Quality Criteria</h3>
-                        <p>Suppose <strong>only</strong> pairwise distances between objects are known.</p>
+                        <div class="fragment">
+                            <div class="typesetting">
+                                <p>Suppose <strong>only</strong> pairwise distances between objects are known.</p>
 
-                        <p style="text-align: left">Average intra-cluster distance:</p>
-                        $$F_0 = \frac{\sum\limits_{i < j}[a_i = a_j] \rho(x_i, x_j)}{\sum\limits_{i < j}[a_i = a_j]}
-                        \to \min$$
+                                <p style="text-align: left">Average intra-cluster distance:</p>
+                                $$F_0 = \frac{\sum\limits_{i < j}[a_i = a_j] \rho(x_i, x_j)}{\sum\limits_{i < j}[a_i = a_j]}
+                                \to \min$$
 
-                        <p style="text-align: left">Average inter-cluster distance:</p>
-                        $$F_1 = \frac{\sum\limits_{i < j}[a_i \neq a_j] \rho(x_i, x_j)}{\sum\limits_{i < j}[a_i \neq a_j]}
-                        \to \max$$
+                                <p style="text-align: left">Average inter-cluster distance:</p>
+                                $$F_1 = \frac{\sum\limits_{i < j}[a_i \neq a_j] \rho(x_i, x_j)}{\sum\limits_{i < j}[a_i \neq a_j]}
+                                \to \max$$
 
-                        <p style="text-align: left">Ratio of functionals: $F_0 / F_1 \to \min$</p>
+                                <p style="text-align: left">Ratio of functionals: $F_0 / F_1 \to \min$</p>
+                            </div>
+                        </div>
                     </section>
                     <section>
                         <h3 style="text-align: left">Clustering Quality Criteria in Vector Space</h3>
-                        <p>Let the objects \(x_i\) be represented by vectors \( (f_1(x_i),\dots,f_n(x_i)) \)</p>
+                        <div class="fragment">
+                            <div class="typesetting">
+                                <p style="text-align: left">
+                                    Let the objects \(x_i\) be represented by vectors of features \( (f_1(x_i),\dots,f_n(x_i)) \)</p>
 
-                        <ul>
-                            <li>
-                                <p><b>Sum of average intra-cluster distances:</b></p>
-                                <p>\[ \Phi_0 = \sum\limits_{a \in Y} \frac{1}{|X_a|} \sum\limits_{i: a_i = a} \rho(x_i, \mu_a) \to \min \]</p>
-                                <p>\( X_a = \{x_i \in X^\ell | a_i = a\} \) — cluster \( a \), \( \mu_a \) — centroid of cluster \( a \)</p>
-                            </li>
-                            <li>
-                                <p><b>Sum of inter-cluster distances:</b></p>
-                                <p>\[ \Phi_1 = \sum\limits_{a, b \in Y} \rho(\mu_a, \mu_b) \to \max \]</p>
-                            </li>
-                            <li>
-                                <p><b>Ratio of functionals:</b> $ \Phi_0 / \Phi_1 \to \min $</p>
-                            </li>
-                        </ul>
+                                <ul>
+                                    <li>
+                                        <p><b>Sum of average intra-cluster distances:</b></p>
+                                        <p>\[ \Phi_0 = \sum\limits_{a \in Y} \frac{1}{|X_a|} \sum\limits_{i: a_i = a} \rho(x_i, \mu_a) \to \min \]</p>
+                                        <p>\( X_a = \{x_i \in X^\ell | a_i = a\} \) — cluster \( a \), \( \mu_a \) — centroid of cluster \( a \)</p>
+                                    </li>
+                                    <li>
+                                        <p><b>Sum of inter-cluster distances:</b></p>
+                                        <p>\[ \Phi_1 = \sum\limits_{a, b \in Y} \rho(\mu_a, \mu_b) \to \max \]</p>
+                                    </li>
+                                    <li>
+                                        <p><b>Ratio of functionals:</b> $ \Phi_0 / \Phi_1 \to \min $</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </section>
                     <section>
                         <h3 style="text-align: left">Clustering as a Discrete Optimization Problem</h3>
-                        <p>Weights on pairs of objects (proximity): \( w_{ij} = \exp(-\beta \rho(x_i, x_j)) \),
-                        where \( \rho(x, x^\prime) \) is the distance between objects, \( \beta \) is a parameter</p>
+                        <div class="fragment">
+                            <div class="typesetting">
+                                <p>Weights on pairs of objects (proximity): \( w_{ij} = \exp(-\beta \rho(x_i, x_j)) \),
+                                where \( \rho(x, x^\prime) \) is the distance between objects, \( \beta \) is a parameter</p>
 
-                        <h4  style="text-align: left">Clustering Task:</h4>
-                        <p>Find cluster labels \(a_i:\
-                        \sum\limits_{i=1}^\ell \sum\limits_{j=i+1}^\ell w_{ij} [a_i \neq a_j] \to \min\limits_{\{a_i \in Y\}}\)</p>
+                                <h4  style="text-align: left">Clustering Task:</h4>
+                                <p>Find cluster labels \(a_i:\
+                                \sum\limits_{i=1}^\ell \sum\limits_{j=i+1}^\ell w_{ij} [a_i \neq a_j] \to \min\limits_{\{a_i \in Y\}}\)</p>
 
-                        <h4 style="text-align: left">Partial Learning Task:</h4>
-                        <p>
-                            \( \sum\limits_{i=1}^\ell \sum\limits_{j=i+1}^\ell w_{ij} [a_i \neq a_j] +
-                            {\color{orange}\lambda \sum\limits_{i=1}^k [a_i \neq y_i]}  \to \min\limits_{\{a_i \in Y\}}\),
-                        where \(\lambda\) is another parameter</p>
+                                <h4 style="text-align: left">Partial Learning Task:</h4>
+                                <p>
+                                    \( \sum\limits_{i=1}^\ell \sum\limits_{j=i+1}^\ell w_{ij} [a_i \neq a_j] +
+                                    {\color{orange}\lambda \sum\limits_{i=1}^k [a_i \neq y_i]}  \to \min\limits_{\{a_i \in Y\}}\),
+                                where \(\lambda\) is another parameter</p>
+                            </div>
+                        </div>
                     </section>
                 </section>
                 <section>
-                    <section data-background-color="antiquewhite">
+                    <section data-background-color="black">
                         <img src="images/brace-yourself-kmeans.jpg" width="70%">
                     </section>
                     <section>
                         <h3 style="text-align: left">k-means Method for Clustering</h3>
                         <p style="text-align: left">Minimization of the sum of squared intra-class distances:</p>
-                        <p>\[ \sum\limits_{i=1}^\ell \|x_i - \mu_{a_i} \|^2 \to \min\limits_{\{a_i\}, \{\mu_a\}},\ \ \
+                        <p>\[ \sum\limits_{i=1}^\ell \|x_i - \mu_{a_i} \|^2 \to \min\limits_{\{a_i\}, \{\mu_a\}},\\
                         \|x_i - \mu_{a} \|^2 = \sum\limits_{j=1}^n (f_j(x_i) - \mu_{a_j})^2 \]</p>
                     </section>
                     <section>
-                        <h3 style="text-align: left">Lloyd's Algorithm</h3>
-                        <p style="text-align: left">
-                            <b>Input</b>: \(X^\ell, K = |Y|\).  <b>Output</b>: cluster centers \( \mu_a \) and labels \( a \in Y \)
-                        </p>
+                        <h3 style="text-align: left">Lloyd's Algorithm for k-means</h3>
+                        <div class="fragment">
+                            <div class="typesetting">
+                                <p style="text-align: left">
+                                    <b>Input</b>: \(X^\ell, K = |Y|\)
+                                    <br>
+                                    <b>Output</b>: cluster centers \( \mu_a \) and labels \( a \in Y \)
+                                </p>
 
-                        <ul>
-                            <li>\( \mu_a = \) initial approximation of centers, for all \( a \in Y \)</li>
-                            <li><b>Repeat</b></li>
-                            <ol>
-                                <li><b>First step</b>: assign each \( x_i \) to the nearest center:<br>
-                                 \( a_i = \arg\min\limits_{a \in Y} \|x_i - \mu_a \|, i = 1, \dots, \ell \)</li>
-                                <li><b>Second step</b>: calculate new positions of centers:<br>
-                                 \( \mu_{a_j} = \frac{\sum\limits_{i = 1}^\ell [a_i = a] x_i}{\sum\limits_{i = 1}^\ell [a_i = a]}, a \in Y \)</li>
-                            </ol>
-                            <li><b>Until</b> \( a_i \) stop changing</li>
-                        </ul>
+                                <ul>
+                                    <li>\( \mu_a = \) initial approximation of centers, for all \( a \in Y \)</li>
+                                    <li><b>Repeat</b></li>
+                                    <ol>
+                                        <li><b>First step</b>: assign each \( x_i \) to the nearest center:<br>
+                                         \( a_i = \arg\min\limits_{a \in Y} \|x_i - \mu_a \|, i = 1, \dots, \ell \)</li>
+                                        <li><b>Second step</b>: calculate new positions of centers:<br>
+                                         \( \mu_{a_j} = \frac{\sum\limits_{i = 1}^\ell [a_i = a] x_i}{\sum\limits_{i = 1}^\ell [a_i = a]}, a \in Y \)</li>
+                                    </ol>
+                                    <li><b>Until</b> \( a_i \) stop changing</li>
+                                </ul>
+                            </div>
+                        </div>
                     </section>
                     <section>
                         <h3 style="text-align: left">k-means++</h3>
-                        <ol>
-                            <li>Randomly and uniformly select a center \( c_1 \) from \( X \)</li>
-                            <li><b>Repeat \( k - 1 \) times</b></li>
-                            <li>Choose \( x \in X \) as the center of a new cluster with probability \( \frac{D^2(x)}{\sum\limits_{x \in X} D^2(x)} \)</li>
-                            <li>Use the standard k-means algorithm</li>
-                        </ol>
-                        <p style="text-align: left">* Here \( D(x) \) is the distance from \( x \) to the nearest cluster</p>
-                        <hr>
-                        <p><em>David Arthur and Sergei Vassilvitskii. k-means++: The Advantages of Careful Seeding, 2007</em></p>
+                        <div class="fragment">
+                            <div class="typesetting">
+                                <ol>
+                                    <li>Randomly and uniformly select a center \( c_1 \) from \( X \)</li>
+                                    <li><b>Repeat \( k - 1 \) times</b><br>
+                                        $\ \ \ $ Choose \( x \in X \) as the center of a new cluster with probability \( \frac{D^2(x)}{\sum\limits_{x \in X} D^2(x)} \)</li>
+                                    <li>Use the standard k-means algorithm</li>
+                                </ol>
+                                <p style="text-align: left">* Here \( D(x) \) is the distance from \( x \) to the nearest cluster</p>
+                                <hr>
+                                <p><em>David Arthur and Sergei Vassilvitskii. k-means++: The Advantages of Careful Seeding, 2007</em></p>
+                            </div>
+                        </div>
                     </section>
                     <section>
                         <h3>Examples of Unsuccessful k-means Clustering</h3>
@@ -439,17 +457,18 @@
                         </div>
                     </section>
                     <section>
-                        <img src="images/DBSCAN-density-data.png" alt="DBSCAN" width=600 />
+                        <img src="images/DBSCAN-density-data.png" alt="DBSCAN" width=800 />
                     </section>
                     <section>
                         <h3 style="text-align: left">DBSCAN Clustering Algorithm</h3>
                         <p style="text-align: left"><b>Input</b>: dataset \( X^\ell = \{x_1, \dots, x_\ell\} \), parameters \( \varepsilon \) and \( m \)</p>
-                        <p style="text-align: left"><b>Output</b>: partition of the dataset into clusters and noise points; \( U = X^\ell \) — unlabeled, \( a = 0 \)</p>
+                        <p style="text-align: left"><b>Output</b>: partition of the dataset into clusters and noise points</p>
                     </section>
                     <section>
+                        <p>\( U = X^\ell \) — unlabeled, \( a = 0 \)</p>
                         <div class="fragment">
                             <div class="typesetting">
-                            <p><b>While</b> there are unlabeled points in the dataset, \( U \neq \emptyset \):</p>
+                            <p style="text-align: left"><b>While</b> there are unlabeled points in the dataset, i.e. \( U \neq \emptyset \):</p>
                                 <ol>
                                     <li>Take a random point \( x \in U \)</li>
                                     <li><b>If</b> \( |U_\varepsilon (x)| < m \) <b>then</b> mark \( x \) as potentially noisy</li>
@@ -470,13 +489,12 @@
                     </section>
                     <section>
                         <div class="r-frame">
-                            <b>Question 3:</b> What advantages DBSCAN have?
+                            <b>Question 3:</b> What advantages does DBSCAN have?
                         </div>
-                    </section>
-                    <section>
-                        <h3>Advantages of the DBSCAN Algorithm</h3>
+                        <br><br>
                         <div class="fragment">
                             <div class="typesetting">
+                                <h3>Advantages of the DBSCAN Algorithm</h3>
                                 <div class="row">
                                     <div class="column">
                                         <ul>
@@ -487,7 +505,7 @@
                                                 </ul>
                                             </li>
                                             <li>Clusters of arbitrary shapes (no centers)</li>
-                                            <li>Division of objects into core, border, and noise</li>
+                                            <li>Classification of objects into core, border, and noise</li>
                                         </ul>
                                     </div>
                                     <div class="column">
@@ -504,7 +522,8 @@
                         <div class="fragment">
                             <div class="typesetting">
                                 <p style="text-align: left">Algorithm of hierarchical clustering (Lance, Williams, 1967):</p>
-                                <p>Iterative recalculation of distances \( R_{UV} \) between clusters \( U, V \)</p>
+                                <p style="text-align: left">
+                                    Iterative recalculation of distances \( R_{UV} \) between clusters \( U, V \)</p>
                                 <ol>
                                     <li>\( С_1 = \{\{x_1\},\dots, \{x_\ell\}\} \) — all clusters are 1-element<br>
                                     \( R_{\{x_i\}\{x_j\}} = \rho(x_i, x_j) \) — distances between them</li>
@@ -607,13 +626,14 @@
                                 </ul>
                                 <p style="text-align: left"><b>Theorem</b> (Milligan, 1979): Clustering is monotonic if the conditions
                                 \( \alpha_U \geq 0, \alpha_V \geq 0, \alpha_U + \alpha_V + \beta \geq 1, \min\{\alpha_U, \alpha_V\} + \gamma \geq 0 \) are met<br>
+                                    <br><br>
                                 \( R^\text{c} \) is not monotonic; \( R^\text{nn} \), \( R^\text{fn} \), \( R^\text{g} \), \( \color{orange}{R^\text{w}} \) are monotonic<br>
                                 \( R^\text{nn} \) is contracting; \( R^\text{fn}, \color{orange}{R^\text{w}} \) are expanding</p>
                             </div>
                         </div>
                     </section>
                     <section>
-                        <h3>Recommendations and Conclusions</h3>
+                        <h3>Recommendations about Hierarchical Clustering</h3>
                         <div class="fragment">
                             <div class="typesetting">
                                 <ul>
@@ -638,7 +658,8 @@
                         <div class="fragment">
                             <div class="typesetting">
                                 <p>Let \( \mu: X^k \to a \) be a method for learning classification</p>
-                                <p>Classifiers are of the form \( a(x) = \arg\max\limits_{y \in Y} \Gamma_y(x) \)</p>
+                                <p>Classifiers are of the form \( a(x) = \arg\max\limits_{y \in Y} \Gamma_y(x) \)
+                                , where \(\Gamma_y(x)\) is raw score</p>
                                 <p><b>Pseudo-margin</b> — the degree of confidence in the classification \( a_i = a(x_i) \):</p>
                                 \[ \boxed{ M_i(a) = \Gamma_{a_i}(x_i) - \max\limits_{y \in Y/a_i} \Gamma_y(x_i)} \]
                             </div>
@@ -710,9 +731,9 @@
                             <div class="typesetting">
                                 <ul>
                                     <li>Clustering is unsupervised learning, an ill-posed problem; there exist many optimization and heuristic algorithms for clustering</li>
-                                    <li>DBSCAN is a popular and fast clustering algorithm</li>
+                                    <li>DBSCAN is a classic and fast clustering algorithm</li>
                                     <li>The task of semi-supervised learning (SSL) occupies an intermediate position
-                                        between classification and clustering but does not reduce to them</li>
+                                        between classification and clustering but does not reduce to one of them</li>
                                     <li>Clustering methods are easily adapted to SSL
                                         by introducing constraints (constrained clustering)</li>
                                     <li>Adapting classification methods is more complex,
