@@ -73,9 +73,7 @@ You have to choose your favorite FP language and rewrite the interpreter. Our sa
 Try to organize your code around a datatype-definition for expressions, functions for the different operations, and pattern-matching to identify different cases. The interpreter `eval\_prog` uses a helper function intersect with cases for every combination of geometric value (so with 5 kinds of values there are 25 cases though some are handled together via pattern-matching). The surprisingly complicated part is the algorithm for intersecting two line segments.
 
 \section*{The Python Code:}
-Most of the Python solution is given to you. All you have to do is look through it.
-
-We have defined classes for each kind of expression in our language, as well as appropriate superclasses. We have implemented parts of each class and left comments with what you need to do to understand the implementation as described in more detail in problems 3 and 4.
+Most of the Python solution is given to you. All you have to do is look through it. We have defined classes for each kind of expression in our language, as well as appropriate superclasses. We have implemented parts of each class and left comments with what you need to do to understand the implementation.
 
 Notice the Python code is organized around classes where each class has methods for various operations. All kinds of expressions need methods for preprocessing and evaluation. They are subclasses of `GeometryExpression` just like all constructors should be part of the `geom\_exp` datatype (though the GeometryExpression class turns out not to be so useful). The value subclasses also need methods for shifting and intersection and they subclass `GeometryValue` so that some shared methods can be inherited (in analogy with some uses of wildcard patterns and helper functions in FP code).
 
@@ -88,14 +86,15 @@ Notice the Python code is organized around classes where each class has methods 
 \end{itemize}
 
 \section*{The Problems (Finally)}
+Note: we reserve the opportunity for reviewers to deduct points for incomprehensible code or a carelessly designed project.
 \begin{enumerate}
-  \item Implement an FP function `preprocess\_prog` of type `geom\_exp` $\rightarrow$ `geom\_exp` to implement expression preprocessing as defined above. The idea is that evaluating program `e` would be done with `eval\_prog` (`preprocess\_prog e, []`) where the `[]` is the empty list for the empty environment.
+  \item \textbf{(20 points)} Implement an FP function `preprocess\_prog` of type `geom\_exp` $\rightarrow$ `geom\_exp` to implement expression preprocessing as defined above. The idea is that evaluating program `e` would be done with `eval\_prog` (`preprocess\_prog e, []`) where the `[]` is the empty list for the empty environment.
 
-  \item Add shift expressions as defined above to the FP implementation by adding the constructor Shift of real $*$ real $*$ `geom\_exp` to the definition of `geom\_exp` and adding appropriate branches to `eval\_prog` and `preprocess\_prog`. (The first real is deltaX and the second is deltaY.)
+  \item \textbf{(20 points)} Add shift expressions as defined above to the FP implementation by adding the constructor Shift of real $*$ real $*$ `geom\_exp` to the definition of `geom\_exp` and adding appropriate branches to `eval\_prog` and `preprocess\_prog`. (The first real is deltaX and the second is deltaY.)
 
-  \item Complete the FP implementation. Do not modify the code given to you. Remember all the different cases in Python will appear somewhere in the FP solution, just arranged very differently.
+  \item \textbf{(30 points)} Complete the FP implementation. Do not modify the code given to you. Remember all the different cases in Python will appear somewhere in the FP solution, just arranged very differently.
 
-  \item We strongly encourage you to provide tests for your functional programming solution.
+  \item \textbf{(30 points)} We strongly encourage you to provide tests for your functional programming solution.
 
   \item (Lack Of) Challenge Problem: the most educational challenge problem is not something we can reasonably auto-grade or peer asssess, so we encourage doing it even though it will not count toward your grade: Make a third version of your solution in a statically typed OOP language like Java or C\#. Follow the structure of the Python solution, with no use of type casts or features like Java's instanceof. You will need to have abstract methods and abstract classes that you then subclass. (Naturally, you can also enjoy the challenge of implementing your solution in any other programming language you like.)
 \end{enumerate}
