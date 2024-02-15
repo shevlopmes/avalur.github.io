@@ -15,12 +15,6 @@
         <!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
 
-		<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-		<script defer src="https://pyscript.net/latest/pyscript.js"></script>
-		<py-config>
-			terminal = false
-#            packages = ["numpy", "pandas", "matplotlib", "scikit-learn"]
-		</py-config>
 		<style>
 			.column {
 			  float: left;
@@ -48,7 +42,7 @@
 								<h3>Expectation-Minimization algorithm</h3>
 								<br />
 								Alex Avdiushenko<br />
-								February 14, 2024
+								February 20, 2024
 							</div>
 					</div>
                 </section>
@@ -58,25 +52,30 @@
                     </section>
                     <section>
                         <h2 style="text-align: left">KL divergence</h2>
+                        <p style="text-align: left">Let's start with well-known</p>
                         <div class="fragment">
                             <div class="typesetting">
                                 <h3>Jensen's Inequality</h3>
                                 <div class="row">
                                     <div class="column">
+                                        <br>
                                         <p>If \( f(x) \) is a concave (upward-convex) function, then Jensen's inequality holds:</p>
-                                        <p>\[ f(wx_1 + (1 − w)x_2) \geq \color{orange}{wf(x_1) + (1 − w)f(x_2)} \]</p>
                                     </div>
                                     <div class="column">
                                         <img style="padding-left: 20%" src="images/concave_function.jpg" alt="concave_function" />
                                     </div>
                                 </div>
-
-                                <p style="text-align: left">Or, in a more general case,</p>
-                                <p>\[f(w_1x_1 + w_2x_2 + \dots + w_nx_n) \geq w_1f(x_1) + w_2f(x_2) + \dots + w_nf(x_n)\]</p>
-                                <p style="text-align: left">where \( \sum\limits_{i=1}^n w_i = 1 \). It can also be proven that
-                                    \(  f\left(\mathbb{E}_{p(x)} u(x)\right) \geq \mathbb{E}_{p(x)} f(u(x)) \)</p>
+                                \[ f(wx_1 + (1 − w)x_2) \geq \color{orange}{wf(x_1) + (1 − w)f(x_2)} \]
                             </div>
                         </div>
+                    </section>
+                    <section>
+                        <p style="text-align: left">Or, in a more general case,</p>
+                        \[f(w_1x_1 + w_2x_2 + \dots + w_nx_n) \geq w_1f(x_1) + w_2f(x_2) + \dots + w_nf(x_n)\]
+                        <p style="text-align: left">where \( \sum\limits_{i=1}^n w_i = 1 \).</p>
+                        <br>
+                        <p style="text-align: left">It can also be proven that</p>
+                        \[ f\left(\mathbb{E}_{p(x)} u(x)\right) \geq \mathbb{E}_{p(x)} f(u(x)) \]
                     </section>
                     <section>
                         <h3 style="text-align: left">Kullback-Leibler Divergence Between Probability Distributions</h3>
@@ -93,13 +92,13 @@
                         </div>
                     </section>
                     <section>
-                        <h3 style="text-align: left">Proof of Non-negativity of KL Divergence</h3>
+                        <p style="text-align: left">Proof of non-negativity of KL divergence:</p>
                         \[ -KL(p||q) = -\int p(x) \log\left(\frac{p(x)}{q(x)}\right)dx = \int p(x) \log\left(\frac{q(x)}{p(x)}\right)dx \leq \\
                         \leq \log\left( \int p(x) \frac{q(x)}{p(x)}dx\right) = \log\left( \int q(x) dx\right) = \log 1 = 0 \]
                     </section>
                     <section>
                         <h3 style="text-align: left">Asymmetry of KL Divergence</h3>
-                        <p style="text-align: left">Example: Searching for a Similar Distribution</p>
+                        <p style="text-align: left">Example: searching for a similar Distribution</p>
 
                         <p>\( KL(? || ?) \) — where to place \( p \)?</p>
                         <div>
@@ -107,14 +106,14 @@
                         </div>
                     </section>
                     <section>
-                        <h3 style="text-align: left">Asymmetry of KL Divergence. First Argument: Mass Covering</h3>
+                        <p style="text-align: left">First argument: mass covering</p>
                         <p>\( KL(p || q) = \int p(x) \log \frac{p(x)}{q(x)} dx \)</p>
                         <div>
                             <img style="border-radius: 5%" src="images/example_1.jpg" alt="example_1" width="600" />
                         </div>
                     </section>
                     <section>
-                        <h3 style="text-align: left">Asymmetry of KL Divergence. Second Argument: Mode Collapsing</h3>
+                        <p style="text-align: left">Second argument: mode collapsing</p>
                         \[ KL(q || p) = \int q(x) \log \frac{q(x)}{p(x)} dx \]
                         <div>
                             <img style="border-radius: 5%" src="images/example_2.jpg" alt="example_2" width="600" />
@@ -234,20 +233,18 @@
                         <h3>Gaussian Mixture Model</h3>
 
                         <div>
-                            <img style="border-radius: 5%" src="images/GMM.jpg" alt="GMM" width="600" />
+                            <img style="border-radius: 5%" src="images/GMM.jpg" alt="GMM" width="60%" />
                         </div>
                     </section>
                     <section>
-                        <div class="fragment">
-                            <div class="typesetting">
-                                <p style="text-align: left">The joint probability of $x_i$ and $z_i$ given $\theta$ can be represented as:</p>
+                        <div class="typesetting">
+                            <p style="text-align: left">The joint probability of $x_i$ and $z_i$ given $\theta$ can be represented as:</p>
 
-                                $$ p(x_i, z_i|\theta) = p(x_i|z_i,\theta)p(z_i|\theta)
-                                    = N(x_i|\mu_{z_i}, \sigma_{z_i}^2) \pi_{z_i} $$
+                            $$ p(x_i, z_i|\theta) = p(x_i|z_i,\theta)p(z_i|\theta)
+                                = N(x_i|\mu_{z_i}, \sigma_{z_i}^2) \pi_{z_i} $$
 
-                                <p style="text-align: left">Parameters: $\{\mu_j, \sigma_j, \pi_j\}$, here $\pi_j$ is a priori probability of the
-                                    $j$-th Gaussian (hidden variable $z_i$)</p>
-                            </div>
+                            <p style="text-align: left">Parameters: $\{\mu_j, \sigma_j, \pi_j\}$, where $\pi_j$ is a priori probability of the
+                                $j$-th Gaussian (hidden variable $z_i$)</p>
                         </div>
                     </section>
                     <section>
@@ -262,7 +259,7 @@
                                     <li>We can take a different approach — introduce a prior distribution
                                         <b>directly on all models of different complexity</b>.
                                         This is the main idea of Bayesian nonparametric methods</li>
-                                    <li>See the "Chinese Restaurant Process" and "Indian Buffet Process"</li>
+                                    <li>Also see the "Chinese Restaurant Process" and "Indian Buffet Process" for solution</li>
                                 </ul>
                             </div>
                         </div>
@@ -386,7 +383,7 @@
                         $$
                     </section>
                     <section>
-                        <h3 style="text-align: left">M-step example: finding W</h3>
+                        <p style="text-align: left">M-step example: finding W</p>
 
                         $$
                         \sum\limits_{i=1}^n E_{z_i} \log p(x_i| z_i, \theta) = \\
