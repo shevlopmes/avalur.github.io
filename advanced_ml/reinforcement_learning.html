@@ -690,6 +690,54 @@
                     </section>
                 </section>
                 <section>
+                    <section data-background-color="white">
+                        <h3>RL recap</h3>
+                        <img src="images/rl_recap.png" width="80%" style="border-radius: 5%">
+                    </section>
+                    <section data-background-color="white">
+                        <img src="images/mcmc_barto.png" width="50%" style="border-radius: 5%"><br>
+                        <a href="https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf">Source: BartoSutton.pdf</a>
+                    </section>
+                    <section>
+                        <h3>Policy gradient</h3>
+                        <p style="text-align: left">We are trying to train just policy</p>
+                            $$\pi(a|s, \theta) = Pr[a_t = a| s_t = s]$$
+
+                        <div class="fragment">
+                            <div class="typesetting">
+                                <ol>
+                                    <li>We can train stochastic policies, where $\pi(a|s) \neq 0,1$</li>
+                                    <li>We even can train raw scores only, applying Softmax for moves probabilities</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Policy gradient theorem</h3>
+
+                        <div class="fragment">
+                            <div class="typesetting">
+                                $$
+                                \theta_{t+1} = \theta_{t} + \alpha \nabla_\theta J(\theta_t) \\
+                                J(\theta) = V_{\pi_\theta}(s_0) \underset{\theta}{\to} \max \\
+                                \boxed{\nabla_\theta J(\theta) \propto \sum\limits_s Pr_\pi[s]
+                                \sum\limits_a Q_\pi(s,a) \nabla_\theta \pi(a|s)}
+                                $$
+                                Probabilities $Pr_\pi[s]$ are very hard to calculate,
+                                but we can just play using policy $\pi$, and this gives us
+                                correct samples from this distribution.
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="typesetting">
+                            <p style="text-align: left">The REINFORCE algorithm is a policy-based method used in reinforcement learning.
+                                Unlike value-based methods, which aim to learn a value function by interaction with
+                                the environment, REINFORCE learns a stochastic policy directly.</p>
+                        </div>
+                    </section>
+                </section>
+                <section>
                     <section>
                         <h3 style="text-align: left">Summary</h3>
                         <div class="fragment">
@@ -699,7 +747,7 @@
                                     <li>Touched a little multi-armed bandits model</li>
                                     <li>Got acquainted with the methods of cross-entropy, TD-learning and Q-learning</li>
                                     <li>Discussed Deep Q-learning Network</li>
-                                    <li>Did NOT discuss the central method in robotics — policy gradient descent</li>
+                                    <li>We finished with policy gradient descent (the central method in robotics)</li>
                                 </ul>
                             </div>
                         </div>
