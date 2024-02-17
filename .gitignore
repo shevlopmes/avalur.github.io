@@ -279,3 +279,5 @@ TSWLatexianTemp*
 sirius-january/booklet2022.ptc
 .DS_Store
 .DS_Store
+cats_and_dogs_filtered/*
+mnist/*
