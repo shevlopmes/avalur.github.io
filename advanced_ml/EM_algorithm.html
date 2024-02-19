@@ -82,7 +82,7 @@
                         <div class="fragment">
                             <div class="typesetting">
                                 <p>\[ KL(p||q) = \int p(x) \log \frac{p(x)}{q(x)} dx \]</p>
-                                <p><b>Properties of Kullback-Leibler Divergence:</b></p>
+                                <p style="text-align: left"><b>Properties of Kullback-Leibler Divergence:</b></p>
                                 <ul>
                                     <li>\( KL(p||q) \neq KL(q||p) \) — asymmetry</li>
                                     <li>\( KL(p||q) \geq 0 \) — non-negativity</li>
@@ -121,24 +121,26 @@
                     </section>
                 </section>
                 <section>
-                    <section>
-                        <h3 style="text-align: left">Reminders and the Exponential Family of Distributions</h3>
+<!--                    <section>-->
+<!--                        <h3 style="text-align: left">Reminders and the Exponential Family of Distributions</h3>-->
 
-                        <div class="fragment">
-                            <div class="typesetting">
-                                <ul>
-                                    <li>It is assumed that in linear regression, the responses are generated from a normal distribution:<br>
-                                    \[ y_i \sim N(\mu_i, \sigma_i^2),\ \ \ \mu_i = E y_i = x_i^T w \]</li>
-                                    <li>Generalized linear model for regression:<br>
-                                    \( y_i \sim {\color{orange}Exp}(\mu_i, \phi_i),\ \ \ \mu_i = E y_i,\ \ \ {\color{orange}g(\mu_i)} = \theta_i = g(x_i^T w) \)<br>
-                                    \( g(\mu_i) \) — a monotonic link function<br>
-                                    \( Exp \) — the exponential family of distributions with parameters \( \theta_i, \phi_i \) and function-parameters \( c(\theta), h(y, \phi) \), thus with density<br>
-                                    \( p(y_i | \theta_i, \phi_i) = \exp\left(\frac{y_i\theta_i - c(\theta_i)}{\phi_i} + h(y_i, \phi_i)\right) \)<br>
-                                    \( \theta_i = g\left(\sum\limits_{j=1}^n w_j f_j(x_i) \right) \)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
+<!--                        <div class="fragment">-->
+<!--                            <div class="typesetting">-->
+<!--                                <ul>-->
+<!--                                    <li>It is assumed that in linear regression, the responses are generated from a normal distribution:<br>-->
+<!--                                    \[ y_i \sim N(\mu_i, \sigma_i^2),\ \ \ \mu_i = E y_i = x_i^T w \]</li>-->
+<!--                                    <li>Generalized linear model for regression:<br>-->
+<!--                                    \( y_i \sim {\color{orange}Exp}(\mu_i, \phi_i),\ \ \ \mu_i = E y_i,\ \ \ {\color{orange}g(\mu_i)} = \theta_i = g(x_i^T w) \)<br>-->
+<!--                                    \( g(\mu_i) \) — a monotonic link function<br>-->
+<!--                                    \( Exp \) — the exponential family of distributions with parameters \( \theta_i, \phi_i \) and function-parameters \( c(\theta), h(y, \phi) \), thus with density<br>-->
+<!--                                    \( p(y_i | \theta_i, \phi_i) = \exp\left(\frac{y_i\theta_i - c(\theta_i)}{\phi_i} + h(y_i, \phi_i)\right) \)<br>-->
+<!--                                    \( \theta_i = g\left(\sum\limits_{j=1}^n w_j f_j(x_i) \right) \)</li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                            <p>Almost all our probability distributions lies in Exponential Family:-->
+<!--                            Bernoulli, Multinomial, Poisson, Gauss..  </p>-->
+<!--                    </section>-->
                     <section data-background-color="#ffffff">
                         <div>
                             <img src="images/you-wont-be-disappointed-if-you-have-no-expectation.jpg" alt="exp_mem" width="1000" />
@@ -166,8 +168,19 @@
                                     <img src="images/gauss_unknown.jpg" alt="Unknown distribution" width="600" />
                                 </div>
 
-                                <p>We can introduce the Gaussian number and reduce the problem to
+                                <p style="text-align: left">We can introduce the Gaussian number and reduce the problem to
                                     an already solved one (as in joke with electric kettle, yeah)!</p>
+
+                                <aside class="notes">
+                                    How does a programmer boil water in a kettle?
+                                    1. Fills the kettle with water
+                                    2. Puts the kettle on the fire
+                                    3. Waits until it boils
+
+                                    How does a programmer boil water in a kettle if there is already water in it?
+                                    1. Pouring water from the kettle, which reduces the problem to already solved
+                                    (old joke)
+                                </aside>
                             </div>
                         </div>
                     </section>
@@ -178,7 +191,7 @@
 
                         <p style="text-align: left">We can: $$p(X, Z|\theta) \underset{\theta}{\to} \max \text{(complete likelihood)}$$</p>
 
-                        <p>Let's say in the previous example, $z_i$ is the identifier of the Gaussian from which the $i$-th object is taken.</p>
+                        <p style="text-align: left">Let's say in the previous example, $z_i$ is the identifier of the Gaussian from which the $i$-th object is taken.</p>
                     </section>
                     <section>
                         <h3 style="text-align: left">Variational Lower Bound</h3>
@@ -196,11 +209,13 @@
                     <section>
                         <div class="fragment">
                             <div class="typesetting">
-                                This is the variational lower bound: we simply discarded the non-negative
+                                <p style="text-align: left">This is the variational lower bound: we simply discarded the non-negative
                                 $KL(q(z) || p(z|x,\theta))$.
-                                Furthermore, equality is reached at $q^* = p(z| x, \theta)$
+                                Furthermore, equality is reached at $q^* = p(z| x, \theta)$</p>
 
-                                <p style="text-align: left">For sample $X$:</p>
+                                <br>
+
+                                <p style="text-align: left">For dataset $X$:</p>
 
                                 $$ \log p(X| \theta) =
                                    \sum\limits_{i=1}^n \log p(x_i|\theta) \geq \sum\limits_{i=1}^n \mathscr{L}(q_i, \theta) \underset{q, \theta}{\to} \max
@@ -405,13 +420,17 @@
                     <section>
                         <h3 style="text-align: left">Comparison of Runtime Estimates</h3>
 
-                        <p style="text-align: left">When $n > D > d$:</p>
-                        <ul>
-                          <li>Standard PCA: $O(nD^2)$</li>
-                          <li>A single iteration of PPCA: $O(nDd)$</li>
-                        </ul>
+                        <div class="fragment">
+                            <div class="typesetting">
+                                <p style="text-align: left">When $n > D > d$:</p>
+                                <ul>
+                                  <li>Standard PCA: $O(nD^2)$</li>
+                                  <li>A single iteration of PPCA: $O(nDd)$</li>
+                                </ul>
 
-                        <p>Usually, 10-100 iterations are needed for convergence, so it may be faster than the standard method</p>
+                                <p style="text-align: left">Usually, 10-100 iterations are needed for convergence, so it may be faster than the standard method</p>
+                            </div>
+                        </div>
                     </section>
                     <section>
                         <h3>The case of missing features in Probabilistic Principal Component Analysis</h3>
