@@ -85,7 +85,7 @@
 					</section>
 					<section>
 							<div class="typesetting">
-								<p>For sure, a large proportion of your code does not end up in production.
+								<p style="text-align: left">For sure, a large proportion of your code does not end up in production. <br>
 									So it would be a huge overhead if you had to write a production-ready code during investigations.</p>
 								<p style="text-align: left">
 									Let's say there are three approaches to coding:</p>
@@ -93,20 +93,21 @@
 						<div class="fragment">
 							<div class="typesetting">
 							<ol>
-								<li>Big monolithic blocks of code
+								<li>Big monolithic blocks of code 🕋
 								<ul class="fragment">
 									<li>the fastest: 1-2 days</li>
-									<li>inappropriate for large and long projects</li>
+									<li>inappropriate for
+										<span style="color: orange;">large or long</span> projects</li>
 									<li>"the notebook approach"</li>
 								</ul>
 								</li>
-								<li>OOP
+								<li>Object-oriented paradigm (OOP)
 								<ul class="fragment">
 									<li><code>fit-predict</code> is very good example</li>
 									<li>familiar to developers</li>
 								</ul>
 								</li>
-								<li>FP
+								<li>Functional Paradigm (FP) 🔬
 								<ul class="fragment">
 									<li>nice code organization and maintainability</li>
 									<li>a bit hard to learn</li>
@@ -154,10 +155,10 @@ print(list(map(add_3, list_)))
 						<h3>What about nonlinear pipelines?</h3>
 						<div class="fragment">
 							<div class="typesetting">
-								<p>If you need to infer some results from one dataset and apply it to another?
+								<p style="text-align: left">If you need to infer some results from one dataset and apply it to another?
 								For instance, normalization or training a model.
-
-								The idea is to chain function creation.</p>
+								<br>
+								The idea is to chain function creation:</p>
 								<pre>
 
 	Model(parameters) -> Fit(training_set) -> Predict(test_set)
@@ -166,11 +167,18 @@ print(list(map(add_3, list_)))
 							</div>
 						</div>
 					</section>
+                    <section data-background-color="#fdf6e3">
+                        <h3>Decision Tree Classifier</h3>
+                        <py-repl>
+                            from sklearn.tree import DecisionTreeClassifier
+							from sklearn.ensemble import RandomForestClassifier
+                        </py-repl>
+                        <p><a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/">
+                            Nice visual example of DecisionTreeClassifier</a></p>
+                    </section>
 					<section data-background-color="antiquewhite">
 <!--language=python-->
 									<py-repl>
-										from sklearn.ensemble import RandomForestClassifier
-
 										def create_rf_learner(num_trees):
 											rf = RandomForestClassifier(n_estimators=num_trees)
 
