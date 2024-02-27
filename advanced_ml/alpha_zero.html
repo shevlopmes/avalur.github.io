@@ -144,7 +144,7 @@
                         </aside>
                     </section>
                     <section>
-                        <h3>Why is Go hard for computer?</h3>
+                        <h3>Why is Go really hard for computer?</h3>
 
                         <ul>
                             <li>Huge branching factor</li>
@@ -275,7 +275,7 @@
                                             <li>30 billion positions from human expert games</li>
                                             <li>Moves probability distribution as output: $p_\sigma(a \mid s)$</li>
                                             <li>Accuracy reaches 57%, which is very high</li>
-                                            <li>Also train fast and worse strategy $p_\pi$ (accuracy is 24,
+                                            <li>Also train fast and worse strategy $p_\pi$ (accuracy is 24%,
                                                 but inference time is much less: 3 millisecond $\to$ 2 nanosecond)</li>
                                         </ul>
                                     </li>
@@ -288,7 +288,7 @@
                     </section>
                     <section>
                         <ol>
-                            <li>SL policy network predicts next move</li>
+                            <li>SL policy network predicts the next move</li>
                         <div class="fragment">
                             <div class="typesetting">
                             <li>RL policy network improves SL using reinforcement learning:</li>
@@ -307,7 +307,7 @@
                     </section>
                     <section>
                         <ol>
-                            <li>SL policy network predicts next move</li>
+                            <li>SL policy network predicts the next move</li>
                             <li>RL policy network improves SL using reinforcement learning</li>
                             <div class="fragment">
                                 <div class="typesetting">
@@ -326,7 +326,7 @@
                     </section>
                     <section>
                         <ol>
-                            <li>SL policy network predicts next move</li>
+                            <li>SL policy network predicts the next move</li>
                             <li>RL policy network improves SL using reinforcement learning</li>
                             <li>Function $\nu_\theta(s)$ for state evaluation</li>
                             <div class="fragment">
@@ -359,8 +359,9 @@
                                     <li>AlphaZero is a reinforcement learning system,
                                         it learns to play by playing games against itself
                                         and improving from its mistakes only</li>
-                                    <li>Silver et al., 2017: "Mastering Chess and Shogi by Self-Play with a
-                                        General Reinforcement Learning Algorithm"</li>
+                                    <li>Silver et al., 2017:
+                                        <a href="https://arxiv.org/abs/1712.01815">"Mastering Chess and Shogi
+                                            by Self-Play with a General Reinforcement Learning Algorithm"</a></li>
                                     <li>AlphaZero also outperformed Stockfish,
                                         one of the top-ranked chess engines,
                                         winning 28 games and drawing the rest in a 100-game match</li>
@@ -379,15 +380,16 @@
                                         <li>it improves both the NN weights (via RL) and MCTS tree</li>
                                     </ul>
 
-                                    <img src="images/AlphaGoZero.png" style="border-radius: 3%;width: 60%">
-
-                                    <p style="text-align: left">We minimize</p>
-                                    $$ Loss = (z-v)^2 + \pi^T \log p + c \|\theta\|^2 $$
-                                    <p style="text-align: left">
-                                        where $p$ is probabilities from NN, $\pi$ — improved by MCTS probabilities
-                                    </p>
+                                    <img src="images/AlphaGoZero.png" style="border-radius: 3%;width: 50%">
                                 </div>
                             </div>
+                    </section>
+                    <section>
+                        <p style="text-align: left">We minimize</p>
+                        $$ Loss = (z-v)^2 - \pi^T \log p + c \|\theta\|^2 $$
+                        <p style="text-align: left">
+                            where $p$ is probabilities from NN, $\pi$ — improved by MCTS probabilities
+                        </p>
                     </section>
                 </section>
                 <section>

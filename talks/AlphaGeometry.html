@@ -10,7 +10,7 @@
         <meta name="author" content="Alex Avdiushenko" />
         <meta name="keywords" content="JetBrains, ChatGPT, reveal.js">
 
-		<title>Building your own AlphaZero from scratch</title>
+		<title>From AlphaZero to AlphaGeometry</title>
 
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
@@ -25,20 +25,13 @@
 		<!-- Include Chart.js CDN -->
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<script src="../plugin/reveald3.js"></script>
-
-		<!--		<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />-->
-<!--		<script defer src="https://pyscript.net/latest/pyscript.js"></script>-->
-<!--		<py-config>-->
-<!--			terminal = false-->
-<!--            packages = ["numpy", "pandas", "matplotlib", "scikit-learn"]-->
-<!--		</py-config>-->
-    </head>
+	</head>
 	<body onload="totalWrapper();">
 		<div class="reveal">
 			<div class="slides">
                 <section id="title">
 					<br><br><br>
-						<h2>Building your own AlphaZero from scratch</h2>
+						<h2>From AlphaZero to AlphaGeometry</h2>
 					<div class="column">
 						<a href="https://youtu.be/qhbuKbxJsk8?si=jG10edUWsVoWZWlT">
 							<div class="fig-container no-margin-top" data-file="images/modular-multiplication.html"
@@ -262,20 +255,22 @@
 							FunSearch made the first discoveries in open problems in mathematical sciences using LLMs.</p>
 							<ul>
 								<li>They first address the <a href="https://en.wikipedia.org/wiki/Cap_set">cap set problem</a>,
-								an open challenge, which has vexed mathematicians in multiple research areas for decades.</li>
+								an open challenge, which has vexed mathematicians in multiple research areas for decades</li>
 								<li>The “bin packing” problem looks at how to pack items
-									of different sizes into the smallest number of bins.</li>
+									of different sizes into the smallest number of bins</li>
 							</ul>
 						</div>
 					</div>
 				</section>
-				<section>
+				<section data-background-color="white">
 					<img src="images/cap_set_specs.png" alt="cap_set_specs" width="90%">
 				</section>
-				<section>
+				<section data-background-color="white">
 					<img src="images/cap_set_results.png" alt="cap_set_results" width="90%">
 				</section>
 				<section>
+					<h3>The “bin packing” problem</h3>
+					<br>
 					<video width="90%" controls>
 						<source src="images/binpack_animation_v3_DcLQBh5.mp4" type="video/mp4">
 						Your browser does not support the video tag.
@@ -285,7 +280,7 @@
 					<div class="fragment">
 						<div class="typesetting">
 							<ul>
-								<li><span style="color: orange">FunSearch</span>produces programs generating the solution</li>
+								<li><span style="color: orange">FunSearch</span> produces programs generating the solution</li>
 								<li>They use <span style="color: orange">Codey</span>, an LLM built on top of
 									the <span style="color: orange">PaLM2</span> model,
 									which has been fine-tuned on a large corpus of code
@@ -324,7 +319,7 @@
 						</ul>
 					</div>
 				</section>
-				<section>
+				<section data-background-color="white">
 					<img src="images/AlphaGeomFig1.png" alt="AlphaGeomFig1" width="90%">
 				</section>
 				<section>
@@ -336,15 +331,34 @@
 							the LLM and the symbolic deduction engine take turns to run</li>
 					</ul>
 				</section>
-				<section>
+				<section data-background-color="white">
 					<img src="images/proof_lengths.png" alt="proof_lengths" width="90%">
 				</section>
-				<section>
-					<img src="images/AlphaGeometryRes.png" alt="AlphaGeometryRes" width="90%">
+				<section data-background-color="white">
+					<img src="images/AlphaGeometryRes.png" alt="AlphaGeometryRes" width="70%">
+				</section>
+				<section data-background-color="white">
+					<img src="images/AG_diff_domains.jpg" alt="AG_diff_domains" width="70%">
 				</section>
 				<section>
-					<h2>Instead of a conclusion</h2>
-
+					<h3>Instead of a conclusion</h3>
+					<div class="fragment">
+						<div class="typesetting">
+						<p style="text-align: left">AlphaGeometry paper shows that language models can learn to come up with
+							auxiliary constructions from synthetic data, in which problem statements
+							and auxiliary constructions are randomly generated together
+							and then separated using the traceback algorithm to identify the dependency difference.
+							Concretely, the AlphaGeometry framework requires the following ingredients:</p>
+							<ol>
+								<li>An implementation of the domain’s objects and definitions</li>
+								<li>A random premise sampler</li>
+								<li>The symbolic engine(s) that operate within the implementation (1)</li>
+								<li>A traceback procedure for the symbolic engine</li>
+							</ol>
+						<p style="text-align: left">Using these four ingredients and the algorithm described in the main text,
+							one can generate synthetic data for any target domain.</p>
+						</div>
+					</div>
 				</section>
             </div>
         </div>
