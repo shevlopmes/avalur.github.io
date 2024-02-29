@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<title>Object-Oriented Programming</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/black.css">
+
+        <!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+		<!-- and it's easy to individually load additional languages -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script>
+
+		<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+<!--		<script defer src="https://pyscript.net/latest/pyscript.js"></script>-->
+<!--		<py-config>-->
+<!--			terminal = false-->
+<!--            packages = ["scikit-learn"] # "numpy", "matplotlib"-->
+<!--		</py-config>-->
+		<script>
+			import hljs from "highlight.js";
+
+			hljs.highlightAll();
+		</script>
+		<style>
+			.column {
+			  float: left;
+			  width: 48%;
+			  padding: 2px;
+			}
+			/* Clear floats after image containers */
+			.row::after {
+			  content: "";
+			  clear: both;
+			  display: table;
+			}
+			.important {
+				color: orange;
+			}
+		</style>
+</head>
+	<body onload="totalWrapper();">
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<div>
+						<img src="images/nup_logo_dark.jpeg" alt="nup_logo" />
+					</div>
+					<h2>Programming Paradigms</h2>
+					<h3>Object-Oriented Programming</h3>
+					<br />
+					Alex Avdiushenko <br />
+					April 2, 2024
+				</section>
+				<section>
+					<section>
+						<h3>The problem</h3>
+						<p style="text-align: left">We need to somehow manage the complexity of
+							the real world to simulate it inside computers.</p>
+
+						<div class="fragment">
+							<div class="typesetting">
+								<h3>Objects</h3>
+								<p style="text-align: left">Java supports many different kinds of data:</p>
+<!--language=java-->
+									  <pre>
+										  <code class="language-java">
+// 1. Standard Java Library Objects
+String str = "Hello, World!";
+ArrayList&lt;Integer&gt; arrayList = new ArrayList<>();
+File file = new File("example.txt");
+
+// 2. User-Defined Objects
+class Person {
+    String name;
+    int age;
+}
+Person person = new Person();
+										  </code>
+									  </pre>
+							</div>
+						</div>
+					</section>
+					<section data-background-color="antiquewhite">
+						<div class="fragment">
+							<div class="typesetting">
+<!--language=java-->
+									  <pre>
+										  <code class="language-java">
+// 3. Wrapper Class Objects
+Integer integerWrapper = new Integer(5);
+Character charWrapper = new Character('a');
+
+// 4. Anonymous Objects
+new Thread(new Runnable() {
+    public void run() {
+        System.out.println("Anonymous Thread running");
+    }
+}).start();
+
+// 5. Serializable Objects
+import java.io.Serializable;
+class Student implements Serializable {
+    int id;
+    String name;
+}
+Student student = new Student();
+										  </code>
+									  </pre>
+							</div>
+						</div>
+					</section>
+					<section data-background-color="antiquewhite">
+						<div class="fragment">
+							<div class="typesetting">
+<!--language=java-->
+									  <pre>
+										  <code class="language-java">
+// 6. GUI Component Objects (Assuming Swing for example)
+import javax.swing.JButton;
+import javax.swing.JFrame;
+JFrame frame = new JFrame();
+JButton button = new JButton("Click me");
+
+// 7. Exception Objects
+try {
+    // Risky operations
+} catch (Exception e) {
+    System.out.println(e.getMessage());
+}
+
+// 8. Lambda Expression Objects
+Runnable runnable = () -> System.out.println("Lambda Runnable running");
+new Thread(runnable).start();
+										  </code>
+									  </pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<ul>
+							<li>Every <span style="color: orange">object</span> has:</li>
+							<ul>
+								<li>a <span style="color: orange">type</span></li>
+								<li>an internal <span style="color: orange">data representation</span> (primitive or composite)</li>
+								<li>a set of procedures for <span style="color: orange">interaction</span> with the object</li>
+							</ul>
+							<li>an object is an <span style="color: orange">instance</span> of a type</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Object oriented programming (OOP)</h3>
+						<div class="fragment">
+							<div class="typesetting">
+								<ul>
+									<li>Everything is an object</li>
+									<li>can <span style="color: orange">create new objects</span> of some type</li>
+									<li>can <span style="color: orange">manipulate objects</span></li>
+									<li>can <span style="color: orange">destroy objects</span></li>
+									<ul>
+										<li>Java will reclaim inaccessible objects — called "garbage collection"</li>
+										<li>in Java, unlike C++ or Python, you don't explicitly delete objects, but just "forget" about them</li>
+									</ul>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h3>What are objects?</h3>
+						<div class="column">
+							<p style="text-align: left">A <span style="color: orange">data abstraction</span> that captures..</p>
+							<ol>
+								<li>an <span style="color: orange">internal representation</span> through data attributes</li>
+								<li>an <span style="color: orange">interface</span> for interacting with an object through methods
+								(aka procedures/functions). Defines behavior but hides implementation</li>
+							</ol>
+						</div>
+						<div class="column">
+							<img src="images/cars_DALL_E.webp" alt="cars_DALL_E" width="70%" style="border-radius: 5%">
+							<p>Objects as real-world entities, classes as blueprints</p>
+						</div>
+					</section>
+					<section>
+						<h3>ArrayList example</h3>
+						<div class="fragment">
+							<div class="typesetting">
+								<p style="text-align: left">
+									<code>ArrayList</code> is a resizable array implementation in Java's Collection framework.
+									Unlike traditional arrays, it can dynamically grow and shrink as you add or remove elements.</p>
+								<h3>How to use ArrayList</h3>
+								<ul>
+									<li>Declaration: <code>ArrayList&lt;Type&gt; list = new ArrayList&lt;&gt;();</code></li>
+									<li>Adding items: <code>list.add(item);</code></li>
+									<li>Accessing items: <code>Type item = list.get(index);</code></li>
+									<li>Size: <code>int size = list.size();</code></li>
+								</ul>
+								<p style="text-align: left">
+									ArrayLists are part of the <code>java.util</code> package,
+									so don't forget to import it at the beginning of your Java file.</p>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h3>Creating and using your own types with classes</h3>
+						<p style="text-align: left">
+							Make a distinction between <span class="important">creating a class</span>
+							and <span class="important">using an instance</span> of the class</p>
+
+						<div class="fragment">
+							<div class="typesetting">
+							<h3>Creating the Class</h3>
+							<ul>
+								<li>Defining the class name</li>
+								<li>Defining class attributes</li>
+								<li>For example, someone wrote code to implement a list class</li>
+							</ul>
+
+							<h3>Using the Class</h3>
+							<ul>
+								<li>Creating new <span class="important">instances</span> of objects</li>
+								<li>Doing operations on the instances</li>
+								<li>For example, <code>ArrayList&lt;Integer&gt; l = [1, 2];</code>
+									and <code>l.size()</code></li>
+							</ul>
+							</div>
+						</div>
+					</section>
+					<section data-background-color="antiquewhite">
+						<h3>Define your own types</h3>
+						<p style="text-align: left">
+							Use the <code>class</code> keyword to define a new type in Java.</p>
+
+
+						<div class="fragment">
+							<div class="typesetting">
+<!--language=java-->
+									  <pre>
+										  <code class="language-java">
+					// Java class definition
+					public class Coordinate {
+						// define attributes here
+
+						// Constructor
+						public Coordinate() {
+							// initialization code here
+						}
+					}
+										  </code>
+									  </pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<ul>
+							<li>Similar to methods, indent code indicates which statements are part of the class definition</li>
+							<li>In <span class="important">Java</span>, the word <code>extends</code> is used
+								(instead of <code>(object)</code> in <span class="important">Python</span>)
+								to indicate that a class inherits from another (inheritance will be covered later)</li>
+							<ul>
+								<li><code>Coordinate</code> is a subclass of <code>Object</code> by default in <span class="important">Java</span>,
+								as all classes implicitly extend the <code>Object</code> class if no other superclass is specified.</li>
+								<li><code>Object</code> is a superclass of <code>Coordinate</code></li>
+							</ul>
+						</ul>
+					</section>
+					<section>
+						<h3>What are attributes?</h3>
+						<ul>
+							<li>Data and procedures that <span class="important">"belong"</span> to the class</li>
+							<li>
+								<span class="important">Data attributes</span>
+								<ul>
+									<li>Think of data as other objects that make up the class</li>
+									<li>For example, a coordinate is made up of two numbers</li>
+								</ul>
+							</li>
+							<li>
+								<span class="important">Methods</span> (procedural attributes)
+								<ul>
+									<li>Think of methods as functions that only work with this class</li>
+									<li>How to interact with the object</li>
+									<li>For example, you can define a distance between two coordinate objects,
+										but there is no meaning to a distance between two list objects</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section data-background-color="antiquewhite">
+						<py-repl>
+							pipeline_create_prediction = create_pipeline([
+							  pipeline_preprocessor,
+							  pipeline_rf_creator('train.csv')
+							])
+
+							res = pipeline_create_prediction('test.csv')
+						</py-repl>
+					</section>
+					<section data-background-color="antiquewhite">
+						<h3>Pros and cons</h3>
+						<div class="fragment">
+							<div class="typesetting">
+								<ul>
+									<li>building different pipelines from functions is easy</li>
+									<li>unittests are easy to implement</li>
+									<li>when you've done with investigations, you simply remove all unused functions</li>
+									<li>but you need to think more during your experiments</li>
+								</ul>
+								<img src="images/fp_meme.png" width="800" style="border-radius: 5%">
+							</div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<section data-background-color="antiquewhite">
+						<h3>Computational Graphs</h3>
+
+						<div class="row">
+						  <div class="column" style="text-align: center">
+							  <img src="images/jax_comp_graph.png" style="border-radius: 5%" width="400">
+						  </div>
+						  <div class="column" style="text-align: left">
+							  <br><br>
+								<div class="fragment">
+									<div class="typesetting">
+									  <ul>
+										  <li>A computational graph is a way to represent a mathematical function
+									  in the language of graph theory</li>
+										  <br>
+										  <li>This representation provides an efficient way to execute complex
+											  mathematical operations and for example,
+											  find derivatives of the represented functions</li>
+									  </ul>
+									</div>
+								</div>
+						  </div>
+						</div>
+					</section>
+					<section data-background-color="antiquewhite">
+						<h3>LeNet: well-known convolutional neural net</h3>
+						<img src="images/lenet.svg">
+					</section>
+					<section data-background-color="antiquewhite">
+<!--language=python-->
+						<py-repl>
+from torch import nn
+
+def init_cnn(module):
+    """Initialize weights for CNNs."""
+    if type(module) == nn.Linear or type(module) == nn.Conv2d:
+        nn.init.xavier_uniform_(module.weight)
+
+class LeNet(nn.Module):
+    """The LeNet-5 model."""
+    def __init__(self, lr=0.1, num_classes=10):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.LazyConv2d(6, kernel_size=5, padding=2), nn.Sigmoid(),
+            nn.AvgPool2d(kernel_size=2, stride=2),
+            nn.LazyConv2d(16, kernel_size=5), nn.Sigmoid(),
+            nn.AvgPool2d(kernel_size=2, stride=2),
+            nn.Flatten(),
+            nn.LazyLinear(120), nn.Sigmoid(),
+            nn.LazyLinear(84), nn.Sigmoid(),
+            nn.LazyLinear(num_classes)
+		)
+						</py-repl>
+					</section>
+					<section data-background-color="antiquewhite">
+<!--language=python-->
+						<py-repl>
+from torch import nn
+
+class LeNet(nn.Module):
+    lr: float = 0.1
+    num_classes: int = 10
+    kernel_init: FunctionType = nn.initializers.xavier_uniform
+
+    def setup(self):
+        self.net = nn.Sequential([
+            nn.Conv(features=6, kernel_size=(5, 5), padding='SAME',
+                    kernel_init=self.kernel_init()), nn.sigmoid,
+            lambda x: nn.avg_pool(x, window_shape=(2, 2), strides=(2, 2)),
+            nn.Conv(features=16, kernel_size=(5, 5), padding='VALID',
+                    kernel_init=self.kernel_init()), nn.sigmoid,
+            lambda x: nn.avg_pool(x, window_shape=(2, 2), strides=(2, 2)),
+            lambda x: x.reshape((x.shape[0], -1)),  # flatten
+            nn.Dense(features=120, kernel_init=self.kernel_init()), nn.sigmoid,
+            nn.Dense(features=84, kernel_init=self.kernel_init()), nn.sigmoid,
+            nn.Dense(features=self.num_classes, kernel_init=self.kernel_init())
+        ])
+						</py-repl>
+					</section>
+					<section>
+						<h3>Google JAX</h3>
+						<div class="fragment">
+							<div class="typesetting">
+								<p style="text-align: left">
+									<span style="color: orange">Google JAX</span> is a machine learning framework for transforming numerical functions.
+									It is described as bringing together a modified version of autograd
+									(automatic obtaining of the gradient function through differentiation of a function) and
+									TensorFlow's XLA (Accelerated Linear Algebra).
+
+									It is designed to follow the structure and workflow of <span style="color: orange">NumPy</span>
+									as closely as possible and works with various existing frameworks
+									such as <span style="color: orange">TensorFlow</span> and <span style="color: orange">PyTorch</span>.
+								</p>
+							</div>
+						</div>
+						<br>
+						<div class="fragment">
+							<div class="typesetting">
+								<p style="text-align: left">
+									The primary functions of <span style="color: orange">JAX</span> are:</p>
+								<ul>
+									<li>grad: automatic differentiation</li>
+									<li>jit: compilation</li>
+									<li>vmap: auto-vectorization</li>
+									<li>pmap: SPMD programming</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Summary</h3>
+						<ul>
+							<li class="fragment"><span style="color: orange">Functional Programming (FP)</span>
+								can be effectively used in Data Science for more organized,
+								testable, and maintainable code</li>
+							<li class="fragment"><span style="color: orange">FP</span> allows for the creation of complex data pipelines using simple, reusable functions</li>
+							<li class="fragment">Moreover, it can make parallelization almost free, which is crucial
+							for handling large datasets and complex computations in data science</li>
+							<li class="fragment">Google's <span style="color: orange">JAX</span> is a powerful tool
+								that brings functional programming principles
+								to machine learning and allows for efficient transformations of numerical functions</li>
+						</ul>
+					</section>
+					<section>
+						<br><br>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+							<h3>What else to look at?</h3>
+								<ul>
+									<li><a href="https://towardsdatascience.com/functional-programing-in-data-science-projects-c909c11138bb">
+										Nice publication</a> about Functional Programming in Data Science Projects</li>
+									<li><a href="https://medium.com/nlplanet/a-quick-intro-to-jax-with-examples-c6e8cc65c3c1">
+										Quick intro to JAX with examples</a></li>
+								</ul>
+							<p></p>
+							</div>
+						</div>
+						<br>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+							<h3>Dream big, work hard =)</h3>
+							</div>
+						</div>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/math/math.js"></script>
+		<script src="../scripts/utils.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				// The "normal" size of the presentation, aspect ratio will
+				// be preserved when the presentation is scaled to fit different
+				// resolutions. Can be specified using percentage units.
+				width: '100%',
+				height: '100%',
+				// Factor of the display size that should remain empty around the content
+				margin: 0.08,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 2.0,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+
+			Reveal.addEventListener('fragmentshown', function (event) {
+				if (lettersAnimate) {
+					[...event.fragment.getElementsByClassName('typesetting')].forEach(element => {
+						playAnimation(element);
+					});
+				}
+			});
+
+		</script>
+    </body>
+</html>
