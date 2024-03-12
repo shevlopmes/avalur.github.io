@@ -296,26 +296,92 @@ new Thread(runnable).start();
 						</ul>
 					</section>
 					<section data-background-color="antiquewhite">
-						<py-repl>
-							pipeline_create_prediction = create_pipeline([
-							  pipeline_preprocessor,
-							  pipeline_rf_creator('train.csv')
-							])
-
-							res = pipeline_create_prediction('test.csv')
-						</py-repl>
-					</section>
-					<section data-background-color="antiquewhite">
-						<h3>Pros and cons</h3>
 						<div class="fragment">
 							<div class="typesetting">
-								<ul>
-									<li>building different pipelines from functions is easy</li>
-									<li>unittests are easy to implement</li>
-									<li>when you've done with investigations, you simply remove all unused functions</li>
-									<li>but you need to think more during your experiments</li>
-								</ul>
-								<img src="images/fp_meme.png" width="800" style="border-radius: 5%">
+<!--language=java-->
+									  <pre>
+										  <code class="language-java">
+public class Coordinate {
+    // Attributes for the x and y coordinates
+    private double x;
+    private double y;
+
+    // Default constructor
+    public Coordinate() {
+        // Initialize with default values
+        this.x = 0.0;
+        this.y = 0.0;
+    }
+
+    // Parameterized constructor
+    public Coordinate(double x, double y) {
+        // Set the x and y coordinates
+        this.x = x;
+        this.y = y;
+    }
+
+    // Also you need getters and setters for x and y
+}
+										  </code>
+									  </pre>
+							<p style="text-align: left">
+								In Java, you explicitly only pass arguments to the constructor,
+								and <code>this</code> is reference to this current instance of a class.
+								In Python you have to use first argument <code>self</code> for it.</p>
+							</div>
+						</div>
+					</section>
+					<section data-background-color="antiquewhite">
+						<h3>Actually creating an instance of a class</h3>
+						<div class="fragment">
+							<div class="typesetting">
+<!--language=java-->
+									  <pre>
+										  <code class="language-java">
+            // Java code to create instances of Coordinate class
+            Coordinate c = new Coordinate(3, 4);
+            Coordinate origin = new Coordinate(0, 0);
+
+            // Assuming the getters are defined in the Coordinate class
+            System.out.println(c.getX());
+            System.out.println(origin.getX());
+										  </code>
+									  </pre>
+							<p style="text-align: left">Data attributes of an instance are called
+								<span class="important">instance variables</span></p>
+							</div>
+						</div>
+					</section>
+					<section data-background-color="antiquewhite">
+						<h3>Define a method for the coordinate class</h3>
+						<div class="fragment">
+							<div class="typesetting">
+<!--language=java-->
+									  <pre>
+										  <code class="language-java">
+            // Java class definition
+            public class Coordinate {
+                private double x;
+                private double y;
+
+                public Coordinate(double x, double y) {
+                    this.x = x;
+                    this.y = y;
+                }
+
+                public double distance(Coordinate other) {
+                    double xDiffSq = Math.pow(this.x - other.x, 2);
+                    double yDiffSq = Math.pow(this.y - other.y, 2);
+                    return Math.sqrt(xDiffSq + yDiffSq);
+                }
+            }
+										  </code>
+									  </pre>
+								<p style="text-align: left">
+									Other than <code>this</code>
+									(equivalent to <code>self</code> in Python) and dot notation,
+									methods behave just like functions
+									(take parameters, do operations, return).</p>
 							</div>
 						</div>
 					</section>
