@@ -65,12 +65,17 @@
                                     It is quite possible to read a semester course on it,
                                     but we will limit ourselves to a couple of lectures.
 
+                                    Great, let's go on and let me remind you, that up to this point, we found the appropriate function $f$,
+                                    based on the training set. And it is called supervised learning.
+                                    Or also we found the inner structure in the set of objects, you know, texts or images,
+                                    and it is called unsupervised learning, when we haven't answers $y$.
+
                                     A pretty good illustration of reinforcement learning comes from
                                     the amazing ability of children to learn to walk.
 
                                     Initially they have muscles and mostly lie down and sleep.
-                                    No any datasets for supervised or unsupervised learning,
-                                    but the whole real physical world around.
+                                    There are no any datasets for supervised or unsupervised learning,
+                                    but the whole real physical world is around.
                                     Then they begin to roll over from their stomach to their back and back,
                                     then they learn to crawl, sit, stand, and finally, walk and run.
                                 </aside>
@@ -85,11 +90,6 @@
                         <p><a href="https://www.youtube.com/watch?v=QilHGSYbjDQ">Deep Reinforcement Learning in Pacman</a></p>
 
                         <aside class="notes">
-                            Great, let's go on and let me remind you, that up to this point, we found the appropriate function $f$,
-                            based on the training set. And it is called supervised learning.
-                            Or also we found the inner structure in the set of objects, you know, texts or images,
-                            and it is called unsupervised learning, when we haven't answers $y$.
-
                             Ok, but what do we have in the real world?
                             Usually we do some action and get the result, and so we are learning gradually.
                         </aside>
@@ -115,7 +115,7 @@
                         </aside>
                     </section>
                     <section>
-                        <h3>Two fundamental difficulties in RL</h3>
+                        <h3 style="text-align: left">Two fundamental difficulties in RL</h3>
                         <div class="fragment">
                             <div class="typesetting">
                                 <ul>
@@ -124,20 +124,21 @@
                                 </ul>
                             </div>
                         </div>
+                        <br>
 
                         <div class="fragment">
                             <h3 style="text-align: left">What approaches are there?</h3>
                             <div class="typesetting">
-                            <ul>
-                                <li>Multi-armed bandits — a special case of reinforcement learning with only one state,
-                                    i.e., without credit assignment difficulty</li>
-                            </ul>
-                            <br><br>
-                            <p style="text-align: left">
-                                Also, there is a statistics approach:
-                                A/B testing — many users see potentially bad options;
-                                another problem is that in reality the group size should depend on
-                                the true probability values (e.g., conversions) which you don't know</p>
+                                <ul>
+                                    <li style="text-align: left">Multi-armed bandits — a special case of reinforcement learning with only one state,
+                                        i.e., without credit assignment difficulty</li>
+                                <br>
+                                <li style="text-align: left">
+                                    Also, there is a statistics approach (i.e. not RL):
+                                    A/B testing — many users see potentially bad options;
+                                    another problem is that in reality the group size should depend on
+                                    the true probability values (e.g., conversions) which you don't know</li>
+                                </ul>
                             </div>
                         </div>
                         <aside class="notes">
@@ -353,7 +354,7 @@
 
                         <div class="fragment">
                             <div class="typesetting">
-                                <p>That there are a lot of states:</p>
+                                <p style="text-align: left">That there are a lot of states:</p>
                                 <img src="images/starcraft3.jpg" alt="Starcraft" style="width: 80%;border-radius: 5%">
                             </div>
                         </div>
@@ -448,7 +449,7 @@
                         <div class="typesetting">
                             <div class="fragment">
                                 <p style="text-align: left">Average absolute win:
-                                $$ \mathbb{E}_{s_0 \sim P(s_0),} \mathbb{E}_{a_0 \sim \pi(a|s_0),} \mathbb{E}_{s_1, r_0 \sim P(s^\prime,r|s, a)} \dots \left[r_0 + r_1 + \dots + r_T \right]$$</p>
+                                $$ \mathbb{E}_{s_0 \sim P(s_0)\,} \mathbb{E}_{a_0 \sim \pi(a|s_0)\,} \mathbb{E}_{s_1, r_0 \sim P(s^\prime,r|s, a)} \dots \left[r_0 + r_1 + \dots + r_T \right]$$</p>
                             </div>
                             <div class="fragment">
                                 <p style="text-align: left">On-Policy Value Function:
@@ -474,7 +475,7 @@
                         <div class="fragment">
                             <div class="typesetting">
                                 <p style="text-align: left">
-                                    Sometimes in RL, we don't need to describe how good an action is in an absolute sense,
+                                    Often in RL, we don't need to describe how good an action is in an absolute sense,
                                     but only how much better it is than others on average.
                                     We make this concept precise with the <b>advantage function</b>:
                                     $$ A_{\pi} (s, a) = Q_{\pi} (s, a) - V_{\pi} (s) $$
@@ -490,7 +491,7 @@
                         Q_{\pi}(s^\prime,a^\prime) \mid s_t = s, a_t = a \right]$$
                     </section>
                     <section>
-                        <h3>State utility recalculation</h3>
+                        <h3 style="text-align: left">State utility recalculation</h3>
                         $$V(s) = \max\limits_a [r(s, a) + \gamma V(s^\prime (s, a))]$$
 
                         <p style="text-align: left">That is, with probabilistic transitions</p>
@@ -508,7 +509,7 @@
                             we need to know the transition probabilities $P(s^\prime| s, a)$</p>
                     </section>
                     <section>
-                        <h3>Utility of an action</h3>
+                        <h3 style="text-align: left">Utility of an action</h3>
                         $$Q(s, a) = r(s, a) + \gamma V(s^\prime)$$
                         <p style="text-align: left">The strategy of the game is defined as follows</p>
                         $$\pi(s) : \arg\max\limits_a Q(s, a)$$
@@ -607,7 +608,8 @@
                 <section>
                     <section>
                         <h3>DQN (Deep Q-Learning Network)</h3>
-                        <p style="text-align: left">Environment is Atari game emulator, and each frame is $210\times 160pix, \ 128col$</p>
+                        <p style="text-align: left">Environment is Atari game emulator, and each frame is
+                            $210\times 160\text{ pix}, \ 128\text{ colors}$</p>
                         <p><img src="images/atari_games.png" style="width: 100%;" alt="Atari Games"/></p>
 
                             <div style="display: flex; justify-content: space-between;width: 80%;padding-left: 220px">
@@ -632,40 +634,12 @@
                         </div>
                     </section>
                     <section>
-                        <h3>Dueling Networks</h3>
-
-                        <p style="text-align: left">Dueling Network is a reinforcement learning architecture.
-                            The idea behind Dueling Networks is that in many settings,
-                            it could be beneficial to separate the representation of state values and
-                            the advantages of each action in a given state.</p>
-
-                        <h4>Architecture</h4>
-
-                        <p style="text-align: left">The architecture of Dueling Networks consists of two streams.
-                            One stream is the value function stream, which estimates the value function $V(s)$;
-                            the other is the advantage function stream, which estimates advantage function $A(s, a)$.
-                            These two streams are combined to produce the estimate of $Q(s, a)$.</p>
-
-                        <aside class="notes">
-                            The advantage of Dueling Networks is that it can learn which states are (or are not) valuable,
-                            without having to learn the effect of each action at every state.
-                            This is particularly appealing for states with no changes, or for states where
-                            the effect of certain actions does not vary a lot.
-
-                            The Dueling Network architecture was introduced in a paper titled
-                            "Dueling Network Architectures for Deep Reinforcement Learning"
-                            by Ziyu Wang, Tom Schaul, Matteo Hessel, Hado van Hasselt, Marc Lanctot, and Nando de Freitas,
-                            and it has been widely used in the Deep Reinforcement Learning field since its introduction.
-                        </aside>
-
-                    </section>
-                    <section>
                         <h3>DQN Method</h3>
                         <div class="fragment">
                             <div class="typesetting">
                                 <ul>
                                     <li>Saves trajectories $(s_t, a_t, r_t)_{t=1}^T$ in <b>replay memory</b>
-                                        for repeated experience replay. It is needed to prevent overfitting.</li>
+                                        for repeated experience replay. It is needed to prevent overfitting</li>
                                     <li>Gets approximation of the optimal value function $Q(s_t, a_t)$
                                         for fixed current network parameters ${\color{orange} w_t}$</li>
                                     <li>Evaluates loss function for training the neural network model $Q(s, a; w)$:
@@ -689,6 +663,39 @@
                     <section data-background-image="images/AI-AlphaStar-StarCraft-II.png">
                     </section>
                 </section>
+                    <section>
+                        <h3>Dueling Networks</h3>
+
+                        <p style="text-align: left">Dueling Network is a reinforcement learning architecture.
+                            The idea behind Dueling Networks is that in many settings,
+                            it could be beneficial to separate the representation of state values and
+                            the advantages of each action in a given state.</p>
+
+                        <br>
+                        <div class="fragment">
+                            <div class="typesetting">
+                                <h4 style="text-align: left">Architecture</h4>
+
+                                <p style="text-align: left">The architecture of Dueling Networks consists of two streams.
+                                    One stream is the value function stream, which estimates the value function $V(s)$;
+                                    the other is the advantage function stream, which estimates advantage function $A(s, a)$.
+                                    These two streams are combined to produce the estimate of $Q(s, a)$.</p>
+                            </div>
+                        </div>
+
+                        <aside class="notes">
+                            The advantage of Dueling Networks is that it can learn which states are (or are not) valuable,
+                            without having to learn the effect of each action at every state.
+                            This is particularly appealing for states with no changes, or for states where
+                            the effect of certain actions does not vary a lot.
+
+                            The Dueling Network architecture was introduced in a paper titled
+                            "Dueling Network Architectures for Deep Reinforcement Learning"
+                            by Ziyu Wang, Tom Schaul, Matteo Hessel, Hado van Hasselt, Marc Lanctot, and Nando de Freitas,
+                            and it has been widely used in the Deep Reinforcement Learning field since its introduction.
+                        </aside>
+
+                    </section>
                 <section>
                     <section data-background-color="white">
                         <h3>RL recap</h3>
@@ -723,9 +730,10 @@
                                 \boxed{\nabla_\theta J(\theta) \propto \sum\limits_s Pr_\pi[s]
                                 \sum\limits_a Q_\pi(s,a) \nabla_\theta \pi(a|s)}
                                 $$
-                                Probabilities $Pr_\pi[s]$ are very hard to calculate,
-                                but we can just play using policy $\pi$, and this gives us
-                                correct samples from this distribution.
+                                <p style="text-align: left">
+                                    Probabilities $Pr_\pi[s]$ are very hard to calculate,
+                                    but we can just play using policy $\pi$, and this gives us
+                                    correct samples from this distribution.</p>
                             </div>
                         </div>
                     </section>
@@ -751,16 +759,19 @@
                                 </ul>
                             </div>
                         </div>
-                    </section>
-                    <section>
-                        <h3>What else can you see?</h3>
-                        <ul>
-                            <li><a href="https://spinningup.openai.com/en/latest">Educational resource on RL produced by OpenAI</a></li>
-                            <li>The main book on the topic:
-                                <a href="https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf">Reinforcement Learning: An Introduction, Richard S. Sutton and Andrew G. Barto</a></li>
-                            <li>Yuxi Li. Resources for Deep Reinforcement Learning. 2018</li>
-                            <li><a href="https://www.deepmind.com/learning-resources/introduction-to-reinforcement-learning-with-david-silver">Intro to RL with David Silver, DeepMind × UCL, 2015</a></li>
-                        </ul>
+                        <div class="fragment">
+                            <div class="typesetting">
+                                <br>
+                                <h3 style="text-align: left">What else can you see?</h3>
+                                <ul>
+                                    <li><a href="https://spinningup.openai.com/en/latest">Educational resource on RL produced by OpenAI</a></li>
+                                    <li>The main book on the topic:
+                                        <a href="https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf">Reinforcement Learning: An Introduction, Richard S. Sutton and Andrew G. Barto</a></li>
+                                    <li>Yuxi Li. Resources for Deep Reinforcement Learning. 2018</li>
+                                    <li><a href="https://www.deepmind.com/learning-resources/introduction-to-reinforcement-learning-with-david-silver">Intro to RL with David Silver, DeepMind × UCL, 2015</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </section>
                 </section>
             </div>
