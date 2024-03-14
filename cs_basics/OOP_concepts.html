@@ -47,6 +47,10 @@
 			.important {
 				color: orange;
 			}
+			.hierarchy-box { padding: 10px; border-radius: 4px; text-align: center; }
+			.parent { background-color: #aaa; }
+			.child { background-color: #ccc; display: inline-block; margin: 5px; }
+			.special { background-color: #f88; }
 		</style>
 </head>
 	<body onload="totalWrapper();">
@@ -64,13 +68,13 @@
 				</section>
 				<section>
 					<section>
-						<h3>The problem</h3>
+						<h3 style="text-align: left">The problem</h3>
 						<p style="text-align: left">We need to somehow manage the complexity of
 							the real world to simulate it inside computers.</p>
 
 						<div class="fragment">
 							<div class="typesetting">
-								<h3>Objects</h3>
+								<h3 style="text-align: left">Objects</h3>
 								<p style="text-align: left">Java supports many different kinds of data:</p>
 <!--language=java-->
 									  <pre>
@@ -263,13 +267,15 @@ new Thread(runnable).start();
 					<section>
 						<ul>
 							<li>Similar to methods, indent code indicates which statements are part of the class definition</li>
-							<li>In <span class="important">Java</span>, the word <code>extends</code> is used
-								(instead of <code>(object)</code> in <span class="important">Python</span>)
+							<li>In <span class="important">Java</span>, the word <code class="important">extends</code> is used
+								(instead of <code class="important">(object)</code> in <span class="important">Python</span>)
 								to indicate that a class inherits from another (inheritance will be covered later)</li>
 							<ul>
-								<li><code>Coordinate</code> is a subclass of <code>Object</code> by default in <span class="important">Java</span>,
-								as all classes implicitly extend the <code>Object</code> class if no other superclass is specified.</li>
-								<li><code>Object</code> is a superclass of <code>Coordinate</code></li>
+								<li><code class="important">Coordinate</code> is a subclass of <code class="important">Object</code>
+									by default in <span class="important">Java</span>, as all classes
+									implicitly extend the <code class="important">Object</code> class if no other superclass is specified</li>
+								<li><code class="important">Object</code> is a superclass
+									of <code class="important">Coordinate</code></li>
 							</ul>
 						</ul>
 					</section>
@@ -387,111 +393,82 @@ public class Coordinate {
 					</section>
 				</section>
 				<section>
-					<section data-background-color="antiquewhite">
-						<h3>Computational Graphs</h3>
-
-						<div class="row">
-						  <div class="column" style="text-align: center">
-							  <img src="images/jax_comp_graph.png" style="border-radius: 5%" width="400">
-						  </div>
-						  <div class="column" style="text-align: left">
-							  <br><br>
-								<div class="fragment">
-									<div class="typesetting">
-									  <ul>
-										  <li>A computational graph is a way to represent a mathematical function
-									  in the language of graph theory</li>
-										  <br>
-										  <li>This representation provides an efficient way to execute complex
-											  mathematical operations and for example,
-											  find derivatives of the represented functions</li>
-									  </ul>
-									</div>
-								</div>
-						  </div>
-						</div>
-					</section>
-					<section data-background-color="antiquewhite">
-						<h3>LeNet: well-known convolutional neural net</h3>
-						<img src="images/lenet.svg">
-					</section>
-					<section data-background-color="antiquewhite">
-<!--language=python-->
-						<py-repl>
-from torch import nn
-
-def init_cnn(module):
-    """Initialize weights for CNNs."""
-    if type(module) == nn.Linear or type(module) == nn.Conv2d:
-        nn.init.xavier_uniform_(module.weight)
-
-class LeNet(nn.Module):
-    """The LeNet-5 model."""
-    def __init__(self, lr=0.1, num_classes=10):
-        super().__init__()
-        self.net = nn.Sequential(
-            nn.LazyConv2d(6, kernel_size=5, padding=2), nn.Sigmoid(),
-            nn.AvgPool2d(kernel_size=2, stride=2),
-            nn.LazyConv2d(16, kernel_size=5), nn.Sigmoid(),
-            nn.AvgPool2d(kernel_size=2, stride=2),
-            nn.Flatten(),
-            nn.LazyLinear(120), nn.Sigmoid(),
-            nn.LazyLinear(84), nn.Sigmoid(),
-            nn.LazyLinear(num_classes)
-		)
-						</py-repl>
-					</section>
-					<section data-background-color="antiquewhite">
-<!--language=python-->
-						<py-repl>
-from torch import nn
-
-class LeNet(nn.Module):
-    lr: float = 0.1
-    num_classes: int = 10
-    kernel_init: FunctionType = nn.initializers.xavier_uniform
-
-    def setup(self):
-        self.net = nn.Sequential([
-            nn.Conv(features=6, kernel_size=(5, 5), padding='SAME',
-                    kernel_init=self.kernel_init()), nn.sigmoid,
-            lambda x: nn.avg_pool(x, window_shape=(2, 2), strides=(2, 2)),
-            nn.Conv(features=16, kernel_size=(5, 5), padding='VALID',
-                    kernel_init=self.kernel_init()), nn.sigmoid,
-            lambda x: nn.avg_pool(x, window_shape=(2, 2), strides=(2, 2)),
-            lambda x: x.reshape((x.shape[0], -1)),  # flatten
-            nn.Dense(features=120, kernel_init=self.kernel_init()), nn.sigmoid,
-            nn.Dense(features=84, kernel_init=self.kernel_init()), nn.sigmoid,
-            nn.Dense(features=self.num_classes, kernel_init=self.kernel_init())
-        ])
-						</py-repl>
-					</section>
 					<section>
-						<h3>Google JAX</h3>
-						<div class="fragment">
-							<div class="typesetting">
-								<p style="text-align: left">
-									<span style="color: orange">Google JAX</span> is a machine learning framework for transforming numerical functions.
-									It is described as bringing together a modified version of autograd
-									(automatic obtaining of the gradient function through differentiation of a function) and
-									TensorFlow's XLA (Accelerated Linear Algebra).
-
-									It is designed to follow the structure and workflow of <span style="color: orange">NumPy</span>
-									as closely as possible and works with various existing frameworks
-									such as <span style="color: orange">TensorFlow</span> and <span style="color: orange">PyTorch</span>.
-								</p>
+						<h3>Class Hierarchies in Java</h3>
+						<div style="text-align: center;padding-left: 30%">
+							<div class="hierarchy-box parent" style="width: 45%;">Animal</div>
+							<div style="display: flex; justify-content: left; align-items: center; flex-wrap: wrap;">
+								<div class="hierarchy-box child">Person</div>
+								<div class="hierarchy-box child">Cat</div>
+								<div class="hierarchy-box child">Rabbit</div>
 							</div>
+							<div class="hierarchy-box special" style="width: 15%;font-size: large">Student</div>
 						</div>
 						<br>
+						<ul>
+							<li><span class="important">parent class</span> (superclass)</li>
+							<li><span class="important">child class</span> (subclass)
+								<ul>
+									<li><span class="important">inherits</span>
+										all data and behaviors of parent class</li>
+									<li><span class="important">add</span> more <span class="important">info</span>,
+										<span class="important">add</span> more <span class="important">behavior</span>
+									</li>
+									<li><span class="important">override</span> behavior</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>WHICH METHOD TO USE?</h3>
 						<div class="fragment">
 							<div class="typesetting">
-								<p style="text-align: left">
-									The primary functions of <span style="color: orange">JAX</span> are:</p>
 								<ul>
-									<li>grad: automatic differentiation</li>
-									<li>jit: compilation</li>
-									<li>vmap: auto-vectorization</li>
-									<li>pmap: SPMD programming</li>
+									<li>A subclass can have methods with the <span class="important">same name</span> as superclass</li>
+									<li>For an instance of a class,
+										look for a method name in <span class="important">current class definition</span></li>
+									<li>If not found, look for method name <span class="important">up the hierarchy</span>
+										(in parent, then grandparent, and so on)</li>
+									<li>Use the first method up the hierarchy that you find with that method name</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h3>The Diamond Problem in OOP</h3>
+						<div class="fragment">
+							<div class="typesetting">
+								<div class="column">
+									<img src="images/440px-Diamond_inheritance.png" alt="Diamond Problem Diagram" width="50%"/>
+								</div>
+								<div class="column">
+									<p style="text-align: left">The Diamond Problem refers to an ambiguity that arises
+										when two classes B and C inherit from A,
+										and class D inherits from both B and C.
+										If there is a method in A that B and C have overridden, and D does not override it,
+										which version of the method does D inherit: that of B, or that of C?</p>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section>
+						<p style="text-align: left">Note: In Java, the Diamond Problem is avoided because
+						Java does not support multiple inheritance for classes.
+						However, it can occur with interfaces, and is resolved
+						using explicit method invocation and interface default methods.</p>
+					</section>
+					<section>
+						<h3>OBJECT ORIENTED PROGRAMMING</h3>
+						<div class="fragment">
+							<div class="typesetting">
+								<ul>
+									<li>Create your own <span class="important">collections of data</span></li>
+									<li>Organize information</li>
+									<li>Division of work</li>
+									<li>Access information in a <span class="important">consistent</span> manner</li>
+									<li>Add layers of complexity</li>
+									<li>Like functions, classes are a mechanism for <span class="important">decomposition</span>
+										and <span class="important">abstraction</span> in programming</li>
 								</ul>
 							</div>
 						</div>
@@ -501,15 +478,15 @@ class LeNet(nn.Module):
 					<section>
 						<h3>Summary</h3>
 						<ul>
-							<li class="fragment"><span style="color: orange">Functional Programming (FP)</span>
-								can be effectively used in Data Science for more organized,
-								testable, and maintainable code</li>
-							<li class="fragment"><span style="color: orange">FP</span> allows for the creation of complex data pipelines using simple, reusable functions</li>
-							<li class="fragment">Moreover, it can make parallelization almost free, which is crucial
-							for handling large datasets and complex computations in data science</li>
-							<li class="fragment">Google's <span style="color: orange">JAX</span> is a powerful tool
-								that brings functional programming principles
-								to machine learning and allows for efficient transformations of numerical functions</li>
+							<li class="fragment">The problem of managing the complexity of the real world
+								can be effectively addressed through <span style="color: orange">Object Oriented Programming (OOP)</span>
+							</li>
+							<li class="fragment"><span style="color: orange">Object</span> is an instance of user-defined class,
+								which is usually a structure of data with special methods</li>
+							<li class="fragment">One can build class hierarchies for really complex systems</li>
+							<li class="fragment">Like functions,
+								classes are a mechanism for <span class="important">decomposition</span>
+								and <span class="important">abstraction</span> in programming</li>
 						</ul>
 					</section>
 					<section>
@@ -518,10 +495,10 @@ class LeNet(nn.Module):
 							<div class="typesetting">
 							<h3>What else to look at?</h3>
 								<ul>
-									<li><a href="https://towardsdatascience.com/functional-programing-in-data-science-projects-c909c11138bb">
-										Nice publication</a> about Functional Programming in Data Science Projects</li>
-									<li><a href="https://medium.com/nlplanet/a-quick-intro-to-jax-with-examples-c6e8cc65c3c1">
-										Quick intro to JAX with examples</a></li>
+									<li><a href="https://www.youtube.com/watch?v=SiBw7os-_zI">
+										Intro to OOP through chess example</a></li>
+									<li><a href="https://ocw.mit.edu/courses/1-124j-foundations-of-software-engineering-fall-2000/pages/syllabus/">
+										Basics of OOP and the C++ language from MIT</a></li>
 								</ul>
 							<p></p>
 							</div>
