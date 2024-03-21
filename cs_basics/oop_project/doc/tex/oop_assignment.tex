@@ -7,6 +7,7 @@
 \usepackage[version=4]{mhchem}
 \usepackage{stmaryrd}
 \usepackage{enumerate}
+\usepackage{hyperref}
 
 % =======================================================================
 % Margins --- save forests
@@ -33,7 +34,7 @@
 \maketitle
 \textbf{Set-up:} For this assignment, you will create a versatile audio processing application in Java that can handle various transformations on audio streams, such as volume adjustment, speed modification, noise removal, and channel manipulation (mono/stereo). The system should be able to process input from WAV files, microphone streams, and other sources.
 
-Use provided Java-blueprint reference.
+Use provided \href{https://github.com/avalur/avalur.github.io/tree/master/cs_basics/oop_project}{Java-project blueprint} for reference.
 
 \section{Considerations for OOP and Extensibility}
 \begin{enumerate}
@@ -43,7 +44,10 @@ Use provided Java-blueprint reference.
 \end{enumerate}
 
 This project challenges you to think about complex system design,
-data flow, and the practical application of OOP principles in a real-world scenario. It's a great opportunity to explore advanced programming concepts, software architecture, and audio processing techniques.
+data flow, and the practical application of OOP principles
+in a real-world scenario, using Java.
+It's a great opportunity to explore advanced programming concepts,
+software architecture, and audio processing techniques.
 
 \section{Core Components and Design Approach}
 \subsection{Audio Stream Abstraction: Interface}
@@ -130,23 +134,15 @@ showcasing the Observer pattern's power in creating a modular and extensible arc
 
 \subsection{Utility Components}
 \begin{enumerate}
-  \item \textbf{Converters}: For advanced features like speech-to-text or text-to-speech.
+  \item \textbf{Converters}: Can be used in processing pins or as standalone processing units
+  depending on whether you're implementing STT, TTS, or other conversion functionalities.
   \item \textbf{Config Management}: For setting up and managing system configurations,
-  potentially through visual representation using JavaFX.
+  potentially through visual representation using JavaFX. The JavaFX UI can serve as the central hub
+  for adjusting system settings and configurations, enhancing user interaction.
   \item \textbf{Logging and Debugging}: Integrated logging for monitoring system operations
   and aiding in debugging.
 \end{enumerate}
 
-\subsubsection*{Integration in the System}
-\begin{enumerate}
-  \item \textbf{Converters}: Can be used in processing pins or as standalone processing units
-  depending on whether you're implementing STT, TTS, or other conversion functionalities.
-  \item \textbf{Config Management}: The JavaFX UI can serve as the central hub
-  for adjusting system settings and configurations, enhancing user interaction.
-  \item \textbf{Logging and Debugging}: Integrated throughout the system,
-  logging provides insights into system operations, aids in troubleshooting issues,
-  and improves overall system reliability.
-\end{enumerate}
 By incorporating these utility components, the audio processing system becomes more robust,
 user-friendly, and easier to maintain and debug.
 
@@ -187,15 +183,16 @@ Here are a few notable ones:
 Note: we reserve the opportunity for reviewers to deduct points
 for incomprehensible code or a carelessly designed project.
 \begin{enumerate}
-  \item \textbf{(20 points)} Implement an FP function `preprocess\_prog` of type `geom\_exp` $\rightarrow$ `geom\_exp` to implement expression preprocessing as defined above. The idea is that evaluating program `e` would be done with `eval\_prog` (`preprocess\_prog e, []`) where the `[]` is the empty list for the empty environment.
+  \item \textbf{(20 points)} Implement a few sources and consumers,
+  and create a working example of audio processing.
 
-  \item \textbf{(20 points)} Add shift expressions as defined above to the FP implementation by adding the constructor Shift of real $*$ real $*$ `geom\_exp` to the definition of `geom\_exp` and adding appropriate branches to `eval\_prog` and `preprocess\_prog`. (The first real is deltaX and the second is deltaY.)
+  \item \textbf{(30 points)} Write unit and integration tests for each component.
 
-  \item \textbf{(30 points)} Complete the FP implementation. Do not modify the code given to you. Remember all the different cases in Python will appear somewhere in the FP solution, just arranged very differently.
+  \item \textbf{(30 points)} Integrate JavaFX or some other Java library you like
+  for configuration and visualization, make nice UI.
 
-  \item \textbf{(30 points)} We strongly encourage you to provide tests for your functional programming solution.
-
-  \item (Lack Of) Challenge Problem: the most educational challenge problem is not something we can reasonably auto-grade or peer asssess, so we encourage doing it even though it will not count toward your grade: Make a third version of your solution in a statically typed OOP language like Java or C\#. Follow the structure of the Python solution, with no use of type casts or features like Java's instanceof. You will need to have abstract methods and abstract classes that you then subclass. (Naturally, you can also enjoy the challenge of implementing your solution in any other programming language you like.)
+  \item \textbf{(20 points)} Incorporate utility components like other converters,
+  item loggers, and debug tools.
 \end{enumerate}
 
 \end{document}
