@@ -47,6 +47,57 @@
 					</div>
                 </section>
                 <section>
+                    <section data-background-color="white">
+                        <h3>RL recap</h3>
+                        <img src="images/rl_recap.png" width="80%" style="border-radius: 5%">
+                    </section>
+                    <section data-background-color="white">
+                        <img src="images/mcmc_barto.png" width="50%" style="border-radius: 5%"><br>
+                        <a href="https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf">Source: BartoSutton.pdf</a>
+                    </section>
+                    <section>
+                        <h3>Policy gradient</h3>
+                        <p style="text-align: left">We are trying to train just policy</p>
+                            $$\pi(a|s, \theta) = Pr[a_t = a| s_t = s]$$
+
+                        <div class="fragment">
+                            <div class="typesetting">
+                                <ol>
+                                    <li>We can train stochastic policies, where $\pi(a|s) \neq 0,1$</li>
+                                    <li>We even can train raw scores only,
+                                        applying <span style="color: orange">Softmax</span>
+                                        for moves probabilities</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Policy gradient theorem</h3>
+
+                        <div class="fragment">
+                            <div class="typesetting">
+                                $$
+                                \theta_{t+1} = \theta_{t} + \alpha \nabla_\theta J(\theta_t) \\
+                                J(\theta) = V_{\pi_\theta}(s_0) \underset{\theta}{\to} \max \\[0.25cm]
+                                \boxed{\nabla_\theta J(\theta) \propto \sum\limits_s Pr_\pi[s]
+                                \sum\limits_a Q_\pi(s,a) \nabla_\theta \pi(a|s)}
+                                $$
+                                <p style="text-align: left">
+                                    Probabilities $Pr_\pi[s]$ are very hard to calculate,
+                                    but we can just play using policy $\pi$, and this gives us
+                                    correct samples from this distribution.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="typesetting">
+                            <p style="text-align: left">The REINFORCE algorithm is a policy-based method used in reinforcement learning.
+                                Unlike value-based methods, which aim to learn a value function by interaction with
+                                the environment, REINFORCE learns a stochastic policy directly.</p>
+                        </div>
+                    </section>
+                </section>
+                <section>
                     <section>
                         <h3>TD-Gammon (1992)</h3>
                         <div class="fragment">
@@ -100,20 +151,24 @@
                         <div class="fragment">
                             <div class="typesetting">
                                 <h3 style="text-align: left">1960-s: Beginnings</h3>
-                                <p style="text-align: left">The first attempts to program a computer to play Go began in the 1960s.
-                                    The earliest Go programs could only play on smaller 9x9 or 13x13 boards and
+                                <ul style="text-align: left">
+                                    <li>The first attempts to program a computer to play Go began in the 1960s.</li>
+                                    <li>The earliest Go programs could only play on smaller 9x9 or 13x13 boards and
                                     demonstrated limited capabilities due to the complexity of the game and technological constraints.
-                                    1968: Albert Zobrist.</p>
+                                    1968: Albert Zobrist.</li>
+                                </ul>
                             </div>
                         </div>
 
                         <div class="fragment">
                             <div class="typesetting">
                                 <h3 style="text-align: left">1980-1990-s: Incremental Improvements</h3>
-                                <p style="text-align: left">Throughout the 80s and 90s, Go programs gradually improved with advancements
-                                    in computing power and AI algorithms.
-                                    However, they were still far from matching the skills of human players.
-                                    Goliath, Go Intellect, Handtalk, Goemate.</p>
+                                <ul style="text-align: left">
+                                    <li>Throughout the 80s and 90s, Go programs gradually improved with advancements
+                                    in computing power and AI algorithms.</li>
+                                    <li>However, they were still far from matching the skills of human players.
+                                    Goliath, Go Intellect, Handtalk, Goemate.</li>
+                                </ul>
                             </div>
                         </div>
                     </section>
@@ -192,7 +247,7 @@
                                 <p style="text-align: left">The main part of MCTS is the formula for selection of the next node.
                                 The UCB1 formula looks like this (the same as in multi-armed bandits):</p>
 
-                                $$ UCB_1 = \frac{w_i}{n_i} + c \sqrt{\frac{\ln t}{n_i}} $$
+                                $$ UCB1 = \frac{w_i}{n_i} + c \sqrt{\frac{\ln t}{n_i}} $$
                                 <p style="text-align: left">where:</p>
                                 <ul>
                                     <li>$w_i$ is the number of wins</li>
@@ -251,11 +306,13 @@
                                     the reigning three-time European Go champion, Fan Hui (2p), and wins 5:0.
                                     This is the first time a computer Go program has beaten
                                     a human professional player without handicaps on a full-sized 19x19 board.</li>
-                                <li>Paper in Nature "Mastering the game of Go with deep neural networks and tree search"</li>
+                                <li>Paper in Nature
+                                    <a href="https://www.nature.com/articles/nature16961">
+                                    "Mastering the game of Go with deep neural networks and tree search"</a></li>
                                 <li><strong>March 2016:</strong> AlphaGo plays a five-game match against Lee Sedol,
-                                    one of the world's top Go players, and wins 4-1.</li>
+                                    one of the world's top Go players, and wins 4:1.</li>
                                 <li><strong>May 2017:</strong> AlphaGo plays a three-game match against Ke Jie,
-                                    the world No.1 ranked player at the time, and wins 3-0.</li>
+                                    the world No.1 ranked player at the time, and wins 3:0.</li>
                             </ul>
                             <p style="text-align: left">The development of AlphaGo was a significant achievement
                             in the field of Artificial Intelligence.</p>
@@ -398,7 +455,8 @@
                         <div class="fragment">
                             <div class="typesetting">
                                 <ul>
-                                    <li>We got acquainted with the AlphaZero</li>
+                                    <li>We started with policy gradient descent (the central method in robotics)</li>
+                                    <li>We got acquainted with the AlphaGo and AlphaZero models</li>
                                     <li>Reinforcement learning allows you to pass a gradient through a sequence
                                         of discrete steps with a reward at the end</li>
                                     <li>Best used in tasks where there is a discrete sequence of actions and states</li>
@@ -411,9 +469,9 @@
                             <div class="typesetting">
                                 <h3 style="text-align: left">What else can you see?</h3>
                                 <ul>
+                                    <li><a href="https://www.youtube.com/watch?v=KW9KAWmu4nI">Lecture by S. Nikolenko at Computer Science Club (in Russian)</a></li>
                                     <li><a href="https://spinningup.openai.com/en/latest">Educational resource on RL produced by OpenAI</a></li>
                                     <li><a href="https://www.davidsilver.uk/teaching/">Intro to RL with David Silver, DeepMind × UCL, 2015</a></li>
-                                    <li><a href="https://www.youtube.com/watch?v=KW9KAWmu4nI">Lecture from S. Nikolenko at Computer Science Club (in Russian)</a></li>
                                 </ul>
                             </div>
                         </div>
