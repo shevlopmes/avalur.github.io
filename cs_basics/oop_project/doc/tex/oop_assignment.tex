@@ -8,6 +8,9 @@
 \usepackage{stmaryrd}
 \usepackage{enumerate}
 \usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes.geometric, arrows.meta, chains}
+%\usepackage{tikzexternal}
 
 % =======================================================================
 % Margins --- save forests
@@ -32,8 +35,47 @@
 
 \begin{document}
 \maketitle
-\textbf{Set-up:} For this assignment, you will create a versatile audio processing application in Java that can handle various transformations on audio streams, such as volume adjustment, speed modification, noise removal, and channel manipulation (mono/stereo). The system should be able to process input from WAV files, microphone streams, and other sources.
 
+\begin{center}
+\begin{tikzpicture}[
+    node distance = 5mm and 10mm,
+    start chain = going right,
+    box/.style = {rectangle, draw, on chain, align=center, fill=blue!30},
+    process/.style = {rectangle, draw, on chain, align=center, fill=green!30},
+    io/.style = {trapezium, trapezium left angle=70, trapezium right angle=-70, draw, on chain, align=center, fill=red!30}
+]
+
+% Pipeline 1
+    \node[io] (source1) {Source\\(WAV File)};
+    \node[process] (proc1) {Processor\\(Volume Control)};
+    %\node[box] (sink1) {Sink\\(File)};
+
+% Pipeline 2
+    \node[io, below=of source1] (source2) {Source\\(Microphone)};
+    \node[process, right=of source2] (proc2) {Processor\\(Noise Removal)};
+    \node[box, right=of proc2] (sink2) {Sink\\(Speakers)};
+
+% Pipeline 3
+    \node[io, below=of source2] (source3) {Source\\(Network)};
+    \node[process, right=of source3] (proc3) {Processor\\(Mono to Stereo)};
+    \node[box, right=of proc3] (sink3) {Sink\\(File)};
+
+% Arrows
+    \draw[-Stealth] (source2.east) -- (proc1.west);
+    \draw[-Stealth] (proc1.east) -- (sink2.west);
+    \draw[-Stealth] (source2.east) -- (proc2.west);
+    \draw[-Stealth] (proc2.east) -- (sink2.west);
+    \draw[-Stealth] (proc2.east) -- (sink3.west);
+    \draw[-Stealth] (source2.east) -- (proc3.west);
+    \draw[-Stealth] (proc3.east) -- (sink3.west);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Set-up:} For this assignment, you will create a versatile audio processing
+application in Java that can handle various transformations on audio streams,
+such as volume adjustment, speed modification, noise removal, and channel manipulation
+(mono/stereo). The system should be able to process input from WAV files,
+microphone streams, and other sources.
 Use provided \href{https://github.com/avalur/avalur.github.io/tree/master/cs_basics/oop_project}{Java-project blueprint} for reference.
 
 \section{Considerations for OOP and Extensibility}
@@ -137,8 +179,8 @@ showcasing the Observer pattern's power in creating a modular and extensible arc
   \item \textbf{Converters}: Can be used in processing pins or as standalone processing units
   depending on whether you're implementing STT, TTS, or other conversion functionalities.
   \item \textbf{Config Management}: For setting up and managing system configurations,
-  potentially through visual representation using JavaFX. The JavaFX UI can serve as the central hub
-  for adjusting system settings and configurations, enhancing user interaction.
+  potentially through visual representation using JavaFX. The JavaFX user interface (UI)
+  can serve as the central hub for adjusting system settings and configurations, enhancing user interaction.
   \item \textbf{Logging and Debugging}: Integrated logging for monitoring system operations
   and aiding in debugging.
 \end{enumerate}
