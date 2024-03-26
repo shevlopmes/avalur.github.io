@@ -27,6 +27,9 @@
 			  clear: both;
 			  display: table;
 			}
+			.important {
+				color: orange;
+			}
 		</style>
     </head>
 	<body onload="totalWrapper();">
@@ -52,7 +55,7 @@
 
                         <p style="text-align: left"><strong>Given: </strong>set of objects $X$, set of answers $Y$</p>
 
-                        <p style="text-align: left"><strong>We need to find</strong> $p(y | x)$ distribution — it is discriminative model</p>
+                        <p style="text-align: left"><strong>We need to find</strong> distribution $p(y | x)$ — it is discriminative model</p>
 
                         <br>
                         <div class="fragment">
@@ -152,7 +155,7 @@
                             </div>
                     </section>
                     <section>
-                        <h3 style="text-align: left">Linear Auto Encoder and Principal Component Analysis</h3>
+                        <h3 style="text-align: left">Linear Autoencoder and Principal Component Analysis</h3>
                         $$ \mathscr{L}_{AE}(A, B) = \sum\limits_{i = 1}^{\ell} \|{\color{orange}BA}x_i - x_i \|^2 \to \min \limits_{A,B}$$
                         <p style="text-align: left">Principal Component Analysis:
                             $F = (x_1 \dots x_{\ell})^T, U^TU = I_m, G = FU,$</p>
@@ -174,8 +177,8 @@
                     </section>
                     <section>
                         <h3 style="text-align: left">Sparse Auto Encoder</h3>
-                        <p class="r-frame" style="text-align: left">
-                            Reminder from linear models: if the loss function has a kink,
+                        <p style="text-align: left">
+                            <span class="important">Reminder</span> from linear models: if the loss function has a kink,
                             then we select objects. If regularizer has a kink, then we select features.
                         </p>
                         <div class="fragment">
@@ -204,6 +207,14 @@
                     </section>
                 </section>
                 <section>
+                    <section data-background-color="antiquewhite">
+                        <img src="images/vae_trick.png" style="border-radius: 5%" width="90%">
+
+                        <p style="text-align: center;font-size: smaller">
+                            <a href="https://snawarhussain.com/blog/genrative%20models/python/vae/tutorial/machine%20learning/Reparameterization-trick-in-VAEs-explained/">
+                                Source: Snawar Hussain blog</a></p>
+
+                    </section>
                     <section>
                         <h3 style="text-align: left">Variational Auto Encoder</h3>
                         <div class="fragment">
@@ -250,14 +261,6 @@
                             which comes from some random distribution, for example, normal.
                             And then on the second step you get the expectation with your z-value.
                         </aside>
-                    </section>
-                    <section data-background-color="antiquewhite">
-                        <img src="images/vae_trick.png" style="border-radius: 5%" width="90%">
-
-                        <p style="text-align: center;font-size: smaller">
-                            <a href="https://snawarhussain.com/blog/genrative%20models/python/vae/tutorial/machine%20learning/Reparameterization-trick-in-VAEs-explained/">
-                                Source: Snawar Hussain blog</a></p>
-
                     </section>
                     <section>
                         <p style="text-align: left">Stochastic gradient method:</p>
@@ -483,27 +486,27 @@
                                 <ul style="text-align:left;">
                                     <li>Explored the distinction between
                                         <strong>Generative and Discriminative models</strong> in machine learning,
-                                        highlighting their applications, strengths, and limitations.</li>
+                                        highlighting their applications, strengths, and limitations</li>
                                     <li>Discussed <strong>Supervised Learning Task Formulation</strong>
                                         focusing on the probability distributions $p(y|x)$ for discriminative models
-                                        and joint distribution $p(x,y)$ for generative models.</li>
+                                        and joint distribution $p(x,y)$ for generative models</li>
                                     <li>Delved into <strong>Generative Models</strong>,
                                         covering Explicit and Implicit Density Models,
                                         including Naive Bayes, Autoregressive Models, Variational Autoencoders (VAE),
-                                        and Generative Adversarial Networks (GANs).</li>
+                                        and Generative Adversarial Networks (GANs)</li>
                                     <li>Explored <strong>Autoencoders</strong> in depth, including their architecture,
                                         applications, and comparison with PCA.
-                                        Also, discussed various types like Sparse and Variational Autoencoders.</li>
+                                        Also, discussed various types like Sparse and Variational Autoencoders</li>
                                     <li>Highlighted <strong>GANs</strong> and their development over time,
                                         including DCGAN, LSGAN, and Wasserstein GAN, showcasing their unique features
-                                        and improvements in stability and image generation quality.</li>
+                                        and improvements in stability and image generation quality</li>
                                     <li>Reviewed advanced concepts such as the <strong>Wasserstein distance</strong>
                                         and its significance in GANs, alongside practical challenges
-                                        and solutions in training GANs.</li>
+                                        and solutions in training GANs</li>
                                     <li>Concluded with demonstrations of GAN capabilities,
                                         including <strong>StyleGAN</strong>,
                                         and discussed metrics for evaluating generative models
-                                        like Inception and FID scores.</li>
+                                        like Inception and FID scores</li>
                                 </ul>
                             </div>
                         </div>
