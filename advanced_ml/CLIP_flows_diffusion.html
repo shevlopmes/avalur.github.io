@@ -39,7 +39,7 @@
                     <h2>Advanced machine learning</h2>
 					<div class="fragment" style="margin-bottom:20px;">
 							<div class="typesetting">
-								<h3>CLIP, flows and diffusion</h3>
+								<h3>CLIP, flows, and diffusion</h3>
 								<br />
 								Alex Avdiushenko<br />
 								April 2, 2024
@@ -50,9 +50,9 @@
                     <section>
                         <h3>Contrastive Language–Image Pretraining (CLIP)</h3>
 
-                        <img src="images/clip-overview-a.svg" width="70%" style="border-radius: 5%">
+                        <img src="images/clip-overview-a.svg" width="50%" style="border-radius: 5%">
                         <p>It is a neural network model
-                            <a href="https://openai.com/research/clip">developed by OpenAI</a>
+                            <a href="https://openai.com/research/clip">developed by OpenAI</a> in 2021
                             that connects the power of vision and language models.</p>
 
                         <aside class="notes">
@@ -210,7 +210,7 @@
                         $$
                             \det(\mathbf{J})
                             = \prod_{j=1}^{D-d}\exp(s(\mathbf{x}_{1:d}))_j
-                            = \exp(\sum_{j=1}^{D-d} s(\mathbf{x}_{1:d})_j)
+                            = \exp\left(\sum_{j=1}^{D-d} s(\mathbf{x}_{1:d})_j\right)
                         $$
                     </section>
                     <section>
@@ -219,7 +219,8 @@
                             Even better, since
                             <br>(i) computing $f^{-1}$ does not require computing the inverse of $s$ or $t$ and
                             <br>(ii) computing the Jacobian determinant does not involve computing the Jacobian of $s$ or $t$,
-                            those functions can be <em>arbitrarily complex</em>; i.e. both $s$ and $t$ can be modeled by deep neural networks.</p>
+                            those functions can be <em>arbitrarily complex</em>;
+                            i.e. both $s$ and $t$ can be modeled by deep neural networks</p>
 
                         <div class="fragment">
                             <div class="typesetting">
