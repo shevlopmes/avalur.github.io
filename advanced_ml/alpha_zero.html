@@ -94,6 +94,14 @@
                             <p style="text-align: left">The REINFORCE algorithm is a policy-based method used in reinforcement learning.
                                 Unlike value-based methods, which aim to learn a value function by interaction with
                                 the environment, REINFORCE learns a stochastic policy directly.</p>
+                            $${\nabla_\theta J(\theta) \propto \sum\limits_s Pr_\pi[s]
+                                \sum\limits_a Q_\pi(s,a) \nabla_\theta \pi(a|s)} = \\
+                                \quad = \mathbb{E}_{\pi} \left[ \sum\limits_a Q_\pi(S_t,a) \nabla_\theta \pi(a|S_t, \theta)\right]$$
+                            <p style="text-align: left">So the SGD updates are</p>
+                            $$\theta_{t+1} = \theta_{t} + \alpha \sum\limits_a \hat Q_\pi(S_t,a,\theta) \nabla_\theta
+                            \pi(a|S_t, \theta),$$
+                            <p style="text-align: left">
+                                where $\hat Q_\pi(S_t,a,\theta)$ is some learned approximation of the action-value function $Q$.</p>
                         </div>
                     </section>
                 </section>
@@ -368,7 +376,7 @@
                             <li>RL policy network improves SL using reinforcement learning</li>
                             <div class="fragment">
                                 <div class="typesetting">
-                                    <li>Also, they train function $\nu_\theta(s)$ for state evaluation:</li>
+                                    <li>Also, they train function $V_\theta(s)$ for state evaluation:</li>
                                     <ul>
                                         <li>the same structure of 13-layers CNN,
                                             but now output is the probability of winning</li>
@@ -385,7 +393,7 @@
                         <ol>
                             <li>SL policy network predicts the next move</li>
                             <li>RL policy network improves SL using reinforcement learning</li>
-                            <li>Function $\nu_\theta(s)$ for state evaluation</li>
+                            <li>Function $V_\theta(s)$ for state evaluation</li>
                             <div class="fragment">
                                 <div class="typesetting">
                                     <li>Eventually we can use MCTS counting:</li>
@@ -393,10 +401,10 @@
                                         <li>build an MCTS-like tree</li>
                                         <li>apriori probabilities initialize as $p_\sigma(a \mid s)$ from SL policy</li>
                                         <li>in each node of a tree for state evaluation
-                                            we use $\nu_\theta(s)$, combined with the random rollout of self-played
+                                            we use $V_\theta(s)$, combined with the random rollout of self-played
                                             fast strategy $p_\pi$</li>
                                         <li>it is interesting that SL policy works better for tree building,
-                                            but for training function $\nu_\theta(s)$ is better use stronger RL policy</li>
+                                            but for training function $V_\theta(s)$ is better use stronger RL policy</li>
                                     </ul>
                                 </div>
                             </div>
@@ -443,9 +451,12 @@
                     </section>
                     <section>
                         <p style="text-align: left">We minimize</p>
-                        $$ Loss = (z-v)^2 - \pi^T \log p + c \|\theta\|^2 $$
+                        $$ Loss = (z-v)^2 - \pi^T \cdot \log p + c \|\theta\|^2 $$
                         <p style="text-align: left">
-                            where $p$ is probabilities from NN, $\pi$ — improved by MCTS probabilities
+                            where $p$ is vector with moves probabilities from NN,
+                            $\pi$ — improved by MCTS vector of probabilities,
+                            $z \in \mathbb{R}$ and $v \in \mathbb{R}$ are value function estimations from MCTS and NN,
+                            $\theta$ are weights of NN, and $c$ is regularization coefficient.
                         </p>
                     </section>
                 </section>

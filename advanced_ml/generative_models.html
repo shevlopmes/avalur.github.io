@@ -55,13 +55,13 @@
 
                         <p style="text-align: left"><strong>Given: </strong>set of objects $X$, set of answers $Y$</p>
 
-                        <p style="text-align: left"><strong>We need to find</strong> distribution $p(y | x)$ — it is discriminative model</p>
+                        <p style="text-align: left"><strong>We need to find</strong> distribution $p(y | x)$ — it is <span class="important">Discriminative</span> model</p>
 
                         <br>
                         <div class="fragment">
                             <div class="typesetting">
-                                <p style="text-align: left">In Generative model, we need to find joint distribution $p(x, y)$ and
-                                $$p(y | x) \propto  p(x, y)$$</p>
+                                <p style="text-align: left">In <span class="important">Generative</span> model,
+                                    we need to find joint distribution $p(x, y)$ and $$p(y | x) \propto  p(x, y)$$</p>
                             </div>
                         </div>
                     </section>
@@ -85,7 +85,7 @@
                                         <p style="text-align: left">Naive Bayes</p>
                                         $$ p(x, y) = p(y) \prod\limits_{i=1}^n p(x_i | y) $$
 
-                                        <p style="text-align: left">Autoregressive models (including Transformers)</p>
+                                        <p style="text-align: left">Autoregressive models (including <span class="important">Transformers</span>)</p>
                                         $$ p(x_1, \dots, x_n) = p(x_1) p(x_2|x_1) \dots p(x_n | x_1, \dots, x_{n-1}) $$
                                 </div>
                             </div>
@@ -96,9 +96,9 @@
                                 <div class="typesetting">
                                     $$ p(x) \approx q(x) = \dots, \quad KL(q \| p) \to \min $$
                                     <p style="text-align: left">Diffusion based</p>
-                                    $$ x \to x + \varepsilon_1 \to \dots \to x_n \sim N(0, \Sigma) $$
+                                    $$ x \to x_1 = x + \varepsilon_1 \to \dots \to x_n \sim N(0, \Sigma) $$
 
-                                    <p style="text-align: left">Variational auto encoders — VAE</p>
+                                    <p style="text-align: left">Variational auto encoders (VAE) is in slides</p>
                                 </div>
                             </div>
                     </section>
@@ -434,7 +434,7 @@
                         <p class="r-frame">Wasserstein distance is Earth Mover's Distance (EMD)</p>
                         <div class="fragment">
                             <div class="typesetting">
-                                <p>The EMD between probability distributions
+                                <p style="text-align: left">The EMD between probability distributions
                                 $P$ and $Q$ can be defined as an infimum over joint probabilities:</p>
                                 $$\text{EMD}(P,Q) = \inf\limits_{\gamma \in \Pi(P, Q)}
                                 \mathbb{E}_{(x, y) \sim \gamma}\left[d(x, y)\right]\,$$
