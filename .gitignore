@@ -280,5 +280,5 @@ mnist/*
 
 # programming auxiliary files
 .idea
-target/*
 */.idea/
+*/target/*

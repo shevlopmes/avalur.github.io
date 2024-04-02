@@ -27,6 +27,9 @@
 			  clear: both;
 			  display: table;
 			}
+			.important {
+				color: orange;
+			}
 		</style>
     </head>
 	<body onload="totalWrapper();">
@@ -117,17 +120,17 @@
                         $$ p_1(z_1) = p_0(f^{-1}(z_1)) \left|\det \frac{df^{-1}}{dz_1}\right| $$
                         <p style="text-align: left">Then let’s convert the equation to be a function of
                             so that we can do inference with the base distribution:</p>
-                        $$ p_i(z_i) = p_{i-1}(f^{-1}_i(z_i)) \left|\det \frac{df^{-1}_i}{dz_i}\right|
+                        $$ p_i(z_i) = p_{i-1}(f^{-1}_i(z_i)) \left|\det \frac{df^{-1}_i}{dz_i}\right| = \\
                          = \text{ According to the inverse func theorem } = \\
-                         = p_{i-1}(z_{i-1})) \left|\det \frac{df^{-1}_i}{dz_{i-1}}\right| \\
+                         = p_{i-1}(z_{i-1})) \left|\det \frac{df_i}{dz_{i-1}}\right|^{-1} \\
                         \Rightarrow \log p_K(z_K) = \log p_0(z_0) + \sum\limits_{k=1}^K
-                        \log \left|\det \frac{df^{-1}_k}{dz_{k-1}}\right| \underset{\theta}{\to} \max$$
+                        \log \left|\det \frac{df_k}{dz_{k-1}}\right|^{-1} \underset{\theta}{\to} \max$$
                     </section>
                     <section>
                         <p style="text-align: left">
                             The path traversed by the random variables $\mathbf{z}_i = f_i(\mathbf{z}_{i-1})$
-                            is the <strong>flow</strong> and the full chain formed by the successive distributions
-                            $\pi_i$ is called a <strong>normalizing flow</strong>.
+                            is the <strong class="important">flow</strong> and the full chain formed by the successive distributions
+                            $\pi_i$ is called a <strong class="important">normalizing flow.</strong>
                             <br><br>
                             Required by the computation in the equation, a transformation function $f_i$ should satisfy two properties:
                         </p>
