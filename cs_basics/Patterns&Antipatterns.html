@@ -74,19 +74,24 @@
 								<li class="fragment"><strong class="important">Pattern Languages (Late 1990s):</strong>
 									The concept of pattern languages emerged, emphasizing the relationships
 									between patterns within a system</li>
-								<li class="fragment"><strong class="important">
-									Rise of Software Frameworks and Libraries (2000s):</strong>
-									Frameworks and libraries encapsulated design patterns, making them more accessible and integral to software development</li>
-								<li class="fragment"><strong class="important">
-									Advent of Microservices and Cloud Computing (2010s):</strong>
-									New patterns developed to address the complexities of distributed systems,
-									focusing on scalability, resilience, and inter-service communication</li>
-								<li class="fragment"><strong class="important">Current Trends and Future Directions:</strong>
-									Design patterns evolve with advancements in AI, machine learning, IoT,
-									emphasizing adaptability, modularity,
-									and interoperability for complex data flows and system integration</li>
 							</ul>
 						</div>
+				</section>
+				<section>
+					<ul>
+						<li><strong class="important">
+							Rise of Software Frameworks and Libraries (2000s):</strong>
+							Frameworks and libraries encapsulated design patterns,
+							making them more accessible and integral to software development</li>
+						<li class="fragment"><strong class="important">
+							Advent of Microservices and Cloud Computing (2010s):</strong>
+							New patterns developed to address the complexities of distributed systems,
+							focusing on scalability, resilience, and inter-service communication</li>
+						<li class="fragment"><strong class="important">Current Trends and Future Directions:</strong>
+							Design patterns evolve with advancements in AI, machine learning, IoT,
+							emphasizing adaptability, modularity,
+							and interoperability for complex data flows and system integration</li>
+					</ul>
 				</section>
 				<section>
 					<h3 style="text-align: left">Real-world Analogy: Design Patterns</h3>
@@ -94,8 +99,7 @@
 						<div class="typesetting">
 							<p style="text-align: left">Design patterns in software are akin
 								to templates used in construction and manufacturing industries.
-								Just as these templates streamline the creation process and ensure consistency and reliability,
-								design patterns provide a standardized approach to solving common software design problems.
+								Τhey provide a standardized approach to solving common software design problems.
 								This analogy helps in understanding the importance and
 								utility of design patterns in software development.</p>
 						</div>
@@ -339,7 +343,8 @@
 					<img src="images/fortran_modules.png" alt="fortran_modules">
 				</section>
 				<section>
-					<pre><code>
+					<h3 style="text-align: left">Fortran Code Example from past century</h3>
+					<pre><code class="language-fortran">
       SUBROUTINE ASVOPD(RES,IPR,H1,H2,H3,H,*,NNN)
 C*****PAЗЛOЖEHИE BEKTOPA OTHOCИTEЛЬHO PEПEPA
 C*****BEPCИЯ: 08 (05.01.99)
@@ -387,7 +392,8 @@ C.....обработка аварийных ситуаций
 					</code></pre>
 				</section>
 				<section>
-					<pre><code>
+					<h3 style="text-align: left">Fortran Code Example from our century</h3>
+					<pre><code class="language-fortran">
 c    В этом файле содержится процедура Solve_ke_equations для
 c    расчета уравнений на характеристики турбулентности k и eps,
 c    а также вспомогательные процедуры CF_IN, CF_VIS, Find_Ge_wall и Find_eps_nw.
@@ -1585,10 +1591,170 @@ c8888888888888888888888888888888888888888888888888888888888888888888888
 c8888888888888888888888888888888888888888888888888888888888888888888888
 					</code></pre>
 				</section>
+				<section>
+					<h3 style="text-align: left">Java Code Example from 2018</h3>
+					<pre><code class="language-java">
+package ru.yandex.assay.accuracy.evaluation;
+
+import org.jetbrains.annotations.Nullable;
+import ru.yandex.assay.accuracy.model.AttributeChange;
+import ru.yandex.assay.accuracy.model.CompanyChange;
+import ru.yandex.assay.altay.tds.TDSLangString;
+import ru.yandex.assay.altay.tds.model.AbstractTDSCompany.PublishingStatus;
+import ru.yandex.assay.altay.tds.model.AbstractTDSName.Type;
+import ru.yandex.assay.altay.tds.model.TDSAddress;
+import ru.yandex.assay.altay.tds.model.TDSAddress.TDSPosition;
+import ru.yandex.assay.altay.tds.model.TDSCompany;
+import ru.yandex.assay.altay.tds.model.TDSCompany.TDSCompanyRubric;
+import ru.yandex.assay.altay.tds.model.TDSName;
+import ru.yandex.assay.altay.tds.model.TDSPhone;
+import ru.yandex.assay.altay.tds.model.TDSUrl;
+import ru.yandex.assay.altay.tds.model.TDSWorkInterval;
+import ru.yandex.assay.altay.unification.UnifierApi;
+import ru.yandex.qe.util.enums.LangIso639;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+public class CompanyChangeToTdsCompany {
+	public CompanyChangeToTdsCompany(@Nullable UnifierApi unifier) {
+		this.unifier = unifier;
+	}
+
+	private final UnifierApi unifier;
+
+	public TDSCompany convertActual(CompanyChange companyChange, LangIso639 lang) {
+		return convert(companyChange, lang, AttributeChange::before);
+	}
+
+	public TDSCompany convertExpected(CompanyChange companyChange, LangIso639 lang) {
+		return convert(companyChange, lang, AttributeChange::after);
+	}
+
+	private TDSCompany convert(CompanyChange companyChange, LangIso639 lang,
+			Function<AttributeChange, String> function) {
+		PublishingStatus ps = PublishingStatus.valueOf(function.apply(
+				companyChange.publishingStatusChange()));
+
+		List<TDSName> names = Arrays.asList(
+				TDSName.of(TDSLangString.of(lang, function.apply(companyChange.nameChange())), Type.MAIN),
+				TDSName.of(TDSLangString.of(lang, function.apply(companyChange.shortNameChange())), Type.SHORT)
+		);
+		double lat = 0.0;
+		double lon = 0.0;
+		String latlon = function.apply(companyChange.coordinateChange());
+		if (!latlon.isEmpty()) {
+			lat = Double.parseDouble(latlon.split(",")[0].split(" ")[0]);
+			lon = Double.parseDouble(latlon.split(",")[1].split(" ")[0]);
+		}
+
+		TDSAddress tdsAddress = TDSAddress.empty()
+				.withFormatted(TDSLangString.of(lang, function.apply(companyChange.addressChange())))
+				.withPos(TDSPosition.of(lon, lat));
+
+		List<TDSPhone> phones = Arrays.stream(function.apply(companyChange.phoneChange()).split(";"))
+				.filter(x -> !x.isEmpty())
+				.map(x -> TDSPhone.builder().number(x).formatted(x).build())
+				.collect(Collectors.toList());
+
+		List<TDSCompanyRubric> rubrics = Arrays.stream(function.apply(companyChange.rubricChange()).split(";"))
+				.filter(x -> !x.isEmpty())
+				.map(x -> TDSCompanyRubric.builder().id(Long.parseLong(x)).build())
+				.collect(Collectors.toList());
+
+		List<TDSUrl> urls = new ArrayList<>();
+		Arrays.stream(function.apply(companyChange.urlChange()).split(";"))
+				.filter(x -> !x.isEmpty())
+				.map(x -> TDSUrl.of(x, TDSUrl.Type.MAIN))
+				.forEach(urls::add);
+		Arrays.stream(function.apply(companyChange.alternativeUrlChange()).split(";"))
+				.filter(x -> !x.isEmpty())
+				.map(x -> TDSUrl.of(x, TDSUrl.Type.ALTERNATIVE))
+				.forEach(urls::add);
+		Arrays.stream(function.apply(companyChange.socialUrlChange()).split(";"))
+				.filter(x -> !x.isEmpty())
+				.map(x -> TDSUrl.of(x, TDSUrl.Type.SOCIAL))
+				.forEach(urls::add);
+		List<TDSWorkInterval> workIntervals = Collections.emptyList();
+		if (unifier != null) {
+			workIntervals = unifier.unifyWorkingTime(function.apply(companyChange.workingTimeChange()));
+		}
+
+		return TDSCompany.empty()
+				.withPublishingStatus(ps)
+				.withNames(names)
+				.withAddress(tdsAddress)
+				.withPhones(phones)
+				.withRubrics(rubrics)
+				.withUrls(urls)
+				.withWorkIntervals(workIntervals);
+	}
+}
+					</code></pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3 style="text-align: left">Design Patterns in Open Source Projects</h3>
+					<div class="fragment">
+						<div class="typesetting">
+							<p style="text-align: left">
+								Exploring how established open source projects implement
+								design patterns offers insights into practical applications and
+								benefits.</p>
+							<ul>
+								<li><strong class="important">Spring Framework (Java):</strong>
+									Employs the Singleton pattern extensively for bean management,
+									ensuring efficient, consistent object access throughout the application
+									lifecycle.</li>
+								<li><strong class="important">React (JavaScript):</strong>
+									Uses the Observer pattern to manage state and props changes,
+									enabling dynamic UI updates in response to data modifications.</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3 style="text-align: left">
+						Addressing Anti-Patterns: Lessons from Established Companies</h3>
+					<div class="fragment">
+						<div class="typesetting">
+						<p style="text-align: left">
+							Even well-established companies encounter and overcome antipatterns,
+							demonstrating resilience and the capacity for continuous improvement.</p>
+						<ul>
+							<li><strong class="important">Netflix's Transition:</strong> Originally faced challenges with the Monolithic Architecture anti-pattern. By adopting a microservices architecture, Netflix enhanced scalability and deployment speeds, showcasing the importance of architectural evolution.</li>
+							<li><strong class="important">Microsoft's GitHub Acquisition:</strong> Demonstrated a strategic move away from the Vendor Lock-in anti-pattern by embracing open source projects and community engagement, broadening their technology stack and innovation potential.</li>
+						</ul>
+						<p style="text-align: left">
+							These examples underline the significance of recognizing,
+							addressing, and learning from anti-patterns to foster growth and
+							innovation.</p>
+						</div>
+					</div>
+				</section>
+				<section>
+				  <h3 style="text-align: left">Summary</h3>
+					<div class="fragment">
+						<div class="typesetting">
+						  <ul>
+							<li>Patterns as blueprints for robust design,
+								categorized into Creational,
+								Structural, Behavioral, and Concurrency</li>
+							<li>Anti-Patterns identified as common pitfalls
+								with strategies to refactor</li>
+							<li>Case studies in open-source and enterprise-level applications
+								underline their real-world significance</li>
+						  </ul>
+						</div>
+					</div>
+				</section>
 			</section>
 		</div>
 	</div>
-
 		<script src="../dist/reveal.js"></script>
 		<script src="../plugin/notes/notes.js"></script>
 		<script src="../plugin/markdown/markdown.js"></script>
