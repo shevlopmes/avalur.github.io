@@ -280,8 +280,18 @@ mnist/*
 # programming auxiliary files
 .idea
 */.idea/
+*/.gradle/
 */target/*
 */lib/
 .tmp/
 */build/
 *.class
+/cs_basics/PatternPractice/Patterns/*/build/
+/cs_basics/PatternPractice/Patterns/*/out/
+/cs_basics/PatternPractice/.gradle/
+/cs_basics/PatternPractice/daemon/
+/cs_basics/PatternPractice/gradle/
+/cs_basics/PatternPractice/jdks/
+/cs_basics/PatternPractice/lib/
+/cs_basics/PatternPractice/native/
+/cs_basics/PatternPractice/workers/

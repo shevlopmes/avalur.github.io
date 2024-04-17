@@ -1,0 +1,14 @@
+type: edu
+files:
+  - name: src/SimpleImageViewer.java
+    visible: true
+  - name: test/ImageTest.java
+    visible: false
+  - name: src/ImageViewer.java
+    visible: true
+    placeholders:
+      - offset: 639
+        length: 326
+        placeholder_text: "/* TODO: implement class */"
+  - name: test/ProxyImageTest.java
+    visible: false
