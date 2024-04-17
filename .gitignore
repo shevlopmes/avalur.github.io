@@ -295,3 +295,4 @@ mnist/*
 /cs_basics/PatternPractice/lib/
 /cs_basics/PatternPractice/native/
 /cs_basics/PatternPractice/workers/
+/node_modules/
