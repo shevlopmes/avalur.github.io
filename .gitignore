@@ -273,7 +273,6 @@ TSWLatexianTemp*
 # Makeindex log files
 *.lpz
 .DS_Store
-sirius-january/booklet2022.ptc
 .DS_Store
 cats_and_dogs_filtered/*
 mnist/*
@@ -282,3 +281,7 @@ mnist/*
 .idea
 */.idea/
 */target/*
+*/lib/
+.tmp/
+*/build/
+*.class
