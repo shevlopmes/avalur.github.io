@@ -133,7 +133,7 @@ acs-*.bib
 
 # knitr
 *-concordance.tex
-# TODO Comment the next line if you want to keep your tikz graphics files
+# Comment the next line if you want to keep your tikz graphics files
 *.tikz
 *-tikzDictionary
 
@@ -273,7 +273,6 @@ TSWLatexianTemp*
 # Makeindex log files
 *.lpz
 .DS_Store
-.DS_Store
 cats_and_dogs_filtered/*
 mnist/*
 
@@ -296,3 +295,5 @@ mnist/*
 /cs_basics/PatternPractice/native/
 /cs_basics/PatternPractice/workers/
 /node_modules/
+*/.ipynb_checkpoints/
+/out/
