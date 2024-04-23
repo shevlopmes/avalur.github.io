@@ -16,10 +16,13 @@ public class ProxyImageTest {
     public void testLazyImageLoading() {
         setUp();
         ProxyImage image = new ProxyImage("http://example.com/image.jpg");
-        assertTrue(outContent.toString().isEmpty()); // No output since image should not be loaded yet
+        assertTrue("Image should not be loaded yet during the creation of object",
+                outContent.toString().isEmpty());
         image.display();
         String output = outContent.toString();
-        assertTrue(output.contains("Loading image from: http://example.com/image.jpg"));
-        assertTrue(output.contains("Displaying http://example.com/image.jpg"));
+        assertTrue("Error during Loading image",
+                output.contains("Loading image from: http://example.com/image.jpg"));
+        assertTrue("Error during Displaying image",
+                output.contains("Displaying http://example.com/image.jpg"));
     }
 }

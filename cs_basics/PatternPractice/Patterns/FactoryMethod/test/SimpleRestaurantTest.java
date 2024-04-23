@@ -1,18 +1,18 @@
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
-public class DummyRestaurantTest {
+public class SimpleRestaurantTest {
 
   @Test
   public void testOrderBeefBurger() {
-    DummyRestaurant restaurant = new DummyRestaurant();
+    SimpleRestaurant restaurant = new SimpleRestaurant();
     Burger burger = restaurant.orderBurger("beef");
     assertTrue(burger instanceof BeefBurger);
   }
 
   @Test
   public void testOrderVeggieBurger() {
-    DummyRestaurant restaurant = new DummyRestaurant();
+    SimpleRestaurant restaurant = new SimpleRestaurant();
     Burger burger = restaurant.orderBurger("veggie");
     assertTrue(burger instanceof VeggieBurger);
   }

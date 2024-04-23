@@ -3,7 +3,7 @@ interface Displayable {
 }
 
 class RealImage implements Displayable {
-    private String imageURL;
+    private final String imageURL;
 
     public RealImage(String imageURL) {
         this.imageURL = imageURL;
@@ -25,8 +25,8 @@ class RealImage implements Displayable {
 }
 
 class ProxyImage implements Displayable {
+    private final String imageURL;
     private RealImage realImage;
-    private String imageURL;
 
     public ProxyImage(String imageURL) {
         this.imageURL = imageURL;

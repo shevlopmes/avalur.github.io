@@ -1,25 +1,28 @@
-abstract class Restaurant {
+class Restaurant {
     // Factory method
-    abstract Burger createBurger(String type);
+    Burger newBurger(String type) throws Exception {
+        return switch (type) {
+            case "beef" -> new BeefBurger();
+            case "veggie" -> new VeggieBurger();
+            default -> throw new Exception("invalid burger type: %s".formatted(type));
+        };
+    }
 
     // Order a burger using the factory method
-    public Burger orderBurger(String type) {
-        Burger burger = createBurger(type);
+    public Burger orderBurger(String type) throws Exception {
+        Burger burger = newBurger(type);
         burger.prepare();
         burger.pack();
         return burger;
     }
-}
 
-// Concrete implementations of the factory method
-class BeefBurgerRestaurant extends Restaurant {
-    Burger createBurger(String type) {
-        return new BeefBurger();
-    }
-}
+    public static void main(String[] args) {
+        Restaurant restaurant = new Restaurant();
+        try {
+            restaurant.orderBurger("beef");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-class VeggieBurgerRestaurant extends Restaurant {
-    Burger createBurger(String type) {
-        return new VeggieBurger();
     }
 }

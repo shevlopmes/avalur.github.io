@@ -1,10 +1,10 @@
-class DummyRestaurant {
+class SimpleRestaurant {
     // Method to order a burger based on type
-    public Burger orderBurger(String type) {
+    public Burger orderBurger(String request) {
         Burger burger = null;
-        if (type.equals("beef")) {
+        if (request.equals("beef")) {
             burger = new BeefBurger();
-        } else if (type.equals("veggie")) {
+        } else if (request.equals("veggie")) {
             burger = new VeggieBurger();
         }
         burger.prepare();
@@ -27,6 +27,8 @@ class VeggieBurger extends Burger {
 }
 
 abstract class Burger {
+    int productId;
+
     abstract void prepare();
     void pack() {
         System.out.println("Packing the burger.");

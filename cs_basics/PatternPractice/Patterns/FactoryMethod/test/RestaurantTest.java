@@ -4,16 +4,16 @@ import org.junit.Test;
 public class RestaurantTest {
 
     @Test
-    public void testBeefBurgerRestaurantCreatesBeefBurger() {
-        Restaurant beefBurgerRestaurant = new BeefBurgerRestaurant();
-        Burger burger = beefBurgerRestaurant.createBurger("beef");
+    public void testBeefBurgerRestaurantCreatesBeefBurger() throws Exception {
+        Restaurant restaurant = new Restaurant();
+        Burger burger = restaurant.orderBurger("beef");
         assertTrue(burger instanceof BeefBurger);
     }
 
     @Test
-    public void testVeggieBurgerRestaurantCreatesVeggieBurger() {
-        Restaurant veggieBurgerRestaurant = new VeggieBurgerRestaurant();
-        Burger burger = veggieBurgerRestaurant.createBurger("veggie");
+    public void testVeggieBurgerRestaurantCreatesVeggieBurger() throws Exception {
+        Restaurant restaurant = new Restaurant();
+        Burger burger = restaurant.orderBurger("veggie");
         assertTrue(burger instanceof VeggieBurger);
     }
 }

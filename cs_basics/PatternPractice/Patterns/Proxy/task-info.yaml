@@ -7,8 +7,8 @@ files:
   - name: src/ImageViewer.java
     visible: true
     placeholders:
-      - offset: 639
-        length: 326
+      - offset: 645
+        length: 332
         placeholder_text: "/* TODO: implement class */"
   - name: test/ProxyImageTest.java
     visible: false

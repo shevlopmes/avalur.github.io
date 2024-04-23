@@ -1,14 +1,14 @@
 type: edu
 files:
-  - name: src/DummyRestaurant.java
+  - name: src/SimpleRestaurant.java
     visible: true
-  - name: test/DummyRestaurantTest.java
+  - name: test/SimpleRestaurantTest.java
     visible: false
   - name: src/Restaurant.java
     visible: true
     placeholders:
-      - offset: 198
-        length: 84
+      - offset: 441
+        length: 104
         placeholder_text: "/* TODO: refactor the dummy implementation, using Factory Method\
       \ pattern */"
   - name: test/RestaurantTest.java
