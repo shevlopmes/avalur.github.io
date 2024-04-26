@@ -1,0 +1,12 @@
+type: marketplace
+title: PatternPractice
+language: English
+summary: Code and tasks to practice OOP pattern implementation.
+programming_language: Java
+content:
+  - Patterns
+mode: Study
+environment_settings:
+  jvm_language_level: JDK_1_8
+vendor:
+  name: Aleksandr Avdiushenko
