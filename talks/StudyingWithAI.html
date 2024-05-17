@@ -6,7 +6,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-        <meta name="description" content="Ηow to study effectively with ChatGPT">
+        <meta name="description" content="JetBrains Livestream">
         <meta name="author" content="Alex Avdiushenko" />
         <meta name="keywords" content="Education, ChatGPT, universities">
 
@@ -62,20 +62,24 @@
 					  <aside class="notes">
 						Hello everyone!
 						I'm Alex Avdiushenko, and I am happy to have a talk here.
-						Today we will discuss the transformative role of AI,
+						Today we will discuss the crucial role of AI,
 						and particularly ChatGPT, in enhancing study methods and educational practices.
 
 						Essentially, the talk will consist of three parts:
-						  - presentation of compelling evidence from recent studies,
+						  - the first one will be a presentation of compelling evidence from recent studies,
 						  such as the remarkable capabilities of the AI system AlphaGeometry
 						  that outperformed traditional methods by solving complex olympiad-level geometry problems
-						  - Furthermore, we’ll discuss practical student experiences with AI,
-						  illustrating its application in preparing for exams, coding, and more
-						  - We’ll also examine how best to balance the use of AI assistance
-						  with independent critical thinking in learning environments,
-						  highlighting both its strengths and limitations.
+						  - Furthermore, in the second part we’ll discuss practical student experiences with AI,
+						  illustrating its application in preparing for coding, exams and more
+						  - In the last third part we'll talk how best to balance the use of AI assistance
+						  with independent critical thinking in learning environments
 					  </aside>
                 </section>
+				<section>
+					<h3 style="text-align: left">1. State-of-the-art in solving math problems</h3>
+					<h3 style="text-align: left;color: darkgray">2. Student's experience with AI</h3>
+					<h3 style="text-align: left;color: darkgray">3. Teacher's experience</h3>
+				</section>
 				<section>
 					<h3 style="text-align: left">Race for AGI</h3>
 					<div class="column">
@@ -100,16 +104,75 @@
 						These advancements highlight the continuous growth in AI and
 						the importance of staying at the forefront of such innovation.
 
-						On the left chart you can see the gigantic numbers of GPUs,
+						On the left chart you can see the gigantic numbers of GPUs, hundreds of thousands,
 						which modern tech companies buy mostly for future AI development.
 					</aside>
+				</section>
+				<section>
+				  <h3 style="text-align: left">Comparison of AI Models</h3>
+				  <table style="width:100%; margin-top:20px;">
+					<thead>
+					  <tr style="background-color: #f0f0f0; color: #333;">
+						<th style="padding: 15px; text-align: left;">Feature</th>
+						<th style="padding: 15px; text-align: left;">GPT-4</th>
+						<th style="padding: 15px; text-align: left;">Gemini</th>
+						<th style="padding: 15px; text-align: left;">Claude 3</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr style="background-color: #f9f9f9;">
+						<td style="padding: 15px; text-align: left;">Model Size</td>
+						<td style="padding: 15px; text-align: left;">175 billion parameters</td>
+						<td style="padding: 15px; text-align: left;">Variable sizes</td>
+						<td style="padding: 15px; text-align: left;">Unknown</td>
+					  </tr>
+					  <tr>
+						<td style="padding: 15px; text-align: left;">Key Features</td>
+						<td style="padding: 15px; text-align: left;">Advanced language understanding</td>
+						<td style="padding: 15px; text-align: left;">Customizable for specific tasks, 1M context</td>
+						<td style="padding: 15px; text-align: left;">Human-like interaction</td>
+					  </tr>
+					  <tr style="background-color: #f9f9f9;">
+						<td style="padding: 15px; text-align: left;">Applications</td>
+						<td style="padding: 15px; text-align: left;">Content creation, coding assistance</td>
+						<td style="padding: 15px; text-align: left;">Data analysis, predictive tasks</td>
+						<td style="padding: 15px; text-align: left;">Customer support, virtual assistance</td>
+					  </tr>
+					</tbody>
+				  </table>
+					<aside class="notes">
+						Let's break down the key aspects of each three models to see how
+						they stack up against each other and what that means
+						for users like us in the academic and technological fields.
+
+						Each model has unique model size, key features, and primary applications,
+						which cater to different needs and functionalities.
+
+						In terms of model size, GPT-4 boasts 175 billion parameters,
+						making it one of the most powerful models in terms of raw processing and complexity.
+						Gemini, on the other hand, offers variable sizes, allowing customization based on the user’s specific needs.
+						Meanwhile, the specifics of Claude 3’s model size remain undisclosed,
+						hinting at a potentially different approach or proprietary technology.
+
+						Focusing on their key features, GPT-4 excels in advanced language understanding,
+						which is crucial for generating human-like text and complex problem-solving.
+						Gemini is designed to be highly customizable, suitable for specific tasks that may require a tailored approach.
+						Claude 3 is celebrated for its human-like interactions, making it ideal for applications involving conversational AI.
+
+						Regarding applications, GPT-4 has been great in content creation and coding assistance,
+						helping professionals streamline their workflows.
+						Gemini shines in data analysis and predictive tasks,
+						providing robust tools for researchers and data scientists.
+						Claude 3 finds its strength in customer support and serving as a virtual assistant,
+						enhancing user experience through natural dialogue capabilities.
+ 				    </aside>
 				</section>
 				<section>
 					<h3 style="text-align: left">Results are impressive</h3>
 						<p style="text-align: left">
 							<a href="https://www.nature.com/articles/s41586-023-06747-5">AlphaGeometry, <span class="important">17 Jan
 								2024</span>:</a>
-						An Olympiad-level AI system for [school tasks] geometry</p>
+						An Olympiad-level AI system for school tasks geometry</p>
 					<br>
 					<div class="typesetting">
 						<ul style="text-align: left">
@@ -124,30 +187,27 @@
 						</ul>
 					</div>
 					<aside class="notes">
-						And state-of-the-art results are truly impressive.
+						And the state-of-the-art results are truly impressive.
 						Let's start with a groundbreaking study
 						published on the 17th of January 2024, in 'Nature'.
-						This study introduces us to AlphaGeometry, an Olympiad-level artificial intelligence system
+						This study introduces us to AlphaGeometry, an olympiad-level AI system
 						designed specifically to tackle complex school geometry tasks.
-						Now, let's quantify 'impressive,' shall we?
 						<br><br>
-						AlphaGeometry has achieved a remarkable feat by successfully solving 25 out of the 30
+						AlphaGeometry has achieved a remarkable result by successfully solving 25 out of the 30
 						International Mathematical Olympiad, or IMO, geometry problems.
 						<br><br>
-						To put this achievement into perspective, the previous best method could only solve 10 problems
+						To put this achievement into context, the previous best method could only solve 10 problems,
 						and average human doesn't solve even one problem.
 						<br><br>
-						But how did AlphaGeometry reach such proficiency? By harnessing existing symbolic engines and
+						But how did AlphaGeometry reach such a proficiency? By harnessing existing symbolic engines and
 						applying them to a diverse set of random theorem premises,
 						the AI managed to extract an astonishing 100 million synthetic theorems and their corresponding proofs.
 						Many of these proofs contain over 200 proof steps, which is four times longer
 						than the average proof length found in Olympiad theorems.
-						This is no small feat and speaks volumes about the AI's deep understanding of geometry.
+						So here researchers add to the AI system a deep understanding of school geometry.
 						<br><br>
 						Moreover, AlphaGeometry produced nearly 10 million synthetic proof steps
 						that involve constructing auxiliary points.
-						This is particularly noteworthy because it signifies a leap beyond
-						the realm of pure symbolic deduction.
 						The AI is not just following a set of rules; it's exhibiting an understanding
 						of geometry that allows it to reach solutions in a way that's reminiscent
 						of human intuition and creativity.
@@ -160,12 +220,6 @@
 				<section data-background-color="white">
 					<img src="images/AlphaGeomFig1.png" alt="AlphaGeomFig1" width="90%">
 					<aside class="notes">
-						Now, I'm excited to share with you a remarkable advancement
-						in artificial intelligence applied to mathematical problem-solving.
-						We're looking at AlphaGeometry, a cutting-edge AI system that has been designed
-						to tackle geometry problems, ranging from straightforward ones to complex
-						Olympiad-level challenges.
-
 						In this visual, you see two parts:
 						On the left, we begin with a simple problem from high school geometry,
 						where triangle ABC has two equal sides,
@@ -173,7 +227,7 @@
 						are also equal.
 						It's a basic problem that tests understanding of isosceles triangles.
 
-						The process starts with the AI constructing necessary points and lines,
+						The process starts with the AI constructing the necessary points and lines,
 						as shown in the middle section of the diagram,
 						where it strategically decides on constructions and deductions needed
 						to reach a solution. When the AI encounters a dead-end,
@@ -187,7 +241,7 @@
 						of circles and tangents, and proving that two circumcircles
 						are tangent to each other.
 
-						In the last Solution section we see the key construction steps,
+						In the last Solution section, we see the key construction steps,
 						which are crucial for solving the problem for both human and machine.
 
 						This capability not only demonstrates the power of AI in solving established
@@ -203,36 +257,39 @@
 					</aside>
 				</section>
 				<section data-background-color="white">
-					<img src="images/AG_diff_domains.jpg" alt="AG_diff_domains" width="70%">
+					<img src="images/AG_diff_domains.jpg" alt="AG_diff_domains" width="60%">
 					<aside class="notes">
 						Here we see that it is possible to apply the AI system like AlphaGeometry
 						to a wide range of domains, not just geometry.
 
 						One could select key constructions, which solve the problem, in such fields as
-						number theory, combinatorics, and inequalities.
+						number theory, solving equations, combinatorics, and inequalities.
 
 						So definitely soon we will see the AI systems that can solve
-						almost all tasks from the International Mathematical Olympiad.
+						almost all tasks from the International Mathematical Olympiad,
+						not only geometry ones.
 					</aside>
 				</section>
 				<section>
-					<h3 style="text-align: left">ChatGPT also is quite good in olympiad math</h3>
+					<h3 style="text-align: left">Even now general ChatGPT is quite good in olympiad math</h3>
 						<img src="images/ChatGPT_hard_math_problem.png" alt="ChatGPT_hard_math_problem">
 					<aside class="notes">
 						And actually even now we can use ChatGPT for solving olympiad math problems,
 						uploading tasks in natural language.
 
-						Here we consider a not so hard first math problem
+						Here we consider a not so difficult first math problem
 						from the International Mathematical Competition for university students,
 						where differentiable function f is equal zero at point "a" and has
-						bounded derivative. We need to prove that f is constant zero.
+						bounded with absolute of f derivative. We need to prove that f is constant zero.
 					</aside>
 				</section>
 				<section>
 					<img src="images/ChatGPTsolution.png" alt="ChatGPTsolution" width="70%">
 					<aside class="notes">
-						It is amazing that ChatGPT can solve such problem, as a talented
-						and trained math student.
+						It is amazing that ChatGPT can solve such a problem pretty much like a talented
+						and trained math student!
+
+						It generates a solution with a few steps, which is correct and clear enough.
 					</aside>
 				</section>
 				<section>
@@ -252,6 +309,19 @@
 
 						So, it's clear that we must use them more and more.
 						But the question is: how can we use them for studying?
+
+						First of all, AI can help guide your thinking, search for relevant information,
+						and even generate insights. This means you can focus only on the critical thinking part.
+					</aside>
+				</section>
+				<section>
+					<h3 style="text-align: left;color: darkgray">1. State-of-the-art in solving math problems</h3>
+					<h3 style="text-align: left">2. Student's experience with AI</h3>
+					<h3 style="text-align: left;color: darkgray">3. Teacher's experience</h3>
+
+					<aside class="notes">
+						Considering the rapid advancements in AI technologies like GPT-4, Gemini, and Claude 3,
+						how do you envision these tools impacting educational methodologies over the next decade?
 					</aside>
 				</section>
 				<section>
@@ -268,7 +338,7 @@
 					</div>
 					<aside class="notes">
 						For instance, you can ask ChatGPT to create a syllabus and lesson plan
-						for learning C++ effectively.
+						for learning C++ effectively if you want.
 						<br>
 						And you can request a list of topics and concepts that you should explore
 						to gain a comprehensive understanding of C++.
@@ -328,14 +398,15 @@
 						It was a superfast preparation for this kind of exam!
 						<br>
 						Let's look at another example from YAROSLAV.
-						He was given some task, to write some kind of convolutional neural network.
+						He was given some task to write some kind of convolutional neural network.
 						Initially, when looking at such a task, it is not always clear how to approach
 						it and where to start. In the past, Google solved this, helping with existing solutions
 						and showing how related tasks are done.
 						<br>
 						Now ChatGPT just writes the first version of code.
 						Usually, approximately 20% of this code remains in the final version of neural network;
-						sometimes it writes completely inadequate code, which, however, helps to understand what to Google next.
+						sometimes it writes completely inadequate code, which, however,
+						helps to understand what to Google next.
 						In the following process of execution, Yaroslav uses ChatGPT as a bug fixer.
 					</aside>
 				</section>
@@ -383,7 +454,7 @@
 						It HELPS answer questions for tools with poor or inaccessible documentation
 						(for example, it can tell you how to start using GNU Debugger).
 						<br>
-						It PROVIDES nice and quick examples for some JSONs and other objects,
+						It also PROVIDES nice and quick examples for some JSONs and other objects,
 						or some values to fill in the database.
 						<br>
 						ONE of the main points: it helps to overcome the fear of a “blank slate.”
@@ -396,7 +467,18 @@
 						if you ask to solve a dynamic programming problem in Haskell, it gives funny answers,
 						which are totally wrong.
 						<br>
-						CRUCIAL for us: for different mathematical facts a lot of the GPT-generated proofs are incorrect.
+						And CRUCIAL for us: for different mathematical facts a lot of the GPT-generated proofs are incorrect.
+					</aside>
+				</section>
+				<section>
+					<h3 style="text-align: left;color: darkgray">1. State-of-the-art in solving math problems</h3>
+					<h3 style="text-align: left;color: darkgray">2. Student's experience with AI</h3>
+					<h3 style="text-align: left">3. Teacher's experience</h3>
+					<aside class="notes">
+						How can educators ensure that the use of such advanced AI tools in solving mathematical problems
+						doesn't undermine the learning process but rather enhances students’ understanding and analytical skills?
+
+						In what ways can AI tools be used to foster not just better learning outcomes but also encourage critical thinking and creativity among students?
 					</aside>
 				</section>
 				<section data-transition="fade" data-background-color="#ffffff">
@@ -433,17 +515,20 @@
 						<img src="images/jblogo.jpeg" alt="jb" style="width:40%">
 					</p>
 
-					<p class="fragment" data-fragment-index="8" style="position: absolute; left: 680px; top: 450px">
+					<p class="fragment" data-fragment-index="8" style="position: absolute; left: 660px; top: 450px">
 						<i class="rectangle" style="height: 800px;width: 10px;border: solid darkorange;
 						border-width: 7px 7px 7px 7px;display: inline-block;"></i><br>
-						<span style="color: darkorange"><b>GPT-3</b></span>
+						<span style="color: darkorange"><b>GPT-3.5</b></span>
 					</p>
 					<p class="fragment" data-fragment-index="9" style="position: absolute; left: 1150px; top: 450px">
 						<i class="rectangle" style="height: 800px;width: 10px;border: solid darkorange;
 						border-width: 7px 7px 7px 7px;display: inline-block;"></i><br>
-						<span style="color: darkorange"><b>GPT-4v</b></span>
+						<span style="color: darkorange"><b>GPT-4v</b> </span>
 					</p>
-					<p class="fragment" data-fragment-index="10" style="position: absolute; left: 1400px; top: 500px">
+					<p class="fragment" data-fragment-index="10" style="position: absolute; left: 1650px; top: 850px">
+						<span style="color: darkorange"><b>? GPT-4o ?</b> </span>
+					</p>
+					<p class="fragment" data-fragment-index="11" style="position: absolute; left: 1400px; top: 500px">
 						<img src="images/pay_the_bills.webp" alt="pay_the_bills" style="width:100%; border-radius: 5%">
 					</p>
 
@@ -457,54 +542,54 @@
 						the sea and the forest instilled a love of sports and tourism.
 						In school, about the fifth grade I tried mathematics,
 						already in the seventh grade I won the regional math olympiad. It was almost a miracle.
-						Away we go — a physics and mathematics school in the legendary AKADEMGORODOK,
-						close to Obges, which is microdistrict. Then MATH at Novosibirsk State University, science...
+						Away we go — a physics and mathematics school in the legendary AKADEMGORODOK.
+						Then there was MATH at Novosibirsk State University, science...
 						The MOTTO was "You could not be a scientist, but a candidate of science must be!” =)
-						So I made my PhD thesis in math modeling there in the Institute of Computational Techonlogies.
+						So I made my PhD thesis in math modeling in the Institute of Computational Techonlogies.
 						<br>
 						In graduate school, I wanted to try something else.
 						In parallel, the hype about machine learning grew;
-						a YANDEX company wanted to come to Novosibirsk with the development office and
-						Yandex Data School.
+						a YANDEX company wanted to come to Novosibirsk with the development office.
 						This chance could not be missed, and I was fortunate to simultaneously
-						become a curator and student of the Yandex School Novosibirsk branch.
+						become a head and a student of the Yandex School Novosibirsk branch.
 						It was truly challenging: I even took academic leave for the first time in my life.
-						Before my graduation in the fourth semester,
-						we had a daughter in our family, but I liked everything and was happy :)
+						But I liked everything and was happy :)
 						I already worked as a data scientist at YANDEX for the graduation from Yandex Data School.
 						<br>
 						It was super-useful for about three years of experience in industrial programming and analytics,
 						but I became increasingly aware that I was drawn back to teaching, science and organizing education.
 						<br>
 						So I moved to Saint Petersburg and started working as a HEAD of
-						the machine learning bachelor program in the new department of mathematics and
+						the machine learning bachelor's program in the new department of mathematics and
 						computer science of St. Petersburg State University.
 						It was such an educational startup within the university — a very strong team,
 						support from Yandex, JetBrains, Gazprom Neft and other companies,
 						many ambitious tasks and one big goal to create something like MIT or even better in Russia.
 						<br>
 						Now I am working here at JetBrains, developing a new bachelor's program
-						"Computer Science and Artificial Intelligence" with Neapolis University.
+						"Computer Science and Artificial Intelligence" at Neapolis University Paphos.
 						<br>
 						So now goes an intriguing question, can or when does AI replace me?
 						<br>
-						The researchers tested GPT-3.5, the previous best model from OpenAI,
+						The researchers tested GPT-4v, the previous best model from OpenAI,
 						on reasoning problems found in intelligence tests and exams like the SAT.
 						Notably, SAT is a standardized test used for college admissions in the United States.
 						It is a multiple-choice, pencil-and-paper test that measures
 						a student's reading, writing, and math skills.
-						Surprisingly, GPT-3.5 performed impressively well,
-						solving 75% of the problems in SAT Math correctly. This outperformed the average score of human participants.
-						<br>
-						Notably, GPT-4v performed even better on SATs. It scored 700 out of 800 points
-						on the math SAT. Personally, I tested GPT-4v on some assignments of Yandex Data School,
+						Surprisingly, GPT-4v performed impressively well,
+						solving 700 out of 800 points on the math SAT.
+						This outperformed the average score of human participants.
+						Personally, I tested GPT-4v on some assignments of Yandex Data School,
 						and it solved a lot of them successfully.
+						So, it seems that AI is already capable of replacing me in some tasks,
+						and we don't know what will be in the future.
 						<br>
-						Anyway, I can still DRIVE a car, understand people, and hope that it will help me pay the bills.
+						Anyway, I can still DRIVE a car, somehow understand and talk to people,
+						and the only hope that it will help me pay the bills.
 					</aside>
 				</section>
 				<section>
-					<h2>Demo: modern tools for pdf-docs creation</h2>
+					<h2>Demo: pdf-files creation in 2K24</h2>
 						<ol>
 							<div class="fragment">
 								<li class="typesetting">
@@ -549,7 +634,7 @@
 						THIRDLY, I'm using the GitHub Copilot plugin.
 						It offers practical pieces of code,
 						draft solutions, and generally helps speed up the writing of text content
-						for my instructions or lectures.
+						for my lectures and other materials.
 						<br>
 						LAST but not least, the Grazie Pro plugin checks for typos and polishes long sentences.
 						Its purpose is to ensure your text is clean, concise, and clear before reaching your audience.
@@ -766,7 +851,7 @@
 						</div>
 						<div class="fragment">
 							<li class="typesetting">
-								JetBrains has an AI platform for everyone, and this is cool!
+								JetBrains has an amazing IDEs for everyone and AI, and this is cool!
 							</li>
 						</div>
 						<div class="fragment">
@@ -793,7 +878,6 @@
 						As we reach the final of the presentation, I'd like to leave you with some takeaways.
 						<br>
 						FIRSTLY, the panorama of reliable information sources has evolved over the centuries.
-						From the era of oral traditions to the digital age of AI, we have witnessed a monumental shift.
 						Yet one constant remains — the need for critical thinking and verification.
  						In today's fast-paced world, this need is not just constant but has become more crucial than ever.
 						<br>
@@ -801,10 +885,10 @@
 						with new opportunities.
 						It allows for rapid learning, immediate access to knowledge,
 						and the ability to connect globally.
-						However, it also demands from us a heightened sense of discernment and responsibility.
+						However, it also demands from us a strong sense of discernment and responsibility.
 						<br>
 						As a COMPANY, addressing these changes means adapting and innovating.
-						We already have 'JetBrains AI platform', integrated across all the products,
+						We already have 'JetBrains AI assistant', integrated across all the products,
 						improving our workflows and decision-making processes.
 						<br>
 						FINALLY, we don't just adapt but lead.
@@ -812,7 +896,7 @@
 						both online and offline.
 						By doing this, we can shape a smarter, more efficient learning environment.
 						<br>
-						So, I invite you to JOIN us in teaching and
+						So, I invite you to JOIN us in studying and
 						in development new learning environment; it's really fun and exciting.
 						<br>
 						Your thoughts, FEEDBACK, and ideas are invaluable.
