@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <meta name="description" content="JetBrains Livestream">
+        <meta name="author" content="Alex Avdiushenko" />
+        <meta name="keywords" content="Education, Machine Learning, universities">
+
+		<title>Key components of teaching Machine Learning</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/serif.css">
+		<link rel="stylesheet" href="./css/style.css">
+
+	    <link href="../css/font-awesome/css/all.min.css?ver=1.2.0" rel="stylesheet">
+
+        <!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+
+		<!-- Include Chart.js CDN -->
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<script src="../plugin/reveald3.js"></script>
+		<style>
+			.column {
+			  float: left;
+			  width: 48%;
+			  padding: 2px;
+			}
+			/* Clear floats after image containers */
+			.row::after {
+			  content: "";
+			  clear: both;
+			  display: table;
+			}
+			.important {
+				color: orange;
+			}
+		</style>
+	</head>
+	<body onload="totalWrapper();">
+		<div class="reveal">
+			<div class="slides">
+                <section id="title">
+					<br>
+						<h2>Key parts of teaching Machine Learning</h2>
+					<br><br>
+					<div class="column">
+						<div class="fig-container no-margin-top" data-file="images/gears.html"
+						style="padding-left: 10%"></div>
+					</div>
+					<div class="column">
+						<br/><br/><i>by</i><br/>
+						<p>Alex Avdiushenko</p>
+							<a href="mailto:aleksandr.avdiushenko@jetbrains.com">aleksandr.avdiushenko@jetbrains.com</a>
+					</div>
+					  <aside class="notes">
+						Hello everyone!
+						I'm Alex Avdiushenko, and I am happy to have a talk here.
+						Today we will discuss the key components of teaching Machine Learning and Artificial Intelligence.
+  						Let me briefly tell you that I am currently working on a machine learning program at the JetBrains Academy,
+						where I also design and teach courses.
+						We strive to share our developments and programs,
+						collaborating on different educational initiatives related to machine learning and programming, among other topics.
+
+						In the past, I worked as a developer at Yandex, writing code and developing machine learning models.
+						Earlier in my career, I was a research scientist and completed my Ph.D. in Math modeling.
+						This is the kind of experience I bring to the table.
+
+						Essentially, the talk will consist of three parts.
+					  </aside>
+                </section>
+				<section data-background-color="white">
+					<img src="images/cnn-scheme.png" alt="cnn-scheme">
+					<p style="font-size: small"><a href="https://www.kdnuggets.com/2016/09/beginners-guide-understanding-convolutional-neural-networks-part-1.html">
+					  Source: kdnuggets.com</a>
+					</p>
+					<aside class="notes">
+						Let's start with an image that reminds us that machine learning continues to evolve.
+						This slide shows a neural network diagram, which is fascinating in its own right.
+						As we know today, we take an image, convert it into a set of pixels,
+						which can be represented by either three numbers or one number.
+
+						We then process it as a matrix, performing simple matrix operations.
+						After these operations, the neural network model outputs a class, identifying what's in the image —
+						be it a bird, a dog, the sunset, or something else.
+						The accuracy of these models is now so high that they not only outperform humans but also render previous methods obsolete.
+						This approach allows us to take an image and get an answer directly.
+
+						Moreover, these models can now handle a variety of tasks beyond just image recognition.
+						For example, they can translate text. You can provide a sentence in Russian, and the model can translate it to English, and vice versa.
+						The model understands what is required and performs the translation.
+						This capability extends to answering hard questions in systems like ChatGPT,
+						making it possible to interact with machine learning models almost like with humans.
+					</aside>
+				</section>
+				<section data-background-color="antiquewhite">
+					<p style="position: absolute; left: 0px; top: 0px">
+						<img src="images/taxi-factory-interpr.png" alt="taxi-factory-interpr" style="border-radius: 5%">
+					</p>
+					<p class="fragment" data-fragment-index="0" style="position: absolute; left: -70px; top: 0px">
+						<img src="images/Hellenic-Autonomous-Vehicle.jpg" alt="Hellenic-Autonomous-Vehicle" style="width:75%;border-radius: 5%">
+					</p>
+					<p class="fragment" data-fragment-index="1" style="position: absolute; left: 480px; top: 0px">
+						<img src="images/tesla-factory.png" alt="tesla-factory" style="height: 100%;border-radius: 5%">
+					</p>
+					<p class="fragment" data-fragment-index="2" style="position: absolute; left: 285px; top: 200px">
+						<img src="images/machine-translation.png" alt="machine-translation" style="width:100%;border-radius: 5%">
+					</p>
+
+					<aside class="notes">
+						This was a brief introduction to our topic. Now let me show you some images and ask how they relate to machine learning.
+						Though I can't see the audience, I would like to hear your thoughts.
+						These images are showing various people —
+						like a taxi driver, a factory worker, and interpreters at a conference.
+
+						These images illustrate how modern machine learning technologies are closely linked to these professions.
+						For instance, autonomous vehicles are being developed and might surpass human drivers in the future.
+
+						Factories, like the one where Tesla cars are assembled, predominantly use robots,
+						though humans are still involved in programming and maintenance.
+
+						Machine translation has also advanced significantly.
+						We all use translators on our phones or the internet,
+						and their quality is often comparable to human translators.
+						They allow easy translation of messages, emails, and even speech now,
+						providing more than enough accuracy for everyday use.
+						This development will undoubtedly continue, bringing progress in many areas.
+					</aside>
+				</section>
+				<section>
+					<h3>Creating Machine Learning course from scratch</h3>
+					<aside class="notes">
+						I have highlighted some of the key aspects that are most clear and understandable for us.
+						The rapid development we see in many fields is also happening in machine learning.
+						If you take a modern course in biology, for example, you'll see that 20-30% of the material
+						changes each year because science and progress keep advancing.
+
+						We need to provide students with the most up-to-date knowledge,
+						which means frequently updating our courses. For sure this is also true for machine learning.
+
+						Last year, I had the opportunity to develop a new machine learning course from scratch at NUP.
+						I will talk about this and then discuss what is happening at the other universities.
+					</aside>
+				</section>
+				<section data-background-color="antiquewhite">
+					<p>
+						<a href="https://www.coursera.org/learn/machine-learning">
+							<img src="images/MLfromStanford.png" alt="MLfromStanford" style="width:55%;border-radius: 5%">
+						</a>
+					</p>
+					<p class="fragment" data-fragment-index="0">
+						<a href="https://mlcourse.ai/book/index.html">
+							<img src="images/mlcourse.png" alt="mlcourse.ai" style="width:55%;border-radius: 5%">
+						</a>
+					</p>
+					<aside class="notes">
+						When creating a machine learning course, we first look at what is available globally
+						and how other universities teach their courses.
+
+						One the most popular courses is Andrew Ng's course on Coursera.
+						Many modern machine learning educators and researchers have grown up on this course.
+
+						Another course I reviewed is the Open Data Science community's course, which is available on GitHub.
+						It includes well-crafted lecture notes, theory descriptions in PDF format, and practical assignments.
+
+						Of course, there are many other resources available,
+						like the book "Deep Learning" by Ian Goodfellow and Yoshua Bengio or open video courses with materials on Youtube.
+						Such resources allow us to build a comprehensive course using a variety of materials.
+					</aside>
+				</section>
+				<section>
+
+					<aside class="notes">
+
+To ensure success, the following steps are crucial:
+1. Assemble a strong teaching team with both academic and industry experts to ensure students receive high-quality education and practical insights.
+2. Provide engaging and interactive assignments, as practical work is essential for mastering machine learning concepts. Students must practice coding and theoretical problems to reinforce their learning.
+3. Create a competitive learning environment by incorporating contests like Kaggle competitions to motivate students.
+4. Record and promptly upload lectures to accommodate different learning paces and ensure students who miss classes can catch up.
+5. Foster an interactive and emotional learning atmosphere, even in online settings, by asking questions and encouraging participation.
+
+Our course structure includes hands-on Python practices after each lecture and frequent assignments, covering classical models in-depth. Students write their code for algorithms like linear regression and decision trees to understand the inner workings deeply. The course also includes theoretical and practical tasks and culminates in an exam consisting of a 30-40 minute interview to assess the students' understanding.
+
+In conclusion, it's important to maintain an open and accessible teaching environment, leveraging modern tools and methods to engage students effectively. The materials for my course are available on GitHub under an open license, ensuring transparency and accessibility for anyone interested in machine learning education.
+
+Thank you, and I'm ready to answer any questions you might have.
+
+One question that comes to mind is about the experience with students both at university and those who come to study in the master's program. Is there a difference in how you perceive teaching these different groups? In the School of Data Analysis, most of our students are either third- or fourth-year undergraduates or master's students, which makes it very similar to a university setting. There are also adult learners who have been out of school for a while. They tend to differ in their learning approach, not necessarily in a better or worse way, but in terms of their study habits and engagement levels.
+
+They learn differently and have slightly different needs. Adult learners generally have a better understanding and are often more focused. When they enroll in the program, they tend to see it through to the end because they recognize its importance.
+
+To address the question about course updates: Indeed, each year, the course needs to be revised by at least 30%. This is challenging for educators who recently developed the course and would prefer to reuse much of the content. While it might be possible to retain the same content in the second year, by the third year, significant changes are necessary.
+
+To manage this, our team regularly reviews and updates the course content. We assess which lectures need modification, which should be removed, and which new material should be added. It's a continuous process of integrating about 20-30% new material while phasing out outdated content. This can be painful, especially when removing well-prepared materials, but it's a necessary part of keeping the course current.
+
+The speed of development in machine learning doesn't seem to be slowing down, and it might continue at this pace indefinitely. Our course structure is limited to 14 lectures, so adding new material means removing some of the old. This limitation helps us maintain a manageable course size.
+
+Regarding the question about whether machine learning will ever have a classical, unchanging core, similar to traditional mathematics: Yes, I believe that eventually, there will be a core set of principles and methods in machine learning that will become standardized. These core elements will likely form about half of the course content, covering fundamental models and techniques like linear models, decision trees, gradient boosting, and neural networks. The remaining half of the course will continue to evolve with new advancements in the field.
+
+For deep learning specifically, it's becoming increasingly common to integrate it as part of the machine learning curriculum. The foundational concepts of neural networks are now essential knowledge, with practical applications across various fields like NLP, speech processing, and computer vision. This integration allows students to build on a solid base before specializing in more advanced topics.
+
+To address the issue of assessing new assignments and criteria at the beginning of a course: We set clear and fixed points for each assignment in advance. While the criteria for obtaining specific grades might be adjusted based on initial feedback and performance, the overall structure remains constant. Generally, achieving a passing grade is relatively straightforward, requiring about half of the total points. This ensures that students who complete the assignments diligently can pass, while higher grades require more comprehensive work.
+
+Competitions are a valuable tool for motivation but can demotivate those at the bottom of the leaderboard. To mitigate this, we make competitions optional and provide private feedback on individual standings. Public leaderboards are used cautiously to encourage a healthy competitive spirit without discouraging students.
+
+Lastly, we are interested in working with non-technical students, such as those in the humanities, who are applying data science and machine learning to their fields. Collaboration with industry professionals is crucial, and though challenging, it's essential for providing real-world insights and applications. We have successful examples, like the program at the European University in Saint Petersburg, where non-technical students engage with machine learning in meaningful ways.
+
+Thank you for your attention. I'm open to any further questions.
+					</aside>
+				</section>
+            </div>
+        </div>
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/math/math.js"></script>
+		<script src="../scripts/utils.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				// The "normal" size of the presentation, aspect ratio will
+				// be preserved when the presentation is scaled to fit different
+				// resolutions. Can be specified using percentage units.
+				width: '100%',
+				height: '100%',
+				// Factor of the display size that should remain empty around the content
+				margin: 0.08,
+
+				slideNumber: true,
+				showSlideNumber: 'speaker',
+				hashOneBasedIndex: true,
+				autoPlayMedia: true,
+				// showNotes: 'separate-page',
+
+  			    // Activate the scroll view
+  				// view: 'scroll',
+  				// Force the scrollbar to remain visible
+  				// scrollProgress: true,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 2.0,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX, Reveald3 ]
+			});
+
+			Reveal.addEventListener('fragmentshown', function (event) {
+				if (lettersAnimate) {
+					[...event.fragment.getElementsByClassName('typesetting')].forEach(element => {
+						playAnimation(element);
+					});
+				}
+			});
+
+		  // Data for Pie Chart
+		  const data = {
+			labels: [
+			  '44% Yes, all the time',
+			  '25% Yes, once a week',
+			  '19% Not often',
+			  '12% No'
+			],
+			datasets: [{
+			  label: 'Survey Results',
+			  data: [43.8, 25, 18.8, 12.5],
+			  backgroundColor: [
+				'green',
+				'lightgreen',
+				'red',
+				'darkred',
+			  ],
+			  hoverOffset: 4
+			}]
+		  };
+
+		  // Configuration for Chart.js
+		  const config = {
+			type: 'pie',
+			data: data,
+			options: {
+			  responsive: true,
+			  plugins: {
+				legend: {
+				  position: 'top',
+					labels: {
+					  font: {
+						  size: 32
+					  }
+					}
+
+				}
+			  }
+			},
+		  };
+
+		  // Initialize Chart.js Pie Chart
+		  const survey_results = new Chart(
+			document.getElementById('survey_results'),
+			config
+		  );
+        </script>    </body>
+</html>
