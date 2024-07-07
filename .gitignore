@@ -297,3 +297,5 @@ mnist/*
 /node_modules/
 */.ipynb_checkpoints/
 /out/
+/ml_fundament/vocab.bpe
+/ml_fundament/encoder.json
