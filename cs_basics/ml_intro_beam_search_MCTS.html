@@ -43,21 +43,20 @@
 			<div class="slides">
                 <section>
 					<div>
-						<img src="../ml_with_python/images/nup_logo_dark.jpeg" alt="nup_logo" />
+						<img src="images/CU_Logotype_RGB_white_blue_red.png" alt="cub_logo" width="60%"/>
 					</div>
-						<h2>Fundamentals of Machine Learning</h2>
+						<h2>Advanced Algorithms and Data Structures</h2>
 					<div class="fragment" style="margin-bottom:20px;">
 							<div class="typesetting">
-								<h3>1. Intro to Machine Learning</h3>
+								<h3>Intro to Machine Learning, Beam Search and Monte-Carlo Tree Search</h3>
 								<br />
 								Alex Avdiushenko <br />
-								October 1, 2024
+								November, 2024
 							</div>
 					</div>
                 </section>
                 <section>
                     <section>
-                        <h3>What is ML?</h3>
     					<div class="fragment" style="margin-bottom:20px;">
                             <img src="../ml_with_python/images/ml_def_from_chatGPT.png" alt="ml_def_from_chatGPT">
                         </div>
@@ -74,11 +73,11 @@
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                                 <p class="r-frame important" style="text-align: left;padding-left: 10px">What is it?</p>
-                                \[\begin{cases}
-                                    \frac{\partial \rho}{\partial t} + \frac{\partial(\rho u_{i})}{\partial x_{i}} = 0 \\ \\
-                                    \frac{\partial (\rho u_{i})}{\partial t} + \frac{\partial[\rho u_{i}u_{j}]}{\partial x_{j}} = -\frac{\partial p}{\partial x_{i}} + \frac{\partial \tau_{ij}}{\partial x_{j}} + \rho f_{i}
-                                  \end{cases}
-                                \]
+                            \[\begin{cases}
+                                \frac{\partial \rho}{\partial t} + \frac{\partial(\rho u_{i})}{\partial x_{i}} = 0 \\ \\
+                                \frac{\partial (\rho u_{i})}{\partial t} + \frac{\partial[\rho u_{i}u_{j}]}{\partial x_{j}} = -\frac{\partial p}{\partial x_{i}} + \frac{\partial \tau_{ij}}{\partial x_{j}} + \rho f_{i}
+                              \end{cases}
+                            \]
                             </div>
                         </div>
                     </section>
@@ -107,10 +106,6 @@
                                 </ul>
                             </div>
                         </div>
-                    </section>
-                    <section data-background-color="white">
-                        <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/3349_RC01/embed_loader.js"></script>
-                        <script type="text/javascript"> trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"machine learning","geo":"","time":"2004-01-01 2023-08-14"},{"keyword":"data mining","geo":"","time":"2004-01-01 2023-08-14"},{"keyword":"artificial intelligence","geo":"","time":"2004-01-01 2023-08-14"}],"category":0,"property":""}, {"exploreQuery":"date=all&q=machine%20learning,data%20mining,artificial%20intelligence&hl=en","guestPath":"https://trends.google.com:443/trends/embed/"}); </script>
                     </section>
                     <section>
                         <h3>Main notations</h3>
@@ -361,117 +356,6 @@
                         </div>
                     </section>
                     <section>
-                        <h3 style="text-align: left">Simple Example of Overfitting</h3>
-                        <p>Dependency $y(x) = \frac{1}{1+25x^2}$ on the interval $x \in \left[-2, 2\right]$</p>
-
-                        <p>Feature description $x \to (1, x, x^2, \dots, x^n)$</p>
-
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <h4 style="text-align: left">Polynomial regression model:</h4>
-
-                            <p>$a(x, \theta) = \theta_0 + \theta_1 x + \dots + \theta_n x^n$ — a polynomial of degree $n$</p>
-                        </div>
-
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <h4 style="text-align: left">Training using the least squares method:</h4>
-
-                            <p>$Q(\theta, X^\ell) = \sum\limits_{i=1}^\ell (\theta_0 + \theta_1 x_i + \dots + \theta_n x_i^n - y_i)^2 \to \min\limits_{\theta_0,\dots,\theta_n}$</p>
-
-                            <p style="text-align: left">Training sample: $X^\ell = \{x_i = 4\frac{i-1}{\ell-1} - 2 | i = 1, \dots, \ell \}$</p>
-
-                            <p style="text-align: left">Test sample: $X^k = \{x_i = 4\frac{i-0.5}{\ell-1} - 2 | i = 1, \dots, \ell-1 \}$</p>
-                        </div>
-                        <div class="fragment important" style="margin-top:20px;">
-                            <p class="r-frame">What happens to $Q(\theta, X^\ell)$ and $Q(\theta, X^k)$ as $n$ increases?</p>
-                        </div>
-                    </section>
-                    <section data-background-color="#fdf6e3">
-                        <py-repl>
-                            import numpy as np
-
-                            np.random.seed(0)
-                            l = 50
-
-                            x = np.linspace(-2, 2, num=l)
-                            Y = 1 / (1 + 25*x**2)
-                            print(x.shape, Y.shape)
-                        </py-repl>
-                    </section>
-                    <section data-background-color="#fdf6e3">
-                        <py-repl>
-                            import matplotlib.pyplot as plt
-
-                            fig, ax = plt.subplots()
-                            ax.set_xlabel('x'), ax.set_ylabel('Y')
-                            ax.plot(x, Y, '.', label='train points')
-
-                            x_plot = np.linspace(-2, 2, num=1000)
-                            y_plot = 1 / (1 + 25*x_plot**2)
-                            ax.plot(x_plot, y_plot, label='real')
-                            plt.legend(loc='best')
-                            fig
-                        </py-repl>
-                    </section>
-                    <section data-background-color="#fdf6e3">
-                        <py-repl>
-                            from sklearn.linear_model import LinearRegression
-
-                            def X(x, n):
-                                res = [np.ones_like(x)]
-                                for i in range(1, n):
-                                    res.append(x**i)
-                                return np.vstack(res).T
-
-                            print("X has been compiled.")
-                        </py-repl>
-                    </section>
-                    <section data-background-color="#fdf6e3">
-                        <py-repl>
-                            x_l = np.array([4*(i - 1)/(l - 1) - 2 for i in range(1, l + 1)])
-                            x_k = np.array([4*(i - 0.5)/(l - 1) - 2 for i in range(1, l)])
-                            lin_reg = LinearRegression(fit_intercept=False)
-
-                            train_score, test_score = [], []
-
-                            ns = range(2, 40)
-                            for n in ns:
-                                X_l = X(x_l, n)
-                                Y_l = 1 / (1 + 25*x_l**2)
-                                X_k = X(x_k, n)
-                                Y_k = 1 / (1 + 25*x_k**2)
-                                lin_reg.fit(X_l, Y_l)
-                                train_score.append(np.mean((lin_reg.predict(X_l) - Y_l)**2))
-                                test_score.append(np.mean((lin_reg.predict(X_k) - Y_k)**2))
-                                print(n,end=', ')
-                            print()
-                        </py-repl>
-                    </section>
-                    <section data-background-color="#fdf6e3">
-<!--language=Python-->
-                        <py-repl>
-                            import matplotlib.pyplot as plt_
-                            fig_, ax_ = plt_.subplots()
-                            ax_.set_xlabel('n'), ax_.set_ylabel('log Q')
-                            ax_.set_xlim(0, len(ns) + 2)
-
-                            ax_.plot(np.log(train_score), 'bo-', label='train score')
-                            ax_.plot(np.log(test_score), 'go--', label='test score')
-                            plt_.legend(loc='best')
-                            # plt_.savefig('overfitting.png')
-                            # print('OK!')
-                            fig_
-                        </py-repl>
-                    </section>
-                    <section data-background-color="#ffffff">
-                        <img src="../ml_with_python/images/overfitting.png" width="50%">
-                        <div class="fragment important" style="margin-top:20px;">
-                            <div class="r-frame">
-                            <b>Question 3:</b> Why we have such plots? How will the divergence point $n$ change
-                                depending on the size of the training sample $\ell$ and why?
-                            </div>
-                        </div>
-                    </section>
-                    <section>
                         <h3>Overfitting — one of the main problems in machine learning</h3>
 
                         <p>When <strong>test_score >> train_score</strong></p>
@@ -510,131 +394,107 @@
                         </ul>
                         </div>
                     </section>
-                    <section>
-                        <h3>Empirical Estimates of Generalization Ability</h3>
-                                <ul>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                  <li>Empirical risk on the test data (Hold Out):
-                                    <ul>
-                                      <li>$HO(\mu, X^\ell, X^k) = Q(\mu(X^\ell), X^k) \to \min$</li>
-                                    </ul>
-                                  </li>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                  <li>Leave One Out control, $L = \ell + 1$:
-                                    <ul>
-                                      <li>$LOO(\mu, X^\ell) = \frac1L \sum\limits_{i=1}^L \mathcal{L}(\mu(X^\ell\backslash \{x_i\}), x_i) \to \min$</li>
-                                    </ul>
-                                  </li>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                  <li>Cross Validation, $L = \ell + k, X^L = X^\ell_n \cup X^k_n$:
-                                    <ul>
-                                      <li>$CV(\mu, X^L) = \frac1{|N|} \sum\limits_{n \in N} {Q}(\mu(X^\ell_n), X^k_n) \to \min$</li>
-                                    </ul>
-                                  </li>
-                            </div>
-                        </div>
-                                </ul>
-                    </section>
                     <section data-background-color="#ffffff">
                         <img src="../ml_with_python/images/cross-validation.png" alt="cross-val">
                     </section>
                 </section>
                 <section>
-                    <section>
-                        <h3>Significant Events in Machine Learning</h3>
-                        <div class="fragment" style="margin-bottom:20px;">
+                    <section data-background-color="antiquewhite">
+                        <h3 style="text-align: left">What is Beam Search?</h3>
+                        <ul>
+                            <li class="fragment">
+                                An approximate search algorithm commonly used in
+                                natural language processing tasks like machine translation and speech recognition</li>
+                            <li class="fragment">
+                                It is a variation of greedy search that explores multiple paths simultaneously,
+                                keeping track of the $k$ most promising paths at each step</li>
+                            <li class="fragment">
+                                <span class="important">Beam search</span> striking a compromise between the efficiency
+                                of <span class="important">greedy search</span> and the optimality of
+                                <span class="important">exhaustive search</span>
+                            </li>
+                        </ul>
+
+                        <a class="fragment" href="href=https://d2l.ai/chapter_recurrent-modern/beam-search.html">
+                            <img src="images/d2l_beam_search.png" alt="beam_search"
+                                style="border-radius: 5%">
+                        </a>
+                    </section>
+                    <section data-background-color="antiquewhite">
+                        <h3 style="text-align: left">2000-s: Monte-Carlo Tree Search</h3>
+                        <div class="fragment">
                             <div class="typesetting">
-                                <p style="text-align: left">1997: IBM Deep Blue defeats world chess champion Garry Kasparov</p>
                                 <ul>
-                                  <li>480 chess CPUs</li>
-                                  <li>search using alpha-beta pruning modification</li>
-                                  <li>two debut books</li>
+                                    <li>In the 2000s, Monte Carlo Tree Search (MCTS) algorithms were introduced,
+                                    resulting in significant improvements in the performance of Go programs and other games</li>
+                                    <li>We launch <em>random simulations</em> from the current position,
+                                        observe which branches yield more wins, and then repeat the process</li>
                                 </ul>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2004: self-driving cars competition — DARPA Grand Challenge</p>
-                                <ul>
-                                  <li>prize fund of $1 million</li>
-                                  <li>in the first race, the winner covered only 11.8 out of 230 km</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2006: Google Translate launched</p>
-                                <ul>
-                                  <li>initially <b>statistical</b> machine translation</li>
-                                  <li>mobile app appeared in 2010</li>
-                                </ul>
+
+                                <img src="../advanced_ml/images/MCTS_svg.png" style="border-radius: 5%">
                             </div>
                         </div>
                     </section>
-                    <section>
-                        <div class="fragment" style="margin-bottom:20px;">
+                    <section data-background-color="antiquewhite">
+                        <h3 style="text-align: left">Monte Carlo Tree Search — UCB1</h3>
+                        <div class="fragment">
                             <div class="typesetting">
-                                <p style="text-align: left">2011: 40 years of DARPA CALO (Cognitive Assistant that Learns and Organizes) development</p>
+                                <p style="text-align: left">The main part of MCTS is the formula for selection of the next node.
+                                The UCB1 formula looks like this (the same as in multi-armed bandits):</p>
+
+                                $$ UCB1 = \frac{w_i}{n_i} + c \sqrt{\frac{\ln t}{n_i}} $$
+                                <p style="text-align: left">where:</p>
                                 <ul>
-                                  <li>Apple's Siri voice assistant launched</li>
-                                  <li>IBM Watson won the TV game "Jeopardy!"</li>
+                                    <li>$w_i$ is the number of wins</li>
+                                    <li>$n_i$ is the count of simulations for the node associated with action $i$</li>
+                                    <li>$c$ is the parameter, by default $c=\sqrt{2}$</li>
+                                    <li>$t = \sum\limits_i n_i$ is the total count of simulations for the parent node</li>
                                 </ul>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2011-2015: ImageNet — error rate reduced from 25% to 3.5% versus 5% in humans</p>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2015: Creation of the open company OpenAI by Elon Musk and Sam Altman, pledged to invest $1 billion</p>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2016: Google DeepMind beat the world champion of the game Go</p>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2018: At the Christie's auction, a painting, formally drawn by AI, sold for $432,500</p>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2020: AlphaFold 2 predicts the structure of proteins
-                                    with over 90% accuracy for about two-thirds of the proteins in the dataset</p>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2021: DALL-E appears — an AI system developed by OpenAI that can generate images
-                                    from textual descriptions, which has potential applications in creative industries</p>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left">2022: ChatGPT (Generative Pre-trained Transformer) developed by OpenAI —
-                                the fastest-growing consumer software application in history</p>
-                            </div>
-                        </div>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
+
                                 <p style="text-align: left">
-                                    Thank you for your attention!
+                                    The algorithm prefers actions with higher estimated rewards and higher uncertainties.
                                 </p>
                             </div>
                         </div>
+                    </section>
+                </section>
+                <section data-background-color="antiquewhite">
+                    <section>
+                        <h3>Now let's dive into Tetris in Javascript</h3>
+                        <ul>
+                            <li class="fragment"><a href="https://codeincomplete.com/games/tetris">play the game now</a></li>
+                            <li class="fragment"><a href="https://codeincomplete.com/articles/javascript-tetris/">read more about how it works</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Tricky part is dealing with rotation of the 7 tetrominoes</h3>
+                        <p style="text-align: left">We encode each position of each piece with 16bit, that is four 4bit numbers:</p>
+                        <img src="images/16bit_tetrominoes.png" alt="16bit_tetrominoes" style="border-radius: 5%">
+                    </section>
+                    <section>
+                        <img src="images/pieces_in_code.png" alt="pieces_in_code" style="border-radius: 5%;width: 80%">
+                    </section>
+                    <section>
+                        <p style="text-align: left"><a href="https://github.com/avalur/avalur.github.io/blob/master/cs_basics/javascript-tetris/">
+                            It's time to look at the code!
+                        </a></p>
+
+                        <div class="fragment">
+                            <p style="text-align: left">Assignment</p>
+                            <ul>
+                                <li>The game is written in vanilla Javascript, so you need to understand the code</li>
+                                <li>Improve current heuristic agent, adding new features and tuning the weights: <span class="important">30 points</span></li>
+                                <li>Implement a new agent using Beam Search or MCTS: <span class="important">30 points</span></li>
+                                <li>Write a report with the results and conclusions: <span class="important">40 points</span></li>
+                            </ul>
+                        </div>
+                        <br>
+                        <p class="fragment" style="text-align: left">Please, try to make your report an interesting story,
+                            sequentially implementing the algorithms from the tasks.
+                            The clarity of the answers to the questions,
+                            the tidiness of the report and code are assessed during the verification.</p>
+                        <br>
+                        <p class="fragment">Good luck and have fun!</p>
                     </section>
                 </section>
             </div>
