@@ -29,7 +29,7 @@
 			.column {
 			  float: left;
 			  width: 48%;
-			  padding: 2px;
+			  padding: 1px;
 			}
 			/* Clear floats after image containers */
 			.row::after {
@@ -66,70 +66,99 @@
 						where I also design and teach courses.
 						We strive to share our developments and programs,
 						collaborating on different educational initiatives related to machine learning and programming, among other topics.
-
+						<br>
 						In the past, I worked as a developer at Yandex, writing code and developing machine learning models.
 						Earlier in my career, I was a research scientist and completed my Ph.D. in Math modeling.
 						This is the kind of experience I bring to the table.
-
-						Essentially, the talk will consist of three parts.
+						<br>
+						Essentially, the talk will consist of two parts.
+						Firstly, we will discuss the philosophy of machine learning and how it influences our lives.
+						Then, we will delve into the practical aspects of creating one-year machine learning course and teaching it,
+						including routine automatization.
 					  </aside>
                 </section>
 				<section data-background-color="white">
-					<img src="images/cnn-scheme.png" alt="cnn-scheme">
-					<p style="font-size: small"><a href="https://www.kdnuggets.com/2016/09/beginners-guide-understanding-convolutional-neural-networks-part-1.html">
+					<img src="images/cnn-scheme.png" alt="cnn-scheme" style="width: 90%">
+					<p style="font-size: small">
+						<a href="https://www.kdnuggets.com/2016/09/beginners-guide-understanding-convolutional-neural-networks-part-1.html">
 					  Source: kdnuggets.com</a>
 					</p>
 					<aside class="notes">
 						Let's start with an image that reminds us that machine learning continues to evolve.
-						This slide shows a neural network diagram, which is fascinating in its own right.
+						This slide shows a neural network scheme, which is fascinating in its own right.
 						As we know today, we take an image, convert it into a set of pixels,
 						which can be represented by either three numbers or one number.
-
+						<br>
 						We then process it as a matrix, performing simple matrix operations.
 						After these operations, the neural network model outputs a class, identifying what's in the image —
 						be it a bird, a dog, the sunset, or something else.
-						The accuracy of these models is now so high that they not only outperform humans but also render previous methods obsolete.
+						The accuracy of these models is now so high that they not only outperform humans but also make previous methods obsolete.
 						This approach allows us to take an image and get an answer directly.
-
+						<br>
 						Moreover, these models can now handle a variety of tasks beyond just image recognition.
-						For example, they can translate text. You can provide a sentence in Russian, and the model can translate it to English, and vice versa.
+						For example, they can translate text. You can provide a sentence in Russian,
+						and the model can translate it to English, and vice versa.
 						The model understands what is required and performs the translation.
 						This capability extends to answering hard questions in systems like ChatGPT,
 						making it possible to interact with machine learning models almost like with humans.
 					</aside>
 				</section>
 				<section data-background-color="antiquewhite">
-					<p style="position: absolute; left: 0px; top: 0px">
-						<img src="images/taxi-factory-interpr.png" alt="taxi-factory-interpr" style="border-radius: 5%">
-					</p>
-					<p class="fragment" data-fragment-index="0" style="position: absolute; left: -70px; top: 0px">
-						<img src="images/Hellenic-Autonomous-Vehicle.jpg" alt="Hellenic-Autonomous-Vehicle" style="width:75%;border-radius: 5%">
-					</p>
-					<p class="fragment" data-fragment-index="1" style="position: absolute; left: 480px; top: 0px">
-						<img src="images/tesla-factory.png" alt="tesla-factory" style="height: 100%;border-radius: 5%">
-					</p>
-					<p class="fragment" data-fragment-index="2" style="position: absolute; left: 285px; top: 200px">
-						<img src="images/machine-translation.png" alt="machine-translation" style="width:100%;border-radius: 5%">
-					</p>
-
+					<div class="row">
+						<div class="column">
+							<img class="fragment" data-fragment-index="0"
+								 src="images/taxi_driver.jpg" alt="taxi_driver" style="border-radius: 5%; width: 90%">
+						</div>
+						<div class="column">
+							<img class="fragment" data-fragment-index="1"
+								 src="images/factory_worker.webp" alt="factory_worker" style="border-radius: 5%; width: 90%">
+						</div>
+					</div>
+					<div class="row">
+						<img class="fragment" data-fragment-index="2"
+							 src="images/translators.jpg" alt="translators" style="border-radius: 5%; width: 40%">
+					</div>
 					<aside class="notes">
 						This was a brief introduction to our topic. Now let me show you some images and ask how they relate to machine learning.
 						Though I can't see the audience, I would like to hear your thoughts.
 						These images are showing various people —
-						like a taxi driver, a factory worker, and interpreters at a conference.
-
-						These images illustrate how modern machine learning technologies are closely linked to these professions.
-						For instance, autonomous vehicles are being developed and might surpass human drivers in the future.
-
+						like a taxi driver, a factory worker, and translators at a negotiations.
+						<br>
+						Let's realize how modern machine learning technologies are close to these professions.
+					</aside>
+				</section>
+				<section data-background-color="antiquewhite">
+					<div class="row">
+						<div class="column">
+							<img class="fragment" data-fragment-index="0"
+								 src="images/Hellenic-Autonomous-Vehicle.jpg" alt="Hellenic-Autonomous-Vehicle" style="border-radius: 5%;width: 100%">
+						</div>
+						<div class="column">
+							<img class="fragment" data-fragment-index="1"
+								 src="images/Tesla-Fabrikasinda.webp" alt="tesla-factory" style="border-radius: 5%;width: 80%">
+						</div>
+					</div>
+					<div class="row">
+						<img class="fragment" data-fragment-index="2"
+							 src="images/machine-translation.png" alt="machine-translation" style="border-radius: 5%;width: 45%">
+					</div>
+					<aside class="notes">
+						For instance, autonomous vehicles are being developed and might replace human drivers in the future.
+						This is an image of real Hellenic autonomous vehicle in Cyprus.
+						<br><br>
 						Factories, like the one where Tesla cars are assembled, predominantly use robots,
 						though humans are still involved in programming and maintenance.
-
+						<br><br>
 						Machine translation has also advanced significantly.
 						We all use translators on our phones or the internet,
 						and their quality is often comparable to human translators.
+						<br>
 						They allow easy translation of messages, emails, and even speech now,
 						providing more than enough accuracy for everyday use.
 						This development will undoubtedly continue, bringing progress in many areas.
+						<br>
+						There are many other examples of how machine learning and AI is improving our lives,
+						but we switch gears now to discuss the key components of teaching machine learning.
 					</aside>
 				</section>
 				<section>
@@ -139,10 +168,10 @@
 						The rapid development we see in many fields is also happening in machine learning.
 						If you take a modern course in biology, for example, you'll see that 20-30% of the material
 						changes each year because science and progress keep advancing.
-
+						<br>
 						We need to provide students with the most up-to-date knowledge,
 						which means frequently updating our courses. For sure this is also true for machine learning.
-
+						<br>
 						Last year, I had the opportunity to develop a new machine learning course from scratch at NUP.
 						I will talk about this and then discuss what is happening at the other universities.
 					</aside>
@@ -164,47 +193,58 @@
 
 						One of the most popular courses is Andrew Ng's course on Coursera.
 						Many modern machine learning educators and researchers have grown up on this course.
-
+						<br><br>
 						Another course I reviewed is the Open Data Science community's course, which is available on GitHub.
 						It includes well-crafted lecture notes, theory descriptions in PDF format, and practical assignments.
-						Everything is available for free, and nowadays this is a common practice.
-
+						Everything is available for free, and nowadays, this is a common practice.
+						<br>
 						Of course, there are many other resources available,
 						like the book "Deep Learning" by Ian Goodfellow and Yoshua Bengio or open video courses with materials on YouTube.
 						Such resources allow us to build a comprehensive course using a variety of materials.
-
+						<br>
 						Moreover, we cannot only use the available materials I mentioned as a basis for our own course,
 						but we can and even should use AI tools to improve our materials: for example,
-						add practical tasks and tests to them.
+						to make easier addition of practical tasks and tests to them.
 					</aside>
 				</section>
 				<section>
-					<h3>What do you need to succeed?</h3>
-					<ul>
-						<li class="fragment">Assemble a strong teaching team
-						with both academic and industry experts</li>
-						<li class="fragment">Thought out and resolved yourself assignments</li>
-						<li class="fragment">Trust and openness, chat with students</li>
-						<li class="fragment">Competitions like Kaggle</li>
-						<li class="fragment">Better to record and share video-lectures</li>
-						<li class="fragment">Interactive and emotional atmosphere,
-						questions for the audience</li>
-					</ul>
+					<h3>What is the main difficulty?</h3>
+						<img class="fragment" src="images/ML_math_algo.webp" alt="ML_math_algo" style="border-radius: 5%">
+					<h3 class="fragment">What do you need to succeed?</h3>
+						<ul>
+							<li class="fragment">Assemble a strong teaching team
+							with both academic and industry experts</li>
+							<li class="fragment">Thought out and <span class="important">resolved yourself</span> assignments</li>
+							<li class="fragment">Trust and openness, chat with students</li>
+							<li class="fragment"><span class="important">Kaggle-style</span> competitions</li>
+							<li class="fragment">Better to record and share video-lectures</li>
+							<li class="fragment">Interactive and <span class="important">emotional atmosphere</span>,
+							questions for the audience</li>
+						</ul>
 
 					<aside class="notes">
+						And how do you think, what is the main difficulty in teaching machine learning?
+						It seems to me, that we need to combine math theory and programming practice, and this is not easy.
+						<br><br>
 						To ensure success, the following steps are crucial:
+						<br>
 						1. Assemble a strong teaching team with both academic and industry experts to ensure students receive high-quality education and practical insights.
-
+						<br>
 						2. Crucial to have well-thought-out and resolved assignments. This is essential for mastering machine learning concepts.
 						Students must practice coding and theoretical problems to reinforce their learning.
-
+						<br>
 						3. Establish trust and openness with students by engaging in regular conversations and addressing their concerns.
-
+						<br>
 						4. Create a competitive learning environment by incorporating contests like Kaggle competitions to motivate students.
-
+						<br>
 						5. Record and promptly upload lectures to accommodate different learning paces and ensure students who miss classes can catch up.
-
+						<br>
 						6. Foster an interactive and emotional learning atmosphere, even in online settings, by asking questions and encouraging participation.
+						<br>
+						In conclusion, it's important to maintain an open and accessible teaching environment,
+						leveraging modern tools and methods to engage students effectively.
+						All the materials for my courses are available on GitHub under an open license,
+						ensuring transparency and accessibility for anyone interested in machine learning education.
 					</aside>
 				</section>
 				<section>
@@ -212,19 +252,19 @@
 					<div style="display: flex; justify-content: space-around; align-items: flex-start;">
 						<div class="fragment" style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; width: 45%; background-color: #f9f9f9;">
 							<p>
-								<a href="href=https://avalur.github.io/ml_with_python.html" style="color: mediumblue">
+								<a href="href=https://avalur.github.io/ml_with_python.html" style="color: mediumblue;text-decoration: underline">
 									Part 1: Fundamentals of Machine Learning</a>
 							</p>
 							<ul>
 								<li>ML tasks types, examples, quality evaluation</li>
 								<li>Linear models, gradient descent, decision trees</li>
 								<li>Ensembles, random forest and gradient boosting</li>
-								<li>Neural networks and backpropagation</li>
+								<li>Fully-connected neural networks and backpropagation</li>
 								<li>Building GPT-2 from scratch</li>
 							</ul>
 						</div>
 						<div class="fragment" style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; width: 45%; background-color: #f9f9f9;">
-							<p><a href="href=https://avalur.github.io/advanced_ml.html" style="color: mediumblue">
+							<p><a href="href=https://avalur.github.io/advanced_ml.html" style="color: mediumblue;text-decoration: underline">
 								Part 2: Advanced Machine Learning</a>
 							</p>
 							<ul>
@@ -240,13 +280,29 @@
 					<aside class="notes">
 						For example in our Machine Learning course at Neapolis University Pafos
 						students write their code for algorithms like linear regression and decision trees to understand the inner workings deeply.
+						<br>
+						The course also includes theoretical and practical tasks and culminates in an exam
+						consisting of a 30-40 minute interview to assess the students' understanding.
+						<br><br>
+						One-year course consists of two parts. The first part covers the fundamentals of machine learning,
+						including linear models, decision trees, ensembles, neural networks, and building GPT-2 from scratch.
+						<br><br>
+						The second part delves into advanced machine learning topics like clustering, tokenization, building AlphaZero from scratch,
+						and generative and discriminative models like VAE, GANs, and RAGs.
+						<br><br>
+						To address the question about course updates:
+						Indeed, each year, the course needs to be revised by at least 30%.
+						This is challenging for educators who recently developed the course and would prefer to reuse much of the content.
+						While it might be possible to retain the same content in the second year, by the third year, significant changes are necessary.
+						<br>
+						To manage this, our team regularly reviews and updates the course content.
+						We assess which lectures need modification, which should be removed, and which new material should be added.
+						It's a continuous process of integrating about 20-30% new material while phasing out outdated content.
+						This can be painful, especially when removing well-prepared materials, but it's a necessary part of keeping the course current.
 
-						The course also includes theoretical and practical tasks and culminates in an exam consisting of a 30-40 minute interview to assess the students' understanding.
-
-						In conclusion, it's important to maintain an open and accessible teaching environment,
-						leveraging modern tools and methods to engage students effectively.
-						The materials for my course are available on GitHub under an open license,
-						ensuring transparency and accessibility for anyone interested in machine learning education.
+						The speed of development in machine learning doesn't seem to be slowing down,
+						and it might continue at this pace indefinitely. Our course structure is limited to 13 lectures,
+						so adding new material means removing some of the old. This limitation helps us maintain a manageable course size.
 					</aside>
 				</section>
 				<section>
@@ -269,50 +325,75 @@
 							<ul>
 								<li>Implement clustering and EM-algorithm</li>
 								<li><a href="https://github.com/ad3002/minllama-assignment/tree/master" style="color: mediumblue">Implement minLLama</a></li>
-								<li>Build AlphaZero from scratch</li>
+								<li>Build <a href="https://github.com/jetbrains-academy/alpha-zero-course" style="color: mediumblue">AlphaZero</a> from scratch</li>
 								<li><a href="https://github.com/ad3002/make_jarvis" style="color: mediumblue">Build Your Own Jarvis</a></li>
+								<li>Final project with blogpost</li>
 							</ul>
 						</div>
 					</div>
 					<aside class="notes">
-						To address the question about course updates:
-						Indeed, each year, the course needs to be revised by at least 30%.
-						This is challenging for educators who recently developed the course and would prefer to reuse much of the content.
-						While it might be possible to retain the same content in the second year, by the third year, significant changes are necessary.
-
-						To manage this, our team regularly reviews and updates the course content.
-						We assess which lectures need modification, which should be removed, and which new material should be added.
-						It's a continuous process of integrating about 20-30% new material while phasing out outdated content.
-						This can be painful, especially when removing well-prepared materials, but it's a necessary part of keeping the course current.
-
-						The speed of development in machine learning doesn't seem to be slowing down,
-						and it might continue at this pace indefinitely. Our course structure is limited to 13 lectures,
-						so adding new material means removing some of the old. This limitation helps us maintain a manageable course size.
-
-						Regarding the question about whether machine learning will ever have a classical, unchanging core,
-						similar to traditional mathematics: Yes, I believe that eventually, there will be
-						a core set of principles and methods in machine learning that will become standardized.
-						These core elements will likely form about half of the course content, covering fundamental models and techniques like linear models,
-						decision trees, gradient boosting, and neural networks. The remaining half of the course will continue to evolve with new advancements in the field.
-
-						For deep learning specifically, it's becoming increasingly common to integrate it as part of the machine learning curriculum.
-						The foundational concepts of neural networks are now essential knowledge,
-						with practical applications across various fields like NLP, speech processing, and computer vision.
-						This integration allows students to build on a solid base before specializing in more advanced topics.
-
+						Assignments are a crucial part of the course, and we have a variety of them.
+						<br>
 						To address the issue of assessing new assignments and criteria at the beginning of a course:
-						We set clear and fixed points for each assignment in advance. While the criteria for obtaining
+						we set clear and fixed points for each assignment in advance. While the criteria for getting
 						specific grades might be adjusted based on initial feedback and performance, the overall structure remains constant.
 						Generally, achieving a passing grade is relatively straightforward,
 						requiring about half of the total points. This ensures that students who complete the assignments diligently can pass,
 						while higher grades require more comprehensive work.
-
+						<br>
 						Competitions are a valuable tool for motivation but can demotivate those at the bottom of the leaderboard.
 						To mitigate this, we make competitions optional and provide private feedback on individual standings.
 						Public leaderboards are used cautiously to encourage a healthy competitive spirit without discouraging students.
+					</aside>
+				</section>
+				<section>
+					<h3>TBD: setup for teaching online</h3>
+				</section>
+				<section>
+					<h3>And what about teaching routine automatization?</h3>
+					<img class="fragment" src="images/bear_of_bad_news.jpg" alt="bear_of_bad_news" style="width: 60%;border-radius: 5%">
 
+					<aside class="notes">
+						Unfortunately, I have bad news for you =)
+
+						Despite the rapid development of AI assistants and systems, such as ChatGPT,
+						which now are capable of generating text, code, and are irreplaceable in many areas,
+						the teaching routine is not yet automated.
+					</aside>
+				</section>
+				<section>
+					<ul>
+						<li class="fragment">
+							AI can help you <span class="important">create a draft</span> of one slide or
+							transform a short course description into a nice-looking syllabus</li>
+						<li class="fragment">
+							But the <span class="important">key content</span> of the course <span class="important">is up to you</span></li>
+						<li class="fragment">It cannot create interesting, well-thought-out, and detailed homework assignments</li>
+						<li class="fragment">It <span class="important">cannot check</span> the students' code and provide feedback</li>
+						<li class="fragment">Maybe the only way of using such technology in teaching
+							is <span class="important">to create a chatbot</span> that will answer the most common questions from students</li>
+					</ul>
+					<br><br>
+						<p class="fragment">
+							So it <span class="important">will not replace a real teacher</span>,
+							but it can help to save some of your time</p>
+
+					<aside class="notes">
+						AI can help you create a draft of one slide or transform a short description
+						of your course into a nice looking syllabus, but the key content of the course is up to you.
+						<br>
+						It cannot create interesting, well-thought-out and detailed homework assignments.
+						It cannot check the students' code and provide feedback.
+						<br>
+						Maybe the only way of using such technology in teaching
+						is to create a chatbot that will answer the most common questions from students.
+						Of course, it will not replace a real teacher, but it can help to save your time.
+						<br>
 						Thank you for your attention. I'm open to any further questions.
 					</aside>
+				</section>
+				<section>
+					<h3>TBD: motivation of studying ML - IOAI, our school club and around</h3>
 				</section>
             </div>
         </div>
