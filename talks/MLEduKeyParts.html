@@ -10,7 +10,7 @@
         <meta name="author" content="Alex Avdiushenko" />
         <meta name="keywords" content="Education, Machine Learning, universities">
 
-		<title>Key components of teaching Machine Learning</title>
+		<title>Key parts of teaching Machine Learning</title>
 
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
@@ -61,17 +61,18 @@
 					  <aside class="notes">
 						Hello everyone!
 						I'm Alex Avdiushenko, and I am happy to have a talk here.
-						Today we will discuss the key components of teaching Machine Learning and Artificial Intelligence.
-  						Let me briefly tell you that I am currently working on a machine learning program at the JetBrains Academy,
+						Today we will discuss the key components of teaching Machine Learning.
+  						First, let me briefly tell you that I am currently working on a computer science and
+						artificial intelligence program at the JetBrains Academy,
 						where I also design and teach courses.
 						We strive to share our developments and programs,
-						collaborating on different educational initiatives related to machine learning and programming, among other topics.
+						collaborating on different educational projects related to machine learning and programming, among other topics.
 						<br>
-						In the past, I worked as a developer at Yandex, writing code and developing machine learning models.
+						In the past, I worked as a developer at Yandex company, I was writing code and developing machine learning models.
 						Earlier in my career, I was a research scientist and completed my Ph.D. in Math modeling.
 						This is the kind of experience I bring to the table.
 						<br>
-						Essentially, the talk will consist of two parts.
+						Essentially, our talk will consist of two parts.
 						Firstly, we will discuss the philosophy of machine learning and how it influences our lives.
 						Then, we will delve into the practical aspects of creating one-year machine learning course and teaching it,
 						including routine automatization.
@@ -85,18 +86,19 @@
 					</p>
 					<aside class="notes">
 						Let's start with an image that reminds us that machine learning continues to evolve.
-						This slide shows a neural network scheme, which is fascinating in its own right.
+						This slide shows a neural network, which is fascinating in its own right.
 						As we know today, we take an image, convert it into a set of pixels,
-						which can be represented by either three numbers or one number.
+						which can be represented by either three numbers or even one number, the intensity of color.
 						<br>
 						We then process it as a matrix, performing simple matrix operations.
 						After these operations, the neural network model outputs a class, identifying what's in the image —
 						be it a bird, a dog, the sunset, or something else.
-						The accuracy of these models is now so high that they not only outperform humans but also make previous methods obsolete.
-						This approach allows us to take an image and get an answer directly.
+						The accuracy of these models is now so high that they not only outperform humans
+						but also make previous methods obsolete.
+						This approach allows us to take an image and get an answer directly, using model as a black box.
 						<br>
-						Moreover, these models can now handle a variety of tasks beyond just image recognition.
-						For example, they can translate text. You can provide a sentence in Russian,
+						Moreover, these models can now handle a variety of tasks beyond just image classification.
+						For example, they can translate text. You can provide a sentence for example in Russian,
 						and the model can translate it to English, and vice versa.
 						The model understands what is required and performs the translation.
 						This capability extends to answering hard questions in systems like ChatGPT,
@@ -120,9 +122,10 @@
 					</div>
 					<aside class="notes">
 						This was a brief introduction to our topic. Now let me show you some images and ask how they relate to machine learning.
-						Though I can't see the audience, I would like to hear your thoughts.
+						I would like to hear your thoughts.
 						These images are showing various people —
-						like a taxi driver, a factory worker, and translators at a negotiations.
+						like a taxi driver, a factory worker, and he шы obviously finishing the engine of a car.
+						Last picture shows us the translators at a negotiation.
 						<br>
 						Let's realize how modern machine learning technologies are close to these professions.
 					</aside>
@@ -143,22 +146,25 @@
 							 src="images/machine-translation.png" alt="machine-translation" style="border-radius: 5%;width: 45%">
 					</div>
 					<aside class="notes">
-						For instance, autonomous vehicles are being developed and might replace human drivers in the future.
+						We can guess, that, for instance, autonomous vehicles are being developed
+						and might replace human drivers in the future.
 						This is an image of real Hellenic autonomous vehicle in Cyprus.
 						<br><br>
 						Factories, like the one where Tesla cars are assembled, predominantly use robots,
 						though humans are still involved in programming and maintenance.
+						Almost all the work is done by machines, and humans manage the processes from the office.
 						<br><br>
 						Machine translation has also advanced significantly.
-						We all use translators on our phones or the internet,
-						and their quality is often comparable to human translators.
+						We all use translators on our phones or on the internet,
+						and their quality is often comparable to or even better than human translators.
 						<br>
 						They allow easy translation of messages, emails, and even speech now,
 						providing more than enough accuracy for everyday use.
 						This development will undoubtedly continue, bringing progress in many areas.
 						<br>
 						There are many other examples of how machine learning and AI is improving our lives,
-						but we switch gears now to discuss the key components of teaching machine learning.
+						we should have another talk to discuss them all.
+						So let's switch gears now to discuss the key parts of teaching machine learning.
 					</aside>
 				</section>
 				<section>
@@ -166,14 +172,16 @@
 					<aside class="notes">
 						I have highlighted some of the key aspects that are most clear and understandable for us.
 						The rapid development we see in many fields is also happening in machine learning.
-						If you take a modern course in biology, for example, you'll see that 20-30% of the material
+						If you take a modern course in biology, for example, you'll see that about 30% of the material
 						changes each year because science and progress keep advancing.
 						<br>
-						We need to provide students with the most up-to-date knowledge,
+						So we need to provide students with the most up-to-date knowledge,
 						which means frequently updating our courses. For sure this is also true for machine learning.
 						<br>
-						Last year, I had the opportunity to develop a new machine learning course from scratch at NUP.
-						I will talk about this and then discuss what is happening at the other universities.
+						Last year, I had the opportunity to develop a new machine learning course from scratch
+						at Neapolis University.
+						I will talk about this concrete course, and then we discuss
+						what is happening with teaching ML in general.
 					</aside>
 				</section>
 				<section>
@@ -188,9 +196,6 @@
 						</a>
 					</p>
 					<aside class="notes">
-						When creating a machine learning course, we first look at what is available globally
-						and how other universities teach their courses.
-
 						One of the most popular courses is Andrew Ng's course on Coursera.
 						Many modern machine learning educators and researchers have grown up on this course.
 						<br><br>
@@ -199,7 +204,8 @@
 						Everything is available for free, and nowadays, this is a common practice.
 						<br>
 						Of course, there are many other resources available,
-						like the book "Deep Learning" by Ian Goodfellow and Yoshua Bengio or open video courses with materials on YouTube.
+						like the interactive textbook "Dive into Deep Learning" by the big team of authors, mostly working at Amazon.
+						Also you can watch video courses on YouTube with some materials.
 						Such resources allow us to build a comprehensive course using a variety of materials.
 						<br>
 						Moreover, we cannot only use the available materials I mentioned as a basis for our own course,
@@ -235,16 +241,16 @@
 						<br>
 						3. Establish trust and openness with students by engaging in regular conversations and addressing their concerns.
 						<br>
-						4. Create a competitive learning environment by incorporating contests like Kaggle competitions to motivate students.
+						4. We need to create a competitive learning environment by incorporating contests like Kaggle competitions to motivate students.
 						<br>
-						5. Record and promptly upload lectures to accommodate different learning paces and ensure students who miss classes can catch up.
+						5. Nowaday we must record and promptly upload lectures to accommodate different learning paces
+						and ensure students who miss classes can catch up.
 						<br>
 						6. Foster an interactive and emotional learning atmosphere, even in online settings, by asking questions and encouraging participation.
 						<br>
 						In conclusion, it's important to maintain an open and accessible teaching environment,
 						leveraging modern tools and methods to engage students effectively.
-						All the materials for my courses are available on GitHub under an open license,
-						ensuring transparency and accessibility for anyone interested in machine learning education.
+						All the materials for my courses are also available on GitHub under an open MIT license.
 					</aside>
 				</section>
 				<section>
@@ -278,12 +284,13 @@
 						</div>
 					</div>
 					<aside class="notes">
-						For example in our Machine Learning course at Neapolis University Pafos
-						students write their code for algorithms like linear regression and decision trees to understand the inner workings deeply.
+						For example in our Machine Learning course at Neapolis University
+						students write their code for algorithms like linear regression and decision trees
+						to understand the inner details deeply.
 						<br>
 						The course also includes theoretical and practical tasks and culminates in an exam
 						consisting of a 30-40 minute interview to assess the students' understanding.
-						<br><br>
+						<br>
 						One-year course consists of two parts. The first part covers the fundamentals of machine learning,
 						including linear models, decision trees, ensembles, neural networks, and building GPT-2 from scratch.
 						<br><br>
@@ -291,17 +298,16 @@
 						and generative and discriminative models like VAE, GANs, and RAGs.
 						<br><br>
 						To address the question about course updates:
-						Indeed, each year, the course needs to be revised by at least 30%.
+						indeed, each year, the course needs to be revised by at least 30%.
 						This is challenging for educators who recently developed the course and would prefer to reuse much of the content.
 						While it might be possible to retain the same content in the second year, by the third year, significant changes are necessary.
 						<br>
 						To manage this, our team regularly reviews and updates the course content.
 						We assess which lectures need modification, which should be removed, and which new material should be added.
-						It's a continuous process of integrating about 20-30% new material while phasing out outdated content.
-						This can be painful, especially when removing well-prepared materials, but it's a necessary part of keeping the course current.
+						This can be painful, especially when removing well-prepared materials, but it's a necessary part of keeping the course up-to-date.
 
 						The speed of development in machine learning doesn't seem to be slowing down,
-						and it might continue at this pace indefinitely. Our course structure is limited to 13 lectures,
+						and it might continue at this pace for the long time. Our course structure is limited to 13 lectures,
 						so adding new material means removing some of the old. This limitation helps us maintain a manageable course size.
 					</aside>
 				</section>
@@ -327,7 +333,7 @@
 								<li><a href="https://github.com/ad3002/minllama-assignment/tree/master" style="color: mediumblue">Implement minLLama</a></li>
 								<li>Build <a href="https://github.com/jetbrains-academy/alpha-zero-course" style="color: mediumblue">AlphaZero</a> from scratch</li>
 								<li><a href="https://github.com/ad3002/make_jarvis" style="color: mediumblue">Build Your Own Jarvis</a></li>
-								<li>Final project with blogpost</li>
+								<li><span class="important">Final project with blogpost</span></li>
 							</ul>
 						</div>
 					</div>
@@ -342,14 +348,20 @@
 						while higher grades require more comprehensive work.
 						<br>
 						Competitions are a valuable tool for motivation but can demotivate those at the bottom of the leaderboard.
-						To mitigate this, we make competitions optional and provide private feedback on individual standings.
+						To mitigate this, we make competition part optional and provide private feedback on individual standings.
 						Public leaderboards are used cautiously to encourage a healthy competitive spirit without discouraging students.
+						<br><br>
+						In the second part of the course students have four assignments and final project.
+						We try to make the assignments as practical and as up-to-date as possible,
+						so students can apply their knowledge to real-world problems, such as implementing minLLama or
+						creating your own voice assistant Jarvis to talk with.
+						In the end of the course, students present their final project and write a blog post about it.
 					</aside>
 				</section>
 				<section>
 					<h3>Setup example for online teaching in 2024</h3>
 					<ul>
-						<li class="fragment">Slides in <span class="important">JavaScript (reveal.js)</span>: for animations, video and interactivity</li>
+						<li class="fragment">Slides in <span class="important">JavaScript (reveal.js):</span> for animations, video and interactivity</li>
 						<li class="fragment">Formulas and hand drew pictures in Microsoft <span class="important">Whiteboard on iPad</span></li>
 						<li class="fragment"><span class="important">PyCharm and Jupyter notebooks</span> for coding demos</li>
 						<li class="fragment"><span class="important">OBS Studio</span> for combining different scenes and streaming it</li>
@@ -363,14 +375,15 @@
 						With Reveal.js, you can incorporate animations, embed videos, and add interactivity to keep students engaged.
 						<br><br>
 						Next, for formulas and hand-drawn pictures,
-						I utilize Microsoft Whiteboard on iPad. This combination allows for real-time, intuitive drawing and writing,
+						I use Microsoft Whiteboard on iPad. This combination allows for real-time, intuitive drawing and writing,
 						which is particularly useful for explaining complex concepts and equations in a visually accessible manner.
 						<br><br>
 						For coding demonstrations, I prefer turn to PyCharm and Jupyter Notebooks.
 						PyCharm is an excellent IDE for Python, offering robust coding support and debugging tools.
-						Jupyter Notebooks are perfect for interactive coding sessions, where you can show live code execution and visualizations.
+						Jupyter Notebooks are perfect for interactive coding sessions,
+						where you can show live code execution and visualizations.
 						<br><br>
-						Finally, to bring everything together you may use OBS Studio.
+						Finally, to bring everything together you may use Open Broadcast Software Studio.
 						It is a powerful tool for combining different scenes, such as your slides, whiteboard, and coding environment,
 						into a seamless streaming experience.
 						<br>
@@ -378,7 +391,7 @@
 						but also allows you to switch between different teaching materials smoothly.
 						<br>
 						By integrating these tools, we can create a comprehensive and engaging online teaching environment
-						that caters to various learning styles and keeps our students actively involved.
+						that fits various learning styles and keeps our students actively involved.
 					</aside>
 				</section>
 				<section>
@@ -415,13 +428,11 @@
 						of your course into a nice looking syllabus, but the key content of the course is up to you.
 						<br>
 						It cannot create interesting, well-thought-out and detailed homework assignments.
-						It cannot check the students' code and provide feedback.
+						It even cannot check the students' code and provide feedback.
 						<br>
 						Maybe the only way of using such technology in teaching
 						is to create a chatbot that will answer the most common questions from students.
 						Of course, it will not replace a real teacher, but it can help to save your time.
-						<br>
-						Thank you for your attention. I'm open to any further questions.
 					</aside>
 				</section>
 				<section>
@@ -442,13 +453,13 @@
 					</div>
 					<aside class="notes">
 						As we delve into the focal points of this presentation,
-						we discuss our motivation for pursuing and advocating for further education in Machine Learning (ML).
+						we discuss our motivation for advocating for further education in Machine Learning (ML).
 						<br><br>
-						Foremost, Artificial Intelligence is now considered the third form of literacy,
+						Foremost, Artificial Intelligence is now should be considered as the third form of literacy,
 						aligning itself right after classical literacy and programming skills.
 						This emphasizes its importance and relevance in the modern technological era.
 						<br><br>
-						Moreover, machine learning is pervading various fields at an unprecedented rate.
+						Moreover, machine learning disrupts various fields at an unprecedented rate.
 						It's proving integral, particularly in the realms of cutting-edge science and business, reinforcing its impact and ubiquity.
 						<br><br>
 						Also, since the year 2024, the significance of AI has been underscored even further by
@@ -456,10 +467,12 @@
 						To learn more about this fascinating initiative, you can visit their website shown on this slide.
 						<br><br>
 						Lastly, but certainly not least, it's worth mentioning that the process of teaching and
-						studying ML is intrinsically enjoyable! There's a certain thrill that goes
-						with the unraveling of complicated algorithms and the application of abstract concepts for tangible results.
+						studying ML is intrinsically enjoyable!
+
 						So, the dynamic field of Machine Learning is not just an academic or professional requirement,
 						but a conduit for intellectual enjoyment and technological advancement.
+						<br><br>
+						Thank you for your attention! Feel free to reach out to me with any questions or comments.
 					</aside>
 				</section>
             </div>
