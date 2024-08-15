@@ -694,14 +694,15 @@
     <div class="row">
       <div class="col-md-7 px-3">
           <p> </p>
-          <h4 class="card-title"><span>&nbsp;&nbsp;</span>Intro to language modelling: bigrams</h4>
+          <h4 class="card-title"><span>&nbsp;&nbsp;</span>Recurrent neural networks basics</h4>
           <p class="card-text">
             <ul>
-                <li>Makemore by Andrej Karpathy</li>
-                <li>Bigrams language modeling</li>
+                <li>Disadvantages of Feed-Forward Neural Networks</li>
+                <li>Architectures of Recurrent Networks</li>
+                <li>Vanilla RNN, LSTM, GRU</li>
             </ul>
           <span>&nbsp;&nbsp;</span>
-            <a href="https://colab.research.google.com/github/avalur/avalur.github.io/blob/master/ml_fundament/language_modeling_bigrams.ipynb" class="mt-auto btn btn-primary">ipynb</a>
+            <a href="https://avalur.github.io/ml_fundament/rnn_basics.html" class="mt-auto btn btn-primary">Slides</a>
           </p>
       </div>
       <!-- Carousel start -->
@@ -710,25 +711,31 @@
           <ol class="carousel-indicators">
               <li data-target="#lecture11" data-slide-to="0" class="active"></li>
               <li data-target="#lecture11" data-slide-to="1"></li>
+              <li data-target="#lecture11" data-slide-to="2"></li>
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <div style="height:250px;">
-              <img class="d-block" src="ml_with_python/images/makemore.png" alt="" style="width:100%;">
-              </div>
+              <div style="height:250px;"><center>
+              <img class="d-block" src="ml_fundament/images/rnn_char_level_example.jpg" alt="" style="height:250px;">
+              </center></div>
             </div>
             <div class="carousel-item">
               <div style="height:250px;"><center>
-              <img class="d-block" src="ml_with_python/images/bigrams_freq.png" alt="" style="width:100%;">
+              <img class="d-block" src="ml_fundament/images/lstm_scheme.png" alt="" style="height:250px;">
+              </center></div>
+            </div>
+            <div class="carousel-item">
+              <div style="height:250px;"><center>
+              <img class="d-block" src="ml_fundament/images/seq2seq.png" alt="" style="height:250px;">
               </center></div>
             </div>
 
               <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#lecture15" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#lecture11" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#lecture15" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#lecture11" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
             </a>
@@ -755,6 +762,112 @@
           <div class="carousel-inner">
             <div class="carousel-item active">
               <div style="height:250px;"><center>
+              <img class="d-block" src="ml_fundament/images/init_weights.png" alt="" style="height:250px;">
+              </center></div>
+            </div>
+            <div class="carousel-item">
+              <div style="height:250px;"><center>
+              <img class="d-block" src="ml_fundament/images/rnn_scheme.png" alt="" style="height:250px;">
+              </center></div>
+            </div>
+
+              <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#lecture12" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#lecture12" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      <!-- End of carousel -->
+      </div>
+          <div class="col-md-6">
+              <p> </p>
+              <h4 class="card-title"><span>&nbsp;&nbsp;</span>Building char-rnn from scratch</h4>
+              <p class="card-text">
+                <ul>
+                  <li>Data and random initialization</li>
+                  <li>Cross entropy loss</li>
+                  <li>Train and sample</li>
+                </ul>
+                <span>&nbsp;&nbsp;</span>
+                <a href="https://colab.research.google.com/github/avalur/avalur.github.io/blob/master/ml_fundament/rnn_demo.ipynb" class="mt-auto btn btn-primary">ipynb</a>
+          </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="container py-3">
+  <!-- Card Start -->
+  <div class="card">
+    <div class="row">
+      <div class="col-md-7 px-3">
+          <p> </p>
+          <h4 class="card-title"><span>&nbsp;&nbsp;</span>Intro to language modelling: bigrams</h4>
+          <p class="card-text">
+            <ul>
+                <li>Makemore by Andrej Karpathy</li>
+                <li>Bigrams language modeling</li>
+            </ul>
+          <span>&nbsp;&nbsp;</span>
+            <a href="https://colab.research.google.com/github/avalur/avalur.github.io/blob/master/ml_fundament/language_modeling_bigrams.ipynb" class="mt-auto btn btn-primary">ipynb</a>
+          </p>
+      </div>
+      <!-- Carousel start -->
+      <div class="col-md-5">
+        <div id="lecture13" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+              <li data-target="#lecture13" data-slide-to="0" class="active"></li>
+              <li data-target="#lecture13" data-slide-to="1"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div style="height:250px;">
+              <img class="d-block" src="ml_with_python/images/makemore.png" alt="" style="width:100%;">
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div style="height:250px;"><center>
+              <img class="d-block" src="ml_with_python/images/bigrams_freq.png" alt="" style="width:100%;">
+              </center></div>
+            </div>
+
+              <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#lecture13" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#lecture13" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- End of carousel -->
+    </div>
+  </div>
+  <!-- End of card -->
+</div>
+
+<div class="container py-3">
+  <!-- Card Start -->
+    <div class="card">
+      <div class="row">
+      <!-- Carousel start -->
+      <div class="col-md-6">
+        <div id="lecture14" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#lecture14" data-slide-to="0" class="active"></li>
+            <li data-target="#lecture14" data-slide-to="1"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div style="height:250px;"><center>
               <img class="d-block" src="ml_with_python/images/simple_MLP_for_LM.png" alt="" style="height:250px;">
               </center></div>
             </div>
@@ -765,11 +878,11 @@
             </div>
 
               <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#lecture12" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#lecture14" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#lecture12" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#lecture14" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
             </a>
@@ -813,10 +926,10 @@
       </div>
       <!-- Carousel start -->
       <div class="col-md-5">
-        <div id="lecture13" class="carousel slide" data-ride="carousel">
+        <div id="lecture15" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
-              <li data-target="#lecture13" data-slide-to="0" class="active"></li>
-              <li data-target="#lecture13" data-slide-to="1"></li>
+              <li data-target="#lecture15" data-slide-to="0" class="active"></li>
+              <li data-target="#lecture15" data-slide-to="1"></li>
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -831,11 +944,11 @@
             </div>
 
               <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#lecture13" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#lecture15" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#lecture13" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#lecture15" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
             </a>
@@ -855,8 +968,8 @@
           </div>
           <div class="col-md-8">
               <h4 class="card-title">Homework 6:
-                  <a href="https://github.com/avalur/avalur.github.io/blob/master/ml_with_python/hw_cnn_competition.md">
-                      Image classification task on Kaggle</a></h4>
+                  <a href="">
+                      Intro to PyTorch</a></h4>
           </div>
           <div class="col-md-2">
           </div>
@@ -870,10 +983,10 @@
       <div class="row">
       <!-- Carousel start -->
       <div class="col-md-6">
-        <div id="lecture14" class="carousel slide" data-ride="carousel">
+        <div id="lecture16" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
-            <li data-target="#lecture14" data-slide-to="0" class="active"></li>
-            <li data-target="#lecture14" data-slide-to="1"></li>
+            <li data-target="#lecture16" data-slide-to="0" class="active"></li>
+            <li data-target="#lecture16" data-slide-to="1"></li>
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -888,11 +1001,11 @@
             </div>
 
               <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#lecture14" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#lecture16" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#lecture14" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#lecture16" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
             </a>
@@ -923,7 +1036,7 @@
     <div class="row">
       <div class="col-md-7 px-3">
           <p> </p>
-          <h4 class="card-title"><span>&nbsp;&nbsp;</span>Convolutional neural networks</h4>
+          <h4 class="card-title"><span>&nbsp;&nbsp;</span>Convolutional Neural Networks</h4>
           <p class="card-text">
             <ul>
                 <li>Brief history of computer vision</li>
@@ -936,11 +1049,11 @@
       </div>
       <!-- Carousel start -->
       <div class="col-md-5">
-        <div id="lecture15" class="carousel slide" data-ride="carousel">
+        <div id="lecture17" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
-              <li data-target="#lecture15" data-slide-to="0" class="active"></li>
-              <li data-target="#lecture15" data-slide-to="1"></li>
-              <li data-target="#lecture15" data-slide-to="2"></li>
+              <li data-target="#lecture17" data-slide-to="0" class="active"></li>
+              <li data-target="#lecture17" data-slide-to="1"></li>
+              <li data-target="#lecture17" data-slide-to="2"></li>
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -959,11 +1072,11 @@
               </div>
             </div>
               <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#lecture15" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#lecture17" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#lecture15" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#lecture17" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
             </a>
@@ -978,15 +1091,32 @@
 
 
 <div class="container py-3">
+  <div class="card">
+    <div class="row py-1">
+          <div class="col-md-2">
+          </div>
+          <div class="col-md-8">
+              <h4 class="card-title">Homework 7:
+                  <a href="https://github.com/avalur/avalur.github.io/blob/master/ml_with_python/hw_cnn_competition.md">
+                      Image classification task on Kaggle</a></h4>
+          </div>
+          <div class="col-md-2">
+          </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container py-3">
   <!-- Card Start -->
     <div class="card">
       <div class="row">
       <!-- Carousel start -->
       <div class="col-md-6">
-        <div id="lecture16" class="carousel slide" data-ride="carousel">
+        <div id="lecture18" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
-            <li data-target="#lecture16" data-slide-to="0" class="active"></li>
-            <li data-target="#lecture16" data-slide-to="1"></li>
+            <li data-target="#lecture18" data-slide-to="0" class="active"></li>
+            <li data-target="#lecture18" data-slide-to="1"></li>
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -1001,11 +1131,11 @@
             </div>
 
               <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#lecture16" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#lecture18" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#lecture16" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#lecture18" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
             </a>
@@ -1036,10 +1166,10 @@
       <div class="row">
       <!-- Carousel start -->
       <div class="col-md-6">
-        <div id="lecture17" class="carousel slide" data-ride="carousel">
+        <div id="lecture19" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
-            <li data-target="#lecture17" data-slide-to="0" class="active"></li>
-            <li data-target="#lecture17" data-slide-to="1"></li>
+            <li data-target="#lecture19" data-slide-to="0" class="active"></li>
+            <li data-target="#lecture19" data-slide-to="1"></li>
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -1054,11 +1184,11 @@
             </div>
 
               <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#lecture17" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#lecture19" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#lecture17" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#lecture19" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
             </a>
@@ -1148,7 +1278,7 @@
       <div class="row">
       <!-- Carousel start -->
       <div class="col-md-6">
-        <div id="lecture19" class="carousel slide" data-ride="carousel">
+        <div id="lecture20" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#lecture19" data-slide-to="0" class="active"></li>
             <li data-target="#lecture19" data-slide-to="1"></li>
@@ -1166,11 +1296,11 @@
             </div>
 
               <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#lecture19" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#lecture20" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#lecture19" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#lecture20" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
             </a>
