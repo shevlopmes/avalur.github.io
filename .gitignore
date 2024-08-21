@@ -299,3 +299,4 @@ mnist/*
 /out/
 /ml_fundament/vocab.bpe
 /ml_fundament/encoder.json
+/advanced_ml/nips12raw_str602.tgz
