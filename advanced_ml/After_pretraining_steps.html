@@ -6,7 +6,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<title>After pretraining steps: RLHF and prompting</title>
+		<title>After pretraining steps: RLHF, DPO and prompting</title>
 
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
@@ -60,7 +60,7 @@
                     <h2>Advanced machine learning</h2>
 					<div class="fragment" style="margin-bottom:20px;">
 							<div class="typesetting">
-								<h3>After pretraining steps: RLHF and prompting</h3>
+								<h3>After pretraining steps: RLHF, DPO and prompting</h3>
 								<br />
 								Alex Avdiushenko<br />
 								April 16, 2025
@@ -104,7 +104,7 @@
                                 <ul class="fragment">
                                     <li><strong class="important">Problem 1:</strong>
                                         Open-ended creative generation tasks have no right answer. <br>
-                                        <em>Example:</em> "Write me a story about a dog and her pet grasshopper."</li>
+                                        <em>Example:</em> "Write me a story about a dog and her pet grasshopper"</li>
                                     <li><strong class="important">Problem 2:</strong>
                                         Language modeling penalizes all token-level mistakes equally,
                                         but some errors are worse than others</li>
@@ -291,6 +291,99 @@
                                 </ul>
                             </li>
                         </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                      <h3 style="text-align: left">Prompting as a Prior</h3>
+                        <p style="text-align: left">
+                            Prompts are a human-interpretable method for providing a prior over the parameters of the model!
+                        </p>
+                        <p style="text-align: left">
+                            This can be used in place of fine-tuning, or combined with fine-tuning.
+                        </p>
+                        <br>
+                        <p style="text-align: left">
+                            <a href="https://arxiv.org/pdf/2001.07676.pdf">https://arxiv.org/pdf/2001.07676.pdf</a>
+                        </p>
+                    </section>
+                    <section>
+                        <h3 style="text-align: left">Behind the scenes, messages are converted to token strings</h3>
+                        <div style="display: flex; justify-content: space-around;">
+                            <div>
+                                <h4>LLaMa</h4>
+                                <pre style="background-color: gray; padding: 10px;">
+Sys. [INST]
+<< SYS >>
+You are an assistant that …
+<< SYS >>
+[/INST]
+
+User [INST]This movie is great.[/INST]
+
+Asst. Positive.
+                                </pre>
+                            </div>
+                            <div>
+                                <h4>Alpaca</h4>
+                                <pre style="background-color: gray; padding: 10px;">
+Sys. ### Instruction:
+You are an assistant that …
+
+User ### Instruction:
+This movie is great.
+
+Asst. ### Response:
+Positive.
+                                </pre>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                      <h3 style="text-align: left">Post-processing of answer</h3>
+                      <ul>
+                        <li>Based on the answer, select the actual output</li>
+                        <li>For instance:
+                          <ul>
+                            <li>Taking the output as-is</li>
+                            <li>Formatting the output for easy visualization</li>
+                            <li>Selecting only parts of the output that you want to use</li>
+                            <li>Mapping the outputs to other actions</li>
+                          </ul>
+                        </li>
+                      </ul>
+                      <img src="images/post_proc_example.png" alt="post_proc_example" width="70%"
+                      style="border-radius: 5%">
+                    </section>
+                    <section>
+                        <h3 style="text-align: left">Chain-of-Thought Prompting</h3>
+                        <p style="text-align: left">Chain-of-Thought (CoT) prompting is a method
+                            for generating prompts that guide the model to produce more coherent and
+                            focused responses</p>
+                        <p><a href="https://arxiv.org/pdf/2201.11903.pdf">
+                        <img src="images/CoT_prompting.png" alt="CoT_prompting" style="border-radius: 5%">
+                        </a></p>
+                    </section>
+                    <section>
+                        <img src="images/LM_designed_prompt.png" alt="LM_designed_prompt" style="border-radius: 5%">
+                        <p>
+                            <a href="https://arxiv.org/pdf/2211.01910">
+                                Large language models are human-level prompt engineers
+                            </a>
+                        </p>
+                    </section>
+                    <section>
+                      <h3 style="text-align: left">Downside of prompt-based learning</h3>
+                      <ol>
+                        <li><strong>Inefficiency:</strong> The prompt needs to be processed <em>every time</em>
+                            the model makes a prediction</li>
+                        <li><strong>Poor performance:</strong> Prompting generally performs worse than fine-tuning
+                            <a href="https://arxiv.org/abs/2005.14165">[Brown et al., 2020]</a></li>
+                        <li><strong>Sensitivity</strong> to the wording of the prompt,
+                            order of examples, etc.</li>
+                        <li><strong>Lack of clarity</strong> regarding what the model learns from the prompt.
+                            Even random labels work <a href="https://arxiv.org/abs/2307.12375">[Kossen et al., 2023]</a>!</li>
+                      </ol>
                     </section>
                 </section>
                 <section>
