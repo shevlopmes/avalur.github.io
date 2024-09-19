@@ -45,38 +45,56 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<div class="column">
-						<img src="images/jetbrains_logo_icon_145150.webp" alt="jetbrains_logo" />
-					</div>
-					<div class="column">
-						<h2>Youth AI club</h2>
-						<div class="fragment" style="margin-bottom:20px;">
-								<div class="typesetting">
-									<h3>Lecture 1. Introduction to Python. JetBrains Academy plugin in PyCharm</h3>
-									<br />
-									Alex Avdiushenko <br />
-									October 2, 2024
-								</div>
+					<section>
+						<div class="column">
+							<img src="images/jetbrains_logo_icon_145150.webp" alt="jetbrains_logo" />
 						</div>
-					</div>
+						<div class="column">
+							<h2>Youth AI club</h2>
+							<div class="fragment" style="margin-bottom:20px;">
+									<div class="typesetting">
+										<h3>Lecture 1. Introduction to Python. JetBrains Academy plugin in PyCharm</h3>
+										<br />
+										Alex Avdiushenko <br />
+										October 2, 2024
+									</div>
+							</div>
+						</div>
+						<aside class="notes">
+							Hi! My name is Alex Avdiushenko, and I am a teacher of the JetBrains AI school club.
+							I am really glad to see you here today. We will talk about the Python programming language and the JetBrains Academy plugin in PyCharm.
+						</aside>
+					</section>
+					<section>
+						<h3>Main Goals of the club</h3>
+						<div class="typesetting">
+							<ul>
+								<li class="fragment">Deeply understand basic concepts of <span class="important">machine learning and neural nets</span></li>
+								<li class="fragment">Implement AI models using <span class="important">Python and PyTorch</span></li>
+								<li class="fragment">Prepare for the international IOAI Olympiad (<a href="https://ioai-official.org/">https://ioai-official.org/</a>)</li>
+								<li class="fragment">Take the first step, after which you can continue self-study</li>
+							</ul>
+							<br><br>
+							<p class="fragment" style="text-align: left">Homework every week, and a contest every two months 👍</p>
+						</div>
+					</section>
 				</section>
 				<section>
 					<section data-background-image="../ml_with_python/images/monty_python.jpg">
-<!--  						<img src="../ml_with_python/images/monty_python.jpg" alt="monty_python" width="100%"/>-->
-					</section>
-					<section>
-					<h3>Main Goals of the club</h3>
-					<div class="typesetting">
-						<ul>
-							<li class="fragment">Deeply understand basic concepts of <span class="important">machine learning and neural nets</span></li>
-							<li class="fragment">Implement AI models using <span class="important">Python and PyTorch</span></li>
-							<li class="fragment">Prepare for the international IOAI Olympiad (<a href="https://ioai-official.org/">https://ioai-official.org/</a>)</li>
-							<li class="fragment">Take the first step, after which you can continue self-study</li>
-						</ul>
-						<br><br>
-						<p class="fragment" style="text-align: left">Homework every week, and a contest every two months.</p>
-					</div>
+						<aside class="notes">
+							Why is Python called Python? The name comes from the British comedy group Monty Python, not the snake.
 
+							And Monty Python is a British surreal comedy group that created
+							the sketch comedy television show Monty Python's Flying Circus,
+							which first aired on the BBC about 50 years ago.
+
+							The creator of Python, Guido van Rossum, was a big fan of Monty Python's Flying Circus.
+							And also he believed that a name that was short,
+							unique, and slightly mysterious would be a good name for a programming language.
+
+							Also, he thought that programming language should be not only convenient to use and easy to learn,
+							but also fun to work with.
+						</aside>
 					</section>
 					<section>
 						<h3>Python Language IS</h3>
@@ -129,7 +147,8 @@
 								sum_ += term
 						x = 1
 						gen_e_x = e(x)
-
+					</py-repl>
+					<py-repl>
 						[i for i in range(5)]
 					</py-repl>
 					</section>
@@ -176,12 +195,13 @@
 					<section>
 						<h3> <a href="https://www.quora.com/How-many-bytes-does-an-integer-data-occupy-in-the-Python-language">
 							Size of INT in Python language</a></h3>
-						<p class="r-frame">What do you think, how much memory does INT take?</p>
+						<p class="r-frame">What do you think, how much memory INT takes?</p>
 						<div class="fragment" style="margin-bottom:20px;">
 							<div class="typesetting">
 								<ul>
 									<li>In general, 1 bit represents only two values (it's 0 or 1)</li>
-									<li>1 byte = 8 bits, and this already represents integers from 0 to 255, for example</li>
+									<li>1 byte = 8 bits, and this already represents integers from 0 to 255 or
+										from -127 to 127</li>
 								</ul>
 							</div>
 						</div>
@@ -205,7 +225,8 @@
 
 						print('\n'.join(
 							['Size of int in Python'] +
-								  [print_sizeof(x) for x in (0, 1, 10**10, 10**11, 10**30)])
+								  [print_sizeof(x) for x in (0, 1, 10**10,
+									10**11, 10**30)])
 						)
 						</py-repl>
 					</section>
@@ -216,7 +237,10 @@
 						</div>
      					<div class="fragment" style="margin-bottom:20px;">
     						<div class="typesetting">
-								<a href="https://github.com/python/cpython/blob/ba85d69a3e3610bdd05f0dd372cf4ebca178c7fb/Include/longintrepr.h#L70">Cpython open source realization</a>
+								<p style="text-align: left">
+									<a href="https://github.com/python/cpython/blob/ba85d69a3e3610bdd05f0dd372cf4ebca178c7fb/Include/longintrepr.h#L70">
+									Cpython open source realization:</a>
+								</p>
 								<pre><code data-trim data-noescape>
 									struct _longobject {
 										// macros with
@@ -225,6 +249,7 @@
 										// 3. and extension field ob_size (8 bytes)
 										PyObject_VAR_HEAD
 										// int value adds 0, 4 (32x) or 8 bytes (64x)
+										// SUM(for i=0 through abs(ob_size)-1) ob_digit[i] * 2**(SHIFT*i)
 										digit ob_digit[1];
 									};
 								</code></pre>
@@ -232,7 +257,7 @@
 						</div>
 					</section>
 					<section>
-						<h3 style="text-align: left">Tools for programming and studying Python</h3>
+						<h3 style="text-align: left">DEMO: tools for programming and studying Python</h3>
 						<ol>
 							<li class="fragment"><a href="https://www.jetbrains.com/help/pycharm/installation-guide.html">
 								Install PyCharm IDE</a> </li>
@@ -240,8 +265,10 @@
 								Quick start guide, need to specify a Python interpreter</a></li>
 							<li class="fragment">Download <a href="https://plugins.jetbrains.com/plugin/10081-jetbrains-academy">
 								JetBrains Academy plugin</a></li>
-							<li class="fragment">If you are not familiar with Python, then go through <a href="https://plugins.jetbrains.com/plugin/16630-introduction-to-python">
-								Introduction to Python</a> in PyCharm</li>
+							<li class="fragment">All the assignments and deadlines can be found on <a href="https://cogniterra.org/invitation/4163f3c40a0ef3256a61fbb53a226ea5428ae010/">
+								Cogniterra course</a></li>
+							<li class="fragment"><span class="important">Homework 1:</span> If you are not familiar with Python, then go through <a href="https://plugins.jetbrains.com/plugin/16630-introduction-to-python">
+								Introduction to Python</a> in PyCharm ❤️</li>
 						</ol>
 					</section>
 				</section>
