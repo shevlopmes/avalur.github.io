@@ -62,13 +62,13 @@
 						Hello everyone!
 						I'm Alex Avdiushenko, and I am happy to have a talk here.
 						Today we will discuss the key components of teaching Machine Learning.
-  						First, let me briefly tell you, that I am currently working on a computer science and
-						artificial intelligence program at Neapolis University Pafos and JetBrains company,
+  						First, let me briefly tell you that I am currently working on a computer science and
+						artificial intelligence program at Neapolis University in Pafos and at JetBrains company,
 						where I also design and teach courses.
 						We are always glad to share our ideas and thoughts with you and ready for
 						collaboration on different projects related to machine learning and programming, among other topics.
 						<br>
-						In the past, I worked as a developer at Yandex company,
+						In the past, I worked as a developer at a Yandex company,
 						  I was writing code and developing machine learning models.
 						  Earlier in my career,
 						  I was a research scientist and completed my Ph.D. in Math modeling.
@@ -79,7 +79,7 @@
 					<h3 style="text-align: left">1. Some examples of applying AI to modern problems</h3>
 					<h3 style="text-align: left;color: darkgray">2. Practical aspects of creating ML course</h3>
 					<aside class="notes">
-						Essentially, my talk will consist of two parts.
+						Ok, let's go on to the essence of the talk. It will consist of two parts.
 						Firstly, we will discuss the philosophy of machine learning and how it influences our lives.
 
 						Then, we will delve into the practical aspects of creating one-year machine learning course
@@ -95,7 +95,7 @@
 					<aside class="notes">
 						Let's start with an image that shows us the simple convolutional neural network,
 						which is fascinating in its own right.
-						We take an image, convert it into a set of pixels in computer memory,
+						So we take an image, convert it into a set of pixels in computer memory,
 						which can be represented by either three numbers for RGB format or even one number,
 						the intensity of color for grayscale images.
 						<br>
@@ -114,24 +114,32 @@
 							<img src="images/GPT-4.png" alt="GPT-4" height="300px">
 						</div>
 						<div class="column fragment">
-							<img src="images/gemini.png" alt="gemini" height="300px">
+							<img src="images/gpt-o1.png" alt="gpt-o1" height="350px">
 						</div>
 					</div>
-					<div class="row fragment">
-						<img src="images/claude3.png" alt="claude3" height="300px">
+					<div class="row">
+						<div class="column fragment">
+							<img src="images/gemini.png" alt="gemini" height="300px">
+						</div>
+						<div class="column fragment">
+							<img src="images/claude3.png" alt="claude3" height="300px">
+						</div>
 					</div>
 
 					<p class="fragment">And also LLama, Mistral, Grok…</p>
 					<aside class="notes">
 						Moreover, these models can now handle a variety of tasks beyond just image classification.
-						For example, they can translate text. You can provide a sentence, for example,
+						For example, they can translate text. You can provide a sentence, let's say,
 						in the Greek language, and the model can translate it to English, and vice versa.
 						The model "understands" what is required and performs the translation.
 						<br>
-						For sure, you have heard ABOUT the GPT-4 model, which is the latest version of the GPT series.
+						For sure, you have heard ABOUT the GPT-4 model from OpenAI company,
+						which for a long time was the smartest of all.
+						<br>
+						Now, OpenAI HAS released GPT-4o1 model, which is even more advanced!
 						It is capable of generating text, code, and even answering hard questions.
 						<br>
-						Gemini from GOOGLE is another model that can do the same and has a really large size of context.
+						Gemini from GOOGLE is another model that can do almost the same and has a really large size of context.
 						<br>
 						Another competitor in this field is Claude3, which now often is used with Cursor editor
 						to develop software applications ten times faster.
@@ -156,16 +164,16 @@
 					</div>
 					<aside class="notes">
 						Now let me show you some images and ask how they relate to machine learning.
-						I would like to hear your thoughts.
+						I would like to hear or see your thoughts.
 						<br><br>
 						So the FIRST image shows us a happy taxi driver.
 						<br><br>
 						The SECOND one shows a factory worker, and he is obviously finishing the engine of a car.
 						<br><br>
-						The LAST picture shows us the translators at a negotiation.
+						And the LAST picture shows us the translators at a negotiation.
 						<br>
 						These images are showing various people,
-						let's think and realize how modern machine learning technologies are close to these professions?
+						let's think and realize how modern AI technologies are close to these professions?
 						Any ideas, guesses, or thoughts? Write in the chat, please, and let's discuss it!
 					</aside>
 				</section>
@@ -194,7 +202,7 @@
 						though humans are still involved in programming and maintenance.
 						Almost all the work is done by machines, and humans manage the processes from the office.
 						<br><br>
-						Machine translation has ALSO advanced significantly.
+						Of course, machine translation has ALSO advanced significantly.
 						We all use translators on our phones or on the internet,
 						and their quality is often comparable to or even better than human translators.
 						<br>
@@ -211,12 +219,12 @@
 					<img class="fragment" src="images/bear_of_bad_news.jpg" alt="bear_of_bad_news" style="width: 60%;border-radius: 5%">
 
 					<aside class="notes">
-						Ok, let's return to slides.
+						That's why I offer to move on.
 						You may ask what about teaching routine automatization?
-						Unfortunately, I have bad news for you =)
+						And unfortunately, I have bad news for you =)
 						<br>
 						Despite the rapid development of AI assistants and other systems,
-						which now are capable of generating text, code, and they are irreplaceable in many areas,
+						which now are capable of generating text, code, but
 						the teaching routine is not yet fully automated.
 					</aside>
 				</section>
@@ -240,10 +248,9 @@
 							but it can help to save some of your time</p>
 
 					<aside class="notes">
-						Actually AI CAN help you create a draft of one slide or transform a short description
-						of your course into a nice looking syllabus,
+						Actually AI CAN help you create a draft of one slide, but only one slide.
 						<br><br>
-						but the KEY content of the course is up to you.
+						But the KEY content of the course is up to you.
 						<br><br>
 						It CANNOT create interesting, well-thought, and detailed homework assignments.
 						<br><br>
@@ -263,12 +270,14 @@
 							including in <span class="important">cutting-edge science and business</span></li>
 						<li class="fragment">Since 2024, there is even International Olympiad in AI for school students:
 							<a href="https://ioai-official.org" style="color: mediumblue;text-decoration: underline">IOAI</a></li>
+						<li class="fragment">The opportunity to deeply understand the material that you are teaching 😁</li>
 						<li class="fragment">And, of course, it is <span class="important">fun</span> to teach and study ML!</li>
 					</ul>
 					<aside class="notes">
-						Now I suggest discussing motivation for education in Machine Learning.
+						Now I suggest discussing a very important topic, maybe the most important =)
+						It is motivation for education in Machine Learning.
 						<br><br>
-						So, in my opinion, Artificial Intelligence NOW should be considered as the third form of literacy,
+						So this is the first reason. In my opinion, Artificial Intelligence NOW should be considered as the third form of literacy,
 						aligning itself right after classical literacy and programming skills.
 						<br><br>
 						MOREOVER, machine learning disrupts various fields at an impressive pace.
@@ -278,6 +287,9 @@
 						the start of the International Olympiad in AI for school students.
 						To learn more about this nice initiative, you can visit their website shown on this slide.
 						<br><br>
+						Another possible REASON, fairly speaking, one of the main ones for me,
+						is the opportunity to deeply understand the material that you are telling.
+						<br><br>
 						Finally, it's worth mentioning that the process of teaching and
 						studying Machine Learning is enjoyable and fascinating!
 					</aside>
@@ -285,23 +297,50 @@
 				<section>
 					<h3 style="text-align: left">3-5 min break for the questions and then..</h3>
 					<br><br>
-
-					<h3 style="text-align: left;color: darkgray">1. Some examples of applying AI to modern problems</h3>
-					<h3 style="text-align: left">2. Practical aspects of creating ML course</h3>
+					<div class="fragment">
+						<h3 style="text-align: left;color: darkgray">1. Some examples of applying AI to modern problems</h3>
+						<h3 style="text-align: left">2. Practical aspects of creating ML course</h3>
+					</div>
 
 					<aside class="notes">
-						Now let's pause for a minute before the second part of the talk.
+						Now let's pause for a couple of minutes here before the second part of the talk.
 						You are free to ask me any questions about the first part, of course.
 						<br><br>
-						So now let's switch gears to discuss the key parts of teaching machine learning.
+						So now let's switch gears to discuss the practical aspects of teaching machine learning.
 					</aside>
 				</section>
 				<section>
 					<h3>Creating a Machine Learning course from scratch</h3>
+					<p style="text-align: center">
+						<span class="fragment"> 🛠 </span>
+						<span class="fragment"> ⚡️ </span>
+						<span class="fragment"> 🔬 </span>
+						<span class="fragment"> 🔄 </span>
+						<span class="fragment"> 🇨🇾 </span>
+					</p>
+
+					<aside class="notes">
+						So, creating a Machine Learning COURSE from scratch is a challenging task.
+						I tried to highlight some of the key aspects that are most clear and understandable for us.
+						<br>
+						The RAPID development we see in many fields is also happening in machine learning.
+						<br>
+						If you take a modern course in BIOLOGY, for example, you'll see that about one third of the material
+						changes each year because science and progress keep advancing.
+						<br>
+						So we need to provide students with the most up-to-date knowledge,
+						which means frequently UPDATING our courses. For sure, this is also true for machine learning.
+						<br>
+						Last year, I had the opportunity to develop a new machine learning course from scratch
+						at Neapolis University.
+						I will talk mostly about this course,
+						but suggest starting with a short survey of other possibilities.
+					</aside>
+				</section>
+				<section>
 					<div class="row">
 						<div class="column">
-							<a class="fragment" data-fragment-index="0"
-							   href="https://www.coursera.org/learn/machine-learning">
+							<a href="https://www.coursera.org/learn/machine-learning">
 								<img src="images/MLfromStanford.png" alt="MLfromStanford" style="border-radius: 5%">
 							</a>
 						</div>
@@ -327,22 +366,8 @@
 							</a>
 						</div>
 					</div>
-
 					<aside class="notes">
-						Creating a Machine Learning course from scratch is a challenging task.
-						I tried to highlight some of the key aspects that are most clear and understandable for us.
-						The rapid development we see in many fields is also happening in machine learning.
-						If you take a modern course in biology, for example, you'll see that about one third of the material
-						changes each year because science and progress keep advancing.
-						<br>
-						So we need to provide students with the most up-to-date knowledge,
-						which means frequently updating our courses. For sure, this is also true for machine learning.
-						<br>
-						Last year, I had the opportunity to develop a new machine learning course from scratch
-						at Neapolis University.
-						I will talk mostly about this course, but suggest starting with a short intro.
-						<br>
-						One of the MOST popular courses in ML is Andrew Ng's course on Coursera.
+						One of the most popular courses in ML is Andrew Ng's course on Coursera.
 						Many modern machine learning educators and researchers have grown up on this course.
 						<br><br>
 						ANOTHER course I know is the Open Data Science community's course, which is available on GitHub.
@@ -351,7 +376,8 @@
 						<br>
 						Of course, there are many other resources available,
 						like the interactive TEXTBOOK "Dive into Deep Learning" by the big team of authors,
-						mostly working at Amazon company.
+						mostly working at an Amazon company.
+						<br>
 						Also, you can watch and code with VIDEO courses on YouTube.
 						Such resources allow us to build a comprehensive course using a variety of materials.
 					</aside>
@@ -374,7 +400,8 @@
 
 					<aside class="notes">
 						And how do you think, what is the main difficulty in teaching machine learning?
-						It seems to me that we NEED to combine math theory and programming practice, and this is not easy.
+						It seems to me that we NEED to combine math theory and programming practice,
+						and this is not an easy task.
 						<br><br>
 						To ensure success, the following STEPS are crucial:
 						<br>
@@ -383,7 +410,6 @@
 						<br>
 						2. It IS crucial to have well-thought and resolved assignments.
 						This is essential for mastering machine learning concepts.
-						Students must practice coding and theoretical problems to reinforce their learning.
 						<br>
 						3. You NEED to establish trust and openness with students by engaging in
 						regular conversations and addressing their concerns.
@@ -391,10 +417,10 @@
 						4. We NEED to create a competitive learning environment, for example, by
 						incorporating contests like Kaggle competitions to motivate students.
 						<br>
-						5. Nowaday we MUST record and promptly upload lectures to accommodate different learning paces
+						5. Nowadays, we MUST record and promptly upload lectures to accommodate different learning paces
 						and ensure students who miss classes can catch up.
 						<br>
-						6. We NEED to foster an interactive and emotional learning atmosphere,
+						6. We NEED to foster an interactive and emotional atmosphere,
 						even in online settings, by asking questions and encouraging participation.
 						<br>
 						In conclusion, it's important to maintain an open and accessible teaching environment.
@@ -433,13 +459,15 @@
 					<h4 class="fragment" style="text-align: center;padding-top: 20px">And how to address the question about course updates?</h4>
 					<aside class="notes">
 						In our Machine Learning course at Neapolis University
-						students write their code for different ML algorithms
+						students write their code for different machine learning algorithms
 						to understand the inner details deeply.
 						The course also includes theoretical and practical tasks and culminates in an exam
 						consisting of six problems for three hours.
 						<br><br>
-						The whole one-year course consists of two parts. The FIRST part covers the fundamentals of machine learning,
-						including linear models, decision trees, ensembles, neural networks, and even building GPT-2 from scratch.
+						The whole one-year course consists of two parts. The FIRST part covers
+						the fundamentals of machine learning,
+						including linear models, decision trees, ensembles, neural networks,
+						and even building GPT-2 from scratch.
 						<br><br>
 						The SECOND part delves into advanced machine learning topics like clustering,
 						tokenization, building AlphaZero from scratch,
@@ -451,8 +479,6 @@
 						While it might be possible to retain the same content in the second year,
 						by the third year, significant changes are almost always necessary.
 						<br>
-						To manage this, we assess which lectures need modification, which should be removed,
-						and which new material should be added.
 						Our course structure is limited to 13 lectures, so adding new material means
 						removing some of the old.
 						This limitation helps us maintain a manageable course size.
@@ -462,10 +488,10 @@
 				</section>
 				<section data-background-image="images/cogniterra.png">
 					<aside class="notes">
-						“Cogniterra” is a platform for teaching and learning any courses.
+						We use “Cogniterra” platform for teaching different courses.
 						<br>
-						We use it to provide students with a comprehensive learning experience;
-						all the assignments of the second part, deadlines, and grading are there.
+						It provides students with a comprehensive learning experience;
+						all the assignments, deadlines, and grading are there.
 						As you see, the interface is pretty nice and convenient.
 					</aside>
 				</section>
@@ -502,7 +528,7 @@
 						<br><br>
 						In the FIRST part, we have about six or seven assignments.
 						The first one is about mastering NumPy and Pandas.
-						Then we move on to the theory of linear models and studying ML via practical projects.
+						Then we move on to the theory of linear models and studying ML with practical projects.
 						<br>
 						Also, we have two competitions as a valuable tool for motivation.
 						Public leaderboards are used to encourage
@@ -511,18 +537,17 @@
 						In the SECOND part of the course, students have four assignments and a final project.
 						We try to make the assignments as practical and as up-to-date as possible.
 						So students can apply their knowledge to real-world problems, such as implementing
-						a minimal version of LLama or creating your own voice assistant Jarvis to talk with.
+						a minimal version of LLama or creating your own voice assistant Jarvis to talk with on your own laptop.
 						At the end of the course, students present their final project and write a blog post about it.
+						It is also an important part of education, which can be used as an advertisement for the student.
 						<br><br>
 						To address the issue of assessing criteria:
 						at the beginning of a course we set clear and fixed points for each assignment in advance.
-						While the criteria for getting
-						specific grades might be adjusted based on initial feedback and performance,
-						the overall structure remains constant.
 						Generally, achieving a passing grade is relatively straightforward,
-						requiring about half of the total points.
-						This ensures that students who complete the assignments diligently can pass,
+						requiring about HALF of the total points.
+						This ensures that students who complete the assignments diligently, can pass,
 						while higher grades require more comprehensive work.
+						Sometimes we need to slightly adjust our grading system at the end of the course.
 					</aside>
 				</section>
 				<section>
@@ -553,23 +578,25 @@
 						</p>
 					</div>
 					<aside class="notes">
-						The second platform we use only for competitions is the Kaggle platform.
+						Ok, the second platform we use only for competitions is the Kaggle platform.
 						It is well-known in the machine learning community and
 						provides a great environment for hosting competitions and datasets.
 						<br>
 						As I have said before, the Cogniterra provides a unified interface for managing assignments,
 						grading, and providing feedback to students.
 						<br>
-						Also, of course, we use GitHub for the final project assignment, where students can submit their projects.
+						Also, of course, we use GitHub for the final project assignment,
+						where students can submit their projects.
 						<br>
-						Overall, this zoo of platforms covers our needs and makes it good enough for both students and instructors.
+						Overall, this zoo of platforms covers our needs and
+						makes it good enough for both students and instructors.
 					</aside>
 				</section>
 				<section>
 					<h3 style="text-align: left">My setup for online teaching in 2024</h3>
 					<ul>
 						<li class="fragment">Slides in <span class="important">JavaScript (reveal.js):</span> for animations, video, and interactivity</li>
-						<li class="fragment">Formulas and hand drew pictures in <span class="important">Notability on iPad</span></li>
+						<li class="fragment">Formulas and hand-drawn pictures in <span class="important">Notability on iPad</span></li>
 						<li class="fragment"><span class="important">PyCharm and Jupyter notebooks</span> for coding demos</li>
 					</ul>
 					<br><br>
@@ -584,8 +611,8 @@
 						<br><br>
 						NEXT, for formulas and hand-drawn pictures,
 						I use Notability app on iPad. This combination allows for real-time,
-						intuitive drawing and writing, which is particularly useful for explaining complex concepts
-						and equations in a visually accessible manner.
+						intuitive drawing and writing, which is particularly useful for explaining complex concepts.
+
 						Now let me show a live demo of how this works.
 						You see, I can switch between slides and whiteboard with one click.
 						<br><br>
@@ -601,13 +628,14 @@
 						but also allows you to switch between different teaching materials smoothly.
 						<br><br>
 						Any complex topic can be explained naturally in this way.
-						And of course I can switch to PyCharm with any code
-						and show how to implement everything in Python from scratch.
+						And of course I can switch to any material and explain it.
 					</aside>
 				</section>
 				<section>
-					<a href="https://lp.jetbrains.com/youth-ai-club/#register">
-					<img src="images/JB_AI_club.png" alt="JB_AI_club.png" style="border-radius: 5%">
+					<h3><a href="https://lp.jetbrains.com/youth-ai-club">
+						https://lp.jetbrains.com/youth-ai-club</a></h3>
+					<a href="https://lp.jetbrains.com/youth-ai-club">
+					<img src="images/JB_AI_club.png" alt="JB_AI_club.png" width="70%">
 					</a>
 					<br>
 					<div class="column fragment">
