@@ -6,7 +6,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<title>LLM agents</title>
+		<title>From LLM to RAG and agents</title>
 
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
@@ -61,320 +61,136 @@
                         <h2>Advanced machine learning</h2>
                         <div class="fragment" style="margin-bottom:20px;">
                                 <div class="typesetting">
-                                    <h3>LLM agents</h3>
+                                    <h3>From LLM to RAG and agents</h3>
                                     <br />
                                     Alex Avdiushenko<br />
-                                    May 14, 2025
+                                    April 30, 2025
                                 </div>
                         </div>
                     </section>
                     <section>
                       <h3 style="text-align: left">Lecture Plan</h3>
                       <ol>
-                        <li>What is LLM agents?</li>
-                        <li>A brief history of LLM agents
-                        <ul>
-                            <li>In the recent context of “LLM”</li>
-                            <li>In the ancient context of “agents”</li>
-                        </ul></li>
-                        <li>On the future of LLM agents</li>
+                        <li>Retrieval-Augmented Generation
+                            <ul>
+                                <li>Vector DB-based</li>
+                                <li>Knowledge Graph-based</li>
+                                <li>Knowledge Map-based</li>
+                            </ul>
+                        </li>
+                        <li>Using Long Contexts and SSMs</li>
+                        <li>Agents</li>
                       </ol>
                     </section>
                 </section>
                 <section>
                     <section data-background-color="white">
-                        <h3>What is "agent"?</h3>
-                        <ul>
-                            <li class="fragment">
-                                <strong>An "intelligent" system that interacts with some "environment"</strong>
-                                <ul>
-                                    <li>Physical environments: robot, autonomous car, ...</li>
-                                    <li>Digital environments: DQN for Atari, Siri, AlphaGo, ...</li>
-                                    <li>Humans as environments: chatbot</li>
-                                </ul>
-                            </li>
-                            <li class="fragment"><strong>Define "agent" by defining "intelligent" and "environment"</strong>
-                                <ul>
-                                    <li>It changes over time!</li>
-                                    <li>Exercise question: how would you define "intelligent"?</li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <img src="images/LLM_FT.png" alt="LLM_FT.png">
                     </section>
                     <section data-background-color="white">
-                        <h3>What is "LLM agent"?</h3>
-                        <div style="display: flex; justify-content: space-between;">
-                            <div style="align-content: center">
-                                <br>
-                                <img src="images/agents_world.png" alt="Agents Diagram" style="width: 600px;padding-left: 40px">
-                            </div>
-                            <div>
-                                <ul>
-                                    <li><strong>Level 1: Text agent</strong>
-                                        <ul>
-                                            <li>Uses text action and observation</li>
-                                            <li>Examples: ELIZA, LSTM-DQN</li>
-                                        </ul>
-                                    </li>
-                                    <li><strong>Level 2: LLM agent</strong>
-                                        <ul>
-                                            <li>Uses LLM to act</li>
-                                            <li>Examples: SayCan, Language Planner</li>
-                                        </ul>
-                                    </li>
-                                    <li><strong>Level 3: Reasoning agent</strong>
-                                        <ul>
-                                            <li>Uses LLM to reason to act</li>
-                                            <li>Examples: ReAct, AutoGPT</li>
-                                            <li><strong>The key focus of the field and the talk</strong></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                      <h3 style="text-align: left;">Problems</h3>
+                      <ul style="text-align: left;">
+                        <li><strong>Accuracy issues:</strong></li>
+                          <ul>
+                            <li><strong class="important">Knowledge cutoffs:</strong>
+                                parameters are usually only updated to a particular time</li>
+                            <li><strong class="important">Private data:</strong> data stored in private text or
+                                data repositories not suitable for training</li>
+                            <li><strong class="important">Learning failures:</strong>
+                                even for data that the model was trained on,
+                                it might not be enough to get the right answer</li>
+                          </ul>
+                        <li><strong class="important">Verifiability issues:</strong>
+                            It is hard to tell if the answer is correct</li>
+                      </ul>
                     </section>
                     <section data-background-color="white">
-                      <h3>A brief history of LLM agents</h3>
-                        <div class="column">
-                          <ul>
-                            <li class="fragment" data-fragment-index="0"><strong>Reasoning</strong>
-                              <ul>
-                                <li>CoT (Chain of Thought)</li>
-                                <li>Zero-shot CoT</li>
-                                <li>Self-consistency</li>
-                                <li>...</li>
-                              </ul>
-                            </li>
-                            <li class="fragment" data-fragment-index="1"><strong>Acting</strong> (Grounding, tool use, etc.)
-                              <ul>
-                                <li>Game</li>
-                                <li>Robotics</li>
-                                <li>RAG (Retrieval-Augmented Generation)</li>
-                                <li>...</li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </div>
-                        <div class="column">
-                          <ul>
-                            <li class="fragment" data-fragment-index="2">
-                                $\to$ LLM agent (but not reasoning agent) evolves
-                                into <strong class="important">ReAct</strong> (Reasoning + Acting)</li>
-                            <ul>
-                              <li class="fragment" data-fragment-index="3">New apps/tasks/benchmarks:
-                                <ul>
-                                  <li>Web browsing</li>
-                                  <li>Software engineering</li>
-                                  <li>Scientific discovery</li>
-                                  <li>...</li>
-                                </ul>
-                              </li>
-                              <li class="fragment" data-fragment-index="4">New methods:
-                                <ul>
-                                  <li>Memory, learning, planning, multi-agent...</li>
-                                </ul>
-                              </li>
-                            </ul>
-                          </ul>
-                        </div>
+                        <h3 style="text-align: left;">OpenAI's pricing</h3>
+                        <img src="images/GPT4o_pricing.png" alt="GPT4o_pricing.png" style="border-radius: 5%">
+                    </section>
+                    <section data-background-color="white">
+                          <p style="text-align: left">3 Ways to Improve Your LLM</p>
+                          <img src="images/improving-llms.png" alt="improving-llms" width="70%">
+                            <p>Source: <a href="https://www.maartengrootendorst.com/blog/improving-llms/">
+                            https://www.maartengrootendorst.com/blog/improving-llms/</a></p>
+                    </section>
+                    <section data-background-color="white">
+                        <h3 style="text-align: left"><a href="https://www.griddynamics.com/blog/retrieval-augmented-generation-llm">
+                            RAG process flow
+                        </a></h3>
+                        <img src="images/RAG_process.png" alt="RAG_process" width="70%">
+                    </section>
+                    <section data-background-color="white">
+                        <h3 style="text-align: left">Document splitting</h3>
+                        <img src="images/doc_split.png" alt="doc_split">
+                    </section>
+                    <section data-background-color="white">
+                        <h3 style="text-align: left">Semantic proximity of sentences</h3>
+                        <img src="images/semantic_proximity.png" alt="semantic_proximity" width="70%">
+                    </section>
+                    <section data-background-color="white">
+                      <h3 style="text-align: left;">Vector DBs</h3>
+                      <ul style="text-align: left;">
+                        <li><a href="https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/">https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/</a></li>
+                        <li><a href="https://github.com/microsoft/SPTAG">https://github.com/microsoft/SPTAG</a></li>
+                        <li><a href="https://milvus.io/">https://milvus.io/</a></li>
+                        <li><a href="https://www.trychroma.com/">https://www.trychroma.com/</a></li>
+                        <li><a href="https://weaviate.io/">https://weaviate.io/</a></li>
+                        <li><a href="https://www.elastic.co/">https://www.elastic.co/</a></li>
+                        <li><a href="https://www.pinecone.io/">https://www.pinecone.io/</a></li>
+                      </ul>
+                    </section>
+                    <section data-background-color="white">
+                        <h3 style="text-align: left">Document retrieval</h3>
+                        <img src="images/doc_retrieval.png" alt="doc_retrieval" width="70%">
+                    </section>
+                    <section data-background-color="white">
+                        <h3 style="text-align: left">Answer generation</h3>
+                        <img src="images/answer_gen.png" alt="answer_gen" width="70%">
+                    </section>
+                    <section data-background-color="white">
+                        <img src="images/intro_to_inf_ret.png" alt="intro_to_inf_ret" width="80%">
+                    </section>
+                    <section data-background-color="white">
+                        <h3 style="text-align: left">RAG Survey:
+                            <a href="https://arxiv.org/pdf/2312.10997">[Gao et al. 2023]</a></h3>
+                        <img src="images/RAG_survey.png" alt="RAG_survey">
                     </section>
                     <section data-background-color="white">
                         <img src="images/RAGs_scheme.png" alt="RAGs_scheme">
                     </section>
                     <section data-background-color="white">
-                      <h3>Reasoning OR Acting</h3>
-                      <div class="row">
-                        <div class="column">
-                            <p>CoT</p>
-                            <p>Reasoning Traces $\rightleftarrows$ LM</p>
+                        <img src="images/RAGvsFT.png" alt="RAGvsFT" width="70%">
+                    </section>
+                    <section data-background-color="white">
+                        <img src="images/RAG_ecosys.png" alt="RAG_ecosys" width="70%">
+                    </section>
+                    <section data-background-color="white">
+                      <h3 style="text-align: left;">When do we Retrieve?</h3>
+                      <ul style="text-align: left;">
+                        <li class="fragment"><strong>Once, at the beginning of generation</strong>
                           <ul>
-                            <li>Flexible and general to augment
-                                <strong class="important">test-time compute</strong></li>
-                            <li style="color: red;">Lack of external knowledge and tools</li>
+                            <li>Default method used by most systems
+                                <a href="https://proceedings.neurips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf">
+                                    [Lewis et al. 2020]</a></li>
                           </ul>
-                        </div>
-                        <div class="column">
-                          <p>RAG/Retrieval/Code/Tool use</p>
-                          <p>Actions $\rightleftarrows$ LM $\rightleftarrows$ Env</p>
+                        </li>
+                        <li class="fragment"><strong>Several times during generation, as necessary</strong>
                           <ul>
-                            <li>Retrieval</li>
-                            <li>Search engine</li>
-                            <li>Calculator</li>
-                            <li>Weather API</li>
-                            <li>Python</li>
-                            <li>...</li>
+                            <li>Generate a search token (Toolformer) <a href="https://arxiv.org/abs/2302.04761">[Schick et al. 2023]</a></li>
+                            <li>Search when the model is uncertain (Active RAG) <a href="https://arxiv.org/abs/2305.06983">[Jiang et al. 2023]</a></li>
                           </ul>
+                        </li>
+                        <li class="fragment"><strong>Every token</strong>
                           <ul>
-                            <li style="color: red;">Lack of reasoning</li>
-                            <li>Flexible and general to augment <strong>knowledge, computation, feedback, etc.</strong></li>
+                            <li>Find similar final embeddings <a href="https://arxiv.org/abs/1911.00172">[Khandelwal et al. 2019]</a></li>
+                            <li>Approximate attention with nearest neighbors (Unlimiformer) <a href="https://arxiv.org/abs/2305.01625">[Bertsch et al. 2023]</a></li>
                           </ul>
-                        </div>
-                      </div>
-                    </section>
-                    <section data-background-color="white">
-                        <img src="images/ReAct.png" alt="ReAct" width="80%">
-                        <p>Source: <a href="https://llmagents-learning.org/slides/llm_agent_history.pdf">
-                            LLM Agents MOOC, Fall 2024</a></p>
-                    </section>
-                    <section data-background-color="white">
-                      <h3>Let's watch the video</h3>
-                      <div style="text-align: center;">
-                        <iframe width="80%" height="700" src="https://www.youtube.com/embed/IYiVPrxY8-Y"
-                          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-                          gyroscope; picture-in-picture" allowfullscreen>
-                        </iframe>
-                      </div>
-                    </section>
-                    <section data-background-color="white">
-                        <img src="images/ReActSpace.png" alt="ReActSpace" width="80%">
-                        <p>Source: <a href="https://llmagents-learning.org/slides/llm_agent_history.pdf">
-                            LLM Agents MOOC, Fall 2024</a></p>
-                    </section>
-                    <section data-background-color="white">
-                        <h3>ReAct is general and effective</h3>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>(NLP tasks)</th>
-                                    <th colspan="2" style="text-align: center">(RL tasks)</th>
-                                </tr>
-                                <tr style="background-color: lightgray">
-                                    <th>PaLM-540B</th>
-                                    <th>HotpotQA <br> (QA)</th>
-                                    <th>FEVER <br> (fact check)</th>
-                                    <th>ALFWorld <br> (Text game)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="background-color: lightgray">Reason</td>
-                                    <td>29.4</td>
-                                    <td>56.3</td>
-                                    <td>N/A</td>
-                                </tr>
-                                <tr>
-                                    <td style="background-color: lightgray">Act</td>
-                                    <td>25.7</td>
-                                    <td>58.9</td>
-                                    <td>45</td>
-                                </tr>
-                                <tr>
-                                    <td style="background-color: lightgray"><strong>ReAct</strong></td>
-                                    <td><strong>35.1</strong></td>
-                                    <td><strong>64.6</strong></td>
-                                    <td><strong>71</strong></td>
-                                </tr>
-                                <tr>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </section>
-                    <section data-background-color="white">
-                        <h3 style="text-align: left;">Let's talk about..</h3>
-
-                        <div class="row">
-                            <div class="column">
-                                <img src="images/fish-memory-comic.png" alt="Fish Memory Comic" style="width: 65%;">
-                                <p style="text-align: left">So we need a long-term memory</p>
-                                <ul>
-                                    <li>Read and write</li>
-                                    <li>Stores experience, knowledge, skills, ...</li>
-                                    <li>Persists over new experience</li>
-                                </ul>
-                            </div>
-                            <div class="column">
-                                <p>Code-based controller</p>
-                                <div class="r-frame">
-                                    <p>Instruction: ...</p>
-                                    <p>Thought: ...</p>
-                                    <p>Action: ...</p>
-                                    <p>Observation: ...</p>
-                                    <p>Thought: ...</p>
-                                    <p>...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section data-background-color="white">
-                        <div class="row">
-                            <div class="column">
-                              <h3>Programming Task Reflection</h3>
-                              <ul>
-                                <li><strong>Task:</strong> Given two strings of parentheses,
-                                    determine if they are balanced</li>
-                                <li><strong>Trajectory:</strong>
-                                  <code>def match_parens(lst): ... </code>
-                                </li>
-                                <li><strong>Evaluation:</strong>
-                                  <ul>
-                                    <li>Internal or external evaluation:
-                                    <em>Self-generated unit tests fail:</em>
-                                        the function only checks if the counts of parentheses are equal but ignores their order</li>
-                                  </ul>
-                                </li>
-                                <li><strong>Reflection:</strong>
-                                    The function is wrong because it only counts the parentheses, but the order matters for valid balancing</li>
-                              </ul>
-                            </div>
-                            <div class="column">
-                                <br><br>
-                                <img src="images/GPT-4-reflexion.png" alt="GPT-4-reflexion">
-                                <br><br>
-                                <ul style="text-align: left">
-                                    <li>$\to$ <strong>Next Trajectory</strong></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-                    <section data-background-color="white">
-                        <img src="images/reflexion_learning.png" alt="reflexion_learning" width="80%">
-                        <p>Source: <a href="https://llmagents-learning.org/slides/llm_agent_history.pdf">
-                            LLM Agents MOOC, Fall 2024</a></p>
-                    </section>
-                    <section data-background-color="white">
-                        <h3>Semantic memory of (reflective) knowledge</h3>
-                        <img src="images/semantic_memory.png" alt="semantic_memory" width="70%">
-                    </section>
-                    <section data-background-color="white">
-                      <h3 style="text-align: left">Cognitive Architectures for Language Agents (CoALA)</h3>
-                      <ul>
-                        <li>Memory</li>
-                        <li>Action space</li>
-                        <li>Decision making</li>
+                        </li>
                       </ul>
-                      <div class="fragment">
-                        <h3 style="text-align: left">Exercise Questions</h3>
-                          <ul>
-                            <li>What distinguishes external environment VS internal memory?</li>
-                            <li>What distinguishes long VS short term memory?</li>
-                          </ul>
-                      </div>
                     </section>
                 </section>
                 <section>
-<section data-background-color="white">
-  <p style="text-align: left">Observation $\to$ (what "language"?) $\to$ Action</p>
-  <div style="display: flex; align-items: center; justify-content: center;">
-    <div style="margin-right: 50px; text-align: center;">
-      <h3>Symbolic AI Agent</h3>
-      <p>
-        sp {blocks-world* opsub * proposal * clear} <br />
-        (state &lt;s&gt; ^name blocks-world ^desired &lt;d&gt;1^clear &lt;object&gt;
-        <br />&lt;ontop&gt;2 ^bottom-block &lt;object&gt;)
-      </p>
-      <p style="text-align: center; font-weight: bold;">1960 - 1990</p>
-    </div>
-    <div style="margin-left: 50px; text-align: center;">
-      <h3>(Deep) RL Agent</h3>
-      <p>
-        [-0.3432, 2.444, 0.34342, 0.4545, 0.443, 3.34234, ...]
-      </p>
-      <p style="text-align: center; font-weight: bold;">1990 - 2020</p>
-    </div>
-  </div>
-  <p style="text-align: center; font-size: smaller;">Observation → Action process across different AI eras</p>
-</section>
                     <section data-background-color="white">
                         <h3 style="text-align: left">Effectively Using Long Contexts</h3>
                         <img src="images/long-context-recall-pressure-test-batch-2-v0-1kvlhgerh0bc1.webp"

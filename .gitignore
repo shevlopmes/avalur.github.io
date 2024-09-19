@@ -300,3 +300,5 @@ mnist/*
 /ml_fundament/vocab.bpe
 /ml_fundament/encoder.json
 /advanced_ml/nips12raw_str602.tgz
+/ai_club/query_result_*.json
+/ai_club/aiclub-435409-2881eaca101a.json
