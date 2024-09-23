@@ -353,274 +353,193 @@
                     </section>
                 </section>
                 <section>
-<section data-background-color="white">
-  <p style="text-align: left">Observation $\to$ (what "language"?) $\to$ Action</p>
-  <div style="display: flex; align-items: center; justify-content: center;">
-    <div style="margin-right: 50px; text-align: center;">
-      <h3>Symbolic AI Agent</h3>
-      <p>
-        sp {blocks-world* opsub * proposal * clear} <br />
-        (state &lt;s&gt; ^name blocks-world ^desired &lt;d&gt;1^clear &lt;object&gt;
-        <br />&lt;ontop&gt;2 ^bottom-block &lt;object&gt;)
-      </p>
-      <p style="text-align: center; font-weight: bold;">1960 - 1990</p>
-    </div>
-    <div style="margin-left: 50px; text-align: center;">
-      <h3>(Deep) RL Agent</h3>
-      <p>
-        [-0.3432, 2.444, 0.34342, 0.4545, 0.443, 3.34234, ...]
-      </p>
-      <p style="text-align: center; font-weight: bold;">1990 - 2020</p>
-    </div>
-  </div>
-  <p style="text-align: center; font-size: smaller;">Observation → Action process across different AI eras</p>
-</section>
                     <section data-background-color="white">
-                        <h3 style="text-align: left">Effectively Using Long Contexts</h3>
-                        <img src="images/long-context-recall-pressure-test-batch-2-v0-1kvlhgerh0bc1.webp"
-                             alt="long context" width="85%">
+                          <h3 style="text-align: center">Observation $\to$ (what "language"?) $\to$ Action</h3>
+                          <div style="display: flex; align-items: center; justify-content: center;">
+                            <div class="r-frame" style="margin-right: 50px; text-align: center;">
+                              <h3>Symbolic AI Agent: 1960 - 1990</h3>
+                              <p>
+                                sp {blocks-world*opsub*proposal*clear} <br>
+                                (state &lt;s&gt; ^name blocks-world ^desired &lt;d*1&gt; ^clear &lt;dobject&gt;
+                                &lt;ontop2&gt;) <br>^bottom-block &lt;object&gt;
+                              </p>
+                            </div>
+                            <div class="r-frame" style="margin-left: 50px; text-align: center;">
+                              <h3>(Deep) RL Agent: 1990 - 2020</h3>
+                              <p>
+                                [-0.3432, 2.444, 0.34342, ... <br> 0.4545, 0.443, 3.34234]
+                              </p>
+                            </div>
+                          </div>
+                        <img src="images/timeline.png" alt="timeline.png">
+                        <div class="row">
+                            <div class="column fragment r-frame" style="margin-left: 800px">
+                              <h3>LLM Agent: 2020 - now</h3>
+                              <p style="text-align: left;margin-left: 20px">
+                                  Let’s think step by step… <br>
+                                  The room is dark, so I need a <br>
+                                  lamp, the lamp is in <br>
+                                  bedroom, so I should ...
+                              </p>
+                            </div>
+                        </div>
                     </section>
                     <section data-background-color="white">
-                        <h3 style="text-align: left">The State Space Model (SSM)</h3>
-                        <p style="text-align: left">The continuous state space model (SSM) is
-                            a fundamental representation defined by two simple equations:</p>
-                            $$
-                            \begin{align*}
-                                x'(t) &= A x(t) + B u(t)\\
-                                y(t) &= C x(t) + D u(t)
-                            \end{align*}
-                            $$
-                        <p style="text-align: left">
-                            Here the input \(u(t)\) is a 1-dimensional signal,
-                            the state \(x(t)\) is a $N$-dimensional latent representation satisfying a linear ODE,
-                            and the output \(y(t)\) is a simple 1-dimensional projection of the state.
-                        </p>
-                        <p class="fragment" style="text-align: left">
-                            Here \( A \in \mathbb{R}^{N \times N} \) is called the state matrix,
-                            and the other parameter shapes are \( B \in \mathbb{R}^{N \times 1},
-                            C \in \mathbb{R}^{1 \times N}, D \in \mathbb{R}^{1 \times 1} \).
-                        </p>
-                    </section>
-                    <section data-background-color="white">
+                        <h3 style="text-align: left">Symbolic state or neural embedding</h3>
                         <ul>
-                            <li>The SSM is a fundamental representation used in many scientific and engineering disciplines</li>
-                            <li>Conventionally in these areas, the system parameters \( A, B, C, D \) are assumed to be latent (i.e. fixed)</li>
-                            <li>We simply use the state space as a black box representation in the spirit of deep learning,
-                            where we view an SSM as a function-to-function map parameterized by parameters \( A, B, C, D \)</li>
+                            <li>Intensive efforts to design or train</li>
+                            <li>Task-specific, hard to generalize</li>
+                        </ul><br><br>
+                        <h3 style="text-align: left">Open-ended natural language</h3>
+                        <ul>
+                            <li>Rich priors from LLMs</li>
+                            <li>Inference-time scalable</li>
+                            <li>General and generalizable</li>
                         </ul>
-                        <p style="text-align: left"><a href="https://hazyresearch.stanford.edu/blog/2022-01-14-s4-3">
-                            [Stanford Hazy Research 2022]
-                        </a></p>
-                    </section>
-                    <section data-background-color="white">
-                        <h3 style="text-align: left;">Three Representations of SSM</h3>
-                        <img src="images/SSMs_representations.png" alt="SSMs_representations.png" width="60%">
-                    </section>
-                    <section data-background-color="white">
-                        <h3 style="text-align: left">Mamba: Selective State Spaces</h3>
-                        <div class="row">
-                            <div class="column">
-                                <ul>
-                                    <li>Many flavors of SSMs have been successful in domains
-                                        involving continuous signal data such as audio and vision,
-                                        but they have been <strong class="important">less effective
-                                            at modeling discrete and information-dense data</strong> such as text</li>
-                                    <li>Authors propose a new class of selective state space models that achieve
-                                        the modeling power of Transformers while scaling linearly in sequence length</li>
-                                    <li>We need the ability to focus on or ignore particular inputs,
-                                        <strong class="important">selectivity</strong></li>
-                                </ul>
-                            </div>
-                            <div class="column">
-                                <img src="images/snake_robot.png" alt="Mamba Snake and Robot Illustration" style="width: 100%;">
-                            </div>
-                        </div>
-                        <p style="text-align: left">
-                            <a href="https://arxiv.org/abs/2312.00752">
-                                Mamba: Linear-Time Sequence Modeling with SSS</a>,
-                            <a href="https://t.me/gonzo_ML/2148">Gonzo ML (in Russian)</a>
-                        </p>
-                    </section>
-                    <section data-background-color="white">
-                        <h3 style="text-align: left">Jamba: SSM-Transformer Hybrid</h3>
-                        <div class="row">
-                            <div class="column">
-                                <ul>
-                                    <li>The first production-grade Mamba-based open model (Apache 2.0)</li>
-                                    <li>Joint Attention and Mamba (Jamba) architecture.
-                                        Composed of Transformer, Mamba, and mixture-of-experts (MoE) layers</li>
-                                    <li><strong class="important">12B active weights of 52B MoE weights</strong>, 256K context window</li>
-                                    <li>Low memory footprint. Fits 140K context on a single A100 80 GB GPU</li>
-                                    <li>High throughput, competitive quality</li>
-                                </ul>
-                            </div>
-                            <div class="column" style="width: 40%; text-align: right;">
-                                <img src="images/Jamba_architecture.png" alt="Jamba Architecture Diagram" style="width: 100%;">
-                            </div>
-                        </div>
-                        <p style="text-align: left">
-                            <a href="https://www.ai21.com/blog/announcing-jamba">https://www.ai21.com/blog/announcing-jamba</a>
-                        </p>
-                    </section>
-                    <section data-background-color="white">
-                        <img src="images/Jamba_context_window.png" alt="Jamba_context_window">
-                        <p style="text-align: left">
-                            <a href="https://www.ai21.com/blog/announcing-jamba-model-family">
-                                https://www.ai21.com/blog/announcing-jamba-model-family</a>
-                        </p>
                     </section>
                 </section>
                 <section>
                     <section data-background-color="white">
                         <h3 style="text-align: left">
-                            Unifying Large Language Models and Knowledge Graphs: A Roadmap</h3>
-                        <p style="text-align: left">Shirui Pan, <em>Senior Member, IEEE</em>,
-                            Linhao Luo, Yufei Wang, Chen Chen, Jiapu Wang, Xindong Wu, <em>Fellow, IEEE</em></p>
-                        <p style="text-align: left">
-                            <a href="https://arxiv.org/pdf/2306.08302.pdf">https://arxiv.org/pdf/2306.08302.pdf</a>
-                        </p>
-                        <img src="images/KG_LLMs.png" alt="KG_LLMs">
+                            How to evaluate LLM agents?</h3>
+                        <h4>WebShop (2022)</h4>
+                          <div style="text-align: center;">
+                            <img src="images/WebShop.png" alt="WebShop Interface">
+                          </div>
+                          <ul>
+                            <li><strong>Large-scale complex environment</strong> based on 1.16M Amazon products</li>
+                            <li><strong>Automatic reward</strong> based on instruction and product attribute matching</li>
+                            <li><strong>Challenges</strong> language and visual understanding, and decision-making</li>
+                          </ul>
                     </section>
                     <section data-background-color="white">
-                        <img src="images/KG_examples.png" alt="KG_examples">
+                        <h3 style="text-align: left">Web Arena (2023)</h3>
+                        <img src="images/WebArena.png" alt="WebArena.png" width="80%">
                     </section>
                     <section data-background-color="white">
-                        <h3 style="text-align: left">Categorization of research on KGs</h3>
-                        <img src="images/KG_research.png" alt="KG_research" width="70%">
+                        <h3 style="text-align: left">SWE-Bench (2023)</h3>
+                        <img src="images/SWE-Bench.png" alt="SWE-Bench" width="80%">
                     </section>
                     <section data-background-color="white">
-                        <h3 style="text-align: left">Fine-Tuning with Knowledge Graph</h3>
-                        <img src="images/FT_with_KG.png" alt="FT_with_KG" width="60%">
-                    </section>
-                </section>
-                <section>
-                    <section data-background-color="white">
-                        <h3 style="text-align: left">AI-Powered Knowledge Maps for Navigating Unstructured Data</h3>
-                        <a href="https://medium.com/kineviz/ai-powered-knowledge-maps-for-navigating-unstructured-data-97a55be43ed3">
-                            <img src="images/KMap.webp" alt="Knowledge_Map" width="55%">
-                        </a>
-                    </section>
-                    <section data-background-color="white">
-                        <h3 style="text-align: left">Knowledge Maps: Easy to Optimize</h3>
-                        <ul>
-                            <li class="fragment">In a vector-based database, it is impossible to check the quality of the data segmentation,
-                                as it consists exclusively of numerical values</li>
-                            <li class="fragment">However, if you present a knowledge map to a domain expert who has no technical knowledge,
-                                it can be understood and corrected immediately</li>
-                            <li class="fragment">With this approach, improvements can be made with very little effort in
-                                a short time, and the system can be adapted more closely to business needs.
-                                In contrast to vector-based RAGs, which do not have the ability to "learn,"
-                                this approach makes it easier to continuously adapt and improve the system</li>
-                        </ul>
-                    </section>
-                    <section data-background-color="white">
-                        <h3>MindMap: Knowledge Graph Prompting Sparks Graph of Thoughts in Large Language Models</h3>
-                        <p style="text-align: left"><a href="https://arxiv.org/pdf/2308.09729v5.pdf">[Wen et al., 2023]</a></p>
-                        <img src="images/GraphOfThoughts.png" alt="GraphOfThoughts" width="80%">
-                    </section>
-                    <section data-background-color="white">
-                        <h3 style="text-align: left">Method</h3>
-                        <p style="text-align: left">We show the framework of <strong class="important">MindMap</strong>,
-                            which comprises three main parts:</p>
-                        <ol>
-                            <li><strong class="important">Evidence graph mining:</strong>
-                                We begin by identifying the set of entities \(V_q\) from the raw input
-                                and query the source KG \(G\) to build multiple evidence subgraphs \(G_q\)</li>
-                            <li><strong class="important">Evidence graph aggregation:</strong>
-                                Next, LLMs are prompted to comprehend and aggregate the retrieved evidence
-                                subgraphs to build the reasoning graphs \(G_m\)</li>
-                            <li><strong class="important">LLM reasoning on the mind map:</strong>
-                                Last, we prompt LLMs to consolidate the built reasoning graph and
-                                their implicit knowledge to generate the answer and build a mind map
-                                explaining the reasoning process</li>
-                        </ol>
+                        <h3 style="text-align: left">
+                            <a href="https://arxiv.org/abs/2304.05376">
+                                ChemCrow: ReAct enables discovery of a novel chromophore</a></h3>
+                        <img src="images/ChemCrow.png" alt="ChemCrow.png" width="80%">
                     </section>
                 </section>
                 <section>
                     <section data-background-color="white">
-                        <h3 style="text-align: left;">LLM agents are set to be the upcoming breakthrough</h3>
-                        <p style="text-align: left"><a href="https://llmagents-learning.org/f24">LLM Agents Open Course:</a></p>
-                        <ul>
-                            <li>Foundation of LLMs</li>
-                            <li>Reasoning</li>
-                            <li>Planning, tool use</li>
-                            <li>LLM agent infrastructure</li>
-                            <li>Retrieval-augmented generation</li>
-                            <li>Code generation, data science</li>
-                            <li>Multimodal agents, robotics</li>
-                            <li>Evaluation and benchmarking on agent applications</li>
-                            <li>Privacy, safety, and ethics</li>
-                            <li>Human-agent interaction, personalization, alignment</li>
-                            <li>Multi-agent collaboration</li>
-                        </ul>
-                    </section>
-                    <section data-background-color="white">
-                          <img src="images/LLM_agents_frame.png" alt="LLM_agents_frame" width="70%">
-                            <p>Source: <a href="https://yusu.substack.com/p/language-agents">
-                            yusu substack</a></p>
-                    </section>
-                    <section data-background-color="white">
-                        <h3 style="text-align: left">Video on speech agents</h3>
-                        <div style="text-align: center;">
-                            <iframe width="80%" height="700" src="https://www.youtube.com/embed/ORDfSG4ltD4"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
+                        <h3 style="text-align: left">What's Next?</h3>
+                        <div style="display: flex; justify-content: space-between;">
+                            <div>
+                                <h4>Training</h4>
+                                <p class="fragment r-frame">FireAct: Toward Language Agent Fine-tuning</p>
+                            </div>
+                            <div>
+                                <h4>Interface</h4>
+                                <p class="fragment r-frame">SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering</p>
+                            </div>
                         </div>
-                        <p>Source: <a href="https://github.com/Mozer/talk-llama-fast?tab=readme-ov-file">
-                            GitHub talk Llama-fast</a></p>
-                    </section>
-                    <section data-background-color="white">
-                        <h3 style="text-align: left;">LLM-powered Autonomous Agent System</h3>
-                        <div style="text-align: center;">
-                            <img src="images/agent-overview.png" alt="Agent System Overview" style="width: 80%;"><br>
-                            <a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank">
-                                https://lilianweng.github.io/posts/2023-06-23-agent/
-                            </a>
+                        <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                            <div>
+                                <h4>Robustness</h4>
+                            </div>
+                            <div>
+                                <h4>Human</h4>
+                                <p class="fragment r-frame">$\tau$-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains</p>
+                            </div>
+                            <div>
+                                <h4>Benchmark</h4>
+                            </div>
                         </div>
                     </section>
+                    <section data-background-color="white">
+                        <h3 style="text-align: left"><a href="https://arxiv.org/abs/2310.05915">FireAct</a>: Training LLM for agents</h3>
+                        <div class="column">
+                            <br><br>
+                          <h4>Establish model-agent synergy:</h4>
+                          <ul>
+                            <li>Improve "agent capabilities" like planning, self-evaluation, calibration</li>
+                            <li>Open-source agent backbone model</li>
+                            <li>Next trillion tokens for model training</li>
+                          </ul>
+                        </div>
+                        <div class="column">
+                            <img src="images/ReActFT.png" alt="ReActFT.png" width="80%">
+                        </div>
+                    </section>
+                    <section data-background-color="white">
+                        <h3 style="text-align: left"><a href="https://arxiv.org/abs/2405.15793">SWE-agent</a>:
+                            Agent-Computer Interfaces Enable Automated Software Engineering</h3>
+                        <div class="column">
+                          <h4>LLMs and Humans are Different, So Should Their Interfaces</h4>
+                          <ul>
+                            <li>e.g., humans have smaller short-term memory, so they have to trade off time for space</li>
+                          </ul>
+                            <br><br>
+                          <h4>ACI Design Can Help Us</h4>
+                          <ul>
+                            <li>Better <strong>solve</strong> tasks (without changing the agent)</li>
+                            <li>Better <strong>understand</strong> agents (vs. humans)</li>
+                          </ul>
+                        </div>
+                        <div class="column">
+                            <img src="images/SummarizedSearch.png" alt="SummarizedSearch.png" width="80%">
+                            <img src="images/SWEresults.png" alt="SWEresults.png" width="80%">
+                        </div>
+                    </section>
+                    <section data-background-color="white">
+                        <h3 style="text-align: left">Human in the loop needs robustness</h3>
+                        <ul>
+                            <li>You need to solve Riemann hypothesis once (one time out of millions)</li>
+                            <li>But you always need to buy tickets correctly</li>
+                        </ul>
+                        <img src="images/t-bench.png" alt="t-bench.png">
+                        <p><a href="https://arxiv.org/pdf/2406.12045">
+                            TAU-bench: A Benchmark for <u>T</u>ool-<u>A</u>gent-<u>U</u>ser</a></p>
+                    </section>
+                    <section data-background-color="white">
+                        <img src="images/job-automation-ladder.png" alt="job-automation-ladder" width="70%">
+                        <p><a href="https://princeton-nlp.github.io/language-agent-impact/">
+                            Language Agents in the Digital World</a></p>
+                    </section>
                 </section>
                 <section>
-                <section>
-                    <h3 style="text-align: left">Summary</h3>
-                    <ol>
-                        <li class="fragment">
-                            <strong>Retrieval-Augmented Generation (RAG)</strong>
-                            <ul class="custom-list">
-                                <li>Combines large language models (LLMs) with external document retrieval, enhancing performance</li>
-                                <li class="minus">Challenges include indexing, retrieval precision,
-                                    and maintaining relevance in long context windows</li>
-                            </ul>
-                        </li>
-                        <li class="fragment">
-                            <strong>Vector and Knowledge Graph-Based Retrieval</strong>
-                            <ul class="custom-list">
-                                <li>Vector databases like FAISS, Milvus, and ElasticSearch enable fast similarity search in high-dimensional spaces</li>
-                                <li>Knowledge Graphs (KGs) can enhance retrieval by embedding structural and relational data into LLM contexts</li>
-                                <li>MindMap is a recent technique using KGs for structured retrieval and reasoning within LLMs</li>
-                            </ul>
-                        </li>
-                    </ol>
-                </section>
                     <section>
-                        <ol start="3">
-                            <li>
-                                <strong>Sparse Mixture-of-Experts (SMoE) and SSM</strong>
+                        <h3 style="text-align: left">Summary</h3>
+                        <ol>
+                            <li class="fragment">
+                                <strong>LLM Agents Overview</strong>
                                 <ul class="custom-list">
-                                    <li>MoEs reduce computation by selectively activating certain model parts (experts) during inference</li>
-                                    <li>Jamba, a hybrid model, combines transformers with SSMs and MoE layers for long-sequence efficiency</li>
-                                    <li class="minus">Complex to implement and tune but provides excellent efficiency gains
-                                        in large-context applications</li>
+                                    <li>LLM agents are goal-oriented systems using language models for reasoning and acting</li>
+                                    <li>ReAct combines reasoning and action, improving performance across multiple tasks</li>
+                                    <li class="minus">Challenges: Tool integration and improving autonomous planning</li>
                                 </ul>
                             </li>
                             <li class="fragment">
-                                <strong>LLM Agents</strong>
+                                <strong>CoT vs RAG</strong>
                                 <ul class="custom-list">
-                                    <li>LLM agents leverage retrieval, memory, and planning tools for automated,
-                                        goal-oriented tasks</li>
-                                    <li>Examples include CodeInterpreter, search tools, calculators,
-                                        and agents for multimodal tasks</li>
-                                    <li class="minus">Challenges: complex interactions between tools, planning inefficiencies,
-                                        and agent alignment</li>
+                                    <li>Chain of Thought (CoT) focuses on internal reasoning traces, lacking external tools</li>
+                                    <li>RAG augments LLMs by connecting them with external knowledge, feedback, and computation tools</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <ol start="3">
+                            <li class="fragment">
+                                <strong>Reflection & Long-term Memory</strong>
+                                <ul class="custom-list">
+                                    <li>Reflection and self-evaluation improve task-solving abilities over iterations</li>
+                                    <li>LLM agents need long-term memory to store and update experience persistently</li>
+                                </ul>
+                            </li>
+                            <li class="fragment">
+                                <strong>Future of LLM Agents</strong>
+                                <ul class="custom-list">
+                                    <li>Training improvements via models like FireAct</li>
+                                    <li>Interfaces tailored for human-agent collaboration (SWE-agent)</li>
+                                    <li>Robustness and evaluation benchmarks such as TAU-bench and WebShop</li>
                                 </ul>
                             </li>
                         </ol>
