@@ -52,13 +52,13 @@
 						<img src="images/jetbrains_logo_icon_145150.webp" alt="jetbrains_logo" />
 					</div>
 					<div class="column">
-						<h2>AI school club</h2>
+						<h2>Youth AI club</h2>
 						<div class="fragment" style="margin-bottom:20px;">
 								<div class="typesetting">
 									<h3>Lecture 2. Numpy and Pandas</h3>
 									<br />
 									Alex Avdiushenko <br />
-									October 8, 2024
+									October 9, 2024
 								</div>
 						</div>
 					</div>
@@ -66,10 +66,10 @@
                 <section>
                     <section>
                         <h3 style="text-align: left"><a href="https://docs.scipy.org/doc/numpy/user/index.html">NumPy</a></h3>
-                        <p>Since 1995 known as numeric, since 2006 as NumPy — "Numerical Python extensions"</p>
+                        <p style="text-align: left">Since 1995 known as numeric, since 2006 as NumPy — "Numerical Python extensions"</p>
     					<div class="fragment" style="margin-bottom:20px;">
 							<div class="typesetting">
-                                <p>Features of the NumPy library</p>
+                                <p style="text-align: left">Key features of the NumPy library:</p>
                                 <ul>
                                   <li>Work with multi-dimensional arrays (tables)</li>
                                   <li>Quickly compute mathematical functions on multi-dimensional arrays</li>
@@ -172,14 +172,15 @@
                         </py-repl>
                     </section>
                     <section data-background-color="#fdf6e3">
-                        <p>The array sizes are stored in the <strong>shape</strong> field, and the number of dimensions are stored in
+                        <p style="text-align: left">The array sizes are stored in the <strong>shape</strong> field, and the number of dimensions are stored in
                             <strong>ndim</strong>.</p>
                         <py-repl>
                             arr = np.ones((2, 3))
                             print(f"Array shape — {arr.shape}, number of dimensions — {arr.ndim}")
                         </py-repl>
-                        <p>The <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.reshape.html">reshape</a> method
-                            allows you to transform the dimensions of an array without changing the data, but possibly with copying.</p>
+                        <p style="text-align: left">The <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.reshape.html">reshape</a> method
+                            allows you to transform the dimensions of an array without changing the data,
+                            but <strong>possibly with copying</strong>.</p>
                         <py-repl>
                             array = np.arange(0, 6)
                             array = array.reshape((2, 3))
@@ -206,10 +207,12 @@
                             a
                         </py-repl>
                         <py-repl>
+                            # it is possible to change the shape of the initial array
+                            # but don't do it, because it is bad practice
                             a.shape = (20)
                             a
                         </py-repl>
-                        <p>To unroll a multi-dimensional array into a vector,
+                        <p style="text-align: left">To unroll a multi-dimensional array into a vector,
                             you can use the <a href="https://numpy.org/doc/stable/reference/generated/numpy.ravel.html">ravel</a>
                             function (equivalent to `reshape(-1, order=order)`).</p>
                         <py-repl>
@@ -230,14 +233,16 @@
                             print(array[1:-1:2])
                             print(array[::-1])
                         </py-repl>
-                        <div class="fragment" style="margin-bottom:20px;">
+                    </section>
+                    <section>
+                        <div style="margin-bottom:20px;text-align: left">
                             <div class="alert alert-info">
                             <b>Note 1:</b> Indices and slices in multidimensional arrays do not need to be
                                 separated by square brackets, i.e., instead of
                                 <b>matrix[i][j]</b> you should use <b>matrix[i, j]</b>
                             </div>
                         </div>
-                        <div class="fragment" style="margin-bottom:20px;">
+                        <div class="fragment" style="margin-bottom:20px;text-align: left">
                             <div class="alert-info">
                             <b>Note 2:</b> Slices in NumPy create views, not copies,
                                 as in the case of slices in native Python sequences (string, tuple, and list)
@@ -285,7 +290,8 @@
                         <p style="text-align: left">(but better use pandas)</p>
                         <py-repl>
                             from numpy import genfromtxt
-                            data = genfromtxt('../ml_with_python/resources/example.csv', delimiter=',', skip_header=1)
+                            data = genfromtxt('../ml_with_python/resources/example.csv',
+                                                delimiter=',', skip_header=1)
                             for row in data:
                                 print(row)
                         </py-repl>
@@ -319,7 +325,7 @@
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                                 <p style="text-align: left">Similarly, for multi-dimensional arrays.</p>
-                                <p><strong>Note:</strong> All arithmetic operations on arrays of the same size
+                                <p style="text-align: left"><strong>Note 3:</strong> All arithmetic operations on arrays of the same size
                                     are performed element-wise.</p>
                             </div>
                         </div>
@@ -345,7 +351,8 @@
                         <p style="text-align: left">The rule of dimensionality consistency is expressed in one sentence:</p>
                         <div class="fragment r-frame" style="margin-bottom:20px;">
                             <div class="typesetting">
-                            <code>For broadcasting, the dimensions along the axes in two arrays must either be the same,
+                            <code>For broadcasting, starting from right
+                                the dimensions along the axes in two arrays must either be the same,
                                 or one of them must be equal to one.</code>
                             </div>
                         </div>
@@ -367,12 +374,12 @@
                         <p><img src="../ml_with_python/images/broadcasting.gif" alt="broadcasting"></p>
                     </section>
                     <section data-background-color="#fdf6e3">
-                        <p>Now if we want to do the same trick but with columns, we can't just add a vector consisting
+                        <p style="text-align: left">Now if we want to do the same trick but with columns, we can't just add a vector consisting
                             of 4 elements because in this case the dimensions will not be coordinated.</p>
                         <p><img src="../ml_with_python/images/wrong_shapes.gif" alt="wrong_shapes"></p>
                     </section>
                     <section data-background-color="#fdf6e3">
-                        <p>First, the vector needs to be transformed to the form:</p>
+                        <p style="text-align: left">First, the vector needs to be transformed to the form:</p>
                         <py-repl>
                             np.arange(4)
                         </py-repl>
@@ -497,7 +504,7 @@
                                 return np.sqrt(value)
 
                             vf = np.vectorize(f)
-                            #  like the python map function,
+                            # like the python "map" function,
                             # except it uses the broadcasting rules of numpy
                         </py-repl>
                         <py-repl>
@@ -513,7 +520,7 @@
                             <p style="text-align: left">Consider the Pandas library (named from panel data), designed for reading,
                                 preprocessing and fast visualization of structured data, as well as for simple analytics.</p>
                             <br>
-                            <p style="text-align: left">Even when there are only two arrays (for example, grouping by one and aggregating by the second),
+                            <p style="text-align: left">Even when there are only two columns (for example, grouping by one and aggregating by the second),
                                 Pandas is already better. The column titles should correctly reflect the physical meaning,
                                 the index (row labels) is not necessarily numerical.</p>
                             </div>
@@ -600,6 +607,7 @@
                         </py-repl>
                     </section>
                     <section data-background-color="#ffffff">
+                        <h3>How to make concatenation?</h3>
                         <img src="../ml_with_python/images/merging_concat_basic.png" alt="merging_concat_basic" width="50%">
                     </section>
                     <section data-background-color="#fdf6e3">
