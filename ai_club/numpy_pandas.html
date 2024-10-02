@@ -394,7 +394,8 @@
                     <section>
                         <p style="text-align: left">If you need to multiply multidimensional arrays not element-by-element,
                             but according to the rule of matrix multiplication, you should use
-                            <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.dot.html">np.dot</a>.
+                            <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.dot.html">np.dot</a>.</p>
+                            <p style="text-align: left">
                             Transposition is done with array<strong>.T</strong></p>
                         <br>
                         <div class="fragment" style="margin-bottom:20px;">
@@ -463,7 +464,7 @@
                                 print(f"{x=},\n {y=}")
                             </py-repl>
                             <py-repl>
-                                np.hstack((x, y))
+                                print(np.hstack((x, y)))
                             </py-repl>
                         </div>
                     </section>
@@ -628,6 +629,26 @@
                             # by columns
                             pd.merge(df1, df2, on=["PassengerId"], how="inner").head(3)
                         </py-repl>
+                    </section>
+                    <section>
+                      <h3 style="text-align: left">Key Differences: <code>merge</code> vs <code>join</code></h3>
+                      <h4 style="text-align: left">Key or Index</h4>
+                      <ul>
+                        <li><strong>merge</strong>: Works on <strong>columns</strong> by default but can also be used to merge on the index</li>
+                        <li><strong>join</strong>: Works on <strong>indices</strong> by default</li>
+                      </ul><br><br>
+
+                      <h4 style="text-align: left">Flexibility</h4>
+                      <ul>
+                        <li><strong>merge</strong> is more flexible, allowing you to specify columns or indices for merging</li>
+                        <li><strong>join</strong> is primarily designed for index-based joining, though it can handle column-index joining if specified</li>
+                      </ul><br><br>
+
+                      <h4 style="text-align: left">Usage</h4>
+                      <ul>
+                        <li>Use <strong>merge</strong> when you want SQL-like joins with more flexibility (working with both columns and indices)</li>
+                        <li>Use <strong>join</strong> when you want a simpler and faster way to join DataFrames on their indices</li>
+                      </ul>
                     </section>
                     <section data-background-color="#fdf6e3">
                         <h3>Grouping</h3>
