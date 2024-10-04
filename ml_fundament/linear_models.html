@@ -10,7 +10,7 @@
 
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
-		<link rel="stylesheet" href="../dist/theme/black.css">
+		<link rel="stylesheet" href="../dist/theme/sky.css">
 
         <!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
@@ -45,10 +45,10 @@
 						<h2>Fundamentals of Machine Learning</h2>
 					<div class="fragment" style="margin-bottom:20px;">
 							<div class="typesetting">
-								<h3>3. Linear models, Stochastic Gradient Descent</h3>
+								<h3>Linear models, Stochastic Gradient Descent</h3>
 								<br />
 								Alex Avdiushenko <br />
-								October 8, 2024
+								October 15, 2024
 							</div>
 					</div>
                 </section>
@@ -241,13 +241,12 @@
                             <p style="text-align: left">where $h$ is the gradient step, also known as the <b>learning rate</b></p>
                             </div>
                         </div>
-
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
+                    </section>
+                    <section>
+                        <div class="typesetting">
                             <p style="text-align: left">Idea of Speeding up Convergence:
-                                take $(x_i, y_i)$ one by one and immediately update the weight vector —
-                                stochastic gradient descent.</p>
-                            </div>
+                            take $(x_i, y_i)$ one by one and immediately update the weight vector —
+                            stochastic gradient descent.</p>
                         </div>
                     </section>
                     <section data-background-color="#fdf6e3">
@@ -256,7 +255,7 @@
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                                 <div align="center">
-                                  <img src="../ml_with_python/images/gradient-trajectory.png" alt="gradient" width="1000"/>
+                                  <img src="../ml_with_python/images/gradient-trajectory.png" alt="gradient" width="900"/>
                                     <p>Two possible trajectories of gradient descent:</p>
                                     <p>In version (a), the target function has "good behavior", which allows the point
                                     to smoothly move to the optimum by the gradient</p>
@@ -290,7 +289,8 @@
                                 </ol>
 
                                 <hr/>
-                                <p style="text-align: left"><em>Robbins, H., Monro S.</em> A stochastic approximation method //
+                                <p style="text-align: left;font-size: small">
+                                    <em>Robbins, H., Monro S.</em> A stochastic approximation method //
                                     Annals of Mathematical Statistics, 1951, 22 (3), p. 400—407.</p>
                             </div>
                         </div>
@@ -298,9 +298,9 @@
                     <section>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <div class="r-frame">
-                                <b>Question 1:</b> Where did the recursive estimate of the error functional come from?
-                                $$\overline{Q} := \lambda \varepsilon_i + (1 - \lambda) \overline{Q}$$
+                                <div class="r-frame" style="text-align: left;padding-left: 20px">
+                                    <b>Question 1:</b> Where did the recursive estimate of the error functional come from?
+                                    $$\overline{Q} := \lambda \varepsilon_i + (1 - \lambda) \overline{Q}$$
                                 </div>
                             </div>
                         </div>
@@ -334,9 +334,8 @@
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p style="text-align: left"><strong>Input</strong>: sample $X^\ell$, learning rate $h$, decay rate $\lambda$</p>
-
-                                <p style="text-align: left"><strong>Output</strong>: weight vector $w$</p>
+                                <p style="text-align: left"><strong>Input</strong>: sample $X^\ell$, learning rate $h$, decay rate $\lambda$.
+                                    <strong>Output</strong>: weight vector $w$</p>
 
                                 <ol>
                                     <li>Initialize weights $w_j,\ j = 0, \dots, n$</li>
@@ -355,7 +354,8 @@
                                 </ol>
                                 <hr />
 
-                                <p style="text-align: left"><em>Schmidt M., Le Roux N., Bach F.</em> Minimizing finite sums with
+                                <p style="text-align: left;font-size: small">
+                                    <em>Schmidt M., Le Roux N., Bach F.</em> Minimizing finite sums with
                                     the stochastic average gradient // arXiv.org, 2013.</p>
                             </div>
                         </div>
@@ -440,7 +440,8 @@
                                 <p style="text-align: left">$h$ — learning rate, we can assume $h = 1$</p>
                                 <p style="text-align: left">$\mu$ — parameter that prevents zeroing of the determinant</p>
 
-                                <p>The ratio $h/\mu$ is the learning rate on flat parts of the functional $\mathcal{L}_i(w)$,
+                                <p style="text-align: left">
+                                    The ratio $h/\mu$ is the learning rate on flat parts of the functional $\mathcal{L}_i(w)$,
                                     where the second derivative is zeroed out.</p>
                             </div>
                         </div>
@@ -484,7 +485,7 @@
                         </div>
                     </section>
                     <section>
-                        <div class="r-frame">
+                        <div class="r-frame" style="text-align: left;padding-left: 20px">
                             <b>Question 2:</b> How to make the model reduce weights?
                         </div>
 
@@ -560,8 +561,7 @@
                                 <p style="text-align: left">Here:</p>
 
                                 <p style="text-align: left">$P(w|Y, X)$ — posterior distribution of parameters</p>
-                                <p style="text-align: left">$P(Y|X, w)$ — likelihood</p>
-                                <p style="text-align: left">$P(w)$ — prior distribution of parameters</p>
+                                <p style="text-align: left">$P(Y|X, w)$ — likelihood, $P(w)$ — prior distribution of parameters</p>
                             </div>
                         </div>
                     </section>
@@ -615,14 +615,16 @@
 
                             fig = plt.figure()
                             ax = Axes3D(fig)
-
                             # Make data
                             x = np.arange(-2, 2, 0.25)
                             y = np.arange(-2, 2, 0.25)
                             X, Y = np.meshgrid(x, y)
                             R = np.sqrt(X**2 + Y**2)
                             Z = R**1.2 / 5
-
+                        </py-repl>
+                    </section>
+                    <section data-background-color="#fdf6e3">
+                        <py-repl>
                             # Plot the surface
                             surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm,
                                                    linewidth=0, antialiased=False)
@@ -644,18 +646,23 @@
                         <img src="../ml_with_python/images/logloss_example.png" alt="" style="width:50%; float:left;">
                     </section>
                     <section>
-                        <h3>Examples: Gaussian and Laplace priors</h3>
-                        <p style="text-align: left">
-                            Let the weights \(w_j\) be independent, \(Ew_j = 0\), \(Dw_j = С\)</p>
+                        <h3 style="text-align: left">Examples: Gaussian and Laplace priors</h3>
+                        <div class="fragment">
+                            <div class="typesetting">
 
-                        <p style="text-align: left">
-                            Gaussian distribution and quadratic (\(L_2\)) regularizer:</p>
+                            <p style="text-align: left">
+                                Let the weights \(w_j\) be independent, \(Ew_j = 0\), \(Dw_j = С\)</p>
 
-                        $$P(w; С) = \frac{1}{(2\pi C)^{n/2}} \exp \left(-\frac{{\|w\|^2_2}}{2C}\right)$$
+                            <p style="text-align: left">
+                                Gaussian distribution and quadratic (\(L_2\)) regularizer:</p>
 
-                        $${\|w\|^2_2 = \sum\limits_{j=1}^n w_j^2}$$
+                            $$P(w; С) = \frac{1}{(2\pi C)^{n/2}} \exp \left(-\frac{{\|w\|^2_2}}{2C}\right)$$
 
-                        $$-\log P(w; С) = \frac{1}{2C}\|w\|^2_2 + const$$
+                            $${\|w\|^2_2 = \sum\limits_{j=1}^n w_j^2}$$
+
+                            $$-\log P(w; С) = \frac{1}{2C}\|w\|^2_2 + const$$
+                            </div>
+                        </div>
                     </section>
                     <section>
                         <p style="text-align: left">
@@ -687,6 +694,10 @@
 
                                 where \(\sigma(M)\) is the sigmoid function, important property: \(\sigma(M) + \sigma(-M) = 1\)
                             </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <ul>
                             <li>
                                 Regularized logistic regression learning problem
                                 (minimization of approximated empirical risk):
@@ -712,7 +723,7 @@
                 </section>
                 <section>
                     <section>
-                        <h3>Summary</h3>
+                        <h3 style="text-align: left">Summary</h3>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                             <ul>
