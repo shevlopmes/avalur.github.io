@@ -48,21 +48,36 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<div class="column">
-						<img src="images/jetbrains_logo_icon_145150.webp" alt="jetbrains_logo" />
-					</div>
-					<div class="column">
-						<h2>Youth AI club</h2>
-						<div class="fragment" style="margin-bottom:20px;">
-								<div class="typesetting">
-									<h3>Lecture 2. Numpy and Pandas</h3>
-									<br />
-									Alex Avdiushenko <br />
-									October 9, 2024
-								</div>
-						</div>
-					</div>
-				</section>
+                    <section>
+                        <div class="column">
+                            <img src="images/jetbrains_logo_icon_145150.webp" alt="jetbrains_logo" />
+                        </div>
+                        <div class="column">
+                            <h2>Youth AI club</h2>
+                            <div class="fragment" style="margin-bottom:20px;">
+                                    <div class="typesetting">
+                                        <h3>Lecture 2. Numpy and Pandas</h3>
+                                        <br />
+                                        Alex Avdiushenko <br />
+                                        October 9, 2024
+                                    </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3 style="text-align: left">In the last episode</h3>
+                        <div class="fragment" style="text-align: left">
+                            <div class="typesetting">
+                                <ul>
+                                    <li>Python language: easy, free, high-level and fun!</li>
+                                    <li>Python object: <span style="color:#17ff2e">id</span> (~address in memory),
+                                        <span style="color:#17ff2e">type</span> and <span style="color:#17ff2e">value</span></li>
+                                    <li>Size of int in Python: 24+ bytes!</li>
+                                    <li><span class="important">PyCharm</span>: install and write code 👩‍💻</li>
+                                </ul>
+                            </div>
+                    </section>
+                </section>
                 <section>
                     <section>
                         <h3 style="text-align: left"><a href="https://docs.scipy.org/doc/numpy/user/index.html">NumPy</a></h3>
@@ -97,7 +112,7 @@
                             <div class="typesetting">
                             <p style="text-align: left"><strong>Speed</strong> of NumPy is due to:</p>
                             <ul>
-                              <li>Implementation in C</li>
+                              <li>Implementation in <span class="important">C</span></li>
                               <li>Vectorization and Broadcasting (e.g., multiplication of arrays of compatible shapes)</li>
                             </ul>
                             </div>
@@ -106,7 +121,7 @@
                     <section>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                            <h3>Ways to create Numpy arrays</h3>
+                            <h3 style="text-align: left">Ways to create Numpy arrays</h3>
                             <ul>
                               <li><a href="numpy_pandas.html#conv-from-py">Conversion from Python structures</a></li>
                               <li><a href="numpy_pandas.html#gen-numpy">Generation using built-in functions</a></li>
@@ -116,7 +131,7 @@
                         </div>
                     </section>
                     <section id="conv-from-py" data-background-color="#fdf6e3">
-                        <h3>Conversion from Python structures</h3>
+                        <h3 style="text-align: left">Conversion from Python structures</h3>
                         <py-repl>
                             import numpy as np
                             np.array([1, 2, 3, 4, 5])
@@ -134,7 +149,7 @@
                         </div>
                     </section>
                     <section id="gen-numpy">
-                        <h3>Generation of numpy arrays</h3>
+                        <h3 style="text-align: left">Generation of numpy arrays</h3>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                             <ul>
@@ -419,7 +434,7 @@
                 </section>
                 <section>
                     <section data-background-color="#fdf6e3">
-                        <h3>Operations</h3>
+                        <h3 style="text-align: left">Operations</h3>
                         <py-repl>
                             import numpy as np
                             x = np.arange(20).reshape(4, 1, 5)
