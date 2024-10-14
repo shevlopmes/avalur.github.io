@@ -472,7 +472,7 @@
                             <ul>
                                 <li>Too large weights $|w_j|$ of different signs</li>
                                 <li>Instability of the discriminant function $\left< w, x\right>$</li>
-                                <li>$Q(X^\ell) \lt\lt Q(X^k)$</li>
+                                <li>$Q(\text{train } X^\ell) \lt\lt Q(\text{test } X^k)$</li>
                             </ul>
                             </div>
                         </div>
@@ -558,9 +558,8 @@
                                 <p>$P(w|Y, X) = \frac{P(Y, X|w)P(w)}{P(Y, X)} = \frac{P(Y | X, w)P(X|w)P(w)}{P(Y | X)P(X)}$</p>
                                 <p>$\boxed{P(w|Y,\ X) = \frac{P(Y|w, X)P(w)}{P(Y | X)}}$</p>
 
-                                <p style="text-align: left">Here:</p>
-
-                                <p style="text-align: left">$P(w|Y, X)$ — posterior distribution of parameters</p>
+                                <p style="text-align: left">Here:
+                                    $P(w|Y, X)$ — posterior distribution of parameters</p>
                                 <p style="text-align: left">$P(Y|X, w)$ — likelihood, $P(w)$ — prior distribution of parameters</p>
                             </div>
                         </div>
@@ -571,7 +570,7 @@
                         \arg\max\limits_w \sum\limits_{i=1}^l \log P(y_i|w, x_i) + \log P(w)$
                     </section>
                     <section>
-                        <h3>Connection of likelihood and approximation of empirical risk</h3>
+                        <h3 style="text-align: left">Connection of likelihood and approximation of empirical risk</h3>
 
                         <p style="text-align: left">Maximum likelihood</p>
                         <p>
@@ -590,7 +589,7 @@
                         <p>Model $P(y|x,w) \equiv $ Model $g(x,w)$ and $\mathcal{L}(M)$</p>
                     </section>
                     <section>
-                        <h3>Probabilistic interpretation of regularization</h3>
+                        <h3 style="text-align: left">Probabilistic interpretation of regularization</h3>
 
                         <p style="text-align: left">
                             \(P(y|x, w)\) — probabilistic data model<br>
