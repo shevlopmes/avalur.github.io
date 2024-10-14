@@ -26,6 +26,9 @@
 			  clear: both;
 			  display: table;
 			}
+			.important {
+				color: orange;
+			}
 		</style>
 </head>
 	<body onload="totalWrapper();">
@@ -60,7 +63,7 @@
 							designed with a focus on speed and efficiency of interaction.</p>
 					</section>
 					<section>
-						<h2 style="text-align: left"><span style="color: orange">Distributed</span> means:</h2>
+						<h3 style="text-align: left"><span style="color: orange">Distributed</span> means:</h3>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
 							<ul>
@@ -90,7 +93,7 @@
 						</div>
 					</section>
 					<section>
-						<h2>Basic Workflow</h2>
+						<h3>Basic Workflow</h3>
 						<ol>
 							<li>Clone the repository:
 								<p>
@@ -105,14 +108,124 @@
 					</section>
 				</section>
 				<section>
-					<h2>Let's switch to the best Git presentation</h2>
+					<h3>Let's switch to the best Git presentation</h3>
 					<a href="https://docs.google.com/presentation/d/1IQCRPHEIX-qKo7QFxsD3V62yhyGA9_5YsYXFOiBpgkk/mobilepresent?slide=id.g4d6b1121f4_0_65">Click me!</a>
 
 					<br><br>
 				   <p><a href="https://git-scm.com/book/en/v2">Pro Git book with all other details.</a></p>
 				</section>
 				<section>
-					<h2>Practice!</h2>
+					<section>
+						<h3 style="text-align: left">Introduction to CI/CD</h3>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<ul>
+									<li><strong>CI</strong>: Continuous Integration</li>
+									<li><strong>CD</strong>: Continuous Deployment/Delivery</li>
+									<li>Automate the software development lifecycle</li>
+									<li>Enable faster and more reliable software <span class="important">releases</span></li>
+								</ul>
+							</div>
+						</div>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<h3 style="text-align: left">Benefits of CI/CD</h3>
+								<ul>
+									<li>Early detection of defects</li>
+									<li>Reduced integration issues</li>
+									<li>Faster time to market</li>
+									<li>Improved collaboration and transparency</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h3>GitHub Actions</h3>
+						<div>
+							<img src="images/github_actions_logo.png" alt="GitHub Actions Logo" />
+						</div>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<ul>
+									<li>CI/CD platform integrated with GitHub</li>
+									<li>Automate workflows directly from your repository</li>
+									<li>Trigger actions on events like pushes, pull requests, and more</li>
+									<li>Supports custom scripts and community-contributed actions</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h3>Basic Workflow of GitHub Actions</h3>
+						<ol>
+							<li>Create a workflow file: <code style="background-color: gray">.github/workflows/ci.yml</code></li>
+							<li>Define triggers (events): <code style="background-color: gray">on: push</code></li>
+							<li>Specify jobs and steps</li>
+							<li>Use pre-built actions or write custom scripts</li>
+							<li>View results in the GitHub Actions tab</li>
+						</ol>
+					</section>
+					<section data-background-color="white">
+						<h3>Sample GitHub Actions Workflow</h3>
+						<pre><code class="language-yaml" data-trim>
+					name: CI
+
+					on: [push, pull_request]
+
+					jobs:
+					  build:
+						runs-on: ubuntu-latest
+						steps:
+						- uses: actions/checkout@v3
+						- name: Set up Python
+						  uses: actions/setup-python@v4
+						  with:
+							python-version: '3.9'
+						- name: Install dependencies
+						  run: pip install -r requirements.txt
+						- name: Run Tests
+						  run: pytest
+						</code></pre>
+					</section>
+					<section>
+						<h3>Advantages of GitHub Actions</h3>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<ul>
+									<li>Seamless integration with GitHub repositories</li>
+									<li>Easy to set up and customize</li>
+									<li>Supports multiple languages and platforms</li>
+									<li>Community-driven with a marketplace of actions</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h3>CI/CD Best Practices</h3>
+						<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<ul>
+									<li>Commit code frequently</li>
+									<li>Write tests for your code</li>
+									<li>Automate builds and testing</li>
+									<li>Monitor and analyze pipeline performance</li>
+									<li>Keep the pipeline fast and efficient</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h3>Additional Resources</h3>
+						<ul>
+							<li><a href="https://docs.github.com/en/actions">GitHub Actions Documentation</a></li>
+							<li><a href="https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions">Introduction to GitHub Actions</a></li>
+							<li><a href="https://martinfowler.com/articles/continuousIntegration.html">Continuous Integration by Martin Fowler</a></li>
+							<li><a href="https://aws.amazon.com/devops/continuous-delivery/">Continuous Delivery on AWS</a></li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h3>Practice!</h3>
 					<ul>
 						<li>Terminal in PyCharm</li>
 						<li>Using git command-line-interface (cli)</li>
