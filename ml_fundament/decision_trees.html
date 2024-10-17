@@ -10,7 +10,7 @@
 
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
-		<link rel="stylesheet" href="../dist/theme/black.css">
+		<link rel="stylesheet" href="../dist/theme/sky.css">
 
         <!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
@@ -48,7 +48,7 @@
 								<h3>Logical Rules and Decision Trees</h3>
 								<br />
 								Alex Avdiushenko <br />
-								October 15, 2024
+								October 22, 2024
 							</div>
 					</div>
                 </section>
@@ -60,7 +60,8 @@
 
                         <div style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p style="text-align: left">A <em>logical rule</em> (regularity) is a predicate $R: X \in \{0, 1\}$, satisfying two requirements:</p>
+                                <p style="text-align: left">A <em>logical rule</em> (regularity) is a predicate
+                                    $R: X \to \{0, 1\}$, satisfying two requirements:</p>
 
                                 <ol class="fragment">
                                   <li>Interpretability:</li>
@@ -117,7 +118,7 @@
                               <li>Rule regularity selection</li>
                             </ol>
 
-                            <p style="text-align: left"><em>A regularity</em> is a highly informative, interpretable,
+                            <p style="text-align: left"><em>Regularity</em> is a highly informative, interpretable,
                                 single-class classifier with rejections.</p>
                             </div>
                         </div>
@@ -239,15 +240,19 @@
                         </div>
                     </section>
                     <section>
-                        <h3>Regularity selection based on pair of criteria $p_c \to \max, n_c \to \min$</h3>
+                        <h3 style="text-align: left">Regularity selection based on a pair of criteria</h3>
+                        $p_c \to \max, n_c \to \min$
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                                 <div class="row">
-                                    <div class="column"><p><strong>Pareto front</strong> — a set of non-improvable regularities.
-                                        A point is non-improvable if there are no points to the left and below it.</p>
-                                        <p><strong>Problem</strong>: it would be desirable
-                                        to have a single scalar criterion.</p>
+                                    <div class="column">
+                                        <p style="text-align: left">
+                                        <strong>Pareto front</strong> — a set of non-improvable regularities.
+                                        A point is non-improvable if there are no points to the left and below it</p>
+                                        <p style="text-align: left">
+                                        <strong>Problem</strong>: it would be desirable
+                                        to have a single scalar criterion</p>
                                     </div>
                                     <div class="column">
                                         <img src="../ml_with_python/images/pareto-front.png" alt="pareto" width="80%" style="border-radius: 5%"/>
@@ -272,7 +277,7 @@
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                                 <ul>
-                                  <li>Gini Impurity:</li>
+                                  <li style="text-align: left">Gini Impurity:</li>
                                   <p>$\text{IGini}(p, n) = \text{IGain}(p, n)$ when $h(q) = 4q(1 - q)$</p>
                                 </ul>
                             </div>
@@ -288,7 +293,7 @@
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                                 <ul>
-                                  <li>Boosting criterion [Cohen, Singer, 1999]</a>:</li>
+                                  <li>Boosting a criterion [Cohen, Singer, 1999]</a>:</li>
                                   $$\sqrt{p} - \sqrt{n} \to \max$$
                                 </ul>
                             </div>
@@ -335,10 +340,10 @@
                             <div class="typesetting">
                                 <ul style="text-align: left">
                                   <li>Weighted Voting (linear classifier with weights $w_{yt}$):</li>
-                                    $$a(x) = \arg\max_{y \in Y} \sum_{t=1}^{T} w_{yt} R_{yt}(x)$$
+                                    <p>$a(x) = \arg\max_{y \in Y} \sum_{t=1}^{T} w_{yt} R_{yt}(x)$</p>
 
                                   <li>Simple Voting (majority committee):</li>
-                                  $$a(x) = \arg\max_{y \in Y} \frac{1}{T_y}\sum_{t=1}^{T_y} R_{yt}(x)$$
+                                    <p>$a(x) = \arg\max_{y \in Y} \frac{1}{T_y}\sum_{t=1}^{T_y} R_{yt}(x)$</p>
 
                                   <li>Decision List (seniority committee), \(c_t \in Y \):</li>
                                   <div align="center">
@@ -352,7 +357,7 @@
                 <section>
                     <section>
                         <h3 style="text-align: left">Decision Tree</h3>
-                          <p>
+                          <p style="text-align: left">
                             A decision tree is a classification algorithm $a(x)$, defined by a tree (a connected acyclic graph).
                           </p>
 
@@ -380,7 +385,9 @@
                     <section>
                         <h3 style="text-align: left"><a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">
                             Fisher's Iris</a></h3>
-                        A simple well-known dataset for classification
+                        <p style="text-align: left">
+                            A simple well-known dataset for classification
+                        </p>
 
                         <div class="row">
                             <div class="column">
@@ -532,7 +539,7 @@
                 </section>
                 <section>
                     <section data-background-color="#fdf6e3">
-                        <h3>Decision Tree Classifier</h3>
+                        <h3 style="text-align: left">Decision Tree Classifier</h3>
                         <py-repl>
                             from sklearn.tree import DecisionTreeClassifier
 
@@ -588,7 +595,7 @@
                                 <b>return</b> a new leaf $v$, taking $y_v$ := Major*($U$)
                                 </li>
                                 <li>find the most profitable feature for branching the tree:
-                               $f_v$ = $\arg\max\limits_{f \in F}$ Gain($f, U$)</li>
+                                    <p>$f_v = \arg\max\limits_{f \in F}$ Gain($f, U$)</p></li>
                                 <li><b>if</b> Gain ($f_v$, $U$) < $G_0$ <b>then</b><br />
                                 <b>return</b> a new leaf $v$, taking $y_v$ := Major($U$)</li>
                                 <li>create a new internal node $v$ with the function $f_v$</li>
@@ -602,7 +609,7 @@
                         </div>
                     </section>
                     <section>
-                        <h3>Measure of Uncertainty of Distribution</h3>
+                        <h3 style="text-align: left">Measure of Uncertainty of Distribution</h3>
 
                         <p style="text-align: left">The frequency estimate of the class \(y\)
                             at the node \(v \in V_{\text{internal}}\):</p>
@@ -653,7 +660,7 @@
                         \]
                     </section>
                     <section>
-                      <h3>Gini and Entropy Criteria</h3>
+                      <h3 style="text-align: left">Gini and Entropy Criteria</h3>
 
                       <p>
                         Two classes, \(Y = \{0, 1\}\),
@@ -677,7 +684,7 @@
                       </ul>
                     </section>
                     <section>
-                        <h3>Handling Missing Values</h3>
+                        <h3 style="text-align: left">Handling Missing Values</h3>
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
@@ -736,7 +743,7 @@
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                              <h3>Tree Pruning</h3>
+                              <h3 style="text-align: left">Tree Pruning</h3>
                               <p style="text-align: left">\(X^q\) — Independent validation set, \(q \approx 0.5\ell\)</p>
                               <ol>
                                   <li><b>for all</b> \(v \in V_{\text{internal}}\)</li>
@@ -768,7 +775,7 @@
                             <div class="typesetting">
                                 <p style="text-align: left">Let \( U \) be the set of objects \( x_i \) that reach vertex \( v \)</p>
 
-                                <p>Uncertainty measure — mean squared error:</p>
+                                <p style="text-align: left">Uncertainty measure — mean squared error:</p>
                                 \[ \Phi(U) = \min_{y \in Y} \frac{1}{|U|} \sum\limits_{x_i \in U} (y - y_i)^2 \]
                             </div>
                         </div>
@@ -784,7 +791,7 @@
                         </div>
                     </section>
                     <section>
-                        <h3>Example. Regression Trees of Different Depths</h3>
+                        <h3 style="text-align: left">Example. Regression Trees of Different Depths</h3>
 
                         <p style="text-align: left">The more complex the tree (the greater its depth),
                             the higher the influence of noise in the data and the higher
@@ -796,7 +803,7 @@
                         <a href="https://scikit-learn.org/stable/auto_examples/tree/plot_tree_regression.html">https://scikit-learn.org/stable/auto_examples/tree/plot_tree_regression.html</a>
                     </section>
                     <section>
-                        <h3>CART: Minimal Cost-Complexity Pruning Criterion</h3>
+                        <h3 style="text-align: left">CART: Minimal Cost-Complexity Pruning Criterion</h3>
 
                         <p style="text-align: left">Mean squared error with a penalty for tree complexity:</p>
                         \[ C_\alpha(a) = \sum\limits_{i=1}^\ell (a(x_i) - y_i)^2 + \alpha |V_{\text{leaf}}| \to \min\limits_\alpha \]
@@ -813,7 +820,7 @@
                         </div>
                     </section>
                     <section>
-                        <h3>Auxiliary Task of Binarization of a Real Feature</h3>
+                        <h3 style="text-align: left">Auxiliary Task of Binarization of a Real Feature</h3>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                                 <p style="text-align: left"><strong>Purpose</strong>: to reduce the enumeration of predicates of the form
@@ -828,13 +835,15 @@
                                     <li>\(\zeta_r(x) = [d_r \leq f(x)]\)</li>
                                 </ul>
                                 <div align="center">
-                                    <img src="../ml_with_python/images/partition.jpg" alt="partition" style="width: 800px;">
+                                    <img src="../ml_with_python/images/partition.jpg" alt="partition"
+                                         style="width: 800px;border-radius: 5%">
                                 </div>
                             </div>
                         </div>
                     </section>
                     <section>
-                        <h3>Ways to Partition the Feature Value Area into Zones</h3>
+                        <h3 style="text-align: left">
+                            Ways to Partition the Feature Value Area into Zones</h3>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                                 <ul>
