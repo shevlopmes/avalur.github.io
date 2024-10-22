@@ -287,7 +287,9 @@
                         <ul>
                           <li>Fisher's Exact Test:</li>
                           <p>$\text{IStat}(p, n) = -\frac{1}{\ell} \log_2 \frac{C_P^pC_N^n}{C_{P+N}^{p+n}} \to \max$
-                              — this is simply the probability of realizing such a pair of $p, n$</p>
+                              — the argument of logarith is simply the probability of realizing such a pair of $p, n$,
+                             when choosing $(p+n)$ elements from $(P+N)$
+                          </p>
                         </ul>
 
                         <div class="fragment" style="margin-bottom:20px;">
@@ -541,6 +543,7 @@
                     <section data-background-color="#fdf6e3">
                         <h3 style="text-align: left">Decision Tree Classifier</h3>
                         <py-repl>
+                            import matplotlib.pyplot as plt
                             from sklearn.tree import DecisionTreeClassifier
 
                             fig = plt.figure(figsize=(18.0, 10.0))
