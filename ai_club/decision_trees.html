@@ -33,24 +33,45 @@
 			  clear: both;
 			  display: table;
 			}
+			.important {
+				color: orange;
+			}
 		</style>
     </head>
 	<body onload="totalWrapper();">
 		<div class="reveal">
 			<div class="slides">
                 <section>
-					<div>
-						<img src="../ml_with_python/images/nup_logo_dark.jpeg" alt="nup_logo" />
-					</div>
-						<h2>Fundamentals of Machine Learning</h2>
-					<div class="fragment" style="margin-bottom:20px;">
-							<div class="typesetting">
-								<h3>Logical Rules and Decision Trees</h3>
-								<br />
-								Alex Avdiushenko <br />
-								October 22, 2024
-							</div>
-					</div>
+                    <section>
+                        <div class="column">
+                            <img src="images/jetbrains_logo_icon_145150.webp" alt="jetbrains_logo" />
+                        </div>
+                        <div class="column">
+                            <h2>Youth AI club</h2>
+                            <div class="fragment" style="margin-bottom:20px;">
+                                    <div class="typesetting">
+                                        <h3>Logical Rules and Decision Trees</h3>
+                                        <br />
+                                        Alex Avdiushenko <br />
+                                        October 30, 2024
+                                    </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3 style="text-align: left">In the last episode</h3>
+                        <div class="fragment" style="text-align: left">
+                            <div class="typesetting">
+                                <ul>
+                                    <li><span class="important">Linear models</span>:
+                                        regression and classification, the concept of margin</li>
+                                    <li>Stochastic Gradient Descent</li>
+                                    <li><span class="important">Logistic Regression</span></li>
+                                    <li>Principle of Maximum Likelihood (optional)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
                 </section>
                 <section>
                     <section>
@@ -144,101 +165,28 @@
                         </ol>
                           $$R(x) = \left[\sum\limits_{j \in {\color{orange}J}} [{\color{orange}a_j} \leq f_j(x) \leq
                             {\color{orange}b_j}] \geq {\color{orange}d}\right]$$
-                        <p style="text-align: left">Parameters ${\color{orange}J, a_j, b_j, d,}$
-                            are tuned using the training set via optimization of the <strong>information criterion</strong>.</p>
                     </section>
                     <section>
-                        <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                             <ol start="4">
                               <li>Half-plane — linear threshold function:</li>
                               $$R(x) = \left[\sum\limits_{j \in {\color{orange}J}} {\color{orange}w_j} f_j(x)
                                 \geq {\color{orange}w_0}\right]$$
                               
-                              <li><em>Sphere</em> — proximity threshold function:</li>
-                              $$R(x) = [(\rho(x, {\color{orange}x_0}) \leq {\color{orange}w_0}]$$
-                            
-                              <li>AVE — algorithms for calculating estimates [Yu. I. Zhuravlev, 1971]:</li>
-                              $$\rho(x, {\color{orange}x_0}) = \max\limits_{j \in {\color{orange}J}}
-                                {\color{orange}w_j} |f_j(x) - f_j({\color{orange}x_0})|$$
-                            </ol>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <ol start="7">
-                            <li>SCM — set covering machine [M. Marchand, 2001]:</li>
-                        </ol>
+                              <li class="fragment"><em>Sphere</em> — proximity threshold function:
+                              $$R(x) = [(\rho(x, {\color{orange}x_0}) \leq {\color{orange}w_0}]$$</li>
+
+                              <li class="fragment">SCM — set covering machine [M. Marchand, 2001]:
                         $$\rho(x, {\color{orange}x_0}) = \sum\limits_{j \in {\color{orange}J}} {\color{orange}w_j}
-                          |f_j(x) - f_j({\color{orange}x_0})|^{\color{orange}\gamma}$$
-                        <p style="text-align: left">Parameters ${\color{orange}J, w_j, w_0, x_0, \gamma,}$
-                                are tuned using the training set via optimization of the <strong>information criterion</strong>.</p>
-                    </section>
-                    <section>
-                        <h3>Rules generation</h3>
+                          |f_j(x) - f_j({\color{orange}x_0})|^{\color{orange}\gamma}$$</li>
 
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                            <p style="text-align: left"><strong>Input</strong>: Training sample $X^\ell$</p>
-                            <p style="text-align: left"><strong>Output</strong>: Set of rules $Z$</p>
-
-                            <ol>
-                              <li>Initial set of rules $Z$</li>
-                              <li><strong>repeat</strong></li>
-                                <ul>
-                                      <li>$Z^\prime :=$  set of local modifications of the rules $R \in Z$</li>
-                                      <li>remove overly similar rules from $Z \cup Z^\prime$</li>
-                                      <li>$Z :=$ most informative rules from $Z \cup Z^\prime$</li>
-                                </ul>
-                              <li><strong>until</strong> the rules keep improving</li>
-                              <li><strong>return</strong> $Z$</li>
                             </ol>
+                        <p style="text-align: left" class="fragment">Parameters ${\color{orange}J, a_j, b_j, d, w_j}$
+                            are tuned using the training set via optimization of the <strong>information criterion</strong>.</p>
                             </div>
-                        </div>
                     </section>
-                    <section>
-                        <h3 style="text-align: left">Specific cases of optimization</h3>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                            <ul>
-                              <li>Genetic (evolutionary) algorithms</li>
-                              <li>Guided Local Search (GLS) — adjusting penalties during the search process</li>
-                              <li>Branch and bound method — discarding areas that definitely do not contain optimal solutions</li>
-                            </ul>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <h3>Local rule modifications</h3>
-
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <p style="text-align: left"><strong>Example.</strong> Family of conjunctions of threshold conditions:</p>
-                                $$ R(x) = \bigwedge\limits_{j \in {\color{orange}J}} [{\color{orange}a_j} \leq f_j(x) \leq {\color{orange}b_j}]$$
-
-                                <p style="text-align: left">Local modifications of a conjunctive rule:</p>
-                                <ul>
-                                  <li>varying one of the thresholds ${\color{orange}a_j}$ or ${\color{orange}b_j}$</li>
-                                  <li>varying both thresholds ${\color{orange}a_j}$ and ${\color{orange}b_j}$ simultaneously</li>
-                                  <li>adding feature ${\color{orange}f_j}$ to ${\color{orange}J}$ with variation of thresholds
-                                      ${\color{orange} a_j, b_j}$</li>
-                                  <li>removing feature ${\color{orange}f_j}$ from ${\color{orange}J}$</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <ul>
-                                    <li style="text-align: left">When removing a feature (pruning),
-                                    informativeness is usually evaluated on a control sample (hold-out)</li>
-                                    <li style="text-align: left">The same methods are suitable for optimizing
-                                    the set ${\color{orange}J}$ as for feature selection</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
+                </section>
+                <section>
                     <section>
                         <h3 style="text-align: left">Regularity selection based on a pair of criteria</h3>
                         $p_c \to \max, n_c \to \min$
@@ -283,33 +231,6 @@
                             </div>
                         </div>
                     </section>
-                    <section>
-                        <ul>
-                          <li>Fisher's Exact Test:</li>
-                          <p>$\text{IStat}(p, n) = -\frac{1}{\ell} \log_2 \frac{C_P^pC_N^n}{C_{P+N}^{p+n}} \to \max$
-                              — the argument of logarith is simply the probability of realizing such a pair of $p, n$,
-                             when choosing $(p+n)$ elements from $(P+N)$
-                          </p>
-                        </ul>
-
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <ul>
-                                  <li>Boosting a criterion [Cohen, Singer, 1999]</a>:</li>
-                                  $$\sqrt{p} - \sqrt{n} \to \max$$
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <ul>
-                                  <li>Normalized boosting criterion:</li>
-                                  $$\sqrt{\frac{p}{P}} - \sqrt{\frac{n}{N}} \to \max$$
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
                     <section data-background-color="#fdf6e3">
 <!--language=python-->
                         <py-repl>
@@ -334,6 +255,82 @@
                     </section>
                     <section data-background-color="#ffffff">
                         <img src="../ml_with_python/images/entropy_and_gini.png" alt="entropy_and_gini" width="70%">
+                    </section>
+                    <section>
+                        <ul>
+                          <li>Fisher's Exact Test:</li>
+                          <p>$\text{IStat}(p, n) = -\frac{1}{\ell} \log_2 \frac{C_P^pC_N^n}{C_{P+N}^{p+n}} \to \max$
+                              — the argument of logarith is simply the probability of realizing such a pair of $p, n$,
+                             when choosing $(p+n)$ elements from $(P+N)$
+                          </p>
+                        </ul>
+
+                        <div class="fragment" style="margin-bottom:20px;text-align: left">
+                            <div class="typesetting">
+                                <ul>
+                                  <li>Normalized boosting criterion:</li>
+                                  $$\sqrt{\frac{p}{P}} - \sqrt{\frac{n}{N}} \to \max$$
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Let's have a break!</h3>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Rules generation</h3>
+
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+                            <p style="text-align: left"><strong>Input</strong>: Training sample $X^\ell$</p>
+                            <p style="text-align: left"><strong>Output</strong>: Set of rules $Z$</p>
+
+                            <ol>
+                              <li>Initial set of rules $Z$</li>
+                              <li><strong>repeat</strong></li>
+                                <ul>
+                                      <li>$Z^\prime :=$ set of local modifications of the rules $R \in Z$</li>
+                                      <li>remove overly similar rules from $Z \cup Z^\prime$</li>
+                                      <li>$Z :=$ most informative rules from $Z \cup Z^\prime$</li>
+                                </ul>
+                              <li><strong>until</strong> the rules keep improving</li>
+                              <li><strong>return</strong> $Z$</li>
+                            </ol>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Local rule modifications</h3>
+
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+                                <p style="text-align: left"><strong>Example.</strong> Family of conjunctions of threshold conditions:</p>
+                                $$ R(x) = \bigwedge\limits_{j \in {\color{orange}J}} [{\color{orange}a_j} \leq f_j(x) \leq {\color{orange}b_j}]$$
+
+                                <p style="text-align: left">Local modifications of a conjunctive rule:</p>
+                                <ul>
+                                  <li>varying one of the thresholds ${\color{orange}a_j}$ or ${\color{orange}b_j}$</li>
+                                  <li>varying both thresholds ${\color{orange}a_j}$ and ${\color{orange}b_j}$ simultaneously</li>
+                                  <li>adding feature ${\color{orange}f_j}$ to ${\color{orange}J}$ with variation of thresholds
+                                      ${\color{orange} a_j, b_j}$</li>
+                                  <li>removing feature ${\color{orange}f_j}$ from ${\color{orange}J}$</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+                                <ul>
+                                    <li style="text-align: left">When removing a feature (pruning),
+                                    informativeness is usually evaluated on a control sample (hold-out)</li>
+                                    <li style="text-align: left">The same methods are suitable for optimizing
+                                    the set ${\color{orange}J}$ as for feature selection</li>
+                                </ul>
+                            </div>
+                        </div>
                     </section>
                     <section>
                         <h3 style="text-align: left">Combined use of regularities</h3>
@@ -455,7 +452,7 @@
                     </section>
                     <section data-background-color="#fdf6e3">
                         <py-repl>
-                            clf.predict_proba(X[:2, :])
+                            clf.predict_proba(X[:2])
                         </py-repl>
                         <py-repl>
                             clf.score(X, y)
@@ -542,6 +539,10 @@
                 <section>
                     <section data-background-color="#fdf6e3">
                         <h3 style="text-align: left">Decision Tree Classifier</h3>
+                        <p><a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/">
+                            Nice visual example of DecisionTreeClassifier</a></p>
+                    </section>
+                    <section data-background-color="#fdf6e3">
                         <py-repl>
                             import matplotlib.pyplot as plt
                             from sklearn.tree import DecisionTreeClassifier
@@ -550,8 +551,6 @@
                             clf = plot_model(X, y, DecisionTreeClassifier())
                             fig
                         </py-repl>
-                        <p><a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/">
-                            Nice visual example of DecisionTreeClassifier</a></p>
                     </section>
                     <section data-background-color="#fdf6e3">
                         <py-repl>
@@ -595,13 +594,13 @@
                             <ol>
                                 <li><b>FUNCTION</b> TreeGrowing($U \subseteq X_\ell$) $\mapsto$ root of a tree $v$</li>
                                 <li><b>if</b> StopCriteria($U$) <b>then</b> <br/>
-                                <b>return</b> a new leaf $v$, taking $y_v$ := Major*($U$)
+                                <b>return</b> a new leaf $v$, taking $y_v$ := Major($U$)
                                 </li>
                                 <li>find the most profitable feature for branching the tree:
                                     <p>$f_v = \arg\max\limits_{f \in F}$ Gain($f, U$)</p></li>
                                 <li><b>if</b> Gain ($f_v$, $U$) < $G_0$ <b>then</b><br />
                                 <b>return</b> a new leaf $v$, taking $y_v$ := Major($U$)</li>
-                                <li>create a new internal node $v$ with the function $f_v$</li>
+                                <li>create a new internal node $v$ with the feature $f_v$</li>
                                 <li><b>for all</b> $k \in D_v$
                                     $U_k = \{x \in U: f_v(x) = k\}, S_v(k)$ := TreeGrowing($U_k$)</li>
                                 <li><b>return</b> $v$</li>
@@ -632,7 +631,7 @@
                     </section>
                     <section>
                         \[
-                        \Phi(U) = \mathbb{E}\mathcal{L}(p_y) = \sum\limits_{y \in Y} p_y \mathcal{L}(p_y) =
+                        \Phi(U)  = \sum\limits_{y \in Y} p_y \mathcal{L}(p_y) =
                           \frac{1}{|U|} \sum\limits_{x_i \in U} \mathcal{L}(P(y_i| U)) \to \min ,
                         \]
                         <p style="text-align: left">where \(\mathcal{L}(p)\) decreases
@@ -687,34 +686,6 @@
                       </ul>
                     </section>
                     <section>
-                        <h3 style="text-align: left">Handling Missing Values</h3>
-
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                              <h4 style="text-align: left">During Training</h4>
-                              <ul>
-                                <li>If \(f_v(x_i)\) is undefined \(\Rightarrow\ x_i\) is excluded from \(U\) for \(\text{Gain}(f_v, U)\)</li>
-                                <li>\(q_{vk} = \frac{|U_k|}{|U|}\) — probability estimate of the \(k\)-th branch, \(v \in V_{\text{internal}}\)</li>
-                                <li>\(P(y|x, v) = \frac{1}{|U|} \sum\limits_{x_i \in U}[y_i = y]\) for all \(v \in V_{\text{leaf}}\)</li>
-                              </ul>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                                <h4 style="text-align: left">During Classification</h4>
-                                <ul>
-                                <li>If \(f_v(x)\) is undefined \(\Rightarrow\) take the distribution proportionally from the child</li>
-                                    \[s = S_v(f_v(x)): P(y|x, v) = P(y|x, s)\]
-                                <li>If \(f_v(x)\) is undefined \(\Rightarrow\) proportional distribution:
-                                    \[P(y|x, v) = \sum\limits_{k \in D_v} q_{vk} P(y | x, S_v(k)))\]</li>
-                                <li>Final decision — the most probable class: \(a(x) = \arg\max\limits_{y \in Y} P(y|x, v_0)\)</li>
-                              </ul>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
                       <h3>Greedy Descending Strategy: Advantages and Disadvantages</h3>
 
                         <div class="fragment" style="margin-bottom:20px;">
@@ -742,33 +713,6 @@
                         </div>
                     </section>
                     <section>
-                        <p class="r-frame">Greedy strategy overcomplicates tree structure, so we need..</p>
-
-                        <div class="fragment" style="margin-bottom:20px;">
-                            <div class="typesetting">
-                              <h3 style="text-align: left">Tree Pruning</h3>
-                              <p style="text-align: left">\(X^q\) — Independent validation set, \(q \approx 0.5\ell\)</p>
-                              <ol>
-                                  <li><b>for all</b> \(v \in V_{\text{internal}}\)</li>
-                                  <li>\(X_v^q :=\) subset of instances \(X^q\) that reach \(v\)</li>
-                                  <li><b>if</b> \(X_v^q = \emptyset\) <b>then return</b> a new leaf \(v\), with \(y_v := \text{Major}(U)\)</li>
-                                  <li>Count the number of misclassifications for \(X_v^q\) classified in different ways:</li>
-                                  <ul>
-                                      <li>\(\ \ \text{Err}(v)\) — by the subtree rooted at \(v\)</li>
-                                      <li>\(\ \ \text{Err}_k(v)\) — by the subtree \(S_v(k)\), for \(k \in D_v\)</li>
-                                      <li>\(\ \ \text{Err}_c(v)\) — by class \(c \in Y\)</li>
-                                  </ul>
-                                  <li>Depending on which is minimal:</li>
-                                  <ul>
-                                      <li>Keep the subtree \(v\)</li>
-                                      <li>Replace the subtree \(v\) with the child \(S_v(k)\)</li>
-                                      <li>Replace the subtree \(v\) with a leaf, with \(y_v := \arg\min\limits_{c \in Y} \text{Err}_c(v)\)</li>
-                                  </ul>
-                              </ol>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
                         <h3>CART: Classification And Regression Trees</h3>
 
                         <p style="text-align: left">Generalization for regression: \( Y = \mathbb{R}, y_v \in \mathbb{R} \)</p>
@@ -785,8 +729,8 @@
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p style="text-align: left">The value \( y_v \) in the terminal vertex \( v \) is the LSE solution:</p>
-                                \[ y_v = \frac{1}{|U|} \sum\limits_{x_i \in U} y_i \]
+                                <p style="text-align: left">The value \( y_v \) in the terminal vertex \( v \) is the LSE solution:
+                                $ y_v = \frac{1}{|U|} \sum\limits_{x_i \in U} y_i $</p>
 
                                 <p style="text-align: left">Regression tree \( a(x) \) is a piecewise
                                     constant function.</p>
@@ -893,6 +837,63 @@
                                     </ul>
                                 </li>
                             </ul>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3 style="text-align: left">Handling Missing Values</h3>
+
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+                              <h4 style="text-align: left">During Training</h4>
+                              <ul>
+                                <li>If \(f_v(x_i)\) is undefined \(\Rightarrow\ x_i\) is excluded from \(U\) for \(\text{Gain}(f_v, U)\)</li>
+                                <li>\(q_{vk} = \frac{|U_k|}{|U|}\) — probability estimate of the \(k\)-th branch, \(v \in V_{\text{internal}}\)</li>
+                                <li>\(P(y|x, v) = \frac{1}{|U|} \sum\limits_{x_i \in U}[y_i = y]\) for all \(v \in V_{\text{leaf}}\)</li>
+                              </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+                                <h4 style="text-align: left">During Classification</h4>
+                                <ul>
+                                <li>If \(f_v(x)\) is undefined \(\Rightarrow\) take the distribution proportionally from the child</li>
+                                    \[s = S_v(f_v(x)): P(y|x, v) = P(y|x, s)\]
+                                <li>If \(f_v(x)\) is undefined \(\Rightarrow\) proportional distribution:
+                                    \[P(y|x, v) = \sum\limits_{k \in D_v} q_{vk} P(y | x, S_v(k)))\]</li>
+                                <li>Final decision — the most probable class: \(a(x) = \arg\max\limits_{y \in Y} P(y|x, v_0)\)</li>
+                              </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <p class="r-frame">Greedy strategy overcomplicates tree structure, so we need..</p>
+
+                        <div class="fragment" style="margin-bottom:20px;">
+                            <div class="typesetting">
+                              <h3 style="text-align: left">Tree Pruning</h3>
+                              <p style="text-align: left">\(X^q\) — Independent validation set, \(q \approx 0.5\ell\)</p>
+                              <ol>
+                                  <li><b>for all</b> \(v \in V_{\text{internal}}\)</li>
+                                  <li>\(X_v^q :=\) subset of instances \(X^q\) that reach \(v\)</li>
+                                  <li><b>if</b> \(X_v^q = \emptyset\) <b>then return</b> a new leaf \(v\), with \(y_v := \text{Major}(U)\)</li>
+                                  <li>Count the number of misclassifications for \(X_v^q\) classified in different ways:</li>
+                                  <ul>
+                                      <li>\(\ \ \text{Err}(v)\) — by the subtree rooted at \(v\)</li>
+                                      <li>\(\ \ \text{Err}_k(v)\) — by the subtree \(S_v(k)\), for \(k \in D_v\)</li>
+                                      <li>\(\ \ \text{Err}_c(v)\) — by class \(c \in Y\)</li>
+                                  </ul>
+                                  <li>Depending on which is minimal:</li>
+                                  <ul>
+                                      <li>Keep the subtree \(v\)</li>
+                                      <li>Replace the subtree \(v\) with the child \(S_v(k)\)</li>
+                                      <li>Replace the subtree \(v\) with a leaf, with \(y_v := \arg\min\limits_{c \in Y} \text{Err}_c(v)\)</li>
+                                  </ul>
+                              </ol>
                             </div>
                         </div>
                     </section>
