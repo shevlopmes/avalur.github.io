@@ -10,7 +10,7 @@
 
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
-		<link rel="stylesheet" href="../dist/theme/black.css">
+		<link rel="stylesheet" href="../dist/theme/sky.css">
 
         <!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
@@ -40,7 +40,7 @@
 								<h3>Ensembles, random forest and gradient boosting</h3>
 								<br />
 								Alex Avdiushenko <br />
-								October 22, 2024
+								October 29, 2024
 							</div>
 					</div>
                 </section>
@@ -71,7 +71,7 @@
                         </div>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p class="r-frame important">Why introduce correcting operation \(R\)?</p>
+                                <p class="r-frame important" style="text-align: left;padding-left: 20px">Why introduce correcting operation \(R\)?</p>
                                 <p style="text-align: left">In classification tasks, the set of mappings \(\{F: R^T \to R\}\)
                                     is significantly wider than \(\{F: Y^T \to Y\}\)</p>
                             </div>
@@ -270,15 +270,15 @@
                     <section>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <div class="r-frame important">
+                                <div class="r-frame important" style="text-align: left;padding-left: 20px">
                                     <b>Question 2:</b> Why does Boosting work?
                                 </div>
                             </div>
                         </div>
                         <br>
-                        <div class="fragment" style="margin-bottom:20px;">
+                        <div class="fragment">
                             <div class="typesetting">
-                                <div class="r-frame important">
+                                <div class="r-frame important" style="text-align: left;padding-left: 20px">
                                     <b>Question 3:</b> What are the drawbacks of AdaBoost?
                                 </div>
                             </div>
@@ -315,12 +315,12 @@
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                             <p style="text-align: left"> Linear (convex) combination of base algorithms: </p>
-                            \[a(x) = \sum\limits_{t=1}^T \alpha_t b_t(x), \ x \in X, \ \alpha_t \in \mathbb{R}_+\]
+                            $a(x) = \sum\limits_{t=1}^T \alpha_t b_t(x), \ x \in X, \ \alpha_t \in \mathbb{R}_+$
 
                             <p style="text-align: left">Quality functional with arbitrary loss function $\mathcal{L}(a, y)$:</p>
-                            \[Q(\alpha, b, X^\ell) = \sum\limits_{i=1}^\ell \mathcal{L}
+                            $Q(\alpha, b, X^\ell) = \sum\limits_{i=1}^\ell \mathcal{L}
                                 \underbrace{\overbrace{(\sum\limits_{t=1}^{T-1} \alpha_t b_t(x_i)}^{f_{T-1,i}} +
-                                \alpha b(x_i)}_{f_{T,i}} , y_i) \to \min\limits_{\alpha, b}\]
+                                \alpha b(x_i)}_{f_{T,i}} , y_i) \to \min\limits_{\alpha, b}$
 
                             <p>$f_{T-1, i}$ — current approximation, $f_{T, i}$ — next approximation</p>
                             </div>
@@ -342,10 +342,10 @@
 
                                 <p> $f_{T,i} = f_{T-1,i} + \alpha b(x_i), \ i = 1, \dots, \ell$ </p>
 
-                                <b> Idea: </b> we will look for such a basic algorithm
+                                <p style="text-align: left"><b>Idea: </b> we will look for such a basic algorithm
                                 $b_T$ that the vector $(b_T(x_i))_{i=1}^\ell$ will approximate
-                                the antigradient vector $(-g_i)_{i=1}^\ell$
-                                $$b_T = \arg\min\limits_b \sum\limits_{i=1}^\ell (b(x_i) + g_i)^2$$
+                                    the antigradient vector $(-g_i)_{i=1}^\ell$</p>
+                                $b_T = \arg\min\limits_b \sum\limits_{i=1}^\ell (b(x_i) + g_i)^2$
                             </div>
                         </div>
                     </section>
@@ -361,7 +361,7 @@
                                     <li>Initialization: $f_i = 0, i = 1, \dots, \ell$ </li>
                                     <li><b>for all</b> $t = 1, \dots, \color{orange}{T}$ </li>
                                     <p>Basic algorithm approximating antigradient:</p>
-                                    $$b_t = \arg \min\limits_b \sum\limits_{i=1}^\ell (b(x_i) + \mathcal{L}^\prime(f_i, y_i))^2$$
+                                    $b_t = \arg \min\limits_b \sum\limits_{i=1}^\ell (b(x_i) + \mathcal{L}^\prime(f_i, y_i))^2$
                                     <li>One-dimensional minimization problem:
                                     $\alpha_t = \arg \min\limits_{\alpha > 0} \sum\limits_{i=1}^\ell
                                     \mathcal{L}(f_i + \alpha b_t(x_i), y_i)$ </li>
@@ -389,7 +389,7 @@
                         </div>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <div class="r-frame important">Why is Boosting so ideal?</div>
+                                <div class="r-frame important" style="text-align: left;padding-left: 20px">Why is Boosting so ideal?</div>
                             </div>
                         </div>
                     </section>
@@ -419,7 +419,8 @@
                                 <p style="text-align: left">Regression and classification trees (CART):</p>
                                 $$b(x) = \sum\limits_{j=1}^J w_j [x \in R_j]$$
 
-                                <p>where $R_j$ is the area of space covered by leaf $j$, $w_j$ is the leaf weights, and $J$ is the number of leaves in the tree.
+                                <p style="text-align: left">
+                                    where $R_j$ is the area of space covered by leaf $j$, $w_j$ is the leaf weights, and $J$ is the number of leaves in the tree.
                                 </p>
                             </div>
                         </div>
@@ -431,7 +432,9 @@
                         \frac{\lambda}{2} \sum\limits_{j=1}^J w_j^2 \to \min\limits_{b, w_j}$
 
                         <p style="text-align: left">The task has an analytic solution for $w_j$.</p>
-                        <p>Other popular implementations of gradient boosting over random trees: <span style="color: orange">LightGBM, CatBoost</span></p>
+                        <p style="text-align: left">
+                            Other popular implementations of gradient boosting over random trees: <span style="color: orange">LightGBM, CatBoost</span>
+                        </p>
                     </section>
                     <section>
                         <h3>Summary of ensembles</h3>
@@ -533,8 +536,10 @@
                         <div align="center">
                             <img src="../ml_with_python/images/boosting_exp.jpg" alt="boosting_exp" width=800 />
                         </div>
-                        <p><b>Distribution of margins</b>: the share of objects with a margin
-                            smaller than a fixed $\theta$ after 5, 100, 1000 iterations (UCI classification task: vehicle)</p>
+                        <p style="text-align: left">
+                            <b>Distribution of margins</b>: the share of objects with a margin
+                            smaller than a fixed $\theta$ after 5, 100, 1000 iterations (UCI classification task: vehicle)
+                        </p>
                     </section>
                     <section>
                         <ul>
