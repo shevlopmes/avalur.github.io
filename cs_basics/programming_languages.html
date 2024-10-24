@@ -10,7 +10,7 @@
 
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
-		<link rel="stylesheet" href="../dist/theme/black.css">
+		<link rel="stylesheet" href="../dist/theme/beige.css">
 
         <!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
@@ -43,6 +43,9 @@
 			  clear: both;
 			  display: table;
 			}
+			.important {
+				color: orange;
+			}
 		</style>
 </head>
 	<body onload="totalWrapper();">
@@ -56,7 +59,7 @@
 					<h3>Comparison of Different Programming Languages</h3>
 					<br />
 					Alex Avdiushenko <br />
-					January 19, 2024
+					January 7, 2025
 				</section>
 				<section>
 					<section>
@@ -306,10 +309,11 @@ _start:
 				</section>
 				<section>
 					<section>
-					    <h2>Static vs. Dynamic Typing</h2>
+					    <h3>Static vs. Dynamic Typing</h3>
 						<div class="fragment" style="margin-bottom:20px;">
 							<div class="typesetting">
-								<p>In this section, we'll explore the differences between statically typed and
+								<p style="text-align: left">
+								In this section, we'll explore the differences between statically typed and
 								dynamically typed languages and understand what implications these typing disciplines
 								have on our code.
 								</p>
@@ -318,8 +322,9 @@ _start:
 						<br>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-							<h2>Strong vs. Weak Typing</h2>
-							<p>We'll also discuss the contrast between strongly typed and weakly typed languages and
+							<h3>Strong vs. Weak Typing</h3>
+							<p style="text-align: left">
+								We'll also discuss the contrast between strongly typed and weakly typed languages and
 								learn what makes a language have either of these properties.
 							</p>
 							</div>
@@ -329,7 +334,8 @@ _start:
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                             <br />
-                            <p><em>Data type</em> — a set of values and
+                            <p style="text-align: left">
+								<em>Data type</em> — a set of values and
                                 operations over these values (IEEE Std 1320.2-1998), their representation in memory. <br /></p>
                             <p><strong>Helps programmers find errors in the code.</strong></p>
                             </div>
@@ -343,7 +349,8 @@ _start:
                     </section>
                     <section>
                         <div>
-                            <p>Dynamic (duck) typing:
+                            <p style="text-align: left">
+								Dynamic (duck) typing:
                                 "If it looks like a duck, swims like a duck and quacks like a duck,
                                 then it probably is a duck."</p>
                             <img style="border-radius: 5%" src="images/duck.webp" alt="duck" width="40%"/>
@@ -369,19 +376,22 @@ _start:
                         </py-repl>
 					</section>
                     <section data-background-color="#fdf6e3">
-                        <p><strong>Strict (strong) typing</strong> — the presence of type consistency safety and
+                        <p style="text-align: left">
+							<strong>Strict (strong) typing</strong> — the presence of type consistency safety and
                             memory access safety.</p>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p>In Python, there is no type casting (almost).</p>
+                                <p style="text-align: left">
+									In Python, there is no type casting (almost).
+								</p>
                             </div>
                         </div>
                         <div class="fragment" style="margin-bottom:20px;">
                             <py-repl>
-                                2 + "1.0"
+							2 + "1.0"
                             </py-repl>
                             <py-repl>
-                                2 + 1.0, type(2 + 1.0)
+                            2 + 1.0, type(2 + 1.0)
                             </py-repl>
                         </div>
                     </section>
@@ -471,8 +481,9 @@ _start:
 										and <span style="color: orange">JavaScript</span>) don't need a compilation step</li>
 									<li>Interpreter reads and executes the source code line by line</li>
 									<li><span style="color: orange">JavaScript</span> was originally an interpreted language
-										(hence the 'script' in the name) aimed for web browsers</li>
-									<li>Modern <span style="color: orange">JavaScript</span> is often compiled Just-In-Time (JIT),
+										(hence the 'script' in the name) aimed at web browsers</li>
+									<li>Modern <span style="color: orange">JavaScript</span> is often compiled
+										<span style="color: lightcoral">Just-In-Time (JIT)</span>,
 										which gives an efficient compromise between interpreter and compiler</li>
 									<li>With the time the gap between interpreted and compiled languages is closing</li>
 								</ul>
@@ -654,8 +665,8 @@ _start:
 						<br><br>
 						<div class="fragment" style="margin-bottom:20px;">
 							<div class="typesetting">
-							<h2>What else to watch?</h2>
-							<p><a href="https://youtu.be/XZ3w_jec1v8?si=sEyP97XDNXzUZ8hn">An incredible presentation</a>
+							<h3>What else to watch?</h3>
+							<p style="text-align: left"><a href="https://youtu.be/XZ3w_jec1v8?si=sEyP97XDNXzUZ8hn">An incredible presentation</a>
 								on the "economics" of programming languages
 								from the creator of the Elm programming language</p>
 							</div>
@@ -663,10 +674,51 @@ _start:
 						<br>
 						<div class="fragment" style="margin-bottom:20px;">
 							<div class="typesetting">
-							<h2>Dream big, work hard =)</h2>
+							<h3>Dream big, work hard =)</h3>
 							</div>
 						</div>
 					</section>
+				</section>
+				<section>
+                    <section>
+                        <h3>Practice: Now let's dive into Tetris in Javascript</h3>
+                        <ul>
+                            <li class="fragment"><a href="https://codeincomplete.com/games/tetris"> And play the game now!</a></li>
+                            <li class="fragment"><a href="https://codeincomplete.com/articles/javascript-tetris/">Read more about how it works</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Tricky part is dealing with rotation of the 7 tetrominoes</h3>
+                        <p style="text-align: left">We encode each position of each piece with 16bit, that is four 4bit numbers:</p>
+                        <img src="images/16bit_tetrominoes.png" alt="16bit_tetrominoes" style="border-radius: 5%">
+                    </section>
+                    <section>
+                        <img src="images/pieces_in_code.png" alt="pieces_in_code" style="border-radius: 5%;width: 80%">
+                    </section>
+                    <section>
+                        <p style="text-align: left"><a href="https://github.com/avalur/avalur.github.io/blob/master/cs_basics/javascript-tetris/">
+                            It's time to look at the code!
+                        </a></p>
+
+                        <div class="fragment">
+                            <p style="text-align: left">Assignment</p>
+                            <ul>
+                                <li>The game is written in vanilla JavaScript, so you need to understand the code</li>
+								<li>Rewrite this project in your favorite language:
+								  Python, C++, Kotlin, Rust, Haskell, ... <span class="important">40 points</span>
+								</li>
+                                <li>Improve the current heuristic agent, adding new features and tuning the weights: <span class="important">20 points</span></li>
+                                <li>Write a report with the results and conclusions: <span class="important">40 points</span></li>
+                            </ul>
+                        </div>
+                        <br>
+                        <p class="fragment" style="text-align: left">Please, try to make your report an interesting story,
+                            sequentially implementing the algorithms from the task.
+                            The clarity of the answers to the questions,
+                            the tidiness of the report and code are assessed during the grading.</p>
+                        <br>
+                        <p class="fragment">Good luck and have fun!</p>
+                    </section>
 				</section>
 			</div>
 		</div>
