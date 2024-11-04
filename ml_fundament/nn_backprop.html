@@ -10,7 +10,7 @@
 
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
-		<link rel="stylesheet" href="../dist/theme/black.css">
+		<link rel="stylesheet" href="../dist/theme/sky.css">
 
         <!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
@@ -43,7 +43,7 @@
 								<h3>Intro to neural networks and backpropagation</h3>
 								<br />
 								Alex Avdiushenko <br />
-								October 29, 2024
+								November 5, 2024
 							</div>
 					</div>
                 </section>
@@ -96,7 +96,9 @@
                         </div>
                     </section>
                     <section>
-                        <h3>Linear Model (Reminder)</h3>
+                        <h3 style="text-align: left">
+                            Linear Model (Reminder)
+                        </h3>
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
@@ -114,7 +116,9 @@
                         </div>
                     </section>
                     <section>
-                        <h3>Neural Implementation of Logical Functions</h3>
+                        <h3 style="text-align: left">
+                            Neural Implementation of Logical Functions
+                        </h3>
 
                         <p style="text-align: left">The functions AND, OR, NOT from binary variables $x^1$ and $x^2$:</p>
 
@@ -139,7 +143,7 @@
                                   <li>Adding nonlinear feature:
                                      $$x^1 \bigoplus x^2 = [x^1 + x^2 - {\color{orange}2x^1 x^2} - \frac12 > 0]$$
                                   </li>
-                                    <li><b>Network</b> (<span style="color: orange">two-layer superposition</span>) of
+                                    <li>Network (<span style="color: orange">two-layer superposition</span>) of
                                         AND, OR, NOT functions:
                                      $$x^1 \bigoplus x^2 = [(x^1 \vee x^2) - (x^1 \wedge x^2) - \frac12 > 0]$$
                                   </li>
@@ -153,7 +157,7 @@
                         </div>
                     </section>
                     <section>
-                        <h3>Expressive Power of Neural Network</h3>
+                        <h3 style="text-align: left">Expressive Power of Neural Network</h3>
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
@@ -170,28 +174,26 @@
                                 </ul>
 
                                 <hr>
-                                <a href="https://arxiv.org/pdf/1711.00811.pdf">V. Khrulkov, A. Novikov, I. Oseledets.
-                                Expressive power of recurrent neural networks, Feb , ICLR 2018</a></li>
+                                <a href="https://arxiv.org/pdf/1711.00811.pdf" style="text-align: left">V. Khrulkov, A. Novikov, I. Oseledets.
+                                Expressive power of recurrent neural networks, Feb, ICLR 2018</a></li>
                             </div>
                         </div>
                     </section>
                     <section>
-                        <h3>Expressive Power of Neural Network</h3>
+                        <p style="text-align: left">Function $\sigma(z)$ — sigmoid, if $\lim\limits_{z \to -\infty} \sigma(z) = 0$ and $\lim\limits_{z \to +\infty} \sigma(z) = 1$</p>
+
+                        <hr>
 
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                            <p>Function $\sigma(z)$ — sigmoid, if $\lim\limits_{z \to -\infty} \sigma(z) = 0$ and $\lim\limits_{z \to +\infty} \sigma(z) = 1$</p>
-
-                            <hr>
-
                             <h4 style="text-align: left">Cybenko's Theorem</h4>
 
                             <p style="text-align: left">If $\sigma(z)$ is a continuous sigmoid,
                                 then for any continuous function $f(x)$ on $[0,1]^n$,
                                 there exist such parameter values $w_h \in \mathbb{R}^n, b \in \mathbb{R},
                                 \alpha_h \in \mathbb{R}$ that a single-layer network
-                             $$a(x) = \sigma\left(\sum\limits_{h=1}^H \alpha_h \left< x, w_h\right> + b\right)$$
-                            uniformly approximates $f(x)$ with any desired accuracy $\varepsilon$:
+                             $a(x) = \sigma\left(\sum\limits_{h=1}^H \alpha_h \left< x, w_h\right> + b\right)$
+                            approximates $f(x)$ with any desired accuracy $\varepsilon$:
                             $|a(x) - f(x)| < \varepsilon$, for all $x \in [0, 1]^n$
                             </p>
                             <hr>
@@ -203,7 +205,7 @@
                 </section>
                 <section>
                     <section>
-                        <p><a href="https://colab.research.google.com/github/avalur/avalur.github.io/blob/master/ml_with_python/nn_backprop_practice.ipynb">
+                        <p><a href="https://colab.research.google.com/github/avalur/avalur.github.io/blob/master/ml_fundament/nn_backprop_practice.ipynb">
                             Simple Neural Network Demo in PyTorch (until Micrograd)</a></p>
                     </section>
                     <section>
@@ -227,12 +229,14 @@
                     </section>
                     <section>
                         <div class="r-frame">
+                            <p style="padding-left: 20px">
                             <b>Question:</b> How to find the best parameters:
-                            the weight matrix $W$ and the bias $b$?
+                            the weight matrix $W$ and the bias $b$ ?
+                            </p>
                         </div>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p>If $y_{true, i} \in \mathbb{R}$
+                                <p style="text-align: left">If $y_{true, i} \in \mathbb{R}$
                                     (that is, the task of linear regression),
                                     then to minimize the sum of the squares of differences (least squares method),
                                     the answer is calculated <b>analytically</b> by the formula:</p>
@@ -242,7 +246,7 @@
                     </section>
                     <section>
                         <p>In general, it is solved <b>numerically</b> by minimizing the loss function.
-                            Most often by gradient descent.</p>
+                            Most often by stochastic gradient descent.</p>
 
                         <div align="center">
                             <img class="round" src="../ml_with_python/images/momentum.jpg" width=1000/>
@@ -271,12 +275,12 @@
 
                         <h3 style="text-align: left">Minimization of Loss Function</h3>
 
-                        $$L(w) = \sum\limits_{i=1}^\ell {\mathcal{L}(y_i, x_i, w)} = -\ln P(y_i|w, x_i) \to \min\limits_w$$
+                        $$L(w) = \sum\limits_{i=1}^\ell {\mathcal{L}(y_i, x_i, w)} = -\log P(y_i|w, x_i) \to \min\limits_w$$
                     </section>
                     <section>
                         <p style="text-align: left">
                             This is cross-entropy loss for the case $y_i \in \{0, 1\}$. In our case:</p>
-                        $$ L(W, b) = - \sum\limits_j \ln \frac{e^{(x_jW + b)_{y_j}}}{\sum\limits_i e^{(x_jW + b)_{i}}}$$
+                        $$ L(W, b) = - \sum\limits_j \log \frac{e^{(x_jW + b)_{y_j}}}{\sum\limits_i e^{(x_jW + b)_{i}}}$$
 
                         <p style="text-align: left">
                             We find the minimum of the function by stochastic gradient descent:</p>
@@ -293,7 +297,7 @@
                     <section>
                         <h3>Mini-batch Training</h3>
 
-                        <p style="text-align: left">We reduce the variance of the gradient.</p>
+                        <p style="text-align: left;font-size: medium">We reduce the variance of the gradient.</p>
 
                         <p style="text-align: left"><strong>Input:</strong> sample $X^\ell$, learning rate $\eta$, forgetting rate $\lambda$</p>
                         <p style="text-align: left"><strong>Output:</strong> weight vector $w \equiv (w_{jh}, w_{hm})$</p>
