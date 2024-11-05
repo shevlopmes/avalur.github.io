@@ -65,8 +65,8 @@
                                 <ul>
                                     <li><span class="important">Logical rules</span>:
                                         family selection, local modification and informativeness criteria</li>
-                                    <li><span class="important">Decision Tree Classifier</span></li>
-                                    <li>Measure of uncertainty for distribution</li>
+                                    <li><span class="important">Decision Tree Classifier</span> model</li>
+                                    <li>Measure of uncertainty for probability distribution</li>
                                     <li>Handling missing values (optional)</li>
                                 </ul>
                             </div>
@@ -119,7 +119,7 @@
                                     <li>
                                         <strong>Example 2</strong>: multiclass classification with \(M\) classes \(Y = \{1,\dots, M\}\):
                                         \[a(x) = \arg\max_{y \in Y} b_y(x)\]
-                                        so \(R = \mathbb{R}^M, b: X \to \mathbb{R}^M, C(b_1, \dots, b_M) \equiv \arg \max_{y \in Y} b_y\)
+                                        so \(R = \mathbb{R}^M, b: X \to \mathbb{R}^M, C(b_1, \dots, b_M) \equiv \arg\max\limits_{y \in Y} b_y\)
                                     </li>
                                 </ul>
                             </div>
@@ -460,7 +460,7 @@
 
                                 <p style="text-align: left">
                                     where $R_j$ is the area of space covered by leaf $j$,
-                                    $w_j$ is the leaf weights, and $J$ is the number
+                                    $w_j$ is the leaf weight, and $J$ is the number
                                     of leaves in the tree
                                 </p>
                             </div>
