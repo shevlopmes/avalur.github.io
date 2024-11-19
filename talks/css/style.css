@@ -58,8 +58,8 @@ border-radius: 5px;
 display: inline-block;
 margin: 20px;
 position: relative;
-width: 800px;
-text-align: center;
+width: 700px;
+text-align: left;
 animation: fadeIn 2s ease;
 animation-fill-mode: both;
 opacity: 0;
@@ -85,6 +85,7 @@ opacity: 0;
 .card img {
 border-radius: 50%;
 max-width: 200px;
+padding-left: 20px;
 }
 
 .card .text {
