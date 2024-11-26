@@ -302,3 +302,6 @@ mnist/*
 /advanced_ml/nips12raw_str602.tgz
 /ai_club/data/
 /ml_fundament/data/
+/ml_fundament/cifar10/
+/ml_fundament/experiment/
+s
