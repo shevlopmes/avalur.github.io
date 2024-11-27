@@ -6,7 +6,6 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-        <meta name="description" content="JetBrains AI school club">
         <meta name="author" content="Alex Avdiushenko" />
         <meta name="keywords" content="STEM Education, Artificial Intelligence">
 
@@ -44,23 +43,21 @@
 	<body onload="totalWrapper();">
 		<div class="reveal">
 			<div class="slides">
-				<section>
-					<div class="column">
-						<img src="images/jetbrains_logo_icon_145150.webp" alt="jetbrains_logo" />
-					</div>
-					<div class="column">
-						<h2>Youth AI club</h2>
-						<div class="fragment" style="margin-bottom:20px;">
-								<div class="typesetting">
-									<h3>Attention mechanism and Transformer architecture</h3>
-									<br />
-									Alex Avdiushenko<br />
-									December 10, 2024
-								</div>
-						</div>
-					</div>
-				</section>
                 <section>
+					<div>
+						<img src="../ml_with_python/images/nup_logo_dark.jpeg" alt="nup_logo" />
+					</div>
+						<h2>Fundamentals of Machine Learning</h2>
+					<div class="fragment" style="margin-bottom:20px;">
+							<div class="typesetting">
+								<h3>Attention mechanism and Transformer architecture</h3>
+								<br />
+								Alex Avdiushenko <br />
+								December 3, 2024
+							</div>
+					</div>
+                </section>
+	            <section>
                     <section>
                         <h3 style="text-align: left">Disadvantages of vanilla Recurrent Neural Network
                         (reminder)</h3>
@@ -194,7 +191,7 @@
                     </section>
                     <section>
                         <h3 style="text-align: left">The Main Areas for Attention Models</h3>
-                        <p style="text-align: left">Converting one sequence to another, i.e. seq2seq:</p>
+                        <p style="text-align: left">Converting one sequence to another, i.e., seq2seq:</p>
                         <ul class="fragment">
                             <li>Machine translation</li>
                             <li>Question answering</li>
@@ -266,7 +263,7 @@
                         <aside class="notes">
                             Let's discuss in detail the math inside attention.
                             The first one is Similarity Functions of two vectors.
-                            Of course in the simplest case it could be the scalar (inner) product.
+                            Of course, in the simplest case, it could be the scalar (inner) product.
                             Also, you could use the trainable parameters and our favorite linear transformation layer
                             with non-linear sigmoid function and weight vector.
                             But the most common procedure is to have query, key, value parameters matrices.
@@ -277,7 +274,7 @@
                         <p style="text-align: left">\(q\) is the query vector for which we want to calculate the context</p>
                         <p style="text-align: left">\(K = (k_1, \dots, k_n)\) — key vectors compared with the query</p>
                         <p style="text-align: left">\(V = (v_1, \dots, v_n)\) — value vectors forming the context</p>
-                        <p style="text-align: left">\(a(k_i, q)\) — score of relevance (similarity) of key \(k_i\) to query \(q\)</p>
+                        <p style="text-align: left">\(a(k_i, q)\) — score of relevance (similarity) of a key \(k_i\) to query \(q\)</p>
                         <p style="text-align: left">\(c\) is the desired context vector relevant to the query</p>
                         <div class="fragment">
                             <div style="border: 1px solid #000; padding: 10px;">
