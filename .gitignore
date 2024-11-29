@@ -304,4 +304,4 @@ mnist/*
 /ml_fundament/data/
 /ml_fundament/cifar10/
 /ml_fundament/experiment/
-s
+/ml_fundament/wikimatrix_cache/
