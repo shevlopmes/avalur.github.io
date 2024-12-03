@@ -333,7 +333,7 @@
                         <br><br>
                         <hr style="border: 0.4pt solid black;">
                         <div style="text-align: left;">
-                            <em>Zhouhan Lin, Y.Bengio et al</em>. A structuorange self-attentive sentence embedding. 2017
+                            <em>Zhouhan Lin, Y.Bengio et al</em>. A structured self-attentive sentence embedding. 2017
                         </div>
                         <aside class="notes">
                             And the last thing is about regularization. We need to make our attention models as different as possible.
@@ -498,7 +498,7 @@
                         </ul>
                         <div class="fragment">
                             <p style="margin-top: 1cm;text-align: left">For example,</p>
-                            \[ c_j = \text{Attn}(q_j, K, V) =
+                            \[ h_j = \text{Attn}(q_j, K, V) =
                             \sum_i (v_i + {\color{orange}w^v_{i\boxminus j}}) \text{SoftMax}_i a(k_i + {\color{orange} w^k_{i\boxminus j}}, q_j), \]
                             <p style="text-align: left">
                                 where \(i\boxminus j = \max(\min(i-j, \delta), -\delta)\) is the truncated difference, \(\delta = 5..16\)

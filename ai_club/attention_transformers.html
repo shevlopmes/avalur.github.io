@@ -55,7 +55,7 @@
 									<h3>Attention mechanism and Transformer architecture</h3>
 									<br />
 									Alex Avdiushenko<br />
-									December 10, 2024
+									December 11, 2024
 								</div>
 						</div>
 					</div>
@@ -234,7 +234,7 @@
                         </div>
                     </section>
                     <section>
-                        <h3 style="text-align: center">Vector Similarity Functions</h3>
+                        <h3 style="text-align: left">Vector Similarity Functions:</h3>
                         <p style="text-align: left">\(a(h, h^\prime) = h^T h^\prime\) is the scalar (inner) product</p>
                         <p class="fragment" style="text-align: left">\(a(h, h^\prime) = \exp(h^T h^\prime)\) — with
                             <code>norm</code> becomes <code>SoftMax</code></p>
@@ -244,7 +244,7 @@
                     </section>
                     <section>
                         <p style="margin-top: 0.5cm;text-align: left">
-                            <strong>Linear vector transformations:</strong> query, key, value:
+                            <strong>Linear vector transformations:</strong> query, key, value
                         </p>
                         <div class="column" style="width: 60%;">
                             <p style="text-align: left">\(a(h_i, h^\prime_{t-1}) = ({\color{orange}W_k}h_i)^T ({\color{orange}W_q}h^\prime_{t-1}) / \sqrt{d}\)</p>
@@ -296,7 +296,8 @@
                             <p style="text-align: left">
                                 \(c_t = \text{Attn}({\color{orange}W_q} h^\prime_{t-1},
                                 {\color{orange}W_k} H, {\color{orange}W_v} H)\) is the example from the previous slide,
-                                where \(H = (h_1, \dots, h_n)\) are input vectors, \(h^\prime_{t-1}\) is output</p>
+                                where \(H = (h_1, \dots, h_n)\) come from <span class="important">encoder</span>,
+                                \(h^\prime_{t-1}\) comes from <span class="important">decoder</span></p>
                         <br>
                         <div class="fragment">
                             <p style="text-align: left"><strong>Self-attention:</strong></p>
@@ -327,21 +328,6 @@
                             Here you do all the same, but having \(J\) different attention models :)
                         </aside>
                     </section>
-                    <section>
-                        <p style="text-align: left">
-                            <strong>Regularization</strong>: to make aspects of attention as different as possible,
-                            rows \(J \times n\) of matrices \(A, \alpha_{ji} = \text{SoftMax}_i a({\color{orange}W_k^j}h_i,
-                            {\color{orange}W_q^j}q)\), decorrelated \((\alpha_{s}^T\alpha_{j} \to 0)\) and sparse \((\alpha_{j}^T\alpha_{j} \to 1)\):</p>
-                        <p style="text-align: center;">\(\|AA^T - I \|^2 \to \min\limits_{\{{\color{orange}W_k^j}, {\color{orange}W_q^j}\}} \)</p>
-                        <br><br>
-                        <hr style="border: 0.4pt solid black;">
-                        <div style="text-align: left;">
-                            <em>Zhouhan Lin, Y.Bengio et al</em>. A structuorange self-attentive sentence embedding. 2017
-                        </div>
-                        <aside class="notes">
-                            And the last thing is about regularization. We need to make our attention models as different as possible.
-                        </aside>
-                    </section>
                 </section>
                 <section>
                     <section data-background-image="images/many_transformers.png">
@@ -356,9 +342,9 @@
                                 <li>\(S = (w_1, \dots, w_n)\) — sentence from words in the input language</li>
                                 <p style="text-align: left;font-size: medium">\(\downarrow\) trainable or pre-trained word vectorization \(\downarrow\)</p>
                                 <li>\(X = (x_1, \dots, x_n)\) — embeddings of input sentence words</li>
-                                <p style="text-align: left;font-size: medium">\(\downarrow\) encoder transformer \(\downarrow\)</p>
+                                <p style="text-align: left;font-size: medium">\(\downarrow\) encoder \(\downarrow\)</p>
                                 <li>\(Z = (z_1, \dots, z_n)\) — contextual embeddings</li>
-                                <p style="text-align: left;font-size: medium">\(\downarrow\) transformer-decoder \(\downarrow\)</p>
+                                <p style="text-align: left;font-size: medium">\(\downarrow\) decoder \(\downarrow\)</p>
                                 <li>\(Y = (y_1, \dots, y_m)\) — embeddings of output sentence words</li>
                                 <p style="text-align: left;font-size: medium">\(\downarrow\) generation of words from the constructed language model \(\downarrow\)</p>
                                 <li>\(\tilde S = (\tilde w_1, \dots, \tilde w_m)\) — sentence words in target language</li>
@@ -481,7 +467,7 @@
                             <li class="fragment">Calculations can be easily parallelized in \(x_i\)</li>
                             <li class="fragment">It is possible to use pre-trained \(x_i\) embeddings</li>
                             <li class="fragment">It is possible to learn embeddings \(x_i\) of words \(w_i \in V\)</li>
-                            <li class="fragment">Layer Normalization (LN), \(x, {\color{orange}\mu}, {\color{orange}\sigma} \in \mathbb{R}^d\)</li>
+                            <li class="fragment">Layer Normalization (LN), \(x, {\color{orange}\mu}, {\color{orange}\sigma} \in \mathbb{R}^d\):</li>
                         </ul>
                         <div class="fragment">
                             $$ LN_s(x; {\color{orange}\mu}, {\color{orange}\sigma}) =
@@ -501,7 +487,7 @@
                         </ul>
                         <div class="fragment">
                             <p style="margin-top: 1cm;text-align: left">For example,</p>
-                            \[ c_j = \text{Attn}(q_j, K, V) =
+                            \[ h_j = \text{Attn}(q_j, K, V) =
                             \sum_i (v_i + {\color{orange}w^v_{i\boxminus j}}) \text{SoftMax}_i a(k_i + {\color{orange} w^k_{i\boxminus j}}, q_j), \]
                             <p style="text-align: left">
                                 where \(i\boxminus j = \max(\min(i-j, \delta), -\delta)\) is the truncated difference, \(\delta = 5..16\)
@@ -615,18 +601,6 @@
                             \({\color{orange}W}\) — all transformer and language model parameters</p>
                     </section>
                     <section>
-                        <h3 style="text-align: left">NSP (Next Sentence Prediction) Criterion for BERT Training</h3>
-                        <p style="text-align: left">The criterion for predicting the relationship between NSP sentences
-                            is built automatically from texts (self-supervised learning):</p>
-                            $$ \sum\limits_{(S, S^\prime)} \ln p\left(y_{SS^\prime}|S, S^\prime, {\color{orange}W}\right) \to \max\limits_W, $$
-                        <p style="text-align: left">where \(y_{SS^\prime} = \) \(\left[S\right.\) followed by \(\left.S^\prime\right]\)
-                            is the binary classification of a pair of sentences,</p>
-                            $$ p(y|S, S^\prime, {\color{orange}W}) = \underset{y \in \{0,1\}}{\text{SoftMax}}\left({\color {orange}W_y} \tanh({\color{orange}W_s}z_0(S, S^\prime, {\color{orange}W_T}) + {\color{orange}b_s}) + {\color{orange}b_y}\right)$$
-                        <p style="text-align: left">— probabilistic classification model for pairs \((S, S^\prime)\),
-                            \(z_0(S, S^\prime, {\color{orange}W_T})\) — contextual embedding of token \(\left<\text{CLS}\right>\)
-                            for a sentence pair written as \(\left<\text{CLS}\right> S \left<\text{SEP}\right> S^\prime \left<\text{SEP}\right>\)</p>
-                    </section>
-                    <section>
                         <h3 style="text-align: left">A Few More Notes About Transformers</h3>
                         <ul>
                             <li>Fine-tuning: model \(f(Z(S, {\color{orange}W_T}), {\color{orange}W_f})\),
@@ -674,6 +648,35 @@
                             <li><a href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank">
                                 Intro to LLMs</a> by Andrej Karpathy, November 2023</li>
                         </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <p style="text-align: left">
+                            <strong>Regularization</strong>: to make aspects of attention as different as possible,
+                            rows \(J \times n\) of matrices \(A, \alpha_{ji} = \text{SoftMax}_i a({\color{orange}W_k^j}h_i,
+                            {\color{orange}W_q^j}q)\), decorrelated \((\alpha_{s}^T\alpha_{j} \to 0)\) and sparse \((\alpha_{j}^T\alpha_{j} \to 1)\):</p>
+                        <p style="text-align: center;">\(\|AA^T - I \|^2 \to \min\limits_{\{{\color{orange}W_k^j}, {\color{orange}W_q^j}\}} \)</p>
+                        <br><br>
+                        <hr style="border: 0.4pt solid black;">
+                        <div style="text-align: left;">
+                            <em>Zhouhan Lin, Y.Bengio et al</em>. A structured self-attentive sentence embedding. 2017
+                        </div>
+                        <aside class="notes">
+                            And the last thing is about regularization. We need to make our attention models as different as possible.
+                        </aside>
+                    </section>
+                    <section>
+                        <h3 style="text-align: left">NSP (Next Sentence Prediction) Criterion for BERT Training</h3>
+                        <p style="text-align: left">The criterion for predicting the relationship between NSP sentences
+                            is built automatically from texts (self-supervised learning):</p>
+                            $$ \sum\limits_{(S, S^\prime)} \ln p\left(y_{SS^\prime}|S, S^\prime, {\color{orange}W}\right) \to \max\limits_W, $$
+                        <p style="text-align: left">where \(y_{SS^\prime} = \) \(\left[S\right.\) followed by \(\left.S^\prime\right]\)
+                            is the binary classification of a pair of sentences,</p>
+                            $$ p(y|S, S^\prime, {\color{orange}W}) = \underset{y \in \{0,1\}}{\text{SoftMax}}\left({\color {orange}W_y} \tanh({\color{orange}W_s}z_0(S, S^\prime, {\color{orange}W_T}) + {\color{orange}b_s}) + {\color{orange}b_y}\right)$$
+                        <p style="text-align: left">— probabilistic classification model for pairs \((S, S^\prime)\),
+                            \(z_0(S, S^\prime, {\color{orange}W_T})\) — contextual embedding of token \(\left<\text{CLS}\right>\)
+                            for a sentence pair written as \(\left<\text{CLS}\right> S \left<\text{SEP}\right> S^\prime \left<\text{SEP}\right>\)</p>
                     </section>
                 </section>
             </div>
