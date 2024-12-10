@@ -45,20 +45,35 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<div class="column">
-						<img src="images/jetbrains_logo_icon_145150.webp" alt="jetbrains_logo" />
-					</div>
-					<div class="column">
-						<h2>Youth AI club</h2>
-						<div class="fragment" style="margin-bottom:20px;">
-								<div class="typesetting">
-									<h3>Attention mechanism and Transformer architecture</h3>
-									<br />
-									Alex Avdiushenko<br />
-									December 11, 2024
-								</div>
-						</div>
-					</div>
+                    <section>
+                        <div class="column">
+                            <img src="images/jetbrains_logo_icon_145150.webp" alt="jetbrains_logo" />
+                        </div>
+                        <div class="column">
+                            <h2>Youth AI club</h2>
+                            <div class="fragment" style="margin-bottom:20px;">
+                                    <div class="typesetting">
+                                        <h3>Attention mechanism and Transformer architecture</h3>
+                                        <br />
+                                        Alex Avdiushenko<br />
+                                        December 11, 2024
+                                    </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3 style="text-align: left">In the last episode</h3>
+                        <div class="fragment" style="text-align: left">
+                            <div class="typesetting">
+                                <ul>
+                                    <li><span class="important">Makemore</span>
+                                        on bigrams level</li>
+                                    <li>Prior to more robust predictions</li>
+                                    <li>Multi layer perceptron</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
 				</section>
                 <section>
                     <section>
@@ -227,7 +242,7 @@
                             <img src="images/image_attention.png" alt="Image Attention" style="width:80%;">
                         </div>
                         <p style="text-align: left">When generating a word for an image description,
-                            the visualization shows which areas of the image the model pays attention to.</p>
+                            the visualization shows which areas of the image the model pays attention to</p>
                         <hr style="border: 0.4pt solid black;">
                         <div style="text-align: left;">
                             <em>Kelvin Xu et al.</em> Show, attend and tell: neural image caption generation with visual attention. 2016
@@ -507,7 +522,7 @@
                             <div class="column" style="width: 68%;">
                                 <p style="text-align: left">Autoregressive sequence synthesis</p>
                                 <p style="text-align: left">\(y_0 = \left< \text{BOS} \right>\) — start symbol embedding;</p>
-                                <p style="text-align: left"><strong>For all</strong> \(t = 1, 2, \dots\):</p>
+                                <p style="text-align: left"><strong>For all</strong> \(t = 1, 2, \dots\)</p>
                                 <ol>
                                     <li>Masking data "from the future":
                                         <p>\(h_t = y_{t-1} + p_t; \ H_t = (h_1, \dots, h_t)\)</p>
