@@ -21,9 +21,6 @@
 
 		<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
 		<script defer src="https://pyscript.net/latest/pyscript.js"></script>
-		<py-config>
-			terminal = false
-		</py-config>
 		<style>
 			.column {
 			  float: left;
@@ -68,8 +65,9 @@
                                 <ul>
                                     <li><span class="important">Makemore</span>
                                         on bigrams level</li>
-                                    <li>Prior to more robust predictions</li>
-                                    <li>Multi layer perceptron</li>
+                                    <li>Adding <span class="important">prior</span>
+                                        for more robust predictions</li>
+                                    <li>Multi Layer Perceptron</li>
                                 </ul>
                             </div>
                         </div>
@@ -196,7 +194,7 @@
                         $$
                         <div class="fragment">
                             <ul>
-                                <li>You can enter learnable parameters in \({\color{green}\alpha}\) and \({\color{green}c_t}\)</li>
+                                <li>You can enter trainable parameters in \({\color{green}\alpha}\) and \({\color{green}c_t}\)</li>
                                 <li>It is possible to refuse recurrence both in \(h_i\) and in \(h_t^\prime\)</li>
                             </ul>
                         </div>
@@ -311,7 +309,7 @@
                             <p style="text-align: left">
                                 \(c_t = \text{Attn}({\color{orange}W_q} h^\prime_{t-1},
                                 {\color{orange}W_k} H, {\color{orange}W_v} H)\) is the example from the previous slide,
-                                where \(H = (h_1, \dots, h_n)\) come from <span class="important">encoder</span>,
+                                where \(H = (h_1, \dots, h_n)\) comes from <span class="important">encoder</span>,
                                 \(h^\prime_{t-1}\) comes from <span class="important">decoder</span></p>
                         <br>
                         <div class="fragment">
@@ -576,7 +574,8 @@
                                 based on a sample of pairs of sentences "translation \(S\), standard \(S_0\)":</p>
                             <p style="text-align: left">BiLingual Evaluation Understudy:</p>
                             <p style="text-align: center;">
-                                \(\text{BLEU} = \min \left(1, \frac{\sum \text{len}(S)}{\sum \text{len}(S_0)} \right) \times \) <br>
+                                \(\text{BLEU} = \text{Brevity Penalty} \times \text{n-gram overlap}
+                                = \min \left(1, \frac{ \text{len}(S)}{\text{len}(S_0)} \right) \times \) <br>
                                 \(\underset{(S_0, S)}{\text{mean}}\left(\prod\limits_{n=1}^4 \frac{\#n\text{-gram from } S, \text{incoming in } S_0}{\#n\text{-gram in } S} \right)^{\frac14}\)
                             </p>
                         </div>
@@ -601,7 +600,7 @@
                         <hr style="border: 0.4pt solid black;">
                         <div style="text-align: left;">
                             <em>Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova</em> (Google AI Language)<br>
-                            BERT: pre-training of deep bidirectional transformers for language understanding. 2019.
+                            BERT: pre-training of deep bidirectional transformers for language understanding. 2019
                         </div>
                     </section>
                     <section>
@@ -623,7 +622,7 @@
                             <li>Multitask learning: for additional training on a set of tasks \(\{t\}\),
                                 models \(f_t(Z(S, {\color{orange}W_T}), {\color{orange}W_f})\),
                                 samples \(\{S\}_t\) and sum of criteria \( \sum_t \lambda_t \sum_S \mathcal{L}_t(S, f_t) \to \max \)</li>
-                            <li>GLUE, SuperGLUE, Russian SuperGLUE — sets of test problems for understanding natural language</li>
+                            <li>GLUE, SuperGLUE — sets of test problems for understanding natural language</li>
                             <li>Transformers are usually built not on words, but on tokens received by BPE (Byte-Pair Encoding) or SentencePiece</li>
                             <div class="fragment">
                                 <li>First transformer: \(N = 6, d = 512, J = 8\), weights 65M</li>
