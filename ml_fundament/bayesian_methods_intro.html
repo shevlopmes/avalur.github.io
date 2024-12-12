@@ -10,17 +10,13 @@
 
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
-		<link rel="stylesheet" href="../dist/theme/black.css">
+		<link rel="stylesheet" href="../dist/theme/sky.css">
 
         <!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
 
 		<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
 		<script defer src="https://pyscript.net/latest/pyscript.js"></script>
-		<py-config>
-			terminal = false
-#            packages = ["numpy", "pandas", "matplotlib", "scikit-learn"]
-		</py-config>
 		<style>
 			.column {
 			  float: left;
@@ -51,7 +47,7 @@
 								<h3>Bayesian methods intro</h3>
 								<br />
 								Alex Avdiushenko <br />
-								December 3, 2024
+								December 17, 2024
 							</div>
 					</div>
                 </section>
@@ -76,7 +72,7 @@
                             <div class="typesetting">
                                 <p>\[ p(y|x)p(x) = p(x, y) = p(x|y)p(y) \Rightarrow \]</p>
                                 <p>\[ \Rightarrow p(y|x) = \frac{p(x|y)p(y)}{p(x)} \]</p>
-                                <p>\[ p(x) = \int p(x, y)dy = \int p(x|y)p(y)dy = E_y p(x|y)\]</p>
+                                <p>\[ p(x) = \int p(x, y)dy = \int p(x|y)p(y)dy = \mathbb{E}_y p(x|y)\]</p>
                             </div>
                         </div>
                     </section>
@@ -276,7 +272,7 @@
                     </section>
                     <section>
                         <h3>Relationship Between Frequentist and Bayesian Approaches</h3>
-                        $$\lim\limits_{n \to \infty} p(\theta|x_1, \dots, x_n) = \delta(\theta - \theta_{\text{ML}})$$
+                        $$\lim\limits_{n \to \infty} p(\theta|x_1, \dots, x_n) = \delta(\theta - \theta_{\text{MaxL}})$$
                         $\delta$ — Dirac delta function
                     </section>
                     <section>
@@ -287,7 +283,7 @@
                                   <li>Regularization</li>
                                   <li>Compositeness. For example, the popularity of topics on social networks —
                                       first, we calculated based on the news feed, then refined using video data</li>
-                                  <li>On-the-fly data processing — iteratively update the posterior distribution</li>
+                                  <li>On-the-fly data processing iteratively updates the posterior distribution</li>
                                   <li>We can calculate various statistics</li>
                                   <li>We can estimate the confidence in the values of model parameters</li>
                                 </ul>
@@ -320,7 +316,8 @@
                             <div class="typesetting">
                                 <p>Let $p(x|\theta) = A(\theta)$ and $p(\theta) = B(\alpha)$</p>
 
-                                <p class="r-frame" style="text-align: left">The prior distribution of parameters $p(\theta)$ is called
+                                <p class="r-frame" style="text-align: left;padding-left: 20px;">
+                                    The prior distribution of parameters $p(\theta)$ is called
                                     conjugate to $p(x|\theta)$ (conjugate priors),
                                     if the posterior distribution belongs to the same family as the prior
                                     $p(\theta|x) = B(\alpha^\prime)$</p>
@@ -367,24 +364,25 @@
                                 <h4 style="text-align: left">Conjugate prior</h4>
                                 <p style="text-align: left">Beta distribution:
                                     $p(q| \alpha, \beta) = \frac{q^{\alpha-1} (1-q)^{\beta-1}}{B(\alpha, \beta)}$</p>
-
-                                <p style="text-align: left">The numerator of the posterior distribution:</p>
-                                $$q^{\alpha-1+x} (1-q)^{\beta-1+(n-x)} = q^{\alpha^\prime-1} (1-q)^{\beta^\prime-1},$$
-                                <p>where $\alpha^\prime = \alpha + x, \beta^\prime = \beta + n - x$, so essentially,
-                                    we also know the denominator, it equals $B(\alpha^\prime, \beta^\prime)$. </p>
-
-                                <h4 style="text-align: left">Posterior distribution</h4>
-                                $$p(q|x) = \frac{q^{\alpha-1+x} (1-q)^{\beta-1+(n-x)}}{B(\alpha + x, \beta + n - x)}$$
                             </div>
                         </div>
+                    </section>
+                    <section>
+                        <p style="text-align: left">The numerator of the posterior distribution:</p>
+                        $$q^{\alpha-1+x} (1-q)^{\beta-1+(n-x)} = q^{\alpha^\prime-1} (1-q)^{\beta^\prime-1},$$
+                        <p style="text-align: left">where $\alpha^\prime = \alpha + x, \beta^\prime = \beta + n - x$, so essentially,
+                            we also know the denominator, it equals $B(\alpha^\prime, \beta^\prime)$. </p>
+
+                        <h4 style="text-align: left">Posterior distribution</h4>
+                        $$p(q|x) = \frac{q^{\alpha-1+x} (1-q)^{\beta-1+(n-x)}}{B(\alpha + x, \beta + n - x)}$$
                     </section>
                 </section>
                 <section>
                     <section>
-                        <h2>Markov chain Monte Carlo</h2>
+                        <h3>Markov chain Monte Carlo</h3>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <h3 style="text-align: left">Motivation</h3>
+                                <h4 style="text-align: left">Motivation</h4>
                                 <ul>
                                     <li>We'd like to be able to calculate mathematical expectations and
                                         other quantities according to the posterior distribution, known up to a constant</li>
@@ -396,10 +394,10 @@
                         </div>
                     </section>
                     <section>
-                        <h2 style="text-align: left">Monte Carlo Method</h2>
+                        <h3 style="text-align: left">Monte Carlo Method</h3>
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
-                                <p>A broad class of computational algorithms based on the repeated execution
+                                <p style="text-align: left">A broad class of computational algorithms based on the repeated execution
                                     of random experiments and the subsequent calculation of quantities of interest.</p>
                                 $$\int f(x)dx \approx \frac{1}{n} \sum\limits_{i=1}^n f(x_i)$$
                             </div>
@@ -407,7 +405,7 @@
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                                 <ul>
-                                    <li>Invented by Stanislaw Ulam in 1949 when he was playing solitaire while ill and
+                                    <li>Invented by Stanislaw Ulam in 1949 when he was playing Solitaire while ill and
                                         wondered what is the probability of being able to play out all the cards?
                                         He didn't solve it combinatorically, but simply by the share of successful games</li>
                                     <li>The method was named after the Monte Carlo casino in Monaco for the sake of secrecy
@@ -417,7 +415,7 @@
                         </div>
                     </section>
                     <section>
-                        <h2>Example of Using the Monte Carlo Method</h2>
+                        <h3>Example of Using the Monte Carlo Method</h3>
                         <div class="row">
                             <div class="column">
                                 $$\pi = 4 E[x^2 + y^2 < 1] \approx
@@ -432,7 +430,7 @@
                         </div>
                     </section>
                     <section>
-                        <h2 style="text-align: left">Markov Chains</h2>
+                        <h3 style="text-align: left">Markov Chains</h3>
                         <div class="row">
                             <div class="column">
                                 <br>
@@ -455,9 +453,9 @@
                         <p>$$p(x_1, x_2, \dots, x_{n-1}, x_n) = p(x_n|x_{n-1}) \dots p(x_2|x_1)p(x_1)$$</p>
                     </section>
                     <section>
-                        <h2>MCMC in Calculating Mathematical Expectations</h2>
+                        <h3>MCMC in Calculating Mathematical Expectations</h3>
 
-                        <p>In this case, we can use the Monte Carlo method to calculate mathematical expectations for
+                        <p style="text-align: left">In this case, we can use the Monte Carlo method to calculate mathematical expectations for
                             this probability distribution</p>
                         $$E_{p(x)} f(x) \approx \frac{1}{n} \sum\limits_{i=1}^n f(x_i),$$
                         <p style="text-align: left">where $x_i \sim p(x)$</p>
@@ -496,10 +494,10 @@
                         <div class="fragment" style="margin-bottom:20px;">
                             <div class="typesetting">
                             <ul>
-                              <li>$x_1^1 \sim p(x_1 | x_2 = x_2^0, x_3 = x_3^0)$</li>
-                              <li>$x_2^1 \sim p(x_2 | x_1 = x_1^1, x_3 = x_3^0)$</li>
-                              <li>$x_3^1 \sim p(x_3 | x_1 = x_1^1, x_2 = x_2^1)$</li>
-                              <li>$x_1^2 \sim p(x_1 | x_2 = x_2^1, x_3 = x_3^1)$ etc.</li>
+                              <li>$x_1^1 \sim \hat p(x_1 | x_2 = x_2^0, x_3 = x_3^0)$</li>
+                              <li>$x_2^1 \sim \hat p(x_2 | x_1 = x_1^1, x_3 = x_3^0)$</li>
+                              <li>$x_3^1 \sim \hat p(x_3 | x_1 = x_1^1, x_2 = x_2^1)$</li>
+                              <li>$x_1^2 \sim \hat p(x_1 | x_2 = x_2^1, x_3 = x_3^1)$ etc.</li>
                             </ul>
                             <p>After a few iterations "the chain has warmed up",
                                 we can estimate expectations based on these samples.</p>
