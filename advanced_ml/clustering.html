@@ -10,7 +10,7 @@
 
 		<link rel="stylesheet" href="../dist/reset.css">
 		<link rel="stylesheet" href="../dist/reveal.css">
-		<link rel="stylesheet" href="../dist/theme/black.css">
+		<link rel="stylesheet" href="../dist/theme/sky.css">
 
         <!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
@@ -34,15 +34,15 @@
 			<div class="slides">
                 <section>
 					<div>
-						<img src="./images/nup_logo_dark.jpeg" alt="nup_logo" />
+						<img src="images/nup_logo_dark.jpeg" alt="nup_logo" />
 					</div>
-                    <h2>Advanced machine learning</h2>
+                    <h2>Fundamentals of Machine Learning</h2>
 					<div class="fragment" style="margin-bottom:20px;">
 							<div class="typesetting">
 								<h3>Semi- and unsupervised learning, clustering</h3>
 								<br />
 								Alex Avdiushenko <br />
-								February 13, 2024
+								December 24, 2024
 							</div>
 					</div>
                 </section>
@@ -66,7 +66,7 @@
                                 <p style="text-align: left"><strong>The task is to find</strong></p>
                                 <ul>
                                     <li>\(a: X \to Y\) — clustering algorithm</li>
-                                    <li>where \(Y\) is set of clusters</li>
+                                    <li>where \(Y\) is a set of clusters</li>
                                 </ul>
 
                                 <p style="text-align: left">such that</p>
@@ -253,7 +253,7 @@
                     <section data-background-color="antiquewhite">
                         <h3>SSL Does Not Reduce to Classification</h3>
 
-                        <p><strong>Example 1: </strong>Class densities restored.</p>
+                        <p style="text-align: left"><strong>Example 1: </strong>Class densities restored.</p>
 
                         <table style="width:80%">
                           <tr>
@@ -269,7 +269,7 @@
                     <section data-background-color="antiquewhite">
                         <h3>SSL Does Not Reduce to Classification</h3>
 
-                        <p><strong>Example 2: </strong>Classification methods
+                        <p style="text-align: left"><strong>Example 2: </strong>Classification methods
                             do not account for the cluster structure of unlabeled data</p>
 
                         <div align="center">
@@ -284,7 +284,7 @@
                     <section data-background-color="antiquewhite">
                         <h3>However, SSL Also Does Not Reduce to Clustering</h3>
 
-                        <p><strong>Example 3: </strong>Clustering methods do not consider the priority of labeling over cluster structure</p>
+                        <p style="text-align: left"><strong>Example 3: </strong>Clustering methods do not consider the priority of labeling over cluster structure</p>
 
                         <div align="center">
                           <img style="border-radius: 5%" src="images/two_moons_2.jpg" alt="two_moons_2" width="700" />
@@ -336,7 +336,7 @@
                         <h3 style="text-align: left">Clustering as a Discrete Optimization Problem</h3>
                         <div class="fragment">
                             <div class="typesetting">
-                                <p>Weights on pairs of objects (proximity): \( w_{ij} = \exp(-\beta \rho(x_i, x_j)) \),
+                                <p style="text-align: left">Weights on pairs of objects (proximity): \( w_{ij} = \exp(-\beta \rho(x_i, x_j)) \),
                                 where \( \rho(x, x^\prime) \) is the distance between objects, \( \beta \) is a parameter</p>
 
                                 <h4  style="text-align: left">Clustering Task:</h4>
@@ -344,17 +344,17 @@
                                 \sum\limits_{i=1}^\ell \sum\limits_{j=i+1}^\ell w_{ij} [a_i \neq a_j] \to \min\limits_{\{a_i \in Y\}}\)</p>
 
                                 <h4 style="text-align: left">Partial Learning Task:</h4>
-                                <p>
-                                    \( \sum\limits_{i=1}^\ell \sum\limits_{j=i+1}^\ell w_{ij} [a_i \neq a_j] +
-                                    {\color{orange}\lambda \sum\limits_{i=1}^k [a_i \neq y_i]}  \to \min\limits_{\{a_i \in Y\}}\),
-                                where \(\lambda\) is another parameter</p>
+
+                                $$ \sum\limits_{i=1}^\ell \sum\limits_{j=i+1}^\ell w_{ij} [a_i \neq a_j] +
+                                    {\color{orange}\lambda \sum\limits_{i=1}^k [a_i \neq y_i]}  \to \min\limits_{\{a_i \in Y\}}$$
+                                <p style="text-align: left">where \(\lambda\) is another parameter</p>
                             </div>
                         </div>
                     </section>
                 </section>
                 <section>
-                    <section data-background-color="black">
-                        <img src="images/brace-yourself-kmeans.jpg" width="70%">
+                    <section data-background-color="white">
+                        <img src="images/brace-yourself-kmeans.jpg" width="60%">
                     </section>
                     <section>
                         <h3 style="text-align: left">k-means Method for Clustering</h3>
@@ -444,7 +444,7 @@
                         <div class="fragment">
                             <div class="typesetting">
                                 <p style="text-align: left">DBSCAN — Density-Based Spatial Clustering of Applications with Noise</p>
-                                <p>Consider an object \( x \in U \), and its \( \varepsilon \)-neighborhood \( U_\varepsilon(x) = \{ u \in U: \rho(x,u) \leq \varepsilon\} \)</p>
+                                <p style="text-align: left">Consider an object \( x \in U \), and its \( \varepsilon \)-neighborhood \( U_\varepsilon(x) = \{ u \in U: \rho(x,u) \leq \varepsilon\} \)</p>
                                 <p style="text-align: left">Each object can be one of three types:</p>
                                 <ul>
                                     <li>core: having a dense neighborhood, \( |U_\varepsilon (x)| \geq m \)</li>
@@ -541,8 +541,7 @@
                         </div>
                     </section>
                     <section>
-                        <h3>Specific Cases of the Lance-Williams Formula</h3>
-
+                        <h4>Specific Cases of the Lance-Williams Formula</h4>
                         <div class="row">
                             <div class="column">
                                 <p>1. Nearest neighbor distance:</p>
@@ -550,7 +549,7 @@
                                 <p>\( \alpha_{U} = \alpha_{V} = \frac12, \beta = 0, \gamma = -\frac12 \)</p>
                             </div>
                             <div class="column">
-                                <img src="images/R1.jpg" alt="R1" width="600" />
+                                <img src="images/R1.jpg" alt="R1" width="500" />
                             </div>
                         </div>
                         <div class="row">
@@ -560,7 +559,7 @@
                                 <p>\( \alpha_{U} = \alpha_{V} = \frac12, \beta = 0, \gamma = \frac12 \)</p>
                             </div>
                             <div class="column">
-                                <img src="images/R2.jpg" alt="R2" width="600" />
+                                <img src="images/R2.jpg" alt="R2" width="500" />
                             </div>
                         </div>
                         <div class="row">
@@ -570,7 +569,7 @@
                                 <p>\( \alpha_{U} = \frac{|U|}{|W|}, \alpha_{V} = \frac{|V|}{|W|}, \beta = \gamma = 0 \)</p>
                             </div>
                             <div class="column">
-                                <img src="images/R3.jpg" alt="R3" width="600" />
+                                <img src="images/R3.jpg" alt="R3" width="500" />
                             </div>
                         </div>
                     </section>
@@ -654,13 +653,13 @@
                 </section>
                 <section>
                     <section>
-                        <h3>Self-Training Method in Semi-Supervised Learning (1965-1970)</h3>
+                        <h3>Self-Training Method in Semi-Supervised Learning</h3>
                         <div class="fragment">
                             <div class="typesetting">
-                                <p>Let \( \mu: X^k \to a \) be a method for learning classification</p>
-                                <p>Classifiers are of the form \( a(x) = \arg\max\limits_{y \in Y} \Gamma_y(x) \)
+                                <p style="text-align: left">Let \( \mu: X^k \to a \) be a method for learning classification</p>
+                                <p style="text-align: left">Classifiers are of the form \( a(x) = \arg\max\limits_{y \in Y} \Gamma_y(x) \)
                                 , where \(\Gamma_y(x)\) is raw score</p>
-                                <p><b>Pseudo-margin</b> — the degree of confidence in the classification \( a_i = a(x_i) \):</p>
+                                <p style="text-align: left"><b>Pseudo-margin</b> — the degree of confidence in the classification \( a_i = a(x_i) \):</p>
                                 \[ \boxed{ M_i(a) = \Gamma_{a_i}(x_i) - \max\limits_{y \in Y/a_i} \Gamma_y(x_i)} \]
                             </div>
                         </div>
@@ -688,8 +687,8 @@
                         <h3>Semi-Supervised Learning Method: Co-Learning (deSa, 1993)</h3>
                         <div class="fragment">
                             <div class="typesetting">
-                                <p>Let \( \mu_t: X^k \to a_t \) be different learning methods, \( t = 1, \dots, T \)</p>
-                                <p><b>Co-learning Algorithm</b> is self-training for a composition — simple voting of base algorithms \( a_1, \dots, a_T \):</p>
+                                <p style="text-align: left">Let \( \mu_t: X^k \to a_t \) be different learning methods, \( t = 1, \dots, T \)</p>
+                                <p style="text-align: left"><b>Co-learning Algorithm</b> is self-training for a composition — simple voting of base algorithms \( a_1, \dots, a_T \):</p>
                                 \[ \boxed{a(x) = \arg\max\limits_{y in Y} \Gamma_y(x),\ \Gamma_y(x_i) = \sum\limits_{t=1}^T[a_t(x_i) = y]} \]
                             </div>
                         </div>
@@ -698,7 +697,7 @@
                         <h3>Semi-Supervised Learning Method: Co-Training (Blum, Mitchell, 1998)</h3>
                         <div class="fragment">
                             <div class="typesetting">
-                                <p>Let \( \mu_1: X^k \to a_1,\ \mu_2: X^k \to a_2 \) be two substantially different learning methods, using either:</p>
+                                <p style="text-align: left">Let \( \mu_1: X^k \to a_1,\ \mu_2: X^k \to a_2 \) be two substantially different learning methods, using either:</p>
                                 <ul>
                                     <li>different sets of features</li>
                                     <li>different learning paradigms (inductive bias)</li>
@@ -744,8 +743,10 @@
                         </div>
                         <div class="fragment">
                             <div class="typesetting">
-                                <p>What else to look at?</p>
-                                <p><a href="https://www.nature.com/articles/s41467-018-04964-5">SotA-2024 in bioinformatics</a></p>
+                                <p style="text-align: left">What else to look at?</p>
+                                <ul>
+                                    <li><a href="https://www.nature.com/articles/s41467-018-04964-5">SotA-2024 in bioinformatics</a></li>
+                                </ul>
                             </div>
                         </div>
                     </section>
