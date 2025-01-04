@@ -355,22 +355,22 @@ _start:
                     </section>
                     <section data-background-color="#fdf6e3">
                         <h3>Types in Python</h3>
-                        <py-repl>
-                            a = 2
-                            print(type(a))
-                            a = True
-                            print(type(a))
-                            # https://en.wikipedia.org/wiki/George_Boole
-                            # «In 1847 Boole published the pamphlet Mathematical Analysis of Logic»
-                        </py-repl>
-                        <py-repl>
-                            max([1, 2]), max({1, 2}), max(1, 2, 3)
-                        </py-repl>
+							<script type="py-editor">
+								a = 2
+								print(type(a))
+								a = True
+								print(type(a))
+								# https://en.wikipedia.org/wiki/George_Boole
+								# «In 1847 Boole published the pamphlet Mathematical Analysis of Logic»
+                        </script>
+							<script type="py-editor">
+                            	print(max([1, 2]), max({1, 2}), max(1, 2, 3))
+                        	</script>
                     </section>
 					<section data-background-color="#fdf6e3">
-                        <py-repl>
-                            help(max)
-                        </py-repl>
+							<script type="py-editor">
+	                            help(max)
+    	                    </script>
 					</section>
                     <section data-background-color="#fdf6e3">
                         <p style="text-align: left">
@@ -384,12 +384,12 @@ _start:
                             </div>
                         </div>
                         <div class="fragment" style="margin-bottom:20px;">
-                            <py-repl>
-							2 + "1.0"
-                            </py-repl>
-                            <py-repl>
-                            2 + 1.0, type(2 + 1.0)
-                            </py-repl>
+							<script type="py-editor">
+								2 + "1.0"
+                            </script>
+							<script type="py-editor">
+                            	print(2 + 1.0, type(2 + 1.0))
+                            </script>
                         </div>
                     </section>
 					<!-- Examples from Languages -->
