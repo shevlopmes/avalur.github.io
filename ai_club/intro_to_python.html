@@ -19,11 +19,8 @@
         <!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
 
-		<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-		<script defer src="https://pyscript.net/latest/pyscript.js"></script>
-		<py-config>
-			terminal = false
-		</py-config>
+        <link rel="stylesheet" href="https://pyscript.net/releases/2024.11.1/core.css">
+        <script type="module" src="https://pyscript.net/releases/2024.11.1/core.js"></script>
 		<style>
 			.column {
 			  float: left;
@@ -123,14 +120,14 @@
 					</section>
 					<section data-background-color="#fdf6e3" style="margin-top:-100px;">
 						<h3>First example of Python code</h3>
-					<py-repl>
+					<script type="py-editor">
 						# Pay attention to the indents:
 						# they are part of the syntax!
 						# So they highlight nested blocks of code
 						for i in range(5):
 							if not (i % 3 == 0):
 								print(i**5)
-					</py-repl>
+					</script>
 					</section>
 					<section><img src="../ml_with_python/images/python_interpretation.png"
 								  alt="python_interpretation" />
@@ -143,27 +140,27 @@
 					</div>
 					</section>
 					<section data-background-color="#fdf6e3">
-					<py-repl>
+					<script type="py-editor" env="shared">
 						def e(x):
 							sum_, k, term = 1, 0, 1
 							while True:
 								# yield is like "return",
-						        # but creates generator object
+								# but creates generator object
 								yield sum_
 								k += 1
 								term *= x / k
 								sum_ += term
 						x = 1
 						gen_e_x = e(x)
-					</py-repl>
-					<py-repl>
-						[i for i in range(5)]
-					</py-repl>
+					</script>
+					<script type="py-editor">
+						print([i for i in range(5)])
+					</script>
 					</section>
 					<section data-background-color="#fdf6e3">
-					<py-repl>
-						[next(gen_e_x) for _ in range(5)]
-					</py-repl>
+					<script type="py-editor" env="shared">
+						print([next(gen_e_x) for _ in range(5)])
+					</script>
 					</section>
 					<section data-background-color="#ffffff">
 						<img src="../ml_with_python/images/value_of_e.png" alt="value_of_e" width="80%" />
@@ -184,21 +181,21 @@
 						</div>
 					</section>
 					<section data-background-color="#fdf6e3">
-						<py-repl>
+						<script type="py-editor">
 							print(id(1), ', ', id('1'))
 							print(type(1), ', ', type('1'))
-						</py-repl>
-						<py-repl>
+						</script>
+						<script type="py-editor" env="shared">
 							a = 2**100; b = 2**100
-							id(a) == id(2**100), id(a) == id(b), type(a) == type(1)
-						</py-repl>
-						<py-repl>
+							print(id(a) == id(2**100), id(a) == id(b), type(a) == type(1))
+						</script>
+						<script type="py-editor" env="shared">
 							a = 7; b = 7
-							id(a) == id(7), id(a) == id(b), type(a) == type(1)
-						</py-repl>
-						<py-repl>
-							a is b # equivalent to id(a) == id(b)
-						</py-repl>
+							print(id(a) == id(7), id(a) == id(b), type(a) == type(1))
+						</script>
+						<script type="py-editor" env="shared">
+							print(a is b) # equivalent to id(a) == id(b)
+						</script>
 					</section>
 					<section>
 						<h3> <a href="https://www.quora.com/How-many-bytes-does-an-integer-data-occupy-in-the-Python-language">
@@ -224,25 +221,22 @@
 						</div>
 					</section>
 					<section data-background-color="#fdf6e3">
-						<py-repl>
-						# let's check!
-						import sys
+						<script type="py-editor">
+							# let's check!
+							import sys
+							def print_sizeof(x):
+								return f'{x} — {sys.getsizeof(x)} bytes'
 
-						def print_sizeof(x):
-							return f'{x} — {sys.getsizeof(x)} bytes'
-
-						print('\n'.join(
-							['Size of int in Python'] +
-								  [print_sizeof(x) for x in (0, 1, 10**10,
-									10**11, 10**30)])
-						)
-						</py-repl>
+							print('\n'.join(
+								['Size of int in Python'] +
+									  [print_sizeof(x) for x in (0, 1, 10**10,
+										10**11, 10**30)])
+							)
+						</script>
 					</section>
 					<section data-background-color="#fdf6e3">
 						<h3>Why so much and <a href="https://stackoverflow.com/questions/10365624/sys-getsizeofint-returns-an-unreasonably-large-value"> not the same?</a></h3>
-     					<div class="fragment" style="margin-bottom:20px;">
-							<py-repl>isinstance(1, object)</py-repl>
-						</div>
+						<script type="py-editor">print(isinstance(1, object))</script>
      					<div class="fragment" style="margin-bottom:20px;">
     						<div class="typesetting">
 								<p style="text-align: left">
