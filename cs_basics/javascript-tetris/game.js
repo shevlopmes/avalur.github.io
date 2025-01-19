@@ -126,6 +126,7 @@
     var pieces = [];
     function randomPiece() {
         if (pieces.length === 0)
+            //pieces = [t];
             pieces = [i,i,i,i,j,j,j,j,l,l,l,l,o,o,o,o,s,s,s,s,t,t,t,t,z,z,z,z];
         var type = pieces.splice(random(0, pieces.length-1), 1)[0];
         return { type: type, dir: DIR.UP, x: Math.round(random(0, nx - type.size)), y: 0 };
@@ -182,6 +183,7 @@
 
     function keydown(ev) {
         var handled = false;
+
         if (playing) {
             switch(ev.keyCode) {
                 case KEY.LEFT:   actions.push(DIR.LEFT);  handled = true; break;
@@ -193,7 +195,9 @@
             }
         }
         else if (ev.keyCode == KEY.SPACE) {
-            play();
+
+                play();
+
             handled = true;
         }
         if (handled)
@@ -205,7 +209,7 @@
     //-------------------------------------------------------------------------
 
     function play() { hide('start'); reset();          playing = true;  }
-    function lose() { show('start'); setVisualScore(); playing = false; }
+    function lose() { setVisualScore(); playing = false; }
 
     function setVisualScore(n)      { vscore = n || score; invalidateScore(); }
     function setScore(n)            { score = n; setVisualScore(n);  }
@@ -410,7 +414,8 @@
     }
 
     function agent() {
-        let bestMove = selectBestMove(current);
+        let bestMove = selectBestMove(current,blocks);
+        console.log("in agent:",blocks,bestMove,bestMove.piece,bestMove.x,current.y,current.dir);
         if (bestMove) {
             let dropY = getDropPosition(bestMove.piece, bestMove.x);
             current.x = bestMove.x;
